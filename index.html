@@ -86,7 +86,6 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 .card { background: var(--card); border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--shadow); }
 mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 100% 64%; animation: mark-in .6s var(--ease) var(--md, 0s) backwards; }
 .tag { margin-left: auto; padding: .2cqw .6cqw; border-radius: 999px; background: #fdebd6; color: #7d4021; font-size: .9cqw; font-weight: 600; }
-.tag.inline { margin-left: .9cqw; }
 .arrive { animation: arrive .6s var(--ease) var(--d, 0s) both; }
 .paper-in { animation: paper-in .8s var(--ease) var(--d, 0s) both; }
 @keyframes scene-in { from { opacity: 0; } }
@@ -258,8 +257,8 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .recipe .bi > .cn { margin-top: 0; }
 
 /* 06 Teams */
-.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, auto); gap: 0 1.5cqw; align-content: start; }
-.team-card { grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: .8cqw; padding: 1.1cqw 1.3cqw 1.2cqw; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, auto); gap: 0 1.5cqw; align-content: start; }
+.team-card { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: .8cqw; padding: 1.1cqw 1.3cqw 1.2cqw; }
 .dept { display: flex; align-items: center; font-size: 1cqw; font-weight: 650; color: var(--label); }
 .team-grid.three { grid-template-columns: repeat(3, 1fr); gap: 0 1.8cqw; }
 .team-grid.three .team-q { font-size: 1.45cqw; }
@@ -278,8 +277,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .team-get { font-size: 1.2cqw; line-height: 1.26; }
 .team-flag { display: flex; gap: .45cqw; margin-top: .6cqw; color: var(--label); font-size: 1.05cqw; line-height: 1.26; }
 .team-flag .ico { margin-top: .1cqw; font-size: 1.2cqw; color: var(--orange); }
-.team-copy { display: flex; gap: .4cqw; align-self: end; }
-.team-copy .copy { padding: .36cqw .6cqw; font-size: .9cqw; white-space: nowrap; }
 
 /* 07 Decide */
 .rules { display: grid; gap: 1.15cqw; align-content: start; }
@@ -381,14 +378,14 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
         <div class="where arrive" style="--d:2.7s">
           <p class="where-label biline">The answer is in two places <span class="cn" lang="zh-Hans">答案在两个地方</span></p>
           <div class="where-row">
-            <span class="src-tile"><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en">A Slack update</span><span class="cn" lang="zh-Hans">一条群里的更新</span></span></span>
+            <span class="src-tile"><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en">Slack update</span><span class="cn" lang="zh-Hans">群里更新</span></span></span>
             <span class="where-plus" aria-hidden="true">+</span>
-            <span class="src-tile"><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en">A Google Doc spec</span><span class="cn" lang="zh-Hans">一份 Google 规格</span></span></span>
+            <span class="src-tile"><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en">Google Doc</span><span class="cn" lang="zh-Hans">规格文档</span></span></span>
           </div>
         </div>
       </div>
       <figure class="card chat paper-in" style="--d:.45s;--from-x:1.5cqw">
-        <figcaption class="chat-bar"><span># release-review</span><span class="tag biline">Practice <span class="cn" lang="zh-Hans">演练</span></span></figcaption>
+        <figcaption class="chat-bar"><span># release-review</span></figcaption>
         <div class="msg">
           <span class="avatar" aria-hidden="true">M</span>
           <div>
@@ -399,15 +396,14 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
         </div>
       </figure>
     </div>
-    <p class="foot biline">Practice example, adapted from a real team update <span class="cn" lang="zh-Hans">演练示例，改编自一次真实的团队同步</span></p>
+    <p class="foot biline">Practice example <span class="cn" lang="zh-Hans">演练示例</span></p>
   </section>
 </template>
 
 <template id="usual">
   <section class="scene s-usual" data-label="The usual way">
     <header class="head arrive">
-      <p class="eyebrow biline">Without the agent <span class="cn" lang="zh-Hans">平时的做法</span></p>
-      <h1 class="bi"><span lang="en">4 steps, all by hand.</span><span class="cn" lang="zh-Hans">4 步，全靠手动。</span></h1>
+      <h1 class="bi"><span lang="en">Usually: 4 steps by hand.</span><span class="cn" lang="zh-Hans">平时：手动 4 步。</span></h1>
     </header>
     <div class="main">
       <ol class="steps">
@@ -424,7 +420,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
               <p class="row"><i></i><b style="--w:40%"></b></p>
             </div>
           </div>
-          <p class="step-text"><span class="n">1</span><span class="bi"><span lang="en">Scroll the chat for the update</span><span class="cn" lang="zh-Hans">翻群聊，找更新</span></span></p>
+          <p class="step-text"><span class="n">1</span><span class="bi"><span lang="en">Scroll the chat</span><span class="cn" lang="zh-Hans">翻群聊</span></span></p>
         </li>
         <li class="step" style="--d:.9s">
           <div class="mini" aria-hidden="true">
@@ -438,7 +434,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
               <b style="--w:88%"></b>
             </div>
           </div>
-          <p class="step-text"><span class="n">2</span><span class="bi"><span lang="en">Open the spec to check the rule</span><span class="cn" lang="zh-Hans">打开规格，查原规则</span></span></p>
+          <p class="step-text"><span class="n">2</span><span class="bi"><span lang="en">Check the spec</span><span class="cn" lang="zh-Hans">查规格</span></span></p>
         </li>
         <li class="step" style="--d:1.5s">
           <div class="mini" aria-hidden="true">
@@ -451,14 +447,14 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
               </tbody>
             </table>
           </div>
-          <p class="step-text"><span class="n">3</span><span class="bi"><span lang="en">Spot the two changes</span><span class="cn" lang="zh-Hans">对照，发现两处变了</span></span></p>
+          <p class="step-text"><span class="n">3</span><span class="bi"><span lang="en">Spot the changes</span><span class="cn" lang="zh-Hans">找变化</span></span></p>
         </li>
         <li class="step" style="--d:2.1s">
           <div class="mini" aria-hidden="true">
             <div class="mini-bar">Reply to Mia</div>
             <div class="draft"><span class="draft-text">In this release, users get…</span><span class="caret"></span></div>
           </div>
-          <p class="step-text"><span class="n">4</span><span class="bi"><span lang="en">Write the reply yourself</span><span class="cn" lang="zh-Hans">自己写回复</span></span></p>
+          <p class="step-text"><span class="n">4</span><span class="bi"><span lang="en">Write the reply</span><span class="cn" lang="zh-Hans">写回复</span></span></p>
         </li>
       </ol>
       <div class="verbs">
@@ -473,32 +469,30 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="ask">
   <section class="scene s-ask warm" data-label="Paste two links, ask one question">
     <header class="head arrive">
-      <p class="eyebrow biline">With your AI Agent <span class="cn" lang="zh-Hans">用 AI Agent</span></p>
-      <h1 class="bi"><span lang="en">Paste 2 links. Ask 1 question.</span><span class="cn" lang="zh-Hans">贴 2 条链接，问 1 句话。</span></h1>
+      <h1 class="bi"><span lang="en">Now: paste 2 links, ask 1 question.</span><span class="cn" lang="zh-Hans">现在：贴 2 条链接，问 1 句话。</span></h1>
     </header>
     <div class="main ask-grid">
       <div>
         <div class="paper-in" style="--d:.2s" data-agent="review" data-animate="full"></div>
         <ul class="link-tips arrive" style="--d:3.9s">
-          <li><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en"><b>Slack link:</b> ⋮ on the message → Copy link</span><span class="cn" lang="zh-Hans"><b>Slack 链接：</b>消息右侧 ⋮ → 复制链接</span></span></li>
-          <li><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en"><b>Google Doc link:</b> copy the address bar</span><span class="cn" lang="zh-Hans"><b>Google 文档链接：</b>复制浏览器地址栏</span></span></li>
+          <li><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en"><b>Slack:</b> ⋮ → Copy link</span><span class="cn" lang="zh-Hans"><b>Slack：</b>⋮ → 复制链接</span></span></li>
+          <li><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en"><b>Google Doc:</b> copy the URL</span><span class="cn" lang="zh-Hans"><b>Google 文档：</b>复制网址</span></span></li>
         </ul>
       </div>
       <ul class="readers">
-        <li class="reader arrive" style="--d:3s"><span class="tool"><svg class="ico"><use href="#i-chat"/></svg>slack</span><span class="bi"><span lang="en">lets it read Slack</span><span class="cn" lang="zh-Hans">让它能读 Slack</span></span></li>
-        <li class="reader arrive" style="--d:3.3s"><span class="tool"><svg class="ico"><use href="#i-doc"/></svg>gws</span><span class="bi"><span lang="en">lets it read Google Docs</span><span class="cn" lang="zh-Hans">让它能读 Google 文档</span></span></li>
-        <li class="reader is-agent arrive" style="--d:3.6s"><span class="tool"><span class="agent-mark"></span>AI Agent</span><span class="bi"><span lang="en">puts the two together</span><span class="cn" lang="zh-Hans">把两处对上</span></span></li>
+        <li class="reader arrive" style="--d:3s"><span class="tool"><svg class="ico"><use href="#i-chat"/></svg>slack</span><span class="bi"><span lang="en">reads Slack</span><span class="cn" lang="zh-Hans">读 Slack</span></span></li>
+        <li class="reader arrive" style="--d:3.3s"><span class="tool"><svg class="ico"><use href="#i-doc"/></svg>gws</span><span class="bi"><span lang="en">reads Google Docs</span><span class="cn" lang="zh-Hans">读 Google 文档</span></span></li>
+        <li class="reader is-agent arrive" style="--d:3.6s"><span class="tool"><span class="agent-mark"></span>AI Agent</span><span class="bi"><span lang="en">puts them together</span><span class="cn" lang="zh-Hans">把两处对上</span></span></li>
       </ul>
     </div>
-    <p class="foot biline">One-time setup first. Steps are on the last page. <span class="cn" lang="zh-Hans">先装一次，步骤在最后一页。</span></p>
+    <p class="foot biline">Set up once. Steps on the last page. <span class="cn" lang="zh-Hans">先装一次，步骤见最后一页。</span></p>
   </section>
 </template>
 
 <template id="get">
   <section class="scene s-get" data-label="The reply you get">
     <header class="head arrive">
-      <p class="eyebrow biline">What comes back <span class="cn" lang="zh-Hans">拿回来的结果</span></p>
-      <h1 class="bi"><span lang="en">Get a reply you can send, with sources.</span><span class="cn" lang="zh-Hans">拿到一句能发的回复，带来源。</span></h1>
+      <h1 class="bi"><span lang="en">You get: a reply with sources.</span><span class="cn" lang="zh-Hans">拿到：带来源的回复。</span></h1>
     </header>
     <div class="main">
       <div class="get-grid">
@@ -515,7 +509,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
         <article class="agent reply" style="--d:2.1s">
           <div class="agent-bar"><span class="agent-mark"></span>AI Agent<span class="tag biline">Practice example <span class="cn" lang="zh-Hans">演练示例</span></span></div>
           <div class="reply-body">
-            <p class="eyebrow biline">Reply you can send <span class="cn" lang="zh-Hans">可以直接回给同事</span></p>
+            <p class="eyebrow biline">Ready to send <span class="cn" lang="zh-Hans">可以直接发</span></p>
             <blockquote class="bi"><span lang="en">In this release, users get a friend request alert in the app’s notification bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求时，App 内的通知铃铛会提醒。系统推送后续再做。</span></blockquote>
             <div class="src-row">
               <span class="src-row-label biline">Sources <span class="cn" lang="zh-Hans">来源</span></span>
@@ -527,12 +521,12 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
       </div>
       <div class="saved arrive" style="--d:3s">
         <div>
-          <p class="saved-k biline">AI Agent did <span class="cn" lang="zh-Hans">AI Agent 做了</span></p>
+          <p class="saved-k biline">It did <span class="cn" lang="zh-Hans">它做了</span></p>
           <p class="done-list"><span><svg class="ico"><use href="#i-check"/></svg>Find<span class="cn" lang="zh-Hans">翻找</span></span><span><svg class="ico"><use href="#i-check"/></svg>Compare<span class="cn" lang="zh-Hans">对照</span></span><span><svg class="ico"><use href="#i-check"/></svg>Draft<span class="cn" lang="zh-Hans">起草</span></span></p>
         </div>
         <div>
-          <p class="saved-k biline">You still <span class="cn" lang="zh-Hans">你还要</span></p>
-          <p class="still bi"><span lang="en">Open the sources, then send.</span><span class="cn" lang="zh-Hans">点开来源核对，再发出。</span></p>
+          <p class="saved-k biline">You <span class="cn" lang="zh-Hans">你来</span></p>
+          <p class="still bi"><span lang="en">Check, then send.</span><span class="cn" lang="zh-Hans">核对后再发。</span></p>
         </div>
       </div>
     </div>
@@ -542,7 +536,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="ab">
   <section class="scene s-ab" data-label="Which would you type?">
     <header class="head arrive">
-      <p class="eyebrow biline">Same job, two ways to ask <span class="cn" lang="zh-Hans">同一件事，两种问法</span></p>
       <h1 class="bi"><span lang="en">Which would you type?</span><span class="cn" lang="zh-Hans">你会输入哪一句？</span></h1>
     </header>
     <div class="main">
@@ -562,7 +555,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
         <div class="out" data-outcome="a" hidden>
           <div class="card out-card">
             <p class="out-label biline"><span class="ab-id">A</span>Background, but no answer <span class="cn" lang="zh-Hans">有背景，没答案</span><span class="tag biline">Practice <span class="cn" lang="zh-Hans">演练</span></span></p>
-            <p class="out-text bi"><span lang="en">Friend requests show in Add Friends. The team has discussed alerts and push. Copy and tap targets are in the spec.</span><span class="cn" lang="zh-Hans">好友请求在「添加好友」里查看。团队讨论过提醒和推送，文案和跳转写在规格里。</span></p>
+            <p class="out-text bi"><span lang="en">Friend requests show in Add Friends. Alerts and push were discussed.</span><span class="cn" lang="zh-Hans">好友请求在「添加好友」里看。讨论过提醒和推送。</span></p>
           </div>
           <p class="out-next bi"><span class="k biline">You still have to ask <span class="cn" lang="zh-Hans">你还得追问</span></span><span lang="en">“So where do users see it in this release?”</span><span class="cn" lang="zh-Hans">「这一版收到请求到底在哪看？」</span></p>
         </div>
@@ -589,37 +582,33 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="team">
   <section class="scene s-team" data-label="When would you use it?">
     <header class="head arrive">
-      <p class="eyebrow biline">Same release, four teams <span class="cn" lang="zh-Hans">同一个版本，四个部门</span><span class="tag inline biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
+      <p class="eyebrow"><span class="tag biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
       <h1 class="bi"><span lang="en">When would you use it?</span><span class="cn" lang="zh-Hans">你哪天会用到？</span></h1>
     </header>
     <div class="main team-grid">
       <article class="card team-card paper-in" style="--d:.2s">
         <p class="dept biline">Engineering <span class="cn" lang="zh-Hans">研发</span></p>
-        <p class="team-q bi"><span lang="en">“Just got a handoff. What do I test?”</span><span class="cn" lang="zh-Hans">「刚接到交接，这次要测什么？」</span></p>
+        <p class="team-q bi"><span lang="en">“What do I test?”</span><span class="cn" lang="zh-Hans">「这次要测什么？」</span></p>
         <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="eng"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Test checklist: action → expected result</span><span class="cn" lang="zh-Hans">测试清单：操作 → 预期结果</span></p></div>
-        <p class="team-copy" data-copy-pair="eng"></p>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A test checklist</span><span class="cn" lang="zh-Hans">一份测试清单</span></p></div>
       </article>
       <article class="card team-card paper-in" style="--d:.35s">
         <p class="dept biline">Product <span class="cn" lang="zh-Hans">产品</span></p>
-        <p class="team-q bi"><span lang="en">“What will users see in this case?”</span><span class="cn" lang="zh-Hans">「这种情况下，用户会看到什么？」</span></p>
+        <p class="team-q bi"><span lang="en">“What will users see?”</span><span class="cn" lang="zh-Hans">「用户会看到什么？」</span></p>
         <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="review"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">One line to send, with sources</span><span class="cn" lang="zh-Hans">一句能发的回复，带来源</span></p></div>
-        <p class="team-copy" data-copy-pair="review"></p>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A reply with sources</span><span class="cn" lang="zh-Hans">带来源的回复</span></p></div>
       </article>
       <article class="card team-card paper-in" style="--d:.5s">
         <p class="dept biline">Content <span class="cn" lang="zh-Hans">内容</span></p>
-        <p class="team-q bi"><span lang="en">“Feedback is in. Which lines change?”</span><span class="cn" lang="zh-Hans">「审阅意见来了，哪几句要改？」</span></p>
+        <p class="team-q bi"><span lang="en">“Which lines change?”</span><span class="cn" lang="zh-Hans">「哪几句要改？」</span></p>
         <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="content"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Lines to change: old → new → comment</span><span class="cn" lang="zh-Hans">要改的句子：原句 → 改法 → 意见</span></p></div>
-        <p class="team-copy" data-copy-pair="content"></p>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Lines to change</span><span class="cn" lang="zh-Hans">要改的句子</span></p></div>
       </article>
       <article class="card team-card paper-in" style="--d:.65s">
         <p class="dept biline">Growth <span class="cn" lang="zh-Hans">增长</span></p>
-        <p class="team-q bi"><span lang="en">“I can’t open the dashboard. Who can help?”</span><span class="cn" lang="zh-Hans">「看板打不开，该找谁？」</span></p>
+        <p class="team-q bi"><span lang="en">“Who can open the dashboard?”</span><span class="cn" lang="zh-Hans">「看板权限找谁开？」</span></p>
         <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="growth"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Who grants access + the earlier thread</span><span class="cn" lang="zh-Hans">谁能开权限 + 之前的讨论</span></p><p class="team-flag"><svg class="ico"><use href="#i-key"/></svg><span class="bi"><span lang="en">You ask them. It can’t grant access.</span><span class="cn" lang="zh-Hans">你去找他，AI Agent 开不了权限。</span></span></p></div>
-        <p class="team-copy" data-copy-pair="growth"></p>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Who to ask</span><span class="cn" lang="zh-Hans">该找谁</span></p><p class="team-flag"><svg class="ico"><use href="#i-key"/></svg><span class="bi"><span lang="en">It can’t grant access.</span><span class="cn" lang="zh-Hans">它开不了权限。</span></span></p></div>
       </article>
     </div>
   </section>
@@ -628,7 +617,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="more">
   <section class="scene s-more warm" data-label="It can write and edit, too">
     <header class="head arrive">
-      <p class="eyebrow biline">Not just replies <span class="cn" lang="zh-Hans">不只是回消息</span><span class="tag inline biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
+      <p class="eyebrow"><span class="tag biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
       <h1 class="bi"><span lang="en">It can write and edit, too.</span><span class="cn" lang="zh-Hans">它也能写、能改。</span></h1>
     </header>
     <div class="main">
@@ -637,26 +626,23 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
           <p class="dept biline">Write a doc <span class="cn" lang="zh-Hans">写文档</span><span class="tag biline">Anyone <span class="cn" lang="zh-Hans">人人</span></span></p>
           <p class="team-q bi"><span lang="en">“Turn this thread into a doc.”</span><span class="cn" lang="zh-Hans">「把这串讨论写成文档。」</span></p>
           <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="write"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A new Google Doc: decisions, owners, open questions</span><span class="cn" lang="zh-Hans">一份新的 Google 文档：结论、负责人、待定问题</span></p></div>
-          <p class="team-copy" data-copy-pair="write"></p>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A new Google Doc</span><span class="cn" lang="zh-Hans">一份新文档</span></p></div>
         </article>
         <article class="card team-card paper-in" style="--d:.35s">
           <p class="dept biline">Edit a doc <span class="cn" lang="zh-Hans">改文档</span><span class="tag biline">Content <span class="cn" lang="zh-Hans">内容</span></span></p>
           <p class="team-q bi"><span lang="en">“Apply the review comments.”</span><span class="cn" lang="zh-Hans">「按审阅意见改一版。」</span></p>
           <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="edit"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">An edited copy, plus each change and its comment</span><span class="cn" lang="zh-Hans">改好的副本，附每处改动和对应评论</span></p></div>
-          <p class="team-copy" data-copy-pair="edit"></p>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">An edited copy</span><span class="cn" lang="zh-Hans">改好的副本</span></p></div>
         </article>
         <article class="card team-card paper-in" style="--d:.5s">
           <p class="dept biline">Build from a spec <span class="cn" lang="zh-Hans">照规格开工</span><span class="tag biline">Engineering <span class="cn" lang="zh-Hans">研发</span></span></p>
           <p class="team-q bi"><span lang="en">“Here’s the spec. Build it.”</span><span class="cn" lang="zh-Hans">「规格在这，照着做。」</span></p>
           <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="build"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Code and tests that follow the spec, plus open questions</span><span class="cn" lang="zh-Hans">照规格写好的代码和测试，附没写清的地方</span></p></div>
-          <p class="team-copy" data-copy-pair="build"></p>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Code and tests</span><span class="cn" lang="zh-Hans">代码和测试</span></p></div>
         </article>
       </div>
       <div class="also arrive" style="--d:.9s">
-        <p class="safe biline"><svg class="ico"><use href="#i-check"/></svg>Ask it to write to a new doc, a copy, or a new branch. You check, then share. <span class="cn" lang="zh-Hans">让它写在新文档、副本或新分支里，你看过再分享。</span></p>
+        <p class="safe biline"><svg class="ico"><use href="#i-check"/></svg>New doc, copy or branch. You check first. <span class="cn" lang="zh-Hans">写在新文档、副本或新分支，你先看过。</span></p>
         <p class="asks"><span class="k biline">Also <span class="cn" lang="zh-Hans">还能</span></span><span class="pill biline">Find a doc in Drive <span class="cn" lang="zh-Hans">在 Drive 找文档</span></span><span class="pill biline">Check a sheet <span class="cn" lang="zh-Hans">核对表格</span></span><span class="pill biline">Sum up a channel <span class="cn" lang="zh-Hans">汇总一个频道</span></span><span class="pill biline">Prep for a meeting <span class="cn" lang="zh-Hans">会前准备</span></span></p>
       </div>
     </div>
@@ -666,27 +652,26 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="decide">
   <section class="scene s-decide" data-label="Do you need the agent?">
     <header class="head arrive">
-      <p class="eyebrow biline">Quick check <span class="cn" lang="zh-Hans">先判断一下</span></p>
-      <h1 class="bi"><span lang="en">Do you need the AI Agent?</span><span class="cn" lang="zh-Hans">要不要打开 AI Agent？</span></h1>
+      <h1 class="bi"><span lang="en">Do you need the AI Agent?</span><span class="cn" lang="zh-Hans">要不要用 AI Agent？</span></h1>
     </header>
     <ul class="main rules">
       <li class="rule arrive" style="--d:.3s">
         <span class="rule-ico"><svg class="ico"><use href="#i-search"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Looking for one message you know?</span><span class="cn" lang="zh-Hans">只想找一条知道的消息？</span></span>
+        <span class="bi rule-if"><span lang="en">One message you know?</span><span class="cn" lang="zh-Hans">找一条知道的消息？</span></span>
         <svg class="ico"><use href="#i-arrow"/></svg>
         <span class="bi rule-then"><span lang="en">Search in Slack.</span><span class="cn" lang="zh-Hans">直接在 Slack 搜。</span></span>
       </li>
       <li class="rule arrive" style="--d:.7s">
         <span class="rule-ico"><svg class="ico"><use href="#i-key"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Need access to a dashboard or tool?</span><span class="cn" lang="zh-Hans">要开看板或工具权限？</span></span>
+        <span class="bi rule-if"><span lang="en">Need access?</span><span class="cn" lang="zh-Hans">要开权限？</span></span>
         <svg class="ico"><use href="#i-arrow"/></svg>
-        <span class="bi rule-then"><span lang="en">Ask the owner. slack can help find who.</span><span class="cn" lang="zh-Hans">找负责人开通。slack 能帮你找到是谁。</span></span>
+        <span class="bi rule-then"><span lang="en">Ask the owner.</span><span class="cn" lang="zh-Hans">找负责人。</span></span>
       </li>
       <li class="rule is-agent arrive" style="--d:1.1s">
         <span class="rule-ico"><svg class="ico"><use href="#i-join"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Need what’s in Slack or a doc to answer, write or edit something?</span><span class="cn" lang="zh-Hans">要用群里或文档里的内容，来回答、写或改一件事？</span></span>
+        <span class="bi rule-if"><span lang="en">Need Slack or docs to answer, write or edit?</span><span class="cn" lang="zh-Hans">要用群聊或文档来回答、写或改？</span></span>
         <svg class="ico"><use href="#i-arrow"/></svg>
-        <span class="bi rule-then"><span lang="en">Open your AI Agent.</span><span class="cn" lang="zh-Hans">打开 AI Agent。</span></span>
+        <span class="bi rule-then"><span lang="en">Use your AI Agent.</span><span class="cn" lang="zh-Hans">用 AI Agent。</span></span>
       </li>
     </ul>
   </section>
@@ -695,13 +680,12 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="close">
   <section class="scene s-close warm" data-label="Try it on one task this week">
     <header class="head arrive">
-      <p class="eyebrow biline">Start small <span class="cn" lang="zh-Hans">从小事开始</span></p>
-      <h1 class="bi"><span lang="en">Try it on one task this week.</span><span class="cn" lang="zh-Hans">这周挑一件事，试一次。</span></h1>
+      <h1 class="bi"><span lang="en">Try it on one task this week.</span><span class="cn" lang="zh-Hans">这周挑一件事试试。</span></h1>
     </header>
     <div class="main close-main">
       <div class="paper-in" style="--d:.3s" data-agent="template" data-animate="chips"></div>
-      <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">a new doc <span class="cn" lang="zh-Hans">一份新文档</span></span><span class="pill biline">an edited copy <span class="cn" lang="zh-Hans">改好的副本</span></span><span class="pill biline">who to ask <span class="cn" lang="zh-Hans">该找谁</span></span></p>
-      <p class="setup-line arrive biline" style="--d:1.3s">First time? Set up slack and gws where your AI Agent runs, and sign in with your work account. <span class="cn" lang="zh-Hans">第一次用：先在 AI Agent 运行的地方装好两个工具，用工作账号登录。</span><button type="button" class="link-btn biline" data-open-notes>First-time setup <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
+      <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">a new doc <span class="cn" lang="zh-Hans">一份新文档</span></span><span class="pill biline">an edited copy <span class="cn" lang="zh-Hans">改好的副本</span></span></p>
+      <p class="setup-line arrive biline" style="--d:1.3s">First time? Install once. <span class="cn" lang="zh-Hans">第一次用？先装一次。</span><button type="button" class="link-btn biline" data-open-notes>Setup steps <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
     </div>
   </section>
 </template>
@@ -844,7 +828,7 @@ const chapters = [
   },
   {
     id: "team", stage: "when", time: "1:50–2:40",
-    say: ["同一个版本，四个部门。每张卡从上往下读：什么时候会遇到、贴什么、拿到什么。每张卡都能复制对应的问法。", "增长那张说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
+    say: ["同一个版本，四个部门。每张卡从上往下读：什么时候会遇到、贴什么、拿到什么。对应问法在备注里可以复制。", "增长那张说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
     facts: [
       "口径：讲者的 Slack 账号能看到的公开频道和已加入的私有频道，2026-10-01 至 2026-11-09；不含私信、群私信，以及机器人、告警和测试频道。用 66 个中英文关键词检索，再逐条人工判断。同一话题串只算一次，同一人对同一件事的追问合并。",
       "「经常有人问」指至少 3 个独立话题、至少 2 位同事提出；「有人问过」指 1–2 个话题。关键词检索会漏，也没有纳入飞书历史，所以这里不说「最高频」。",
@@ -869,7 +853,7 @@ const chapters = [
   },
   {
     id: "decide", stage: "when", time: "3:40–4:10",
-    say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；slack 可以帮你找到是谁。", "要用群里或文档里的内容，来回答、写或改一件事，就打开 AI Agent。"]
+    say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；不知道是谁，可以让 slack 帮你找之前的讨论。", "要用群聊或文档里的内容来回答、写或改一件事，就用 AI Agent。"]
   },
   {
     id: "close", stage: "try", time: "4:10–5:00",
@@ -913,10 +897,6 @@ function words(text, lang, animate) {
   }).join("");
   return { html, step: 1300 / visible };
 }
-function copyButtonsHTML(key, zhLabel) {
-  return `<button type="button" class="copy" data-copy="${key}" data-lang="en">${icon("copy")}<span>Copy prompt</span></button>` +
-    `<button type="button" class="copy cn" lang="zh-Hans" data-copy="${key}" data-lang="zh">${icon("copy")}<span>${zhLabel}</span></button>`;
-}
 function renderAgent(host) {
   const key = host.dataset.agent;
   const prompt = prompts[key];
@@ -927,7 +907,10 @@ function renderAgent(host) {
   host.style.setProperty("--t-foot", "2.75s");
   host.innerHTML =
     `<div class="agent-bar"><span class="agent-mark" aria-hidden="true"></span>AI Agent` +
-    `<span class="agent-tools">${copyButtonsHTML(key, "复制中文问法")}</span></div>` +
+    `<span class="agent-tools">` +
+    `<button type="button" class="copy" data-copy="${key}" data-lang="en">${icon("copy")}<span>Copy prompt</span></button>` +
+    `<button type="button" class="copy cn" lang="zh-Hans" data-copy="${key}" data-lang="zh">${icon("copy")}<span>复制中文问法</span></button>` +
+    `</span></div>` +
     `<div class="agent-field"><div class="chips">${chipsHTML(key)}</div>` +
     `<p class="prompt bi" style="--t0:1.3s"><span lang="en" style="--step:${en.step}ms">${en.html}</span>` +
     `<span class="cn" lang="zh-Hans" style="--step:${zh.step}ms">${zh.html}</span></p>` +
@@ -964,7 +947,6 @@ function show(index) {
   mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
   scene.querySelectorAll("[data-agent]").forEach(renderAgent);
-  scene.querySelectorAll("[data-copy-pair]").forEach(host => { host.innerHTML = copyButtonsHTML(host.dataset.copyPair, "复制问法"); });
   scene.querySelectorAll("[data-chips]").forEach(host => { host.innerHTML = chipsHTML(host.dataset.chips); });
   scene.querySelectorAll("[data-segments]").forEach(renderSegments);
   screen.replaceChildren(scene);
