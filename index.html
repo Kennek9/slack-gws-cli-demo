@@ -5,11 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FFF8E9">
 <link rel="icon" href="data:,">
-<title>Ask across Slack + Google Docs · AI Agent onboarding</title>
+<title>How we work together · 合并后的协作方式</title>
 <style>
 :root {
   --paper: #fff8e9;
-  --warm: #ffead2;
   --orange: #ff4e00;
   --ink: #232222;
   --muted: #69605b;
@@ -18,11 +17,9 @@
   --card: #fffdf8;
   --line: #eadbc8;
   --line-strong: #d6bc9f;
-  --mark: #ffd3aa;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
   --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --ease: cubic-bezier(.2, .72, .2, 1);
   --r-lg: 1.15cqw;
   --r-md: .8cqw;
   --r-sm: .5cqw;
@@ -84,230 +81,70 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 
 /* Shared pieces */
 .card { background: var(--card); border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--shadow); }
-mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 100% 64%; animation: mark-in .6s var(--ease) var(--md, 0s) backwards; }
-.tag { margin-left: auto; padding: .2cqw .6cqw; border-radius: 999px; background: #fdebd6; color: #7d4021; font-size: .9cqw; font-weight: 600; }
-.arrive { animation: arrive .6s var(--ease) var(--d, 0s) both; }
-.paper-in { animation: paper-in .8s var(--ease) var(--d, 0s) both; }
 @keyframes scene-in { from { opacity: 0; } }
-@keyframes arrive { from { opacity: 0; transform: translateY(.8cqw); } }
-@keyframes paper-in { from { opacity: 0; transform: translate(var(--from-x, 0), 1.5cqw); } }
-@keyframes mark-in { from { background-size: 0% 64%; } }
-@keyframes w-in { from { opacity: 0; } }
 
-/* AI Agent box: the same composer on every scene */
-.agent { display: flex; flex-direction: column; background: var(--card); border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
-.agent-bar { display: flex; align-items: center; gap: .6cqw; min-height: 3cqw; padding: .5cqw .8cqw .5cqw 1.3cqw; border-bottom: var(--edge) solid var(--line); background: #fff5e8; font-size: 1cqw; font-weight: 650; }
-.agent-bar .tag { margin-right: .5cqw; }
-.agent-tools { display: flex; gap: .5cqw; margin-left: auto; }
-.agent[data-animate="full"] .agent-tools, .agent[data-animate="full"] .send { animation: arrive .5s var(--ease) var(--t-foot, 0s) both; }
-.agent-mark { display: inline-block; width: 1.05cqw; aspect-ratio: 1; flex: none; border-radius: 50%; background: radial-gradient(circle at 34% 32%, #ff9a63, var(--orange) 70%); }
-.agent-field { display: grid; grid-template-columns: 1fr auto; column-gap: 1.2cqw; padding: 1.15cqw 1.35cqw 1.2cqw; }
-.agent-field .chips { grid-column: 1 / -1; }
-.chips { display: flex; flex-wrap: wrap; gap: .6cqw; margin-bottom: .95cqw; }
-.chip { display: inline-flex; align-items: center; gap: .5cqw; padding: .42cqw .75cqw .42cqw .55cqw; border: var(--edge) solid #e3c4a4; border-radius: var(--r-sm); background: #fff0de; color: #5b3824; font-size: 1cqw; font-weight: 560; white-space: nowrap; }
-.chip .ico { font-size: 1.2cqw; color: var(--label); }
-.chip .url { font-family: var(--mono); font-size: .82cqw; font-weight: 400; color: #8b6c59; }
-.chip.is-slot { border-style: dashed; border-color: #cf9f78; background: transparent; }
-.agent[data-animate] .chip { animation: chip-in .65s var(--ease) both; animation-delay: calc(.55s + var(--ci) * .38s); }
-@keyframes chip-in { from { opacity: 0; transform: translate(-4cqw, -1.6cqw) scale(.94); } }
-.prompt { font-family: var(--serif); font-size: 1.52cqw; line-height: 1.32; }
-.prompt .w { animation: w-in .14s linear backwards; animation-delay: calc(var(--t0) + var(--i) * var(--step)); }
-.slot { padding: 0 .2em; border-radius: .25em; background: #ffe5cc; color: var(--label); }
-.copy { display: inline-flex; align-items: center; gap: .45cqw; padding: .4cqw .8cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: #fff; color: #5b3824; font-size: .95cqw; font-weight: 600; cursor: pointer; }
-.copy .ico { font-size: 1.05cqw; }
-.copy:hover { background: #fff0de; border-color: #c98f66; }
-.copy.done { background: #fff0de; border-color: #c98f66; color: var(--label); }
-.send { align-self: end; width: 2.2cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-size: 1.15cqw; }
-.send .ico { stroke-width: 2.2; }
-
-/* 01 Opening */
-.open-grid { display: grid; grid-template-columns: 1fr 39cqw; gap: 4.5cqw; align-items: center; margin-top: 0; }
-.s-open h1 { font-size: 4.2cqw; line-height: 1.04; margin-top: .9cqw; }
-.where { margin-top: 3cqw; }
-.where-label { font-size: 1.12cqw; font-weight: 650; color: var(--label); }
-.where-row { display: flex; align-items: center; gap: .9cqw; margin-top: .9cqw; }
-.src-tile { display: flex; align-items: center; gap: .8cqw; padding: .85cqw 1.1cqw; border: var(--edge) solid var(--line-strong); border-radius: var(--r-md); background: var(--card); font-size: 1.32cqw; line-height: 1.2; }
-.src-tile > .ico { font-size: 1.9cqw; color: var(--label); }
-.where-plus { font-family: var(--serif); font-size: 2cqw; color: #b48663; }
-.chat { overflow: hidden; }
-.chat-bar { display: flex; align-items: center; gap: .6cqw; padding: .75cqw 1.3cqw; border-bottom: var(--edge) solid var(--line); background: #fff5e8; font-size: 1cqw; font-weight: 650; color: #6a4630; }
-.chat-bar .tag { font-size: .88cqw; }
-.msg { display: grid; grid-template-columns: 3cqw 1fr; gap: 1.1cqw; padding: 1.5cqw 1.5cqw 1.8cqw; }
-.avatar { width: 3cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 26%; background: #f6c9a2; color: #6b3417; font-family: var(--serif); font-size: 1.45cqw; }
-.msg-who { display: flex; align-items: baseline; gap: .7cqw; font-size: 1.05cqw; color: var(--muted); }
-.msg-who b { color: var(--ink); font-size: 1.15cqw; }
-.msg-who time { margin-left: auto; font-size: .95cqw; }
-.dots { display: flex; gap: .35cqw; max-height: 0; opacity: 0; overflow: hidden; animation: dots 1.5s linear .95s both; }
-.dots i { width: .6cqw; aspect-ratio: 1; border-radius: 50%; background: #d2b193; animation: dot .9s ease-in-out infinite; }
-.dots i:nth-child(2) { animation-delay: .15s; }
-.dots i:nth-child(3) { animation-delay: .3s; }
-@keyframes dots { 0% { max-height: 2cqw; margin-top: .9cqw; opacity: 0; } 12%, 82% { max-height: 2cqw; margin-top: .9cqw; opacity: 1; } 100% { max-height: 0; margin-top: 0; opacity: 0; } }
-@keyframes dot { 50% { transform: translateY(-.3cqw); } }
-.msg-text { margin-top: .7cqw; font-size: 2cqw; line-height: 1.24; }
-.msg-text > span:first-child { font-family: var(--serif); }
-
-/* 02 Usual way */
-.s-usual .main { display: flex; flex-direction: column; justify-content: center; padding-bottom: 2.5cqw; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6cqw; }
-.step { display: flex; flex-direction: column; gap: 1.05cqw; animation: arrive .6s var(--ease) var(--d) both; }
-.mini { position: relative; height: 15.6cqw; overflow: hidden; border: var(--edge) solid var(--line-strong); border-radius: var(--r-md); background: var(--card); box-shadow: var(--shadow); font-size: .92cqw; }
-.mini-bar { position: relative; z-index: 1; display: flex; align-items: center; gap: .45cqw; height: 2cqw; padding: 0 .8cqw; border-bottom: var(--edge) solid var(--line); background: #fff5e8; color: #6a4630; font-weight: 600; white-space: nowrap; }
-.mini-bar .ico { font-size: 1.05cqw; color: var(--label); }
-.feed { padding: .8cqw; animation: feed 1.3s var(--ease) calc(var(--d) + .45s) both; }
-@keyframes feed { from { transform: translateY(0); } to { transform: translateY(-4.6cqw); } }
-.row { display: flex; align-items: center; gap: .55cqw; height: 1.9cqw; }
-.row i { width: 1.15cqw; aspect-ratio: 1; flex: none; border-radius: 30%; background: #f2dcc6; }
-.row b { width: var(--w); height: .55cqw; border-radius: 99px; background: #ecdcca; }
-.row span { font-weight: 600; white-space: nowrap; }
-.page { display: grid; gap: .75cqw; padding: 1cqw .9cqw; }
-.page b { width: var(--w); height: .55cqw; border-radius: 99px; background: #ecdcca; }
-.page b.h { height: .85cqw; background: #e1c8ae; }
-.page p { font-weight: 600; }
-.cmp { width: 100%; border-collapse: collapse; margin-top: .4cqw; }
-.cmp th, .cmp td { padding: .55cqw .7cqw; text-align: left; font-weight: 500; white-space: nowrap; }
-.cmp thead th { color: var(--muted); font-weight: 600; }
-.cmp tbody tr { border-top: var(--edge) solid var(--line); }
-.cmp tbody th { color: var(--label); font-weight: 650; }
-.draft { margin: 1cqw .9cqw; padding: .8cqw; min-height: 6cqw; border: var(--edge) solid var(--line); border-radius: var(--r-sm); background: #fff; font-family: var(--mono); font-size: .88cqw; }
-.draft-text { display: inline-block; width: 27ch; overflow: hidden; white-space: nowrap; vertical-align: bottom; animation: draft 1.1s steps(27) 2.45s backwards; }
-@keyframes draft { from { width: 0; } }
-.caret { display: inline-block; width: .13cqw; height: 1.1cqw; margin-left: .1cqw; vertical-align: -.2cqw; background: var(--ink); animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 0; } }
-.step-text { display: grid; grid-template-columns: 1.9cqw 1fr; gap: .7cqw; align-items: start; font-size: 1.32cqw; line-height: 1.22; }
-.step-text .n { width: 1.9cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--warm); color: var(--label); font-size: 1cqw; font-weight: 700; }
-.verbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6cqw; margin-top: 2.1cqw; }
-.verb { position: relative; padding-top: .9cqw; font-family: var(--serif); font-size: 1.9cqw; animation: arrive .5s var(--ease) var(--d) both; }
-.verb .cn { font-size: 1.9cqw; }
-.verb::before { content: ""; position: absolute; inset: 0 0 auto; height: .2cqw; border-radius: 99px; background: var(--orange); transform-origin: left; animation: line-in .6s var(--ease) var(--d) both; }
-.verb.find { grid-column: 1 / span 2; }
-@keyframes line-in { from { transform: scaleX(0); } }
-
-/* 03 Ask */
-.ask-grid { display: grid; grid-template-columns: 1fr 24.5cqw; gap: 3.2cqw; align-items: center; }
-.readers { display: grid; gap: 1.25cqw; }
-.reader { display: grid; grid-template-columns: 8.6cqw 1fr; gap: 1cqw; align-items: baseline; padding-bottom: 1.25cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.38cqw; line-height: 1.22; }
-.reader:last-child { border-bottom: 0; padding-bottom: 0; }
-.tool { display: inline-flex; align-items: center; gap: .5cqw; color: var(--label); font-family: var(--mono); font-size: 1.42cqw; font-weight: 700; }
-.tool .ico { font-size: 1.4cqw; }
-.reader.is-agent .tool { font-family: var(--sans); font-size: 1.2cqw; color: var(--ink); }
-.s-ask .prompt { font-size: 1.66cqw; }
-.link-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; margin-top: 1.3cqw; }
-.link-tips li { display: flex; gap: .7cqw; align-items: flex-start; font-size: 1.12cqw; line-height: 1.28; }
-.link-tips .ico { margin-top: .15cqw; font-size: 1.35cqw; color: var(--label); }
-.link-tips b { font-weight: 650; }
-
-/* 04 Get */
-.get-grid { display: grid; grid-template-columns: 31cqw 1fr; gap: 2.3cqw; align-items: start; }
-.src-col { display: grid; gap: 1cqw; }
-.src-card { padding: 1cqw 1.25cqw 1.15cqw; transition: border-color .2s ease, box-shadow .2s ease; }
-.src-card.is-checked { border-color: #e0733a; box-shadow: 0 0 0 .22cqw #ff4e0029, var(--shadow); }
-.src-head { display: flex; align-items: center; gap: .5cqw; font-size: 1cqw; font-weight: 650; color: #6a4630; }
-.src-head .ico { font-size: 1.2cqw; color: var(--label); }
-.src-card > .bi { margin-top: .65cqw; font-size: 1.36cqw; line-height: 1.28; }
-.reply { animation: unfold .8s var(--ease) var(--d) backwards; }
-@keyframes unfold { from { opacity: 0; transform: translateY(.6cqw); clip-path: inset(0 0 100% 0 round var(--r-lg)); } to { clip-path: inset(0 0 0 0 round var(--r-lg)); } }
-.reply-body { padding: 1.1cqw 1.35cqw 1.25cqw; }
-.reply blockquote { margin-top: .55cqw; font-size: 1.95cqw; line-height: 1.24; }
-.reply blockquote > span:first-child { font-family: var(--serif); }
-.src-row { display: flex; flex-wrap: wrap; align-items: center; gap: .6cqw; margin-top: 1.1cqw; padding-top: .95cqw; border-top: var(--edge) solid var(--line); }
-.src-row-label { margin-right: .3cqw; color: var(--muted); font-size: .98cqw; font-weight: 600; }
-.src-btn { display: inline-flex; align-items: center; gap: .45cqw; padding: .4cqw .75cqw; border: var(--edge) solid #e3c4a4; border-radius: var(--r-sm); background: #fff0de; color: #5b3824; font-size: .98cqw; font-weight: 600; cursor: pointer; }
-.src-btn .ico { font-size: 1.1cqw; color: var(--label); }
-.src-btn:hover, .src-btn[aria-pressed="true"] { border-color: #d0743f; background: #ffe5cc; }
-.saved { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.3cqw; margin-top: 1.9cqw; padding-top: 1.2cqw; border-top: var(--edge) solid var(--line-strong); }
-.saved-k { display: block; margin-bottom: .45cqw; color: var(--label); font-size: 1cqw; font-weight: 650; }
-.done-list { display: flex; flex-wrap: wrap; gap: 1.5cqw; font-family: var(--serif); font-size: 1.6cqw; }
-.done-list > span { display: inline-flex; align-items: center; gap: .4cqw; }
-.done-list .ico { font-size: 1.3cqw; color: var(--orange); stroke-width: 2.4; }
-.done-list .cn { font-size: 1.6cqw; margin-left: .35em; }
-.still { font-size: 1.6cqw; font-family: var(--serif); }
-.still .cn { font-size: 1.6cqw; }
-
-/* 05 A/B */
-.ab-grid { display: grid; grid-template-columns: 1fr 1.28fr; gap: 1.8cqw; }
-.ab-card { display: grid; grid-template-columns: 2.1cqw 1fr; gap: .8cqw 1.1cqw; align-content: start; padding: 1.25cqw 1.4cqw 1.35cqw; text-align: left; cursor: pointer; transition: border-color .18s ease, box-shadow .18s ease, background .18s ease; }
-.ab-card:hover { border-color: #c98f66; background: #fffaf3; }
-.ab-card[aria-pressed="true"] { border-color: #d0743f; background: #fffaf3; box-shadow: 0 0 0 .22cqw #ff4e0026, var(--shadow); }
-.ab-id { width: 2.1cqw; aspect-ratio: 1; flex: none; display: grid; place-items: center; border-radius: 50%; background: var(--warm); color: var(--label); font-size: 1.05cqw; font-weight: 750; }
-.ab-card[aria-pressed="true"] .ab-id { background: var(--orange); color: #fff; }
-.ab-card > .ab-id { grid-row: 1 / span 2; }
-.ab-card > :not(.ab-id) { grid-column: 2; }
-.ab-text { font-size: 1.5cqw; line-height: 1.3; }
-.ab-text > span:first-child { font-family: var(--serif); }
-.ab-card .chips { margin: 0; }
-.ab-card .chip .url { display: none; }
-.seg { background: linear-gradient(#e0733a, #e0733a) no-repeat 0 100% / 0 .16cqw; transition: background-size .6s var(--ease); }
-.seg::before { content: attr(data-n); display: none; width: 1.25cqw; height: 1.25cqw; margin-right: .3em; border-radius: 50%; background: var(--orange); color: #fff; font-family: var(--sans); font-size: .78cqw; font-weight: 700; line-height: 1.25cqw; text-align: center; vertical-align: .15cqw; }
-.ab-grid[data-picked="b"] [data-choice="b"] .seg { background-size: 100% .16cqw; }
-.ab-grid[data-picked="b"] [data-choice="b"] .seg::before { display: inline-block; }
-.ab-out { margin-top: 1.7cqw; }
-.ab-hint { padding-top: 1.1cqw; border-top: var(--edge) solid var(--line-strong); font-size: 1.5cqw; color: var(--muted); }
-.out { display: grid; grid-template-columns: 1.75fr 1fr; gap: 2cqw; align-items: center; animation: arrive .45s var(--ease) both; }
-.out-card { padding: 1.05cqw 1.35cqw 1.2cqw; }
-.out-label { display: flex; align-items: center; gap: .6cqw; font-size: 1.05cqw; font-weight: 650; color: var(--label); }
-.out-label .ab-id { width: 1.7cqw; font-size: .88cqw; background: var(--orange); color: #fff; }
-.out-text { margin-top: .6cqw; font-size: 1.45cqw; line-height: 1.26; }
-.out-text > span:first-child { font-family: var(--serif); }
-.out-card .src-row { margin-top: .8cqw; padding-top: .75cqw; }
-.out-next { font-size: 1.45cqw; line-height: 1.28; }
-.out-next .k { display: block; margin-bottom: .4cqw; color: var(--label); font-size: 1.05cqw; font-weight: 650; }
-.recipe { display: grid; gap: .55cqw; }
-.recipe li { display: grid; grid-template-columns: 1.6cqw 1fr; gap: .6cqw; align-items: baseline; font-size: 1.35cqw; }
-.recipe .n { width: 1.5cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-size: .85cqw; font-weight: 700; transform: translateY(-.1cqw); }
-.recipe .bi > .cn { margin-top: 0; }
-
-/* 06 Teams */
-.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, auto); gap: 0 1.5cqw; align-content: start; }
-.team-card { grid-row: span 4; display: grid; grid-template-rows: subgrid; row-gap: .8cqw; padding: 1.1cqw 1.3cqw 1.2cqw; }
-.dept { display: flex; align-items: center; font-size: 1cqw; font-weight: 650; color: var(--label); }
-.team-grid.three { grid-template-columns: repeat(3, 1fr); gap: 0 1.8cqw; }
-.team-grid.three .team-q { font-size: 1.45cqw; }
-.team-grid.three .team-get { font-size: 1.28cqw; }
-.also { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1cqw 2cqw; margin-top: 1.6cqw; padding-top: 1.2cqw; border-top: var(--edge) solid var(--line-strong); }
-.safe { display: flex; align-items: center; gap: .5cqw; font-size: 1.15cqw; font-weight: 600; }
-.safe .ico { font-size: 1.4cqw; color: var(--orange); stroke-width: 2.4; }
-.also .asks { justify-content: flex-start; font-size: 1.02cqw; }
-.team-q { font-size: 1.3cqw; line-height: 1.24; }
-.team-q > span:first-child { font-family: var(--serif); }
-.team-row { padding-top: .7cqw; border-top: var(--edge) solid var(--line); }
-.row-k { margin-bottom: .4cqw; color: var(--muted); font-size: .92cqw; font-weight: 650; }
-.chips.compact { flex-direction: column; align-items: flex-start; gap: .45cqw; margin: 0; }
-.chips.compact .chip { font-size: .95cqw; }
-.chips.compact .url { display: none; }
-.team-get { font-size: 1.2cqw; line-height: 1.26; }
-.team-flag { display: flex; gap: .45cqw; margin-top: .6cqw; color: var(--label); font-size: 1.05cqw; line-height: 1.26; }
-.team-flag .ico { margin-top: .1cqw; font-size: 1.2cqw; color: var(--orange); }
-
-/* 07 Decide */
-.rules { display: grid; gap: 1.15cqw; align-content: start; }
-.rule { display: grid; grid-template-columns: 3.4cqw 1fr 2cqw 1fr; gap: 1.5cqw; align-items: center; padding: 1.3cqw 1.7cqw; border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); background: var(--card); }
-.rule-ico { width: 3.4cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fdebd6; color: var(--label); font-size: 1.6cqw; }
-.rule .bi { font-size: 1.55cqw; line-height: 1.24; }
-.rule-if > span:first-child { font-family: var(--serif); }
-.rule-then { font-weight: 600; }
-.rule > .ico { font-size: 1.6cqw; color: #c0835a; }
-.rule.is-agent { border-color: #e39a6c; background: #fff2e2; box-shadow: var(--shadow); }
-.rule.is-agent .rule-ico { background: var(--orange); color: #fff; }
-
-/* 08 Close */
-.s-close .head { text-align: center; }
-.close-main { display: grid; justify-items: center; align-content: start; gap: 1.6cqw; }
-.close-main .agent { width: 70cqw; }
-.close-main .prompt { font-size: 1.62cqw; }
-.asks { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .7cqw; font-size: 1.1cqw; }
-.asks .k { color: var(--label); font-weight: 650; margin-right: .3cqw; }
-.asks .pill { padding: .35cqw .8cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
-.setup-line { margin-top: 1.2cqw; color: var(--muted); font-size: 1cqw; text-align: center; }
-.link-btn { margin-left: .6cqw; padding: .3cqw .75cqw; border: var(--edge) solid #c98f66; border-radius: 999px; background: #ffe5cc; color: #6b3417; font-size: .98cqw; font-weight: 650; cursor: pointer; }
-.link-btn:hover { background: #ffd8b4; }
-
+.step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4cqw; }
+.step, .panel { padding: 1.55cqw 1.75cqw; }
+.step { display: flex; flex-direction: column; gap: .85cqw; }
+.step-number, .label { color: var(--label); font-weight: 700; font-size: 1.12cqw; }
+.step h2, .panel h2 { font-size: 1.65cqw; line-height: 1.2; }
+.step p, .panel p, .panel li, .meta { font-size: 1.4cqw; line-height: 1.4; }
+.panel p + p, .panel li + li { margin-top: .65cqw; }
+.panel h2 { margin-bottom: .95cqw; }
+.duo { display: grid; grid-template-columns: 1fr 1fr; gap: 1.35cqw; align-content: start; }
+.accent { border-color: #c77745; background: #fff4e5; }
+.prompt { background: #fff8ed; border-left: .22cqw solid var(--orange); padding: .55cqw .75cqw; }
+.result { color: #6b3012; font-weight: 680; }
+.meta { margin-top: .85cqw; color: var(--muted); }
+.access-line { display: flex; justify-content: space-between; align-items: center; gap: 1cqw; margin-top: 1.2cqw; }
+.guide { display: inline-block; padding: .7cqw 1.1cqw; border-radius: .65cqw; background: #9f350b; color: white; font-size: 1.34cqw; font-weight: 700; text-decoration: none; }
+.guide:hover { background: #792604; }
+.guide .cn { color: white; }
+code { font-family: var(--mono); font-size: .9em; }
+.table { border-collapse: collapse; width: 100%; font-size: 1.28cqw; line-height: 1.24; }
+.table th, .table td { padding: .43cqw .9cqw; border-bottom: 1px solid var(--line); text-align: left; }
+.table thead th { color: var(--label); font-size: 1.12cqw; }
+.table tbody tr:first-child { background: #fff2e1; }
+.table td[data-window] { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.time-table { margin-top: .65cqw; }
+.time-table + .meta { font-size: 1.15cqw; margin-top: .65cqw; }
+.hero { margin-top: 4.1cqw; }
+.hero h1 { font-size: 4.2cqw; }
+.hero + .main { margin-top: 3.4cqw; }
+.finish { display: grid; justify-items: start; align-content: center; gap: 1.45cqw; }
+.finish .guide { font-size: 1.55cqw; }
+.scene a:not(.guide) { color: var(--label); }
+#screen[data-language="zh"] [lang="en"] { display: none !important; }
+#screen[data-language="zh"] .cn { margin-left: 0; }
+.toolbar #chapters { min-width: 0; max-width: 42vw; }
+@media (max-width: 600px) and (orientation: portrait) {
+  #presenter { display: flex; flex-direction: column; align-items: stretch; }
+  #screen, #presenter:fullscreen #screen { width: 100%; aspect-ratio: auto; overflow: visible; }
+  #screen .scene { position: relative; min-height: calc(100dvh - 92px); padding: 18px; }
+  .toolbar { width: 100%; position: sticky; bottom: 0; z-index: 1; background: #f3e7d6; }
+  .mast { font-size: 10px; letter-spacing: 0; }
+  .track { gap: 6px; }
+  .head, .hero, .hero + .main, .main { margin-top: 16px; }
+  .eyebrow, .foot, .label, .step-number { font-size: 12px; }
+  h1, .hero h1 { font-size: 28px; }
+  .step-grid, .duo { grid-template-columns: 1fr; gap: 8px; }
+  .step, .panel { padding: 11px; }
+  .step h2, .panel h2 { font-size: 16px; margin-bottom: 4px; }
+  .step p, .panel p, .panel li, .meta, .time-table + .meta { font-size: 13px; }
+  .access-line { display: grid; justify-content: start; gap: 8px; margin-top: 12px; }
+  .guide, .finish .guide { font-size: 14px; padding: 8px 10px; }
+  .table, .table thead th { font-size: 11px; }
+  .table th, .table td { padding: 5px 4px; }
+  .table td[data-window] { white-space: normal; }
+  .finish { padding: 16px 0; gap: 12px; }
+  .foot { padding-top: 14px; }
+}
 /* Toolbar and notes */
 .toolbar { min-height: 49px; display: flex; gap: 6px; padding: 7px 10px; align-items: center; font-size: 12px; color: #61483a; }
 .toolbar button, .toolbar select { border: 1px solid #c7ae93; border-radius: 6px; background: #fff8ed; color: #65432c; padding: 5px 9px; cursor: pointer; }
 .toolbar button:hover, .toolbar select:hover { background: #ffe6cc; }
 .toolbar button:disabled { opacity: .5; cursor: default; }
 .toolbar .push { flex: 1; }
-.toolbar .hint { margin: 0 5px; color: #705849; }
 #notes { max-height: 86vh; width: min(720px, 92vw); padding: 24px 26px; border: 1px solid #9e8165; border-radius: 14px; background: var(--paper); color: var(--ink); font-size: 15px; }
 #notes::backdrop { background: #1b1512ba; }
 #notes header { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
@@ -322,8 +159,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 #notes a { color: #7d310e; }
 #notes code { padding: 1px 5px; border-radius: 4px; background: #fbe6cf; font-family: var(--mono); font-size: 13px; word-break: break-all; }
 #notes small { display: block; margin-top: 18px; color: var(--muted); }
-#notes code.cmd { display: block; width: fit-content; max-width: 100%; margin-top: 6px; padding: 4px 8px; }
-#notes li > p { margin-top: 6px; }
 #notes button { padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: #ffe8cf; cursor: pointer; }
 .request-box { margin-top: 10px; padding: 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: #fff2df; }
 .request-box label { display: block; font-size: 13px; font-weight: 650; color: #753610; }
@@ -332,7 +167,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 @media (max-width: 720px) {
   #screen, .toolbar { width: min(100vw, calc((100dvh - 86px) * 16 / 9)); }
   .toolbar { flex-wrap: wrap; justify-content: center; min-height: 80px; }
-  .toolbar .push, .toolbar .hint { display: none; }
+  .toolbar .push { display: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01s !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01s !important; }
@@ -340,27 +175,17 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4.5 5h15a1 1 0 0 1 1 1v9.5a1 1 0 0 1-1 1H10l-4.5 3.5v-3.5h-1a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path d="M8 9.5h8M8 12.5h5"/></symbol>
-  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6.5 3.5h7.5l4 4v13h-11.5z"/><path d="M14 3.5v4h4"/><path d="M9.5 12h6M9.5 15h6M9.5 18h4"/></symbol>
-  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></symbol>
-  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 8.5-8.5M16 7l2.5 2.5M13.5 9.5l2 2"/></symbol>
-  <symbol id="i-join" viewBox="0 0 24 24"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></symbol>
-  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5V6A1.5 1.5 0 0 0 14 4.5H6A1.5 1.5 0 0 0 4.5 6v8A1.5 1.5 0 0 0 6 15.5h2.5"/></symbol>
-  <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
-  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-flag" viewBox="0 0 24 24"><path d="M6 21V4M6 4h11l-2 4 2 4H6"/></symbol>
-  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></symbol>
-</svg>
 <main id="presenter">
-  <div id="screen" aria-label="AI Agent onboarding presentation"></div>
+  <div id="screen" aria-label="Collaboration presentation"></div>
   <nav class="toolbar" aria-label="Presentation controls">
     <button id="prev" type="button" aria-label="Previous scene" aria-keyshortcuts="ArrowLeft">‹</button>
     <button id="next" type="button" aria-label="Next scene" aria-keyshortcuts="ArrowRight">Next ›</button>
     <select id="chapters" aria-label="Scenes"></select>
-    <span class="hint">← → to advance</span>
     <span class="push"></span>
+    <select id="language" aria-label="Presentation language" aria-keyshortcuts="C">
+      <option value="both">中 / EN</option><option value="en">English</option><option value="zh">中文</option>
+    </select>
+    <button id="speaker" type="button" aria-keyshortcuts="N">Notes</button>
     <button id="full" type="button" aria-keyshortcuts="F">Full screen</button>
   </nav>
   <dialog id="notes" aria-labelledby="notes-title">
@@ -370,590 +195,243 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 </main>
 
 <template id="opening">
-  <section class="scene s-open warm" data-label="A teammate needs an answer">
-    <div class="main open-grid">
-      <div>
-        <p class="eyebrow biline arrive">Review starts in 10 minutes <span class="cn" lang="zh-Hans">评审 10 分钟后开始</span></p>
-        <h1 class="bi arrive" style="--d:.12s"><span lang="en">A teammate needs an answer.</span><span class="cn" lang="zh-Hans">同事在等你一句回复。</span></h1>
-        <div class="where arrive" style="--d:2.7s">
-          <p class="where-label biline">The answer is in two places <span class="cn" lang="zh-Hans">答案在两个地方</span></p>
-          <div class="where-row">
-            <span class="src-tile"><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en">Slack update</span><span class="cn" lang="zh-Hans">群里更新</span></span></span>
-            <span class="where-plus" aria-hidden="true">+</span>
-            <span class="src-tile"><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en">Google Doc</span><span class="cn" lang="zh-Hans">规格文档</span></span></span>
-          </div>
-        </div>
-      </div>
-      <figure class="card chat paper-in" style="--d:.45s;--from-x:1.5cqw">
-        <figcaption class="chat-bar"><span># release-review</span></figcaption>
-        <div class="msg">
-          <span class="avatar" aria-hidden="true">M</span>
-          <div>
-            <p class="msg-who"><b>Mia</b><span class="biline">Product <span class="cn" lang="zh-Hans">产品</span></span><time>10:50</time></p>
-            <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <p class="msg-text bi arrive" style="--d:2.3s"><span lang="en">Where will users see a friend request in this release?</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求会在哪看到？</span></p>
-          </div>
-        </div>
-      </figure>
+  <section class="scene warm" data-label="How we work together / 合并后怎么协作">
+    <div class="head hero">
+      <p class="eyebrow biline"><span lang="en">Glorify · Working together</span><span class="cn" lang="zh-Hans">合并后的工作方式</span></p>
+      <h1 class="bi"><span lang="en">How we work together</span><span class="cn" lang="zh-Hans">合并后，我们怎么协作</span></h1>
     </div>
-    <p class="foot biline">Practice example <span class="cn" lang="zh-Hans">演练示例</span></p>
+    <div class="main step-grid">
+      <div class="card step"><span class="step-number">01</span><h2 class="bi"><span lang="en">Find each other</span><span class="cn" lang="zh-Hans">找到彼此</span></h2><p class="bi"><span lang="en">Set your working hours.</span><span class="cn" lang="zh-Hans">标明你的工作时间。</span></p></div>
+      <div class="card step"><span class="step-number">02</span><h2 class="bi"><span lang="en">Find company info</span><span class="cn" lang="zh-Hans">找到公司资料</span></h2><p class="bi"><span lang="en">Ask Tada in Slack.</span><span class="cn" lang="zh-Hans">在 Slack 里问 Tada。</span></p></div>
+      <div class="card step"><span class="step-number">03</span><h2 class="bi"><span lang="en">Do a task with AI</span><span class="cn" lang="zh-Hans">用 AI 完成一项工作</span></h2><p class="bi"><span lang="en">Use Slack and Google together.</span><span class="cn" lang="zh-Hans">让个人 Agent 同时读 Slack 和 Google。</span></p></div>
+    </div>
   </section>
 </template>
 
-<template id="usual">
-  <section class="scene s-usual" data-label="The usual way">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">Usually: 4 steps by hand.</span><span class="cn" lang="zh-Hans">平时：手动 4 步。</span></h1>
-    </header>
+<template id="hours">
+  <section class="scene" data-label="Working hours / 工作时间">
+    <div class="head">
+      <h1 class="bi"><span lang="en">Make your working hours visible</span><span class="cn" lang="zh-Hans">在日历标明工作时间</span></h1>
+    </div>
     <div class="main">
-      <ol class="steps">
-        <li class="step" style="--d:.3s">
-          <div class="mini" aria-hidden="true">
-            <div class="mini-bar"><svg class="ico"><use href="#i-chat"/></svg># release-review</div>
-            <div class="feed" style="--d:.3s">
-              <p class="row"><i></i><b style="--w:62%"></b></p>
-              <p class="row"><i></i><b style="--w:80%"></b></p>
-              <p class="row"><i></i><b style="--w:46%"></b></p>
-              <p class="row"><i></i><b style="--w:74%"></b></p>
-              <p class="row"><i></i><b style="--w:56%"></b></p>
-              <p class="row"><i></i><span><mark style="--md:1.8s">Bell alert now. Push later.</mark></span></p>
-              <p class="row"><i></i><b style="--w:40%"></b></p>
-            </div>
-          </div>
-          <p class="step-text"><span class="n">1</span><span class="bi"><span lang="en">Scroll the chat</span><span class="cn" lang="zh-Hans">翻群聊</span></span></p>
-        </li>
-        <li class="step" style="--d:.9s">
-          <div class="mini" aria-hidden="true">
-            <div class="mini-bar"><svg class="ico"><use href="#i-doc"/></svg>Friend requests · Spec</div>
-            <div class="page">
-              <b class="h" style="--w:55%"></b>
-              <b style="--w:92%"></b>
-              <b style="--w:84%"></b>
-              <p><mark style="--md:2s">Shown in: Add Friends</mark></p>
-              <b style="--w:76%"></b>
-              <b style="--w:88%"></b>
-            </div>
-          </div>
-          <p class="step-text"><span class="n">2</span><span class="bi"><span lang="en">Check the spec</span><span class="cn" lang="zh-Hans">查规格</span></span></p>
-        </li>
-        <li class="step" style="--d:1.5s">
-          <div class="mini" aria-hidden="true">
-            <div class="mini-bar"><svg class="ico"><use href="#i-join"/></svg>Spec vs. update</div>
-            <table class="cmp">
-              <thead><tr><th></th><th>Spec</th><th>Update</th></tr></thead>
-              <tbody>
-                <tr><th>① Where</th><td>Add Friends</td><td><mark style="--md:2.2s">+ bell alert</mark></td></tr>
-                <tr><th>② Push</th><td>—</td><td><mark style="--md:2.45s">later</mark></td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="step-text"><span class="n">3</span><span class="bi"><span lang="en">Spot the changes</span><span class="cn" lang="zh-Hans">找变化</span></span></p>
-        </li>
-        <li class="step" style="--d:2.1s">
-          <div class="mini" aria-hidden="true">
-            <div class="mini-bar">Reply to Mia</div>
-            <div class="draft"><span class="draft-text">In this release, users get…</span><span class="caret"></span></div>
-          </div>
-          <p class="step-text"><span class="n">4</span><span class="bi"><span lang="en">Write the reply</span><span class="cn" lang="zh-Hans">写回复</span></span></p>
-        </li>
-      </ol>
-      <div class="verbs">
-        <p class="verb find biline" style="--d:3s">Find <span class="cn" lang="zh-Hans">翻找</span></p>
-        <p class="verb biline" style="--d:3.2s">Compare <span class="cn" lang="zh-Hans">对照</span></p>
-        <p class="verb biline" style="--d:3.4s">Draft <span class="cn" lang="zh-Hans">起草</span></p>
-      </div>
+      <p class="meta bi"><span lang="en">China team: make at least one Beijing-time window available.</span><span class="cn" lang="zh-Hans">中国员工至少开放下面一个北京时间段。</span></p>
+      <table class="table time-table" aria-label="Local working windows">
+        <thead><tr><th scope="col" class="biline"><span lang="en">Local time</span><span class="cn" lang="zh-Hans">当地时间</span></th><th scope="col">08:00–10:00</th><th scope="col">22:00–24:00</th></tr></thead>
+        <tbody>
+          <tr><th scope="row" class="biline"><span lang="en">Beijing</span><span class="cn" lang="zh-Hans">北京</span></th><td>08:00–10:00</td><td>22:00–24:00</td></tr>
+          <tr data-zone="America/Los_Angeles"><th scope="row" class="biline"><span lang="en">US Pacific</span><span class="cn" lang="zh-Hans">美国西海岸</span></th><td data-window></td><td data-window></td></tr>
+          <tr data-zone="Europe/London"><th scope="row" class="biline"><span lang="en">UK</span><span class="cn" lang="zh-Hans">英国</span></th><td data-window></td><td data-window></td></tr>
+          <tr data-zone="America/Mexico_City"><th scope="row" class="biline"><span lang="en">Mexico City</span><span class="cn" lang="zh-Hans">墨西哥城</span></th><td data-window></td><td data-window></td></tr>
+          <tr data-zone="America/Sao_Paulo"><th scope="row" class="biline"><span lang="en">São Paulo</span><span class="cn" lang="zh-Hans">圣保罗</span></th><td data-window></td><td data-window></td></tr>
+        </tbody>
+      </table>
+      <p class="meta biline"><span lang="en">Beijing date</span><span class="cn" lang="zh-Hans">北京日期</span> <time data-reference-day></time> · <span lang="en">Previous day is marked. Daylight saving can shift local times.</span><span class="cn" lang="zh-Hans">已标注前一天，夏令时可能改变当地时间。</span></p>
     </div>
+    <p class="foot biline"><a class="biline" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop" target="_blank" rel="noopener noreferrer"><span lang="en">Google Calendar → Working hours</span><span class="cn" lang="zh-Hans">Google 日历 → 工作时间</span></a><span lang="en"> · Missing the setting? Ask the Operation Team.</span><span class="cn" lang="zh-Hans">找不到设置，联系 Operation Team。</span></p>
   </section>
 </template>
 
-<template id="ask">
-  <section class="scene s-ask warm" data-label="Paste two links, ask one question">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">Now: paste 2 links, ask 1 question.</span><span class="cn" lang="zh-Hans">现在：贴 2 条链接，问 1 句话。</span></h1>
-    </header>
-    <div class="main ask-grid">
-      <div>
-        <div class="paper-in" style="--d:.2s" data-agent="review" data-animate="full"></div>
-        <ul class="link-tips arrive" style="--d:3.9s">
-          <li><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en"><b>Slack:</b> ⋮ → Copy link</span><span class="cn" lang="zh-Hans"><b>Slack：</b>⋮ → 复制链接</span></span></li>
-          <li><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en"><b>Google Doc:</b> copy the URL</span><span class="cn" lang="zh-Hans"><b>Google 文档：</b>复制网址</span></span></li>
-        </ul>
+<template id="tada">
+  <section class="scene warm" data-label="Ask Tada / 第一次问 Tada">
+    <div class="head"><h1 class="bi"><span lang="en">Find a company doc with Tada</span><span class="cn" lang="zh-Hans">在 Slack 里用 Tada 找资料</span></h1></div>
+    <div class="main duo">
+      <div class="panel card"><h2 class="biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></h2><p class="bi"><span lang="en">Ask around for the onboarding guide. Check which link is current.</span><span class="cn" lang="zh-Hans">问同事入职指南在哪，再确认哪个链接是最新版。</span></p></div>
+      <div class="panel card accent"><h2 class="biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span></h2>
+        <p class="prompt bi"><span lang="en">@Tada Find the Beijing office onboarding guide and give me the original link.</span><span class="cn" lang="zh-Hans">@Tada 请找北京办公室的入职指南，给我原文链接。</span></p>
+        <p class="result bi"><span lang="en">Example reply: Beijing office onboarding guide · Original source</span><span class="cn" lang="zh-Hans">回复示例：北京办公室入职指南 · 原文</span></p>
       </div>
-      <ul class="readers">
-        <li class="reader arrive" style="--d:3s"><span class="tool"><svg class="ico"><use href="#i-chat"/></svg>slack</span><span class="bi"><span lang="en">reads Slack</span><span class="cn" lang="zh-Hans">读 Slack</span></span></li>
-        <li class="reader arrive" style="--d:3.3s"><span class="tool"><svg class="ico"><use href="#i-doc"/></svg>gws</span><span class="bi"><span lang="en">reads Google Docs</span><span class="cn" lang="zh-Hans">读 Google 文档</span></span></li>
-        <li class="reader is-agent arrive" style="--d:3.6s"><span class="tool"><span class="agent-mark"></span>AI Agent</span><span class="bi"><span lang="en">puts them together</span><span class="cn" lang="zh-Hans">把两处对上</span></span></li>
-      </ul>
     </div>
-    <p class="foot biline">Set up once. Steps on the last page. <span class="cn" lang="zh-Hans">先装一次，步骤见最后一页。</span></p>
+    <p class="foot biline"><span lang="en">Ask in an enabled channel. Follow up in the same thread.</span><span class="cn" lang="zh-Hans">在已开通的频道提问，在同一线程继续追问。</span></p>
   </section>
 </template>
 
-<template id="get">
-  <section class="scene s-get" data-label="The reply you get">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">You get: a reply with sources.</span><span class="cn" lang="zh-Hans">拿到：带来源的回复。</span></h1>
-    </header>
+<template id="access">
+  <section class="scene" data-label="Get access / 开通与授权">
+    <div class="head"><h1 class="bi"><span lang="en">Check your Tada access</span><span class="cn" lang="zh-Hans">先确认 Tada 权限</span></h1></div>
     <div class="main">
-      <div class="get-grid">
-        <div class="src-col">
-          <article class="card src-card paper-in" data-src="doc" style="--d:.25s">
-            <p class="src-head"><svg class="ico"><use href="#i-doc"/></svg><span class="biline">Spec · Google Doc <span class="cn" lang="zh-Hans">规格文档</span></span><span class="tag biline">Earlier <span class="cn" lang="zh-Hans">较早</span></span></p>
-            <p class="bi"><span lang="en">Friend requests show in <mark style="--md:1s">Add Friends</mark>.</span><span class="cn" lang="zh-Hans">好友请求在<mark style="--md:1s">「添加好友」</mark>里查看。</span></p>
-          </article>
-          <article class="card src-card paper-in" data-src="slack" style="--d:.5s">
-            <p class="src-head"><svg class="ico"><use href="#i-chat"/></svg><span class="biline">Slack update <span class="cn" lang="zh-Hans">群里更新</span></span><span class="tag biline">Newer <span class="cn" lang="zh-Hans">较新</span></span></p>
-            <p class="bi"><span lang="en">This release adds a <mark style="--md:1.35s">bell alert</mark>. <mark style="--md:1.7s">Phone push comes later.</mark></span><span class="cn" lang="zh-Hans">这次加上<mark style="--md:1.35s">App 通知铃铛提醒</mark>，<mark style="--md:1.7s">系统推送后续再做</mark>。</span></p>
-          </article>
-        </div>
-        <article class="agent reply" style="--d:2.1s">
-          <div class="agent-bar"><span class="agent-mark"></span>AI Agent<span class="tag biline">Practice example <span class="cn" lang="zh-Hans">演练示例</span></span></div>
-          <div class="reply-body">
-            <p class="eyebrow biline">Ready to send <span class="cn" lang="zh-Hans">可以直接发</span></p>
-            <blockquote class="bi"><span lang="en">In this release, users get a friend request alert in the app’s notification bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求时，App 内的通知铃铛会提醒。系统推送后续再做。</span></blockquote>
-            <div class="src-row">
-              <span class="src-row-label biline">Sources <span class="cn" lang="zh-Hans">来源</span></span>
-              <button type="button" class="src-btn" data-check="slack" aria-pressed="false"><svg class="ico"><use href="#i-chat"/></svg>Slack update · Nov 4</button>
-              <button type="button" class="src-btn" data-check="doc" aria-pressed="false"><svg class="ico"><use href="#i-doc"/></svg>Spec · Notifications</button>
-            </div>
-          </div>
-        </article>
+      <div class="duo">
+        <div class="card panel"><h2 class="bi"><span lang="en">Ask about published docs</span><span class="cn" lang="zh-Hans">查已发布的公司资料</span></h2><p><code>/tada status</code></p><p class="bi"><span lang="en">Access denied? Ask your Tada admin. Published docs don’t need a Drive connection.</span><span class="cn" lang="zh-Hans">没权限找 Tada 管理员。查已发布资料无需连接 Drive。</span></p></div>
+        <div class="card panel"><h2 class="bi"><span lang="en">Read a file with your Drive access</span><span class="cn" lang="zh-Hans">用自己的权限读取 Drive 原件</span></h2><p class="bi"><span lang="en">Open my workspace → link in your DM → Google Drive → Connect.</span><span class="cn" lang="zh-Hans">打开我的工作台 → Slack 私聊链接 → Google Drive → 连接。</span></p></div>
       </div>
-      <div class="saved arrive" style="--d:3s">
-        <div>
-          <p class="saved-k biline">It did <span class="cn" lang="zh-Hans">它做了</span></p>
-          <p class="done-list"><span><svg class="ico"><use href="#i-check"/></svg>Find<span class="cn" lang="zh-Hans">翻找</span></span><span><svg class="ico"><use href="#i-check"/></svg>Compare<span class="cn" lang="zh-Hans">对照</span></span><span><svg class="ico"><use href="#i-check"/></svg>Draft<span class="cn" lang="zh-Hans">起草</span></span></p>
-        </div>
-        <div>
-          <p class="saved-k biline">You <span class="cn" lang="zh-Hans">你来</span></p>
-          <p class="still bi"><span lang="en">Check, then send.</span><span class="cn" lang="zh-Hans">核对后再发。</span></p>
-        </div>
-      </div>
+      <div class="access-line"><p class="meta bi"><span lang="en">Pilot for enabled employees.</span><span class="cn" lang="zh-Hans">已开通员工可试用。</span></p><a class="guide biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Open the guide ↗</span><span class="cn" lang="zh-Hans">打开中英教程</span></a></div>
     </div>
   </section>
 </template>
 
-<template id="ab">
-  <section class="scene s-ab" data-label="Which would you type?">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">Which would you type?</span><span class="cn" lang="zh-Hans">你会输入哪一句？</span></h1>
-    </header>
-    <div class="main">
-      <div class="ab-grid" role="group" aria-label="Choose a prompt">
-        <button type="button" class="card ab-card paper-in" style="--d:.25s" data-choice="a" aria-pressed="false">
-          <span class="ab-id">A</span>
-          <span class="bi ab-text"><span lang="en">Catch me up on friend requests.</span><span class="cn" lang="zh-Hans">帮我总结一下好友请求。</span></span>
-        </button>
-        <button type="button" class="card ab-card paper-in" style="--d:.5s" data-choice="b" aria-pressed="false">
-          <span class="ab-id">B</span>
-          <span class="chips" data-chips="review"></span>
-          <span class="bi ab-text" data-segments="review"></span>
-        </button>
-      </div>
-      <div class="ab-out" aria-live="polite">
-        <p class="ab-hint bi" data-outcome="none"><span lang="en">Pick one. Then try the other.</span><span class="cn" lang="zh-Hans">先选一个，再点另一个。</span></p>
-        <div class="out" data-outcome="a" hidden>
-          <div class="card out-card">
-            <p class="out-label biline"><span class="ab-id">A</span>Background, but no answer <span class="cn" lang="zh-Hans">有背景，没答案</span><span class="tag biline">Practice <span class="cn" lang="zh-Hans">演练</span></span></p>
-            <p class="out-text bi"><span lang="en">Friend requests show in Add Friends. Alerts and push were discussed.</span><span class="cn" lang="zh-Hans">好友请求在「添加好友」里看。讨论过提醒和推送。</span></p>
-          </div>
-          <p class="out-next bi"><span class="k biline">You still have to ask <span class="cn" lang="zh-Hans">你还得追问</span></span><span lang="en">“So where do users see it in this release?”</span><span class="cn" lang="zh-Hans">「这一版收到请求到底在哪看？」</span></p>
-        </div>
-        <div class="out" data-outcome="b" hidden>
-          <div class="card out-card">
-            <p class="out-label biline"><span class="ab-id">B</span>Ready to send <span class="cn" lang="zh-Hans">可以直接发</span><span class="tag biline">Practice <span class="cn" lang="zh-Hans">演练</span></span></p>
-            <p class="out-text bi"><span lang="en">In this release, users get a friend request alert in the app’s notification bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求时，App 内的通知铃铛会提醒。系统推送后续再做。</span></p>
-            <p class="src-row"><span class="src-row-label biline">Sources <span class="cn" lang="zh-Hans">来源</span></span><span class="src-btn"><svg class="ico"><use href="#i-chat"/></svg>Slack update · Nov 4</span><span class="src-btn"><svg class="ico"><use href="#i-doc"/></svg>Spec · Notifications</span></p>
-          </div>
-          <div class="out-next">
-            <p class="k biline">B says three things <span class="cn" lang="zh-Hans">B 说清了三件事</span></p>
-            <ol class="recipe">
-              <li><span class="n">1</span><span class="bi"><span lang="en">The job</span><span class="cn" lang="zh-Hans">要办的事</span></span></li>
-              <li><span class="n">2</span><span class="bi"><span lang="en">Where to read</span><span class="cn" lang="zh-Hans">读哪里</span></span></li>
-              <li><span class="n">3</span><span class="bi"><span lang="en">What to give back</span><span class="cn" lang="zh-Hans">要什么结果</span></span></li>
-            </ol>
-          </div>
-        </div>
-      </div>
+<template id="google">
+  <section class="scene" data-label="Google → table / Google → 表格">
+    <div class="head"><h1 class="bi"><span lang="en">Turn a spec into a table</span><span class="cn" lang="zh-Hans">从 Google 文档提取范围表</span></h1></div>
+    <div class="main duo">
+      <div class="card panel"><h2 class="biline"><span lang="en">Input</span><span class="cn" lang="zh-Hans">输入</span></h2><p class="prompt bi"><span lang="en">Read the spec. Put each request notification in a table and say whether it’s in this release.</span><span class="cn" lang="zh-Hans">读规格，把好友请求的通知入口和本期范围整理成表。</span></p></div>
+      <div class="card panel accent"><h2 class="biline"><span lang="en">Output</span><span class="cn" lang="zh-Hans">拿到</span></h2><table class="table"><thead><tr><th scope="col" class="biline"><span lang="en">Surface</span><span class="cn" lang="zh-Hans">入口</span></th><th scope="col" class="biline"><span lang="en">Scope</span><span class="cn" lang="zh-Hans">范围</span></th></tr></thead>
+        <tbody><tr><th scope="row" class="biline"><span lang="en">Requests</span><span class="cn" lang="zh-Hans">申请列表</span></th><td class="biline"><span lang="en">Existing</span><span class="cn" lang="zh-Hans">已有</span></td></tr>
+        <tr><th scope="row" class="biline"><span lang="en">In-app bell</span><span class="cn" lang="zh-Hans">App 内铃铛</span></th><td class="biline"><span lang="en">This release</span><span class="cn" lang="zh-Hans">本期</span></td></tr>
+        <tr><th scope="row" class="biline"><span lang="en">Phone push</span><span class="cn" lang="zh-Hans">系统推送</span></th><td class="biline"><span lang="en">Later</span><span class="cn" lang="zh-Hans">后续</span></td></tr></tbody>
+      </table></div>
     </div>
+    <p class="foot biline"><span lang="en">Anonymized example · Personal agent with Google access</span><span class="cn" lang="zh-Hans">脱敏示例 · 个人 Agent 连接 Google</span></p>
   </section>
 </template>
 
-<template id="team">
-  <section class="scene s-team" data-label="When would you use it?">
-    <header class="head arrive">
-      <p class="eyebrow"><span class="tag biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
-      <h1 class="bi"><span lang="en">When would you use it?</span><span class="cn" lang="zh-Hans">你哪天会用到？</span></h1>
-    </header>
-    <div class="main team-grid">
-      <article class="card team-card paper-in" style="--d:.2s">
-        <p class="dept biline">Engineering <span class="cn" lang="zh-Hans">研发</span></p>
-        <p class="team-q bi"><span lang="en">“What do I test?”</span><span class="cn" lang="zh-Hans">「这次要测什么？」</span></p>
-        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="eng"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A test checklist</span><span class="cn" lang="zh-Hans">一份测试清单</span></p></div>
-      </article>
-      <article class="card team-card paper-in" style="--d:.35s">
-        <p class="dept biline">Product <span class="cn" lang="zh-Hans">产品</span></p>
-        <p class="team-q bi"><span lang="en">“What will users see?”</span><span class="cn" lang="zh-Hans">「用户会看到什么？」</span></p>
-        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="review"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A reply with sources</span><span class="cn" lang="zh-Hans">带来源的回复</span></p></div>
-      </article>
-      <article class="card team-card paper-in" style="--d:.5s">
-        <p class="dept biline">Content <span class="cn" lang="zh-Hans">内容</span></p>
-        <p class="team-q bi"><span lang="en">“Which lines change?”</span><span class="cn" lang="zh-Hans">「哪几句要改？」</span></p>
-        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="content"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Lines to change</span><span class="cn" lang="zh-Hans">要改的句子</span></p></div>
-      </article>
-      <article class="card team-card paper-in" style="--d:.65s">
-        <p class="dept biline">Growth <span class="cn" lang="zh-Hans">增长</span></p>
-        <p class="team-q bi"><span lang="en">“Who can open the dashboard?”</span><span class="cn" lang="zh-Hans">「看板权限找谁开？」</span></p>
-        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="growth"></span></div>
-        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Who to ask</span><span class="cn" lang="zh-Hans">该找谁</span></p><p class="team-flag"><svg class="ico"><use href="#i-key"/></svg><span class="bi"><span lang="en">It can’t grant access.</span><span class="cn" lang="zh-Hans">它开不了权限。</span></span></p></div>
-      </article>
+<template id="slack">
+  <section class="scene warm" data-label="Slack → decision / Slack → 决定">
+    <div class="head"><h1 class="bi"><span lang="en">Find the decision in Slack</span><span class="cn" lang="zh-Hans">从 Slack 找回决定</span></h1></div>
+    <div class="main duo">
+      <div class="card panel"><h2 class="biline"><span lang="en">Input</span><span class="cn" lang="zh-Hans">输入</span></h2><p class="prompt bi"><span lang="en">Search Slack for the request notification update. What’s in this release? Give me the message link.</span><span class="cn" lang="zh-Hans">查 Slack 里好友请求通知的更新。这期做什么？给我原消息链接。</span></p></div>
+      <div class="card panel accent"><h2 class="biline"><span lang="en">Output</span><span class="cn" lang="zh-Hans">拿到</span></h2><p class="result bi"><span lang="en">In-app notifications this release. Phone push later.</span><span class="cn" lang="zh-Hans">这期做 App 内通知。系统推送留到后续。</span></p><p class="meta bi"><span lang="en">Source: Slack scope update.</span><span class="cn" lang="zh-Hans">来源：Slack 范围更新。</span></p></div>
     </div>
+    <p class="foot biline"><span lang="en">Anonymized example · Personal agent with Slack access</span><span class="cn" lang="zh-Hans">脱敏示例 · 个人 Agent 连接 Slack</span></p>
   </section>
 </template>
 
-<template id="more">
-  <section class="scene s-more warm" data-label="It can write and edit, too">
-    <header class="head arrive">
-      <p class="eyebrow"><span class="tag biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
-      <h1 class="bi"><span lang="en">It can write and edit, too.</span><span class="cn" lang="zh-Hans">它也能写、能改。</span></h1>
-    </header>
-    <div class="main">
-      <div class="team-grid three">
-        <article class="card team-card paper-in" style="--d:.2s">
-          <p class="dept biline">Write a doc <span class="cn" lang="zh-Hans">写文档</span><span class="tag biline">Anyone <span class="cn" lang="zh-Hans">人人</span></span></p>
-          <p class="team-q bi"><span lang="en">“Turn this thread into a doc.”</span><span class="cn" lang="zh-Hans">「把这串讨论写成文档。」</span></p>
-          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="write"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A new Google Doc</span><span class="cn" lang="zh-Hans">一份新文档</span></p></div>
-        </article>
-        <article class="card team-card paper-in" style="--d:.35s">
-          <p class="dept biline">Edit a doc <span class="cn" lang="zh-Hans">改文档</span><span class="tag biline">Content <span class="cn" lang="zh-Hans">内容</span></span></p>
-          <p class="team-q bi"><span lang="en">“Apply the review comments.”</span><span class="cn" lang="zh-Hans">「按审阅意见改一版。」</span></p>
-          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="edit"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">An edited copy</span><span class="cn" lang="zh-Hans">改好的副本</span></p></div>
-        </article>
-        <article class="card team-card paper-in" style="--d:.5s">
-          <p class="dept biline">Build from a spec <span class="cn" lang="zh-Hans">照规格开工</span><span class="tag biline">Engineering <span class="cn" lang="zh-Hans">研发</span></span></p>
-          <p class="team-q bi"><span lang="en">“Here’s the spec. Build it.”</span><span class="cn" lang="zh-Hans">「规格在这，照着做。」</span></p>
-          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="build"></span></div>
-          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Code and tests</span><span class="cn" lang="zh-Hans">代码和测试</span></p></div>
-        </article>
-      </div>
-      <div class="also arrive" style="--d:.9s">
-        <p class="safe biline"><svg class="ico"><use href="#i-check"/></svg>New doc, copy or branch. You check first. <span class="cn" lang="zh-Hans">写在新文档、副本或新分支，你先看过。</span></p>
-        <p class="asks"><span class="k biline">Also <span class="cn" lang="zh-Hans">还能</span></span><span class="pill biline">Find a doc in Drive <span class="cn" lang="zh-Hans">在 Drive 找文档</span></span><span class="pill biline">Check a sheet <span class="cn" lang="zh-Hans">核对表格</span></span><span class="pill biline">Sum up a channel <span class="cn" lang="zh-Hans">汇总一个频道</span></span><span class="pill biline">Prep for a meeting <span class="cn" lang="zh-Hans">会前准备</span></span></p>
-      </div>
+<template id="combine">
+  <section class="scene" data-label="Slack + Google → Doc / 生成评审说明">
+    <div class="head"><h1 class="bi"><span lang="en">Write a brief from both sources</span><span class="cn" lang="zh-Hans">对照两处材料，生成评审说明</span></h1></div>
+    <div class="main duo">
+      <div class="card panel"><h2 class="biline"><span lang="en">Input</span><span class="cn" lang="zh-Hans">输入</span></h2><p class="prompt bi"><span lang="en">Compare the Slack update and the spec. Create a new Google Doc with the decision and links to both sources.</span><span class="cn" lang="zh-Hans">对照 Slack 更新和规格，新建一份 Google 文档，写清决定并附上两处来源。</span></p></div>
+      <div class="card panel accent"><h2 class="biline"><span lang="en">New Google Doc</span><span class="cn" lang="zh-Hans">新 Google 文档</span></h2><p class="result bi"><span lang="en">Keep the existing request list. Add an in-app alert. Phone push follows later.</span><span class="cn" lang="zh-Hans">保留原申请列表。新增 App 内提醒。系统推送后续做。</span></p><p class="meta bi"><span lang="en">Sources: Slack update + Google spec.</span><span class="cn" lang="zh-Hans">来源：Slack 更新 + Google 规格。</span></p></div>
     </div>
+    <p class="foot biline"><span lang="en">Anonymized example · Review the draft before sharing.</span><span class="cn" lang="zh-Hans">脱敏示例 · 核对草稿和来源后再分享。</span></p>
   </section>
 </template>
 
-<template id="decide">
-  <section class="scene s-decide" data-label="Do you need the agent?">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">Do you need the AI Agent?</span><span class="cn" lang="zh-Hans">要不要用 AI Agent？</span></h1>
-    </header>
-    <ul class="main rules">
-      <li class="rule arrive" style="--d:.3s">
-        <span class="rule-ico"><svg class="ico"><use href="#i-search"/></svg></span>
-        <span class="bi rule-if"><span lang="en">One message you know?</span><span class="cn" lang="zh-Hans">找一条知道的消息？</span></span>
-        <svg class="ico"><use href="#i-arrow"/></svg>
-        <span class="bi rule-then"><span lang="en">Search in Slack.</span><span class="cn" lang="zh-Hans">直接在 Slack 搜。</span></span>
-      </li>
-      <li class="rule arrive" style="--d:.7s">
-        <span class="rule-ico"><svg class="ico"><use href="#i-key"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Need access?</span><span class="cn" lang="zh-Hans">要开权限？</span></span>
-        <svg class="ico"><use href="#i-arrow"/></svg>
-        <span class="bi rule-then"><span lang="en">Ask the owner.</span><span class="cn" lang="zh-Hans">找负责人。</span></span>
-      </li>
-      <li class="rule is-agent arrive" style="--d:1.1s">
-        <span class="rule-ico"><svg class="ico"><use href="#i-join"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Need Slack or docs to answer, write or edit?</span><span class="cn" lang="zh-Hans">要用群聊或文档来回答、写或改？</span></span>
-        <svg class="ico"><use href="#i-arrow"/></svg>
-        <span class="bi rule-then"><span lang="en">Use your AI Agent.</span><span class="cn" lang="zh-Hans">用 AI Agent。</span></span>
-      </li>
-    </ul>
-  </section>
-</template>
-
-<template id="close">
-  <section class="scene s-close warm" data-label="Try it on one task this week">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en">Try it on one task this week.</span><span class="cn" lang="zh-Hans">这周挑一件事试试。</span></h1>
-    </header>
-    <div class="main close-main">
-      <div class="paper-in" style="--d:.3s" data-agent="template" data-animate="chips"></div>
-      <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">a new doc <span class="cn" lang="zh-Hans">一份新文档</span></span><span class="pill biline">an edited copy <span class="cn" lang="zh-Hans">改好的副本</span></span></p>
-      <p class="setup-line arrive biline" style="--d:1.3s">First time? Install once. <span class="cn" lang="zh-Hans">第一次用？先装一次。</span><button type="button" class="link-btn biline" data-open-notes>Setup steps <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
+<template id="finish">
+  <section class="scene warm" data-label="Try Tada / 试一次">
+    <div class="head hero"><h1 class="bi"><span lang="en">Ask Tada one real question</span><span class="cn" lang="zh-Hans">会后，用 Tada 问一个真实问题</span></h1></div>
+    <div class="main finish">
+      <p class="meta bi"><span lang="en">Use your company Google account to open the guide. Pilot for enabled employees.</span><span class="cn" lang="zh-Hans">用公司 Google 账号打开教程。已开通员工可试用。</span></p>
+      <a class="guide biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Open the guide ↗</span><span class="cn" lang="zh-Hans">打开中英教程</span></a>
     </div>
   </section>
 </template>
 
 <script>
-const chatLink = { icon: "chat", url: "slack.com/archives/…", linkEn: "Slack message link", linkZh: "Slack 消息链接" };
-const docLink = { icon: "doc", url: "docs.google.com/…", linkEn: "Google Doc link", linkZh: "Google 文档链接" };
-const prompts = {
-  review: {
-    name: "回复同事：这一版收到好友请求在哪看",
-    segments: [
-      ["A teammate is asking where users see a friend request in this release.", "同事在问这一版收到好友请求在哪看。"],
-      ["Use slack to read this update, and gws to check this spec.", "用 slack 读这条更新，用 gws 对照这份规格。"],
-      ["Give me one line I can send, with sources.", "给我一句能发的回复，附上来源。"]
-    ],
-    chips: [
-      { ...chatLink, en: "Slack update", zh: "群里更新", slotEn: "Slack update", slotZh: "Slack 更新" },
-      { ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }
-    ]
-  },
-  eng: {
-    name: "研发：交接 → 测试清单",
-    en: "I just got this handoff. Use slack to read it, and gws to check the spec. List what to test: each step with the action and the expected result. Mark anything still undecided.",
-    zh: "我刚接到这条交接。用 slack 读交接，用 gws 对照规格。列出这次要测的：每条写操作和预期结果，标出还没定的。",
-    chips: [
-      { ...chatLink, en: "Slack handoff", zh: "交接消息", slotEn: "Handoff", slotZh: "交接" },
-      { ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }
-    ]
-  },
-  content: {
-    name: "内容：审阅意见 → 要改的句子",
-    en: "Review feedback is in. Use slack to read it, and gws to open the doc. List the lines to change: the original, the suggested edit, and which comment it comes from.",
-    zh: "审阅意见来了。用 slack 读意见，用 gws 打开文档。列出要改的句子：原句、改法、来自哪条意见。",
-    chips: [
-      { ...chatLink, en: "Slack feedback", zh: "审阅意见", slotEn: "Feedback", slotZh: "审阅意见" },
-      { ...docLink, en: "Copy doc · Google Doc", zh: "文案文档", slotEn: "Doc", slotZh: "文档" }
-    ]
-  },
-  growth: {
-    name: "增长：看板权限 → 该找谁",
-    en: "I can’t open the dashboard for the new bell alerts. Use slack to find earlier threads about access to it. Who grants access, and what did they ask for?",
-    zh: "我打不开新铃铛提醒的数据看板。用 slack 找之前关于这个看板权限的讨论。谁负责开通？当时要提供什么？",
-    chips: [{ icon: "search", en: "Nothing. slack searches", zh: "不用贴，让 slack 搜" }]
-  },
-  write: {
-    name: "写文档：群讨论 → 新的 Google 文档",
-    en: "Use slack to read this thread. Write it up as a new Google Doc with gws: decisions, owners, and open questions. Send me the link.",
-    zh: "用 slack 读这串讨论。用 gws 新建一份 Google 文档，写清：结论、负责人、待定问题。把链接发我。",
-    chips: [{ ...chatLink, en: "Slack thread", zh: "群讨论", slotEn: "Thread", slotZh: "讨论" }]
-  },
-  edit: {
-    name: "改文档：按评论改一份副本",
-    en: "Use gws to read the comments on this doc. Make a copy and apply them there, not in the original. List each change and the comment it came from.",
-    zh: "用 gws 读这份文档里的评论。先复制一份，在副本里按评论修改，不动原文档。列出每处改动和对应的评论。",
-    chips: [{ ...docLink, en: "Google Doc with comments", zh: "带评论的文档", slotEn: "Doc", slotZh: "文档" }]
-  },
-  build: {
-    name: "研发：照规格开工",
-    en: "Use gws to read section 3.4 of this spec. On a new branch in this repo, build the bell alert and add tests. List anything the spec leaves open.",
-    zh: "用 gws 读这份规格的 3.4 节。在这个代码仓库新建分支，做出铃铛提醒并补上测试。列出规格没写清的地方。",
-    chips: [{ ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }]
-  },
-  template: {
-    name: "通用问法（把方括号换成你的内容）",
-    en: "[The job]. Use slack to read this thread, and gws to open this doc. Give me [what you want back], with sources.",
-    zh: "[要办的事]。用 slack 读这条消息，用 gws 打开这份文档。给我[要的结果]，附上来源。",
-    chips: [
-      { ...chatLink, url: "", slot: true, en: "Paste a Slack link", zh: "贴 Slack 链接", slotEn: "Slack message", slotZh: "Slack 消息" },
-      { ...docLink, url: "", slot: true, en: "Paste a Google Doc link", zh: "贴 Google 文档链接", slotEn: "Doc", slotZh: "文档" }
-    ]
-  }
-};
-prompts.review.en = prompts.review.segments.map(([en]) => en).join(" ");
-prompts.review.zh = prompts.review.segments.map(([, zh]) => zh).join("");
-
-const setupSteps = [
-  {
-    title: "Where · 装在哪里",
-    en: "Install both where your AI Agent runs: your laptop, or the agent’s cloud workspace. Sign in with your work account. The agent can only read what that account can see.",
-    zh: "两个工具都装在 AI Agent 运行的地方：你自己的电脑，或 Agent 用的云端环境。用工作账号登录。AI Agent 只能读到这个账号看得到的内容。"
-  },
-  {
-    title: "slack · Slack CLI",
-    cmds: ["curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash", "slack login", "slack auth list"],
-    en: "This install line is for Mac and Linux; for Windows, see the official guide below. After slack login, post the /slackauthticket line it shows in any Slack chat, approve, and paste the code back. When slack auth list shows our workspace, you are set.",
-    zh: "第一行是 Mac / Linux 的安装命令，Windows 见下方官方说明。运行 slack login 后，把终端给出的 /slackauthticket 那行发到 Slack 任意对话，确认后把挑战码贴回终端。slack auth list 能看到工作区，就装好了。"
-  },
-  {
-    title: "gws · Google Workspace CLI",
-    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,docs,sheets", "gws auth status"],
-    en: "brew install googleworkspace-cli also works. Run gws auth setup only the first time; it needs gcloud. Without gcloud, follow the manual OAuth steps in the official guide. Add --readonly to the login line if you only want it to read; writing or editing docs needs the login without it.",
-    zh: "也可以用 brew install googleworkspace-cli 安装。gws auth setup 只在第一次运行，需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth。只想让它读，登录那行加 --readonly；要让它写文档、改文档，就不要加。"
-  },
-  {
-    title: "Checked · 已验证",
-    en: "On the presenter’s laptop, slack v4.11.0 read a message from its link and gws 0.22.5 read a Google Doc. Writing to docs was not run in this check.",
-    zh: "讲者电脑上已验证：slack v4.11.0 能按消息链接读到群消息，gws 0.22.5 能读 Google 文档。写入文档这次没有实际运行。"
-  }
-];
-const setupLinks = [
-  ["Slack CLI · Install on Mac / Linux 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/"],
-  ["Slack CLI · Install on Windows 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/"],
-  ["Slack CLI · Sign in 登录", "https://docs.slack.dev/tools/slack-cli/guides/authorizing-the-slack-cli/"],
-  ["gws · Install and sign in 安装和登录", "https://github.com/googleworkspace/cli#installation"]
-];
-
+const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 const chapters = [
-  {
-    id: "opening", stage: "why", time: "0:00–0:15",
-    say: ["评审 10 分钟后开始。同事在群里问：这一版，用户收到好友请求会在哪看到？", "答案在两个地方：一条 Slack 更新，一份 Google 文档。这就是适合用它的时候。"],
-    facts: [
-      "主案例改编自 2026-11-04 的一次真实同步：连接请求原来要在「添加好友」里查看；这次加上 App 内通知铃铛提醒，系统推送后续再做。公开版改成「好友请求」的匿名演练示例，不放原群、原文和链接。",
-      "为什么选它：「这个页面或场景现在的规则、文案是什么」「这是不是最新介绍」这类问题，在这次检索里属于「经常有人问」（口径见 06 幕备注）。拿到答案后，同事会用它回复用户、写文案，或在评审里拍板。"
-    ]
-  },
-  {
-    id: "usual", stage: "why", time: "0:15–0:30",
-    say: ["平时要手动做 4 步：翻群聊找更新，打开规格查原规则，对照后发现两处写法变了，最后自己写回复。", "请大家记住三个词：翻找、对照、起草。下一幕，这三步交给 AI Agent。"]
-  },
-  {
-    id: "ask", stage: "how", time: "0:30–0:45",
-    say: ["现在只要两件事：贴 2 条链接，问 1 句话。下面写了两条链接从哪里复制。", "slack 让它能读 Slack，gws 让它能读 Google 文档，AI Agent 把两处对上。需要先装一次，步骤在最后一页。"],
-    tips: [
-      "Slack 消息链接：鼠标移到消息上，点右侧「更多操作」（⋮），选「复制链接」。",
-      "Google 文档链接：复制浏览器地址栏，或点「共享」→「复制链接」。",
-      "点「Copy prompt」或「复制中文问法」，会复制这句话和两行链接占位。把占位换成你的链接，再发给 AI Agent。"
-    ],
-    requests: ["review"], setup: true
-  },
-  {
-    id: "get", stage: "how", time: "0:45–1:05",
-    say: ["它把规格里的旧写法和群里的新决定对上：① 在哪看：规格写的是「添加好友」，群里新加了 App 通知铃铛；② 推送：这次不做，后续再做。", "省掉的是翻找、对照和起草。点开来源核对、决定发不发，还是你自己。可以在这一页停下来讲。"],
-    tips: ["点回复下方的来源，会标出对应的那张资料卡。"]
-  },
-  {
-    id: "ab", stage: "how", time: "1:05–1:50",
-    say: ["先让大家选，再两个都点一下。", "A 只给背景，你还得追问「这一版到底在哪看」。B 说清了三件事：要办的事、读哪里、要什么结果，所以直接拿到能发的话。这三件事也是最后一页通用问法的骨架。"],
-    facts: ["A 和 B 下方的结果都是演练示例，用来对比问法，不是 AI 的真实输出记录。"],
-    requests: ["review"]
-  },
-  {
-    id: "team", stage: "when", time: "1:50–2:40",
-    say: ["同一个版本，四个部门。每张卡从上往下读：什么时候会遇到、贴什么、拿到什么。对应问法在备注里可以复制。", "增长那张说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
-    facts: [
-      "口径：讲者的 Slack 账号能看到的公开频道和已加入的私有频道，2026-10-01 至 2026-11-09；不含私信、群私信，以及机器人、告警和测试频道。用 66 个中英文关键词检索，再逐条人工判断。同一话题串只算一次，同一人对同一件事的追问合并。",
-      "「经常有人问」指至少 3 个独立话题、至少 2 位同事提出；「有人问过」指 1–2 个话题。关键词检索会漏，也没有纳入飞书历史，所以这里不说「最高频」。",
-      "产品｜经常有人问：确认某个页面或场景现在的规则、文案，或问介绍是不是最新。6 个话题，5 位同事，3 个频道（11/5–11/9）。",
-      "增长｜经常有人问：数据看板和工具权限。6 件事，5 位同事（10/27–11/6），其中看板相关 3 件。邮箱迁移后看板登录问题集中出现，负责人随后统一说明了处理方式。",
-      "内容｜经常出现的工作：审阅意见发在群里，需要对回文档。4 个话题，3 位审阅者（11/4–11/8）。「哪几句要改」这句原话没有检索到，按工作场景归类。",
-      "研发｜有人问过：关联工单要不要一起测。1 个话题。测试清单按交接加规格的常见工作设计。",
-      "页面上的人名（Mia、Dana）、文案和链接都是虚构的演练内容，不是真实摘录。"
-    ],
-    requests: ["eng", "review", "content", "growth"]
-  },
-  {
-    id: "more", stage: "when", time: "2:40–3:40",
-    say: ["不只是回消息，它也能动手写。把一串讨论写成新文档；按评论在副本里改文档；研发把规格链接交给能改代码的 AI Agent，让它照着做、补测试。", "让它写在新文档、副本或新分支里，原件不动。你看过再分享。下面一排是更多日常用法。"],
-    tips: ["写文档、改文档需要 gws 用可写的方式登录（不加 --readonly）。研发那张要在能改代码的 AI Agent 里用。"],
-    facts: [
-      "依据：检索范围内能看到这类工作（按工作场景归类，不计频率）。有人要把群里讨论整理成一张表或文档；会后把对齐结论同步成条目；内容团队的审阅意见写在 Google 文档里；翻译放在 Google 表格里，每种语言约 1,600 行。",
-      "能力核实：gws 0.22.5 有 docs documents get / create / batchUpdate、drive files copy / list、drive comments list、sheets +read、workflow +meeting-prep 等命令；讲者账号的 gws 已授权 documents 和 drive，Slack CLI 账号有读取和搜索权限。",
-      "这一幕的结果是演练示例。写入文档的操作这次没有在真实文档上运行。"
-    ],
-    requests: ["write", "edit", "build"]
-  },
-  {
-    id: "decide", stage: "when", time: "3:40–4:10",
-    say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；不知道是谁，可以让 slack 帮你找之前的讨论。", "要用群聊或文档里的内容来回答、写或改一件事，就用 AI Agent。"]
-  },
-  {
-    id: "close", stage: "try", time: "4:10–5:00",
-    say: ["挑一件你这周要做的事：回一个问题、写一份文档、改一版文案都行。把方括号换成你的内容，贴上链接。发出或分享前，点开来源核对。"],
-    tips: ["第一次用，可以在问法末尾加一句：「只读取，不要替我发消息。」"],
-    requests: ["template"], setup: true
-  }
+  { id: "opening", stage: 0, time: "0:00–0:25", say: "先让跨国同事找得到彼此，再用 Tada 找资料，最后让个人 Agent 交付一项具体工作。" },
+  { id: "hours", stage: 0, time: "0:25–1:20", say: "中国员工选至少一个北京协作窗口。用电脑打开 Google Calendar → 设置 → 工作时间或工作时间与地点 → 启用并选日期和时段。找不到设置，联系 Operation Team。" },
+  { id: "tada", stage: 1, time: "1:20–2:30", say: "在获准测试频道用本人账号演示。先用完整标题问入职指南，点开答案来源。再在同一线程问入职要完成哪些登记。使用会前验收通过的回执作备用。" },
+  { id: "access", stage: 1, time: "2:30–3:45", say: "工作区已经装了 Tada。先确认 Slack 员工和频道权限。个人 Drive 只在需要读取本人有权访问的文件时连接。点开本页教程，让大家会后照着做。" },
+  { id: "google", stage: 2, time: "3:45–4:20", say: "切到讲者版实际产出，展示从已授权的规格整理的表。说明哪项在本期，哪项排到后面。", prompt: "读这份 Google 文档：[粘贴链接]。把好友请求的通知入口整理成两列表，标出本期和后续。给出原文章节。" },
+  { id: "slack", stage: 2, time: "4:20–4:55", say: "个人 Agent 用你自己的 Slack 权限搜索。切到讲者材料，打开实际消息，核对本期决定。", prompt: "用 Slack 搜索「连接请求」「铃铛」。找出这版通知范围的更新，给出决定和消息链接。只读。" },
+  { id: "combine", stage: 2, time: "4:55–6:00", say: "用已连接 Slack 和 Google 的个人 Agent 对照两处证据。展示新建文档里的当前入口、本期变化、后续项和两条原始链接。", prompt: "读 Slack 更新：[粘贴链接]。读 Google 规格：[粘贴链接]。写一份新的 Google Doc，区分当前入口、本期变化和后续项，引用两处来源。只回文档链接，等我审阅。" },
+  { id: "finish", stage: 1, time: "6:00–6:30", say: "请同事用公司账号打开教程。已开通的员工先做一次权限检查，再问一个手头的真实问题。" },
 ];
-
-const presenter = document.querySelector("#presenter");
+const stages = [["People", "找到彼此"], ["Tada", "找到资料"], ["AI Agent", "完成工作"]];
 const screen = document.querySelector("#screen");
+const presenter = document.querySelector("#presenter");
 const chapterSelect = document.querySelector("#chapters");
+const language = document.querySelector("#language");
 const notes = document.querySelector("#notes");
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
-const pad = n => String(n).padStart(2, "0");
-const stages = [["why", "Why", "为什么"], ["how", "How", "怎么用"], ["when", "When", "何时用"], ["try", "Try", "试一次"]];
-const sceneLabel = index => document.getElementById(chapters[index].id).content.firstElementChild.dataset.label;
 let current = 0;
 
-function icon(name) {
-  return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-}
-function chipsHTML(key) {
-  return prompts[key].chips.map((chip, index) =>
-    `<span class="chip${chip.slot ? " is-slot" : ""}" style="--ci:${index}">${icon(chip.icon)}` +
-    `<span class="biline">${chip.en} <span class="cn" lang="zh-Hans">${chip.zh}</span></span>` +
-    (chip.url ? `<span class="url">${chip.url}</span>` : "") + "</span>").join("");
-}
-function words(text, lang, animate) {
-  const pattern = lang === "en" ? /\[[^\]]+\]|\s+|[^\s[]+/g : /\[[^\]]+\]|[A-Za-z]+|\s+|[^\s[A-Za-z]{1,2}/g;
-  const tokens = text.match(pattern);
-  const visible = tokens.filter(token => token.trim()).length;
-  let index = 0;
-  const html = tokens.map(token => {
-    if (!token.trim()) return token;
-    const slot = token.startsWith("[");
-    const classes = [animate && "w", slot && "slot"].filter(Boolean).join(" ");
-    const body = slot ? token.slice(1, -1) : token;
-    return classes ? `<span class="${classes}" style="--i:${index++}">${body}</span>` : body;
-  }).join("");
-  return { html, step: 1300 / visible };
-}
-function renderAgent(host) {
-  const key = host.dataset.agent;
-  const prompt = prompts[key];
-  const typing = host.dataset.animate === "full";
-  const en = words(prompt.en, "en", typing);
-  const zh = words(prompt.zh, "zh", typing);
-  host.classList.add("agent");
-  host.style.setProperty("--t-foot", "2.75s");
-  host.innerHTML =
-    `<div class="agent-bar"><span class="agent-mark" aria-hidden="true"></span>AI Agent` +
-    `<span class="agent-tools">` +
-    `<button type="button" class="copy" data-copy="${key}" data-lang="en">${icon("copy")}<span>Copy prompt</span></button>` +
-    `<button type="button" class="copy cn" lang="zh-Hans" data-copy="${key}" data-lang="zh">${icon("copy")}<span>复制中文问法</span></button>` +
-    `</span></div>` +
-    `<div class="agent-field"><div class="chips">${chipsHTML(key)}</div>` +
-    `<p class="prompt bi" style="--t0:1.3s"><span lang="en" style="--step:${en.step}ms">${en.html}</span>` +
-    `<span class="cn" lang="zh-Hans" style="--step:${zh.step}ms">${zh.html}</span></p>` +
-    `<span class="send" aria-hidden="true">${icon("send")}</span></div>`;
-}
-function renderSegments(host) {
-  const segments = prompts[host.dataset.segments].segments;
-  const line = column => segments.map(([en, zh], index) =>
-    `<span class="seg" data-n="${index + 1}">${column === 0 ? en : zh}</span>`).join(column === 0 ? " " : "");
-  host.innerHTML = `<span lang="en">${line(0)}</span><span class="cn" lang="zh-Hans">${line(1)}</span>`;
-}
-function promptText(key, lang) {
-  const prompt = prompts[key];
-  const links = prompt.chips.filter(chip => chip.slotEn).map(chip => lang === "en"
-    ? `${chip.slotEn}: [paste the ${chip.linkEn}]`
-    : `${chip.slotZh}：[贴 ${chip.linkZh}]`);
-  return [prompt[lang], links.join("\n")].filter(Boolean).join("\n\n");
+function renderWindows(scene) {
+  const reference = scene.querySelector("[data-reference-day]");
+  if (!reference) return;
+
+  const beijingDate = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit",
+  });
+  const date = Object.fromEntries(beijingDate.formatToParts(new Date()).map(part => [part.type, part.value]));
+  const dateLabel = [date.year, date.month, date.day].join("-");
+  const utcMidnight = Date.UTC(Number(date.year), Number(date.month) - 1, Number(date.day));
+  // 08:00 and 22:00 in Beijing start at 00:00 and 14:00 UTC.
+  const windows = [[0, 2], [14, 16]];
+  reference.textContent = dateLabel;
+  reference.dateTime = dateLabel;
+
+  for (const row of scene.querySelectorAll("[data-zone]")) {
+    const formatter = new Intl.DateTimeFormat("en-CA", {
+      timeZone: row.dataset.zone, year: "numeric", month: "2-digit", day: "2-digit",
+      hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+    });
+    row.querySelectorAll("[data-window]").forEach((cell, index) => {
+      const [start, end] = windows[index].map(hour => Object.fromEntries(
+        formatter.formatToParts(utcMidnight + hour * 3_600_000).map(part => [part.type, part.value]),
+      ));
+      cell.textContent = `${start.hour}:${start.minute}–${end.hour}:${end.minute}`;
+      if ([start.year, start.month, start.day].join("-") < dateLabel) {
+        const english = document.createElement("span");
+        english.lang = "en";
+        english.textContent = " · Prev. day";
+        const chinese = document.createElement("span");
+        chinese.lang = "zh-Hans";
+        chinese.className = "cn";
+        chinese.textContent = " · 前一天";
+        cell.append(english, chinese);
+      }
+    });
+  }
 }
 
-for (let index = 0; index < chapters.length; index++) {
-  const option = document.createElement("option");
-  option.value = index;
-  option.textContent = pad(index + 1) + "  " + sceneLabel(index);
-  chapterSelect.append(option);
+function setLanguage(value) {
+  language.value = value;
+  screen.dataset.language = value;
+  screen.classList.toggle("no-chinese", value === "en");
+  document.documentElement.lang = value === "zh" ? "zh-Hans" : "en";
 }
+
 function show(index) {
-  if (index < 0 || index >= chapters.length) return;
+  const chapter = chapters[index];
+  if (!chapter) return;
+
   current = index;
-  const scene = document.getElementById(chapters[index].id).content.firstElementChild.cloneNode(true);
+  const scene = document.getElementById(chapter.id).content.firstElementChild.cloneNode(true);
   const mast = document.createElement("div");
   mast.className = "mast";
-  const track = stages.map(([id, en, zh]) =>
-    `<li${id === chapters[index].stage ? ' class="on" aria-current="step"' : ""}>${en}<span class="cn" lang="zh-Hans">${zh}</span></li>`).join("");
-  mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
+  const track = stages.map(([en, zh], step) => `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span lang="en">${en}</span><span class="cn" lang="zh-Hans">${zh}</span></li>`).join("");
+  mast.innerHTML = `<ol class="track">${track}</ol><span>${String(index + 1).padStart(2, "0")} / ${String(chapters.length).padStart(2, "0")}</span>`;
   scene.prepend(mast);
-  scene.querySelectorAll("[data-agent]").forEach(renderAgent);
-  scene.querySelectorAll("[data-chips]").forEach(host => { host.innerHTML = chipsHTML(host.dataset.chips); });
-  scene.querySelectorAll("[data-segments]").forEach(renderSegments);
+  scene.querySelectorAll("[data-guide]").forEach(link => { link.href = guideUrl; });
+  renderWindows(scene);
   screen.replaceChildren(scene);
   chapterSelect.value = String(index);
   prev.disabled = index === 0;
   next.disabled = index === chapters.length - 1;
 }
+
+function openNotes() {
+  const chapter = chapters[current];
+  notes.querySelector("h2").textContent = `${chapter.time} · ${screen.querySelector(".scene").dataset.label}`;
+  const content = document.querySelector("#note-content");
+  const copy = document.createElement("p");
+  copy.textContent = chapter.say;
+  content.replaceChildren(copy);
+  if (chapter.prompt) {
+    const box = document.createElement("div");
+    box.className = "request-box";
+    const label = document.createElement("label");
+    label.htmlFor = "speaker-prompt";
+    label.textContent = "可复制的问法";
+    const field = document.createElement("textarea");
+    field.id = "speaker-prompt";
+    field.readOnly = true;
+    field.value = chapter.prompt;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.textContent = "复制";
+    const status = document.createElement("span");
+    status.setAttribute("role", "status");
+    button.addEventListener("click", () => {
+      const select = () => {
+        field.focus();
+        field.select();
+        status.textContent = "已选中，按 ⌘C 或 Ctrl+C 复制。";
+      };
+      if (!navigator.clipboard?.writeText) {
+        select();
+        return;
+      }
+      navigator.clipboard.writeText(field.value).then(() => { status.textContent = "已复制。"; }, select);
+    });
+    box.append(label, field, button, status);
+    content.append(box);
+  }
+  notes.showModal();
+}
+
 async function toggleFullscreen() {
   try {
     if (document.fullscreenElement) await document.exitFullscreen();
@@ -962,132 +440,18 @@ async function toggleFullscreen() {
     document.querySelector("#full").textContent = "Use browser full screen";
   }
 }
-function noteSection(title, items) {
-  const heading = document.createElement("h3");
-  heading.textContent = title;
-  const list = document.createElement("ul");
-  for (const item of items) {
-    const entry = document.createElement("li");
-    entry.innerHTML = item;
-    list.append(entry);
-  }
-  return [heading, list];
-}
-function requestBox(key, lang) {
-  const box = document.createElement("div");
-  box.className = "request-box";
-  const label = document.createElement("label");
-  label.htmlFor = `request-${key}-${lang}`;
-  label.textContent = prompts[key].name + (lang === "en" ? " · English" : " · 中文");
-  const field = document.createElement("textarea");
-  field.id = label.htmlFor;
-  field.readOnly = true;
-  field.value = promptText(key, lang);
-  const copy = document.createElement("button");
-  copy.type = "button";
-  copy.textContent = lang === "en" ? "Copy" : "复制";
-  const status = document.createElement("span");
-  status.setAttribute("role", "status");
-  copy.addEventListener("click", () => {
-    const select = () => {
-      field.focus();
-      field.select();
-      status.textContent = "已选中，按 ⌘C 或 Ctrl+C 复制。";
-    };
-    if (!navigator.clipboard?.writeText) return select();
-    navigator.clipboard.writeText(field.value).then(() => { status.textContent = "已复制。"; }, select);
-  });
-  box.append(label, field, copy, status);
-  return box;
-}
-function setupParts() {
-  const heading = document.createElement("h3");
-  heading.textContent = "First-time setup, once per person · 第一次用：安装和登录（每人一次）";
-  const list = document.createElement("ol");
-  for (const step of setupSteps) {
-    const entry = document.createElement("li");
-    entry.innerHTML = `<strong>${step.title}</strong>` +
-      (step.cmds ?? []).map(cmd => `<code class="cmd">${cmd}</code>`).join("") +
-      `<p lang="en">${step.en}</p><p lang="zh-Hans">${step.zh}</p>`;
-    list.append(entry);
-  }
-  const links = noteSection("Official guides · 官方说明", setupLinks.map(([title, url]) =>
-    `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`));
-  return [heading, list, ...links];
-}
-function openNotes(focus = {}) {
-  const chapter = chapters[current];
-  const content = document.querySelector("#note-content");
-  if (focus.setupOnly) {
-    document.querySelector("#notes-title").textContent = "First-time setup · 第一次用";
-    content.replaceChildren(...setupParts());
-    notes.showModal();
-    return;
-  }
-  document.querySelector("#notes-title").textContent = `${pad(current + 1)} ${sceneLabel(current)} · ${chapter.time}`;
-  const parts = [...noteSection("讲法", chapter.say)];
-  if (chapter.tips) parts.push(...noteSection("操作提示", chapter.tips));
-  if (chapter.facts) parts.push(...noteSection("依据和口径", chapter.facts));
-  const keys = [...new Set([...(chapter.requests ?? []), ...(focus.key ? [focus.key] : [])])];
-  if (keys.length) {
-    const heading = document.createElement("h3");
-    heading.textContent = "可复制的问法";
-    parts.push(heading, ...keys.flatMap(key => [requestBox(key, "zh"), requestBox(key, "en")]));
-  }
-  if (chapter.setup) parts.push(...setupParts());
-  const timing = document.createElement("small");
-  timing.textContent = "讲者备注。每幕动画播完后停住，按 → 进入下一幕。";
-  parts.push(timing);
-  content.replaceChildren(...parts);
-  notes.showModal();
-  if (focus.key) {
-    const field = document.getElementById(`request-${focus.key}-${focus.lang}`);
-    field.focus();
-    field.select();
-    field.closest(".request-box").querySelector("[role=status]").textContent = "已选中，按 ⌘C 或 Ctrl+C 复制。";
-  }
-}
-function copyPrompt(button) {
-  const { copy: key, lang } = button.dataset;
-  const fallback = () => openNotes({ key, lang });
-  if (!navigator.clipboard?.writeText) return fallback();
-  navigator.clipboard.writeText(promptText(key, lang)).then(() => {
-    const label = button.querySelector("span");
-    const original = label.textContent;
-    label.textContent = lang === "en" ? "Copied" : "已复制";
-    button.classList.add("done");
-    setTimeout(() => {
-      label.textContent = original;
-      button.classList.remove("done");
-    }, 1600);
-  }, fallback);
-}
 
+chapters.forEach((chapter, index) => {
+  const title = document.getElementById(chapter.id).content.firstElementChild.dataset.label;
+  chapterSelect.add(new Option(`${index + 1}. ${title}`, index));
+});
 prev.addEventListener("click", () => show(current - 1));
 next.addEventListener("click", () => show(current + 1));
 chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value)));
+language.addEventListener("change", () => setLanguage(language.value));
+document.querySelector("#speaker").addEventListener("click", openNotes);
 document.querySelector("#close-notes").addEventListener("click", () => notes.close());
 document.querySelector("#full").addEventListener("click", toggleFullscreen);
-screen.addEventListener("click", event => {
-  const target = event.target;
-  const copy = target.closest("[data-copy]");
-  if (copy) return copyPrompt(copy);
-  if (target.closest("[data-open-notes]")) return openNotes({ setupOnly: true });
-  const check = target.closest("[data-check]");
-  if (check) {
-    const card = screen.querySelector(`.src-card[data-src="${check.dataset.check}"]`);
-    const on = check.getAttribute("aria-pressed") !== "true";
-    check.setAttribute("aria-pressed", String(on));
-    card.classList.toggle("is-checked", on);
-    return;
-  }
-  const choice = target.closest("[data-choice]");
-  if (choice) {
-    for (const option of screen.querySelectorAll("[data-choice]")) option.setAttribute("aria-pressed", String(option === choice));
-    for (const outcome of screen.querySelectorAll("[data-outcome]")) outcome.hidden = outcome.dataset.outcome !== choice.dataset.choice;
-    choice.parentElement.dataset.picked = choice.dataset.choice;
-  }
-});
 document.addEventListener("keydown", event => {
   if (event.repeat || notes.open || event.target.closest("select, a, textarea") ||
       event.ctrlKey || event.altKey || event.metaKey) return;
@@ -1108,7 +472,11 @@ document.addEventListener("keydown", event => {
       show(current + 1);
       break;
     case "f": toggleFullscreen(); break;
-    case "c": screen.classList.toggle("no-chinese"); break;
+    case "c": {
+      const modes = ["both", "en", "zh"];
+      setLanguage(modes[(modes.indexOf(language.value) + 1) % modes.length]);
+      break;
+    }
     case "r": show(current); break;
     case "n": openNotes(); break;
   }
