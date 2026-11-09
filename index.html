@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#FFF8E9">
+<link rel="icon" href="data:,">
+<title>Workflow Demo · Slack + Google Workspace</title>
+<style>
+:root {
+  --paper: #fff8e9;
+  --warm: #ffead2;
+  --orange: #ff4e00;
+  --ink: #232222;
+  --muted: #69605b;
+  --rule: #d9cbb9;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+  --ease: cubic-bezier(.2,.72,.2,1);
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #f5eadb;
+}
+* { box-sizing: border-box; }
+body { margin: 0; }
+h1, h2, h3, p, figure { margin: 0; }
+button, select { font: inherit; }
+button, select, a { touch-action: manipulation; }
+button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+#presenter {
+  min-height: 100dvh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  background: #f5eadb;
+}
+#screen, .toolbar {
+  width: min(100vw, calc((100dvh - 51px) * 16 / 9));
+}
+#screen {
+  position: relative;
+  container-type: inline-size;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--paper);
+}
+#presenter:fullscreen #screen { width: min(100vw, calc(100dvh * 16 / 9)); }
+#presenter:fullscreen .toolbar { display: none; }
+.scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: var(--paper);
+  animation: scene-in .32s ease-out both;
+}
+.scene.warm { background: radial-gradient(ellipse at 83% 78%, #ffe4ca, transparent 65%), var(--paper); }
+.mast {
+  position: absolute;
+  inset: 3.05cqw 5.7cqw auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+  font-size: .88cqw;
+  font-weight: 650;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+.mast .wordmark { font-family: var(--serif); font-size: 1.13cqw; font-weight: 700; }
+.mast .wordmark::before { content: ""; display: inline-block; width: .46cqw; aspect-ratio: 1; margin-right: .54cqw; background: var(--orange); border-radius: 50%; vertical-align: .13cqw; }
+h1,h2 { font-family: var(--serif); font-weight: 400; }
+.cn { color: var(--muted); font-family: var(--sans); }
+.no-chinese .cn { display: none !important; }
+.bi > span { display: block; font-size: inherit; }
+.bi > .cn { margin-top: .26em; }
+.biline > .cn { font-size: inherit; margin-left: .55em; }
+.arrive { animation: arrive .6s var(--ease) var(--delay, 0s) both; }
+.paper-in { animation: paper-in .79s var(--ease) var(--delay, 0s) both; }
+@keyframes scene-in { from { opacity: 0; } }
+@keyframes arrive { from { opacity: 0; transform: translateY(.7cqw); } }
+@keyframes paper-in { from { opacity: 0; transform: translate(var(--from-x, 0cqw), 1.55cqw); } }
+.story-head { position: absolute; inset: 6.85cqw 5.7cqw auto; }
+.story-head .role, .eyebrow {
+  color: #873711;
+  font-size: 1.13cqw;
+  font-weight: 690;
+  margin-bottom: .5cqw;
+}
+.story-head .role .cn, .eyebrow .cn { color: #724731; }
+.story-head h1 { font-size: 3.66cqw; line-height: 1.05; }
+.story-head h1 .cn { margin-top: .49cqw; }
+.scene-foot {
+  position: absolute;
+  inset: auto 5.7cqw 2.12cqw;
+  font-size: 1cqw;
+  color: var(--muted);
+}
+.card {
+  background: #fffcf3;
+  border: 1px solid #c9ad90;
+  border-radius: .86cqw;
+  corner-shape: squircle;
+  box-shadow: 0 .21cqw .5cqw #70422010, 0 1cqw 2.2cqw #77441916;
+}
+.card-bar {
+  border-bottom: 1px solid #dfc7ae;
+  padding: .76cqw 1.32cqw;
+  background: #ffefdd;
+  border-radius: .84cqw .84cqw 0 0;
+  color: #80401f;
+  font-size: 1.14cqw;
+  font-weight: 680;
+}
+.card-bar .cn { color: #765444; }
+.label { color: #893b13; font-size: 1.17cqw; font-weight: 710; }
+.label .cn { color: #704734; }
+.cta {
+  padding: .53cqw .81cqw;
+  background: #ffe1c3;
+  border: 1px solid #c88359;
+  border-radius: .46cqw;
+  color: #753711;
+  font-size: 1.11cqw;
+  font-weight: 680;
+  cursor: pointer;
+}
+.cta:hover { background: #ffd2ac; }
+
+.opening-copy { position: absolute; inset: 14.2cqw auto auto 5.7cqw; width: 46cqw; }
+.opening-copy h1 { font-size: 5.25cqw; line-height: 1.01; }
+.opening-copy h1 .cn { margin-top: .84cqw; }
+.opening-copy .intro-sub { margin-top: 1.62cqw; font-size: 1.52cqw; line-height: 1.22; }
+.incoming { position: absolute; inset: 15.45cqw 5.7cqw auto auto; width: 38.2cqw; }
+.incoming-body { padding: 1.43cqw 1.58cqw 1.56cqw; }
+.incoming-body blockquote { margin: 0; font-size: 2.05cqw; line-height: 1.21; }
+.incoming-body blockquote > span:first-child { font-family: var(--serif); }
+.incoming-context {
+  margin-top: 1.31cqw;
+  border-top: 1px solid #e1cbb6;
+  padding-top: .86cqw;
+  font-size: 1.16cqw;
+}
+.incoming-context .cn { color: #74584b; }
+
+.choice-grid { position: absolute; inset: 20cqw 5.7cqw auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.1cqw; }
+.choice-card {
+  text-align: left;
+  color: var(--ink);
+  padding: 1.17cqw 1.36cqw 1.22cqw;
+  min-height: 12.65cqw;
+  cursor: pointer;
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.choice-card:hover { background: #fff4e4; border-color: #be784e; }
+.choice-card[aria-pressed="true"] { background: #fff0dc; border-color: #b95a2d; box-shadow: inset 0 0 0 1px #b95a2d; }
+.choice-card .choice-id { display: block; font-size: 1.16cqw; color: #873711; font-weight: 740; margin-bottom: .63cqw; }
+.choice-card .bi { font-size: 1.65cqw; line-height: 1.21; }
+.choice-card .bi > span:first-child { font-family: var(--serif); }
+.choice-response { position: absolute; inset: 36.35cqw 5.7cqw auto; border-top: 1px solid #c9ad90; padding-top: 1.08cqw; }
+.choice-response .bi { margin-top: .5cqw; font-size: 1.52cqw; line-height: 1.22; }
+.choice-response .response-text { font-weight: 610; }
+.choice-response .response-reason { font-size: 1.15cqw; color: #645348; }
+
+.how-grid { position: absolute; inset: 19.5cqw 5.7cqw auto; display: grid; grid-template-columns: 1.33fr 1fr; gap: 2.55cqw; align-items: start; }
+.request-card .request-body { padding: 1.1cqw 1.4cqw 1.17cqw; }
+.input-links { display: flex; flex-wrap: wrap; gap: .63cqw; margin-bottom: 1.02cqw; }
+.input-link { padding: .43cqw .61cqw; border: 1px solid #d6b390; border-radius: .41cqw; background: #fff2df; font-size: 1.01cqw; color: #6f422b; }
+.request-body .bi { font-size: 1.64cqw; line-height: 1.21; }
+.request-body .bi > span:first-child { font-family: var(--serif); }
+.request-actions { margin-top: .96cqw; display: flex; justify-content: flex-end; }
+.tool-list { display: grid; gap: .81cqw; }
+.tool-note { background: #fff7ec; border: 1px solid #ceb497; border-radius: .66cqw; padding: .87cqw 1.03cqw; }
+.tool-name > span { margin-left: .61cqw; font-size: 1.01cqw; color: #664d3f; }
+.tool-note code { font-size: 1.22cqw; font-weight: 720; color: #843a14; }
+.tool-note .bi { margin-top: .37cqw; font-size: 1.32cqw; line-height: 1.2; }
+.setup-note { position: absolute; inset: auto 5.7cqw 4.75cqw; border-top: 1px solid #d6bca2; padding-top: .77cqw; font-size: 1.17cqw; line-height: 1.21; }
+
+.answer-grid { position: absolute; inset: 19.75cqw 5.7cqw auto; display: grid; grid-template-columns: 1fr 1.42fr; gap: 2.4cqw; align-items: start; }
+.evidence { display: grid; gap: .7cqw; }
+.evidence article { padding: .85cqw 1.05cqw; }
+.evidence article .bi { font-size: 1.28cqw; line-height: 1.2; margin-top: .45cqw; }
+.reply-card { border-top: .18cqw solid #e2783d; padding: 1.15cqw 1.48cqw 1.35cqw; }
+.reply-card blockquote { margin: .66cqw 0 0; font-size: 2.05cqw; line-height: 1.17; }
+.reply-card blockquote > span:first-child { font-family: var(--serif); }
+.reply-card .check { border-top: 1px solid #dfc8b1; padding-top: .73cqw; margin-top: .93cqw; font-size: 1.12cqw; line-height: 1.25; }
+
+.decision-grid { position: absolute; inset: 20.15cqw 5.7cqw auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2.1cqw; }
+.decision-card { min-height: 19.4cqw; padding: 1.16cqw 1.37cqw 1.3cqw; }
+.decision-card h2 { margin-top: .7cqw; font-size: 2.06cqw; line-height: 1.08; }
+.decision-card p:last-child { border-top: 1px solid #e0cbb7; padding-top: .74cqw; margin-top: 1.1cqw; font-size: 1.33cqw; line-height: 1.23; }
+.direct-search { position: absolute; inset: auto 5.7cqw 4.4cqw; font-size: 1.22cqw; line-height: 1.2; }
+
+.close-scene .story-head { text-align: center; }
+.close-quote { position: absolute; inset: 21.3cqw 15.6cqw auto; padding: 1.58cqw 1.85cqw; }
+.close-quote blockquote { margin: .7cqw 0 0; font-size: 2.16cqw; line-height: 1.22; }
+.close-quote blockquote > span:first-child { font-family: var(--serif); }
+.close-action { position: absolute; inset: auto 5.7cqw 8.6cqw; text-align: center; }
+
+.toolbar {
+  min-height: 49px;
+  display: flex;
+  gap: 6px;
+  padding: 7px 10px;
+  align-items: center;
+  font-size: 12px;
+  color: #61483a;
+}
+.toolbar button, .toolbar select {
+  border: 1px solid #c7ae93;
+  border-radius: 6px;
+  background: #fff8ed;
+  color: #65432c;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+.toolbar button:hover, .toolbar select:hover { background: #ffe6cc; }
+.toolbar button:disabled { opacity: .53; cursor: default; }
+.toolbar .push { flex: 1; }
+.toolbar .hint { margin: 0 5px; color: #705849; }
+#notes {
+  max-height: 85vh;
+  width: min(650px, 92vw);
+  padding: 24px;
+  border: 1px solid #9e8165;
+  border-radius: 14px;
+  background: var(--paper);
+  color: var(--ink);
+}
+#notes::backdrop { background: #1b1512ba; }
+#notes header { display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+#notes h2 { font-size: 25px; }
+#notes p, #notes li { line-height: 1.5; }
+#notes p { margin-top: 14px; }
+#notes li + li { margin-top: 5px; }
+#notes a { color: #7d310e; }
+#notes small { color: var(--muted); }
+.request-box { margin: 16px 0; padding: 13px; background: #fff2df; border: 1px solid var(--rule); border-radius: 8px; }
+.request-box label { display: block; font-weight: 670; font-size: 13px; color: #753610; }
+.request-box textarea { display: block; width: 100%; min-height: 124px; margin: 8px 0; padding: 8px; border: 1px solid var(--rule); border-radius: 5px; background: #fffaf1; color: var(--ink); font: inherit; font-size: 13px; line-height: 1.45; resize: vertical; }
+.request-box [role="status"] { margin-left: 8px; font-size: 12px; color: #753610; }
+#notes button { background: #ffe8cf; color: var(--ink); border: 1px solid var(--rule); border-radius: 5px; padding: 6px 10px; cursor: pointer; }
+@media (max-width: 720px) {
+  #screen, .toolbar { width: min(100vw, calc((100dvh - 86px) * 16 / 9)); }
+  .toolbar { flex-wrap: wrap; justify-content: center; min-height: 80px; }
+  .toolbar .push, .toolbar .hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01s !important; animation-delay: 0s !important; }
+}
+</style>
+</head>
+<body>
+<main id="presenter">
+  <div id="screen" aria-label="Workflow Demo launch-style presentation"></div>
+  <nav class="toolbar" aria-label="Presentation controls">
+    <button id="prev" type="button" aria-label="Previous scene" aria-keyshortcuts="ArrowLeft">‹</button>
+    <button id="next" type="button" aria-label="Next scene" aria-keyshortcuts="ArrowRight">Next ›</button>
+    <select id="chapters" aria-label="Scenes"></select>
+    <span class="hint">← → to advance</span>
+    <span class="push"></span>
+    <button id="language" type="button" aria-pressed="true" aria-keyshortcuts="C">EN + 中文</button>
+    <button id="replay" type="button" aria-keyshortcuts="R">Replay motion</button>
+    <button id="show-notes" type="button" aria-keyshortcuts="N">Notes &amp; sources</button>
+    <button id="full" type="button" aria-keyshortcuts="F">Full screen</button>
+  </nav>
+  <dialog id="notes" aria-labelledby="notes-title">
+    <header><h2 id="notes-title"></h2><button id="close-notes" type="button">Close</button></header>
+    <div id="note-content"></div>
+  </dialog>
+</main>
+
+<template id="opening">
+  <section class="scene warm" data-label="A teammate needs an answer">
+    <div class="opening-copy">
+      <p class="eyebrow biline arrive">Slack + Google Workspace CLI <span class="cn" lang="zh-Hans">群消息 + 工作文档</span></p>
+      <h1 class="bi arrive" style="--delay:.14s"><span lang="en">The review is about to start.</span><span class="cn" lang="zh-Hans">评审快开始了。</span></h1>
+      <p class="intro-sub bi arrive" style="--delay:.37s"><span lang="en">You need to reply to one question.</span><span class="cn" lang="zh-Hans">你得先回同事一个问题。</span></p>
+    </div>
+    <figure class="card incoming paper-in" style="--delay:.42s;--from-x:1cqw">
+      <figcaption class="card-bar biline">Teammate · Practice scene <span class="cn" lang="zh-Hans">同事 · 演练情景</span></figcaption>
+      <div class="incoming-body">
+        <blockquote class="bi"><span lang="en">Where will a friend request show up in this release?</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求会在哪看到？</span></blockquote>
+        <p class="incoming-context biline">Slack update + Google Doc <span class="cn" lang="zh-Hans">手上有群里更新和一份规格</span></p>
+      </div>
+    </figure>
+    <p class="scene-foot biline">Practice scenario for a product review <span class="cn" lang="zh-Hans">产品评审演练</span></p>
+  </section>
+</template>
+
+<template id="choice">
+  <section class="scene" data-label="Try two ways to ask">
+    <div class="story-head arrive">
+      <p class="role biline">Pick A or B <span class="cn" lang="zh-Hans">点 A 或 B</span></p>
+      <h1 class="bi"><span lang="en">What would you ask?</span><span class="cn" lang="zh-Hans">你会怎么问？</span></h1>
+    </div>
+    <div class="choice-grid" role="group" aria-label="Choose a request">
+      <button type="button" class="card choice-card paper-in" style="--delay:.25s" data-choice="broad" aria-pressed="false">
+        <span class="choice-id">A</span><span class="bi"><span lang="en">Catch me up on friend requests.</span><span class="cn" lang="zh-Hans">帮我总结一下好友请求。</span></span>
+      </button>
+      <button type="button" class="card choice-card paper-in" style="--delay:.53s" data-choice="specific" aria-pressed="false">
+        <span class="choice-id">B</span><span class="bi"><span lang="en">Use slack and gws to read both. Where will the request show up? Give me one line to send.</span><span class="cn" lang="zh-Hans">用 slack 和 gws 看两处资料。收到请求在哪看？给我一句能发的回复。</span></span>
+      </button>
+    </div>
+    <div class="choice-response" aria-live="polite">
+      <div data-outcome="start">
+        <p class="bi"><span lang="en">Try both. See what you can send back.</span><span class="cn" lang="zh-Hans">两个都点一下，看看哪段能拿去回复同事。</span></p>
+      </div>
+      <div data-outcome="broad" hidden>
+        <p class="label biline">A · Too broad for this reply <span class="cn" lang="zh-Hans">A · 对这次回复来说太宽</span></p>
+        <p class="response-text bi"><span lang="en">The team discussed connection requests and notifications.</span><span class="cn" lang="zh-Hans">团队讨论了连接请求和通知。</span></p>
+        <p class="response-reason bi"><span lang="en">You still need to ask where the request appears.</span><span class="cn" lang="zh-Hans">还得再问一句：请求到底在哪看到？</span></p>
+      </div>
+      <div data-outcome="specific" hidden>
+        <p class="label biline">B · Gives you a line to send <span class="cn" lang="zh-Hans">B · 拿到一句能发的回复</span></p>
+        <p class="response-text bi"><span lang="en">This release shows the request in the app’s bell.</span><span class="cn" lang="zh-Hans">这版会在 App 通知铃铛里显示连接请求。</span></p>
+        <p class="response-reason bi"><span lang="en">The next two slides show what the agent reads and the full reply.</span><span class="cn" lang="zh-Hans">接着看它读哪两处，以及完整回复。</span></p>
+      </div>
+    </div>
+    <p class="scene-foot biline">Practice answers <span class="cn" lang="zh-Hans">演练示例</span></p>
+  </section>
+</template>
+
+<template id="how">
+  <section class="scene warm" data-label="What to paste and what the tools read">
+    <div class="story-head arrive">
+      <p class="role biline">In your AI Agent <span class="cn" lang="zh-Hans">在 AI Agent 里</span></p>
+      <h1 class="bi"><span lang="en">Paste the two links. Ask the question.</span><span class="cn" lang="zh-Hans">贴两个链接，再问一句话。</span></h1>
+    </div>
+    <div class="how-grid">
+      <article class="card request-card paper-in" style="--delay:.26s">
+        <p class="card-bar biline">AI Agent · Your message <span class="cn" lang="zh-Hans">你的输入</span></p>
+        <div class="request-body">
+          <div class="input-links">
+            <span class="input-link biline arrive" style="--delay:.55s">Slack link <span class="cn" lang="zh-Hans">群消息</span></span>
+            <span class="input-link biline arrive" style="--delay:.73s">Google Doc link <span class="cn" lang="zh-Hans">规格文档</span></span>
+          </div>
+          <p class="bi arrive" style="--delay:.92s"><span lang="en">Use slack and gws to read these links. Where does the request appear this release? Give me one line to send.</span><span class="cn" lang="zh-Hans">用 slack 和 gws 看这两个链接。这版收到请求在哪看？给我一句能发的回复。</span></p>
+          <div class="request-actions arrive" style="--delay:1.13s"><button type="button" class="cta biline" data-open-request>See the full request <span class="cn" lang="zh-Hans">看完整问法</span></button></div>
+        </div>
+      </article>
+      <div class="tool-list">
+        <article class="tool-note arrive" style="--delay:1.26s"><p class="tool-name"><code>slack</code><span>Slack CLI</span></p><p class="bi"><span lang="en">Reads the team’s update.</span><span class="cn" lang="zh-Hans">读群里的更新。</span></p></article>
+        <article class="tool-note arrive" style="--delay:1.51s"><p class="tool-name"><code>gws</code><span>Google Workspace CLI</span></p><p class="bi"><span lang="en">Reads the Google Doc.</span><span class="cn" lang="zh-Hans">读 Google 文档。</span></p></article>
+        <article class="tool-note arrive" style="--delay:1.77s"><p class="label">AI Agent</p><p class="bi"><span lang="en">Compares both and writes your reply.</span><span class="cn" lang="zh-Hans">对照两处，写出回复。</span></p></article>
+      </div>
+    </div>
+    <p class="setup-note bi arrive" style="--delay:1.95s"><span lang="en">Set up and sign in to both tools where your AI Agent runs.</span><span class="cn" lang="zh-Hans">先在 AI Agent 用的环境里装好并登录这两个工具。</span></p>
+  </section>
+</template>
+
+<template id="answer">
+  <section class="scene" data-label="The reply you can use">
+    <div class="story-head arrive">
+      <p class="role biline">Friend request review <span class="cn" lang="zh-Hans">好友请求评审</span></p>
+      <h1 class="bi"><span lang="en">One reply you can use.</span><span class="cn" lang="zh-Hans">拿到一句可以回的话。</span></h1>
+    </div>
+    <div class="answer-grid">
+      <div class="evidence">
+        <article class="card paper-in" style="--delay:.26s"><p class="label biline">Google Doc · Earlier rule <span class="cn" lang="zh-Hans">Google 文档 · 旧规则</span></p><p class="bi"><span lang="en">Requests stay in the Add Friends list.</span><span class="cn" lang="zh-Hans">连接请求留在「添加好友」列表。</span></p></article>
+        <article class="card paper-in" style="--delay:.59s"><p class="label biline">Slack · Newer update <span class="cn" lang="zh-Hans">Slack · 较新更新</span></p><p class="bi"><span lang="en">Add a bell notification now. Phone push comes later.</span><span class="cn" lang="zh-Hans">这次加 App 内铃铛提醒，系统推送后续再做。</span></p></article>
+      </div>
+      <article class="card reply-card paper-in" style="--delay:1.02s;--from-x:.7cqw">
+        <p class="label biline">Reply to your teammate <span class="cn" lang="zh-Hans">回给同事</span></p>
+        <blockquote class="bi"><span lang="en">In this release, connection requests appear in the app’s bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这版收到连接请求时，App 通知铃铛会显示提醒。系统推送后续再做。</span></blockquote>
+        <p class="check bi"><span lang="en">Open the source before sending.</span><span class="cn" lang="zh-Hans">发出前，点开来源核对。</span></p>
+      </article>
+    </div>
+    <p class="scene-foot biline">Sample materials · Example reply <span class="cn" lang="zh-Hans">示例资料 · 示例回复</span></p>
+  </section>
+</template>
+
+<template id="decision">
+  <section class="scene" data-label="Which tool fits the job">
+    <div class="story-head arrive">
+      <p class="role biline">Pick the right next step <span class="cn" lang="zh-Hans">按手头的事选工具</span></p>
+      <h1 class="bi"><span lang="en">What do you need to get done?</span><span class="cn" lang="zh-Hans">你现在要办什么？</span></h1>
+    </div>
+    <div class="decision-grid">
+      <article class="card decision-card paper-in" style="--delay:.28s">
+        <p class="label biline">Use the AI Agent <span class="cn" lang="zh-Hans">用 AI Agent</span></p>
+        <h2 class="bi"><span lang="en">“What should I test?”</span><span class="cn" lang="zh-Hans">「这次该测什么？」</span></h2>
+        <p class="bi"><span lang="en">Use slack for the handoff and gws for the spec. Ask for a checklist.</span><span class="cn" lang="zh-Hans">用 slack 读交接、用 gws 对照规格，请它列测试清单。</span></p>
+      </article>
+      <article class="card decision-card paper-in" style="--delay:.61s">
+        <p class="label biline">Ask the dashboard owner <span class="cn" lang="zh-Hans">找看板负责人</span></p>
+        <h2 class="bi"><span lang="en">“Can you give me access?”</span><span class="cn" lang="zh-Hans">「能帮我开一下权限吗？」</span></h2>
+        <p class="bi"><span lang="en">Use slack to find the earlier access thread. Ask the owner for access.</span><span class="cn" lang="zh-Hans">用 slack 找之前的权限讨论，再联系负责人开通。</span></p>
+      </article>
+    </div>
+    <p class="direct-search bi arrive" style="--delay:1s"><span lang="en">Looking for one known message? Search in Slack.</span><span class="cn" lang="zh-Hans">只想找到一条已知的消息？直接在 Slack 搜。</span></p>
+  </section>
+</template>
+
+<template id="closing">
+  <section class="scene close-scene warm" data-label="Try it on your next reply">
+    <div class="story-head arrive">
+      <p class="role biline">Try it today <span class="cn" lang="zh-Hans">今天就能试</span></p>
+      <h1 class="bi"><span lang="en">Start with a reply you owe.</span><span class="cn" lang="zh-Hans">从一条还没回的消息开始。</span></h1>
+    </div>
+    <article class="card close-quote paper-in" style="--delay:.3s">
+      <p class="label biline">In your AI Agent <span class="cn" lang="zh-Hans">在 AI Agent 里</span></p>
+      <blockquote class="bi"><span lang="en">“Use slack for [thread] and gws for [doc]. Give me one line to answer [question].”</span><span class="cn" lang="zh-Hans">「用 slack 读[群消息]，用 gws 读[文档]。给我一句能回[问题]的话。」</span></blockquote>
+    </article>
+    <div class="close-action arrive" style="--delay:.72s"><button type="button" class="cta biline" data-open-request>Open a request to copy <span class="cn" lang="zh-Hans">打开可复制的请求</span></button></div>
+  </section>
+</template>
+<script>
+const reviewRequest = {
+  label: "Reply to the product question",
+  text: "I need to reply before the review. Use slack to read [Slack update link] and gws to read [Google Doc link]. Where does a friend request show up in this release? Give me one line to send, and flag anything the sources leave open.",
+  links: []
+};
+const chapters = [
+  {
+    id: "opening", time: "0:00–0:35",
+    note: "Read the teammate’s line. In this sample, a product review is about to start and you need to give one useful answer."
+  },
+  {
+    id: "choice", time: "0:35–1:25",
+    note: "Let the room choose A or B, then click both. These are scripted examples. A gives background. B answers the teammate’s specific question in a line they can use."
+  },
+  {
+    id: "how", time: "1:25–2:10",
+    note: "Use the AI Agent you already use, with both CLIs installed and signed in where it runs. Paste a Slack update and a Google Doc you can access. Replace the placeholders in the example request with your own links.",
+    requests: [reviewRequest],
+    links: [
+      ["Slack CLI · setup and sign-in", "https://docs.slack.dev/tools/slack-cli/guides/authorizing-the-slack-cli/"],
+      ["Google Workspace CLI · setup", "https://github.com/googleworkspace/cli#authentication"]
+    ]
+  },
+  {
+    id: "answer", time: "2:10–2:55",
+    note: "The example doc has the earlier rule. The example Slack update adds an app alert and leaves phone push for later. Show how the two pieces of information support the sample reply. In your own case, open the actual sources before sending."
+  },
+  {
+    id: "decision", time: "2:55–3:35",
+    note: "Good use: turn a handoff and spec into a test checklist. For access, use Slack to find the owner or the prior discussion and ask the owner to grant it. Search directly for a known message.",
+    requests: [{
+      label: "Turn a handoff into test steps",
+      text: "Use slack to read [handoff link] and gws to read [spec link]. Give me a short checklist with the action and expected result for each case. Mark what still needs a decision.",
+      links: []
+    }]
+  },
+  {
+    id: "closing", time: "3:35–4:05",
+    note: "Pick a question you already need to answer. Replace the placeholders with your question and links. Check the reply against the sources before sending.",
+    requests: [{
+      label: "Start with a reply you owe",
+      text: "I need to reply about [question]. Use slack to read [Slack link] and gws to read [Google Doc link, if needed]. Give me one line I can send. Tell me if anything is still open.",
+      links: []
+    }]
+  }
+];
+
+const presenter = document.querySelector("#presenter");
+const screen = document.querySelector("#screen");
+const chapterSelect = document.querySelector("#chapters");
+const notes = document.querySelector("#notes");
+const language = document.querySelector("#language");
+const prev = document.querySelector("#prev");
+const next = document.querySelector("#next");
+let current = 0;
+
+for (const [index, chapter] of chapters.entries()) {
+  const option = document.createElement("option");
+  option.value = index;
+  option.textContent = String(index + 1).padStart(2, "0") + "  " +
+    document.getElementById(chapter.id).content.firstElementChild.dataset.label;
+  chapterSelect.append(option);
+}
+function show(index) {
+  if (index < 0 || index >= chapters.length) return;
+  current = index;
+  const template = document.getElementById(chapters[index].id);
+  const scene = template.content.firstElementChild.cloneNode(true);
+  const mast = document.createElement("div");
+  mast.className = "mast";
+  mast.innerHTML = '<span class="wordmark">Workflow Demo</span><span>' +
+    String(index + 1).padStart(2, "0") + ' / ' +
+    String(chapters.length).padStart(2, "0") + '</span>';
+  scene.prepend(mast);
+  screen.replaceChildren(scene);
+  chapterSelect.value = String(index);
+  prev.disabled = index === 0;
+  next.disabled = index === chapters.length - 1;
+}
+function toggleLanguage() {
+  const englishOnly = screen.classList.toggle("no-chinese");
+  language.setAttribute("aria-pressed", String(!englishOnly));
+  language.textContent = englishOnly ? "English only" : "EN + 中文";
+}
+async function toggleFullscreen() {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await presenter.requestFullscreen();
+  } catch {
+    document.querySelector("#full").textContent = "Use browser full screen";
+  }
+}
+function openNotes() {
+  const chapter = chapters[current];
+  document.querySelector("#notes-title").textContent =
+    chapterSelect.selectedOptions[0].textContent + " · " + chapter.time;
+  const content = document.querySelector("#note-content");
+  const text = document.createElement("p");
+  text.textContent = chapter.note;
+  content.replaceChildren(text);
+  const requests = chapter.requests ?? [];
+  for (const [index, request] of requests.entries()) {
+    const box = document.createElement("div");
+    box.className = "request-box";
+    const label = document.createElement("label");
+    label.htmlFor = "request-" + index;
+    label.textContent = request.label;
+    const field = document.createElement("textarea");
+    field.id = label.htmlFor;
+    field.readOnly = true;
+    const requestLinks = request.links.map(([name, url]) => name + " · " + url).join("\n");
+    field.value = [request.text, requestLinks, "Include source links. Keep it read-only."].filter(Boolean).join("\n\n");
+    const copy = document.createElement("button");
+    copy.type = "button";
+    copy.textContent = "Copy request";
+    const status = document.createElement("span");
+    status.setAttribute("role", "status");
+    copy.addEventListener("click", () => {
+      const select = () => {
+        field.focus();
+        field.select();
+        status.textContent = "Selected. Press ⌘C or Ctrl+C to copy.";
+      };
+      if (!navigator.clipboard?.writeText) {
+        select();
+        return;
+      }
+      navigator.clipboard.writeText(field.value).then(() => {
+        status.textContent = "Copied.";
+      }, select);
+    });
+    box.append(label, field, copy, status);
+    content.append(box);
+  }
+  const links = [...requests.flatMap(request => request.links), ...(chapter.links ?? [])];
+  if (links.length) {
+    const list = document.createElement("ul");
+    for (const [title, url] of links) {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.textContent = title;
+      link.href = url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      item.append(link);
+      list.append(item);
+    }
+    content.append(list);
+  }
+  const timing = document.createElement("small");
+  timing.textContent = "Speaker notes · motion holds on each scene until you advance.";
+  content.append(timing);
+  notes.showModal();
+}
+
+prev.addEventListener("click", () => show(current - 1));
+next.addEventListener("click", () => show(current + 1));
+chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value)));
+language.addEventListener("click", toggleLanguage);
+document.querySelector("#replay").addEventListener("click", () => show(current));
+document.querySelector("#show-notes").addEventListener("click", openNotes);
+screen.addEventListener("click", event => {
+  if (event.target.closest("[data-open-request]")) {
+    openNotes();
+    return;
+  }
+  const choice = event.target.closest("[data-choice]");
+  if (!choice) return;
+  for (const option of screen.querySelectorAll("[data-choice]")) {
+    option.setAttribute("aria-pressed", String(option === choice));
+  }
+  for (const outcome of screen.querySelectorAll("[data-outcome]")) {
+    outcome.hidden = outcome.dataset.outcome !== choice.dataset.choice;
+  }
+});
+document.querySelector("#close-notes").addEventListener("click", () => notes.close());
+document.querySelector("#full").addEventListener("click", toggleFullscreen);
+document.addEventListener("keydown", event => {
+  if (event.repeat || notes.open || event.target.closest("select, a") ||
+      event.ctrlKey || event.altKey || event.metaKey) return;
+  switch (event.key.toLowerCase()) {
+    case "arrowright":
+    case "pagedown":
+      event.preventDefault();
+      show(current + 1);
+      break;
+    case "arrowleft":
+    case "pageup":
+      event.preventDefault();
+      show(current - 1);
+      break;
+    case " ":
+      if (event.target.closest("button")) break;
+      event.preventDefault();
+      show(current + 1);
+      break;
+    case "f": toggleFullscreen(); break;
+    case "c": toggleLanguage(); break;
+    case "r": show(current); break;
+    case "n": openNotes(); break;
+  }
+});
+show(0);
+</script>
+</body>
+</html>
