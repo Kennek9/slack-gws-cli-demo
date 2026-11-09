@@ -260,7 +260,14 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 /* 06 Teams */
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, auto); gap: 0 1.5cqw; align-content: start; }
 .team-card { grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: .8cqw; padding: 1.1cqw 1.3cqw 1.2cqw; }
-.dept { font-size: 1cqw; font-weight: 650; color: var(--label); }
+.dept { display: flex; align-items: center; font-size: 1cqw; font-weight: 650; color: var(--label); }
+.team-grid.three { grid-template-columns: repeat(3, 1fr); gap: 0 1.8cqw; }
+.team-grid.three .team-q { font-size: 1.45cqw; }
+.team-grid.three .team-get { font-size: 1.28cqw; }
+.also { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1cqw 2cqw; margin-top: 1.6cqw; padding-top: 1.2cqw; border-top: var(--edge) solid var(--line-strong); }
+.safe { display: flex; align-items: center; gap: .5cqw; font-size: 1.15cqw; font-weight: 600; }
+.safe .ico { font-size: 1.4cqw; color: var(--orange); stroke-width: 2.4; }
+.also .asks { justify-content: flex-start; font-size: 1.02cqw; }
 .team-q { font-size: 1.3cqw; line-height: 1.24; }
 .team-q > span:first-child { font-family: var(--serif); }
 .team-row { padding-top: .7cqw; border-top: var(--edge) solid var(--line); }
@@ -568,7 +575,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
           <div class="out-next">
             <p class="k biline">B says three things <span class="cn" lang="zh-Hans">B 说清了三件事</span></p>
             <ol class="recipe">
-              <li><span class="n">1</span><span class="bi"><span lang="en">Who’s asking what</span><span class="cn" lang="zh-Hans">谁在问什么</span></span></li>
+              <li><span class="n">1</span><span class="bi"><span lang="en">The job</span><span class="cn" lang="zh-Hans">要办的事</span></span></li>
               <li><span class="n">2</span><span class="bi"><span lang="en">Where to read</span><span class="cn" lang="zh-Hans">读哪里</span></span></li>
               <li><span class="n">3</span><span class="bi"><span lang="en">What to give back</span><span class="cn" lang="zh-Hans">要什么结果</span></span></li>
             </ol>
@@ -618,6 +625,44 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
   </section>
 </template>
 
+<template id="more">
+  <section class="scene s-more warm" data-label="It can write and edit, too">
+    <header class="head arrive">
+      <p class="eyebrow biline">Not just replies <span class="cn" lang="zh-Hans">不只是回消息</span><span class="tag inline biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
+      <h1 class="bi"><span lang="en">It can write and edit, too.</span><span class="cn" lang="zh-Hans">它也能写、能改。</span></h1>
+    </header>
+    <div class="main">
+      <div class="team-grid three">
+        <article class="card team-card paper-in" style="--d:.2s">
+          <p class="dept biline">Write a doc <span class="cn" lang="zh-Hans">写文档</span><span class="tag biline">Anyone <span class="cn" lang="zh-Hans">人人</span></span></p>
+          <p class="team-q bi"><span lang="en">“Turn this thread into a doc.”</span><span class="cn" lang="zh-Hans">「把这串讨论写成文档。」</span></p>
+          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="write"></span></div>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">A new Google Doc: decisions, owners, open questions</span><span class="cn" lang="zh-Hans">一份新的 Google 文档：结论、负责人、待定问题</span></p></div>
+          <p class="team-copy" data-copy-pair="write"></p>
+        </article>
+        <article class="card team-card paper-in" style="--d:.35s">
+          <p class="dept biline">Edit a doc <span class="cn" lang="zh-Hans">改文档</span><span class="tag biline">Content <span class="cn" lang="zh-Hans">内容</span></span></p>
+          <p class="team-q bi"><span lang="en">“Apply the review comments.”</span><span class="cn" lang="zh-Hans">「按审阅意见改一版。」</span></p>
+          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="edit"></span></div>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">An edited copy, plus each change and its comment</span><span class="cn" lang="zh-Hans">改好的副本，附每处改动和对应评论</span></p></div>
+          <p class="team-copy" data-copy-pair="edit"></p>
+        </article>
+        <article class="card team-card paper-in" style="--d:.5s">
+          <p class="dept biline">Build from a spec <span class="cn" lang="zh-Hans">照规格开工</span><span class="tag biline">Engineering <span class="cn" lang="zh-Hans">研发</span></span></p>
+          <p class="team-q bi"><span lang="en">“Here’s the spec. Build it.”</span><span class="cn" lang="zh-Hans">「规格在这，照着做。」</span></p>
+          <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="build"></span></div>
+          <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Code and tests that follow the spec, plus open questions</span><span class="cn" lang="zh-Hans">照规格写好的代码和测试，附没写清的地方</span></p></div>
+          <p class="team-copy" data-copy-pair="build"></p>
+        </article>
+      </div>
+      <div class="also arrive" style="--d:.9s">
+        <p class="safe biline"><svg class="ico"><use href="#i-check"/></svg>Ask it to write to a new doc, a copy, or a new branch. You check, then share. <span class="cn" lang="zh-Hans">让它写在新文档、副本或新分支里，你看过再分享。</span></p>
+        <p class="asks"><span class="k biline">Also <span class="cn" lang="zh-Hans">还能</span></span><span class="pill biline">Find a doc in Drive <span class="cn" lang="zh-Hans">在 Drive 找文档</span></span><span class="pill biline">Check a sheet <span class="cn" lang="zh-Hans">核对表格</span></span><span class="pill biline">Sum up a channel <span class="cn" lang="zh-Hans">汇总一个频道</span></span><span class="pill biline">Prep for a meeting <span class="cn" lang="zh-Hans">会前准备</span></span></p>
+      </div>
+    </div>
+  </section>
+</template>
+
 <template id="decide">
   <section class="scene s-decide" data-label="Do you need the agent?">
     <header class="head arrive">
@@ -639,7 +684,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
       </li>
       <li class="rule is-agent arrive" style="--d:1.1s">
         <span class="rule-ico"><svg class="ico"><use href="#i-join"/></svg></span>
-        <span class="bi rule-if"><span lang="en">Need the chat and the doc together to answer or deliver?</span><span class="cn" lang="zh-Hans">要把讨论和文档合起来，才能回答或交付？</span></span>
+        <span class="bi rule-if"><span lang="en">Need what’s in Slack or a doc to answer, write or edit something?</span><span class="cn" lang="zh-Hans">要用群里或文档里的内容，来回答、写或改一件事？</span></span>
         <svg class="ico"><use href="#i-arrow"/></svg>
         <span class="bi rule-then"><span lang="en">Open your AI Agent.</span><span class="cn" lang="zh-Hans">打开 AI Agent。</span></span>
       </li>
@@ -648,14 +693,14 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 </template>
 
 <template id="close">
-  <section class="scene s-close warm" data-label="Try it on your next question">
+  <section class="scene s-close warm" data-label="Try it on one task this week">
     <header class="head arrive">
-      <p class="eyebrow biline">Try it this week <span class="cn" lang="zh-Hans">这周就试</span></p>
-      <h1 class="bi"><span lang="en">Try it on the next question you get.</span><span class="cn" lang="zh-Hans">下次有人来问，就试一次。</span></h1>
+      <p class="eyebrow biline">Start small <span class="cn" lang="zh-Hans">从小事开始</span></p>
+      <h1 class="bi"><span lang="en">Try it on one task this week.</span><span class="cn" lang="zh-Hans">这周挑一件事，试一次。</span></h1>
     </header>
     <div class="main close-main">
       <div class="paper-in" style="--d:.3s" data-agent="template" data-animate="chips"></div>
-      <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">lines to change <span class="cn" lang="zh-Hans">要改的句子</span></span><span class="pill biline">who to ask <span class="cn" lang="zh-Hans">该找谁</span></span></p>
+      <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">a new doc <span class="cn" lang="zh-Hans">一份新文档</span></span><span class="pill biline">an edited copy <span class="cn" lang="zh-Hans">改好的副本</span></span><span class="pill biline">who to ask <span class="cn" lang="zh-Hans">该找谁</span></span></p>
       <p class="setup-line arrive biline" style="--d:1.3s">First time? Set up slack and gws where your AI Agent runs, and sign in with your work account. <span class="cn" lang="zh-Hans">第一次用：先在 AI Agent 运行的地方装好两个工具，用工作账号登录。</span><button type="button" class="link-btn biline" data-open-notes>First-time setup <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
     </div>
   </section>
@@ -701,12 +746,30 @@ const prompts = {
     zh: "我打不开新铃铛提醒的数据看板。用 slack 找之前关于这个看板权限的讨论。谁负责开通？当时要提供什么？",
     chips: [{ icon: "search", en: "Nothing. slack searches", zh: "不用贴，让 slack 搜" }]
   },
+  write: {
+    name: "写文档：群讨论 → 新的 Google 文档",
+    en: "Use slack to read this thread. Write it up as a new Google Doc with gws: decisions, owners, and open questions. Send me the link.",
+    zh: "用 slack 读这串讨论。用 gws 新建一份 Google 文档，写清：结论、负责人、待定问题。把链接发我。",
+    chips: [{ ...chatLink, en: "Slack thread", zh: "群讨论", slotEn: "Thread", slotZh: "讨论" }]
+  },
+  edit: {
+    name: "改文档：按评论改一份副本",
+    en: "Use gws to read the comments on this doc. Make a copy and apply them there, not in the original. List each change and the comment it came from.",
+    zh: "用 gws 读这份文档里的评论。先复制一份，在副本里按评论修改，不动原文档。列出每处改动和对应的评论。",
+    chips: [{ ...docLink, en: "Google Doc with comments", zh: "带评论的文档", slotEn: "Doc", slotZh: "文档" }]
+  },
+  build: {
+    name: "研发：照规格开工",
+    en: "Use gws to read section 3.4 of this spec. On a new branch in this repo, build the bell alert and add tests. List anything the spec leaves open.",
+    zh: "用 gws 读这份规格的 3.4 节。在这个代码仓库新建分支，做出铃铛提醒并补上测试。列出规格没写清的地方。",
+    chips: [{ ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }]
+  },
   template: {
     name: "通用问法（把方括号换成你的内容）",
-    en: "[Who] is asking [question]. Use slack to read this update, and gws to check this doc. Give me [what you need], with sources.",
-    zh: "[谁]在问[问题]。用 slack 读这条更新，用 gws 对照这份文档。给我[要的结果]，附上来源。",
+    en: "[The job]. Use slack to read this thread, and gws to open this doc. Give me [what you want back], with sources.",
+    zh: "[要办的事]。用 slack 读这条消息，用 gws 打开这份文档。给我[要的结果]，附上来源。",
     chips: [
-      { ...chatLink, url: "", slot: true, en: "Paste a Slack link", zh: "贴 Slack 链接", slotEn: "Slack update", slotZh: "Slack 更新" },
+      { ...chatLink, url: "", slot: true, en: "Paste a Slack link", zh: "贴 Slack 链接", slotEn: "Slack message", slotZh: "Slack 消息" },
       { ...docLink, url: "", slot: true, en: "Paste a Google Doc link", zh: "贴 Google 文档链接", slotEn: "Doc", slotZh: "文档" }
     ]
   }
@@ -728,14 +791,14 @@ const setupSteps = [
   },
   {
     title: "gws · Google Workspace CLI",
-    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,docs", "gws auth status"],
-    en: "brew install googleworkspace-cli also works. Run gws auth setup only the first time; it needs gcloud. Without gcloud, follow the manual OAuth steps in the official guide. Add --readonly to the login line for read-only access.",
-    zh: "也可以用 brew install googleworkspace-cli 安装。gws auth setup 只在第一次运行，需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth。只想给读权限，登录那行加 --readonly。"
+    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,docs,sheets", "gws auth status"],
+    en: "brew install googleworkspace-cli also works. Run gws auth setup only the first time; it needs gcloud. Without gcloud, follow the manual OAuth steps in the official guide. Add --readonly to the login line if you only want it to read; writing or editing docs needs the login without it.",
+    zh: "也可以用 brew install googleworkspace-cli 安装。gws auth setup 只在第一次运行，需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth。只想让它读，登录那行加 --readonly；要让它写文档、改文档，就不要加。"
   },
   {
     title: "Checked · 已验证",
-    en: "On the presenter’s laptop, slack v4.11.0 read a message from its link and gws 0.22.5 read a Google Doc.",
-    zh: "讲者电脑上已验证：slack v4.11.0 能按消息链接读到群消息，gws 0.22.5 能读 Google 文档。"
+    en: "On the presenter’s laptop, slack v4.11.0 read a message from its link and gws 0.22.5 read a Google Doc. Writing to docs was not run in this check.",
+    zh: "讲者电脑上已验证：slack v4.11.0 能按消息链接读到群消息，gws 0.22.5 能读 Google 文档。写入文档这次没有实际运行。"
   }
 ];
 const setupLinks = [
@@ -774,13 +837,13 @@ const chapters = [
     tips: ["点回复下方的来源，会标出对应的那张资料卡。"]
   },
   {
-    id: "ab", stage: "how", time: "1:05–2:00",
-    say: ["先让大家选，再两个都点一下。", "A 只给背景，你还得追问「这一版到底在哪看」。B 说清了三件事：谁在问什么、读哪里、要什么结果，所以直接拿到能发的话。"],
+    id: "ab", stage: "how", time: "1:05–1:50",
+    say: ["先让大家选，再两个都点一下。", "A 只给背景，你还得追问「这一版到底在哪看」。B 说清了三件事：要办的事、读哪里、要什么结果，所以直接拿到能发的话。这三件事也是最后一页通用问法的骨架。"],
     facts: ["A 和 B 下方的结果都是演练示例，用来对比问法，不是 AI 的真实输出记录。"],
     requests: ["review"]
   },
   {
-    id: "team", stage: "when", time: "2:00–3:20",
+    id: "team", stage: "when", time: "1:50–2:40",
     say: ["同一个版本，四个部门。每张卡从上往下读：什么时候会遇到、贴什么、拿到什么。每张卡都能复制对应的问法。", "增长那张说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
     facts: [
       "口径：讲者的 Slack 账号能看到的公开频道和已加入的私有频道，2026-10-01 至 2026-11-09；不含私信、群私信，以及机器人、告警和测试频道。用 66 个中英文关键词检索，再逐条人工判断。同一话题串只算一次，同一人对同一件事的追问合并。",
@@ -794,12 +857,23 @@ const chapters = [
     requests: ["eng", "review", "content", "growth"]
   },
   {
-    id: "decide", stage: "when", time: "3:20–4:00",
-    say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；slack 可以帮你找到是谁。", "要把讨论和文档合起来，才能回答或交付一件事，再打开 AI Agent。"]
+    id: "more", stage: "when", time: "2:40–3:40",
+    say: ["不只是回消息，它也能动手写。把一串讨论写成新文档；按评论在副本里改文档；研发把规格链接交给能改代码的 AI Agent，让它照着做、补测试。", "让它写在新文档、副本或新分支里，原件不动。你看过再分享。下面一排是更多日常用法。"],
+    tips: ["写文档、改文档需要 gws 用可写的方式登录（不加 --readonly）。研发那张要在能改代码的 AI Agent 里用。"],
+    facts: [
+      "依据：检索范围内能看到这类工作（按工作场景归类，不计频率）。有人要把群里讨论整理成一张表或文档；会后把对齐结论同步成条目；内容团队的审阅意见写在 Google 文档里；翻译放在 Google 表格里，每种语言约 1,600 行。",
+      "能力核实：gws 0.22.5 有 docs documents get / create / batchUpdate、drive files copy / list、drive comments list、sheets +read、workflow +meeting-prep 等命令；讲者账号的 gws 已授权 documents 和 drive，Slack CLI 账号有读取和搜索权限。",
+      "这一幕的结果是演练示例。写入文档的操作这次没有在真实文档上运行。"
+    ],
+    requests: ["write", "edit", "build"]
   },
   {
-    id: "close", stage: "try", time: "4:00–5:00",
-    say: ["挑一个你这周要回的问题。把方括号换成你的内容，贴上两条链接。发出前，点开来源核对。"],
+    id: "decide", stage: "when", time: "3:40–4:10",
+    say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；slack 可以帮你找到是谁。", "要用群里或文档里的内容，来回答、写或改一件事，就打开 AI Agent。"]
+  },
+  {
+    id: "close", stage: "try", time: "4:10–5:00",
+    say: ["挑一件你这周要做的事：回一个问题、写一份文档、改一版文案都行。把方括号换成你的内容，贴上链接。发出或分享前，点开来源核对。"],
     tips: ["第一次用，可以在问法末尾加一句：「只读取，不要替我发消息。」"],
     requests: ["template"], setup: true
   }
