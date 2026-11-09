@@ -145,8 +145,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 /* 01 Opening */
 .s-open h1 { font-size: 4cqw; }
-.lede { margin-top: 1cqw; font-size: 1.5cqw; color: var(--muted); }
-.lede .cn { color: var(--cn); }
 .layers { display: flex; flex-direction: column; justify-content: flex-end; gap: .9cqw; margin-top: 2.2cqw; }
 .layer { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.2cqw 1.8cqw; border-radius: var(--r-lg); border: var(--edge) solid var(--line-strong); background: var(--card); box-shadow: var(--shadow); transform-origin: bottom; animation: rise .7s var(--ease) var(--d) both; }
 .layer .num { font-family: var(--serif); font-size: 3cqw; line-height: 1; color: var(--orange); }
@@ -347,7 +345,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
     <header class="head">
       <p class="eyebrow biline arrive"><span lang="en">Glorify · after the merger</span><span class="cn" lang="zh-Hans">合并之后</span></p>
       <h1 class="bi arrive" style="--d:.1s"><span lang="en">How we work together</span><span class="cn" lang="zh-Hans">合并后，我们怎么一起工作</span></h1>
-      <p class="lede bi arrive" style="--d:.25s"><span lang="en">Three layers. Each one stands on the one below.</span><span class="cn" lang="zh-Hans">分三层，下面一层是上面一层的基础。</span></p>
     </header>
     <ol class="main layers">
       <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Work with AI</span><span class="cn" lang="zh-Hans">用 AI 一起干活</span></span><span class="bi sub"><span lang="en">From finding info to finishing work</span><span class="cn" lang="zh-Hans">从查信息到完成工作</span></span></li>
@@ -668,7 +665,7 @@ const setupLinks = [
 
 const chapters = [
   { id: "opening", stage: -1, time: "0:00–0:20",
-    say: ["合并之后，我们先建立一套共同的工作方式，再逐步用 AI 提升协作效率。", "分三层：先找到彼此，再找到信息，最后让 AI 参与完成工作。下面一层是上面一层的基础。"] },
+    say: ["合并之后，我们先建立一套共同的工作方式，再逐步用 AI 提升协作效率。", "分三层：先找到彼此，再找到信息，最后让 AI 参与完成工作。"] },
   { id: "hours", stage: 0, time: "0:20–1:05",
     say: ["第一层，先让大家找到彼此。约定：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历里标明工作时间。", "表里高亮的是对方白天能用的时段。设置方法：电脑打开 Google 日历 → 设置 → 通用 → 工作时间（或「工作时间和地点」）→ 启用。找不到这个设置，反馈给 Operation Team。"],
     facts: ["时间按打开页面当天的北京日期换算，会自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
