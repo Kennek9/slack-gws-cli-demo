@@ -107,21 +107,13 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .also .k { color: var(--label); font-weight: 650; margin-right: .2cqw; }
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
-/* AI Agent composer */
-.agent { display: flex; flex-direction: column; background: var(--card); border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
-.agent-bar { display: flex; align-items: center; gap: .6cqw; min-height: 2.6cqw; padding: .45cqw 1.3cqw; border-bottom: var(--edge) solid var(--line); background: #fff5e8; font-size: .98cqw; font-weight: 650; }
-.agent-mark { display: inline-block; width: 1.05cqw; aspect-ratio: 1; flex: none; border-radius: 50%; background: radial-gradient(circle at 34% 32%, #ff9a63, var(--orange) 70%); }
-.agent-field { display: grid; grid-template-columns: 1fr auto; column-gap: 1.2cqw; padding: 1cqw 1.3cqw 1.05cqw; }
-.chips { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .55cqw; margin-bottom: .8cqw; }
-.chip { display: inline-flex; align-items: center; gap: .45cqw; padding: .38cqw .7cqw .38cqw .5cqw; border: var(--edge) solid #e3c4a4; border-radius: var(--r-sm); background: #fff0de; color: #5b3824; font-size: .95cqw; font-weight: 560; white-space: nowrap; }
-.chip .ico { font-size: 1.15cqw; color: var(--label); }
-.chip .url { font-family: var(--mono); font-size: .8cqw; font-weight: 400; color: #8b6c59; }
-.agent[data-animate] .chip { animation: chip-in .65s var(--ease) both; animation-delay: calc(.5s + var(--ci) * .35s); }
-@keyframes chip-in { from { opacity: 0; transform: translate(-4cqw, -1.4cqw) scale(.94); } }
-.prompt { font-family: var(--serif); font-size: 1.42cqw; line-height: 1.3; }
-.prompt .w { animation: w-in .14s linear backwards; animation-delay: calc(var(--t0) + var(--i) * var(--step)); }
-.send { align-self: end; width: 2.1cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-size: 1.1cqw; }
-.send .ico { stroke-width: 2.2; }
+/* Google Workspace CLI */
+.terminal { padding: 1cqw 1.3cqw 1.2cqw; }
+.terminal-title { color: var(--label); font-size: 1.05cqw; font-weight: 700; margin-bottom: .7cqw; }
+.terminal code { display: block; margin-top: .45cqw; color: #4d3323; font-size: 1.03cqw; line-height: 1.42; white-space: pre-wrap; overflow-wrap: anywhere; }
+.terminal-command { display: block; font-size: 1.2cqw; }
+.gws-caption { margin-top: .75cqw; font-size: 1.18cqw; }
+.gws-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1cqw; padding: .55cqw 0; border-top: var(--edge) solid var(--line); font-size: 1.22cqw; }
 
 /* Output cards */
 .out { padding: 1cqw 1.3cqw 1.15cqw; }
@@ -129,19 +121,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .out-head .ico { font-size: 1.25cqw; color: var(--label); }
 .out-text { font-size: 1.45cqw; line-height: 1.28; }
 .out-text > span:first-child { font-family: var(--serif); }
-.src { display: inline-flex; align-items: center; gap: .4cqw; margin-top: .7cqw; padding: .32cqw .65cqw; border: var(--edge) solid #e3c4a4; border-radius: var(--r-sm); background: #fff0de; color: #5b3824; font-size: .9cqw; font-weight: 600; }
-.src .ico { font-size: 1.05cqw; color: var(--label); }
-.grid-table { width: 100%; border-collapse: collapse; font-size: 1.12cqw; }
-.grid-table th, .grid-table td { padding: .45cqw .7cqw; border: var(--edge) solid var(--line); text-align: left; }
-.grid-table thead th { background: #fff2e1; color: var(--label); font-size: .95cqw; }
-.grid-table td.now { font-weight: 700; color: #6b3012; background: #fff4e6; }
-.duo-out { display: grid; grid-template-columns: 1.15fr 1fr; gap: 1.1cqw; }
-.doc-lines li { display: grid; grid-template-columns: 9.6cqw 1fr; gap: .7cqw; padding: .4cqw 0; border-top: var(--edge) dashed var(--line); font-size: 1.08cqw; line-height: 1.25; }
-.doc-lines li:first-child { border-top: 0; }
-.doc-lines .k { color: var(--label); font-weight: 650; }
-.draft { margin-top: .8cqw; padding: .8cqw 1cqw; border: var(--edge) dashed #d9a57f; border-radius: var(--r-md); background: #fffaf3; }
-.draft .bi, .draft-text { font-size: 1.1cqw; line-height: 1.3; }
-.wait { display: inline-flex; align-items: center; gap: .4em; margin-top: .55cqw; color: var(--label); font-size: .92cqw; font-weight: 650; }
 
 /* 01 Opening */
 .s-open h1 { font-size: 4cqw; }
@@ -226,19 +205,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .rules .bi .how { display: block; margin-top: .3cqw; font-size: 1.02cqw; font-weight: 400; color: var(--muted); }
 
 /* 06 Permissions */
-.perm { width: 100%; border-collapse: separate; border-spacing: 0; overflow: hidden; }
-.perm th, .perm td { padding: .85cqw 1.3cqw; border-bottom: var(--edge) solid var(--line); text-align: left; vertical-align: top; font-size: 1.25cqw; line-height: 1.28; }
-.perm tr:last-child > * { border-bottom: 0; }
-.perm thead th { background: #fff2e1; font-size: 1.3cqw; }
-.perm thead th .sub { display: block; margin-top: .2cqw; font-size: .95cqw; font-weight: 400; color: var(--muted); }
-.perm thead th .h { display: flex; align-items: center; gap: .6cqw; }
-.perm thead .tav { width: 2.1cqw; font-size: .9cqw; }
-.perm tbody th { width: 22%; color: var(--label); font-size: 1.1cqw; font-weight: 650; }
-.perm td.yes { background: #fff8ef; }
-.perm td b { font-weight: 700; }
-.perm-rule { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2cqw; margin-top: 1.2cqw; }
-.perm-rule p { display: flex; gap: .7cqw; align-items: baseline; padding: .9cqw 1.2cqw; border-radius: var(--r-md); background: #fff2e2; border: var(--edge) solid #e3a678; font-size: 1.3cqw; font-weight: 650; line-height: 1.28; }
-.perm-rule .ico { color: var(--orange); font-size: 1.3cqw; transform: translateY(.15cqw); }
 
 /* 10 Close */
 .start { display: grid; gap: 1cqw; align-content: start; }
@@ -301,8 +267,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   .card, .before, .out, .thread, .use, .rule-card, .table-card { padding: 10px; }
   .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
   .use-foot { display: grid; gap: 10px; }
-  .agent-bar, .agent-field { padding: 8px 10px; }
-  .send, .agent-mark, .tav, .use-ico, .rules .n { width: 22px; }
+  .tav, .use-ico, .rules .n { width: 22px; }
   .rules li, .doc-lines li, .tmsg, .ba-line { grid-template-columns: 28px 1fr; gap: 6px; }
   .ba-line { grid-template-columns: 1fr; }
 }
@@ -347,7 +312,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
       <h1 class="bi arrive" style="--d:.1s"><span lang="en">How we work together</span><span class="cn" lang="zh-Hans">合并后，我们怎么一起工作</span></h1>
     </header>
     <ol class="main layers">
-      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Work with AI</span><span class="cn" lang="zh-Hans">用 AI 一起干活</span></span><span class="bi sub"><span lang="en">From finding info to finishing work</span><span class="cn" lang="zh-Hans">从查信息到完成工作</span></span></li>
+      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Use Google Workspace CLI</span><span class="cn" lang="zh-Hans">使用 Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Use Google Workspace from the terminal</span><span class="cn" lang="zh-Hans">在终端里使用 Google Workspace</span></span></li>
       <li class="layer l2" style="--d:.95s"><span class="num">2</span><span class="bi"><span lang="en">Find information</span><span class="cn" lang="zh-Hans">找到信息</span></span><span class="bi sub"><span lang="en">Ask Tada · keep work searchable</span><span class="cn" lang="zh-Hans">问 Tada · 信息能被搜到</span></span></li>
       <li class="layer l1" style="--d:.6s"><span class="num">1</span><span class="bi"><span lang="en">Find each other</span><span class="cn" lang="zh-Hans">找到彼此</span></span><span class="bi sub"><span lang="en">Working hours on the calendar</span><span class="cn" lang="zh-Hans">日历里标好工作时间</span></span></li>
     </ol>
@@ -476,113 +441,81 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   </section>
 </template>
 
-<template id="permissions">
-  <section class="scene s-perm" data-label="Who can find what · 谁能搜到什么">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Your agent and Tada see different things</span><span class="cn" lang="zh-Hans">个人 Agent 和 Tada，看到的不一样</span></h1></header>
-    <div class="main">
-      <table class="card perm paper-in" style="--d:.2s">
-        <thead><tr>
-          <th scope="col"></th>
-          <th scope="col"><span class="h"><span class="agent-mark" aria-hidden="true"></span><span class="biline"><span lang="en">Your personal agent</span><span class="cn" lang="zh-Hans">你的个人 Agent</span></span></span><span class="sub biline"><span lang="en">Signs in to Slack as you</span><span class="cn" lang="zh-Hans">用你本人的 Slack 登录</span></span></th>
-          <th scope="col"><span class="h"><span class="tav bot" aria-hidden="true">T</span><span class="biline"><span lang="en">Tada</span><span class="cn" lang="zh-Hans">Tada</span></span></span><span class="sub biline"><span lang="en">Team bot in Slack</span><span class="cn" lang="zh-Hans">Slack 里的团队机器人</span></span></th>
-        </tr></thead>
-        <tbody>
-          <tr><th scope="row" class="biline"><span lang="en">Public channels</span><span class="cn" lang="zh-Hans">公开频道</span></th><td class="yes biline"><span lang="en"><b>All.</b> No need to join.</span><span class="cn" lang="zh-Hans"><b>全部能搜</b>，不用加入</span></td><td class="biline"><span lang="en">Only channels Tada is in</span><span class="cn" lang="zh-Hans">只限加入了 Tada 的频道</span></td></tr>
-          <tr><th scope="row" class="biline"><span lang="en">Private groups</span><span class="cn" lang="zh-Hans">私密群</span></th><td class="biline"><span lang="en">Only ones you’re in</span><span class="cn" lang="zh-Hans">你在的群才能搜</span></td><td class="biline"><span lang="en">Only if Tada is added</span><span class="cn" lang="zh-Hans">加入 Tada 才行</span></td></tr>
-          <tr><th scope="row" class="biline"><span lang="en">DMs</span><span class="cn" lang="zh-Hans">私信</span></th><td class="biline"><span lang="en">Your own DMs</span><span class="cn" lang="zh-Hans">你自己的私信</span></td><td class="biline"><span lang="en">Only DMs with Tada</span><span class="cn" lang="zh-Hans">只有和 Tada 的私聊</span></td></tr>
-          <tr><th scope="row" class="biline"><span lang="en">Older messages</span><span class="cn" lang="zh-Hans">以前的消息</span></th><td class="yes biline"><span lang="en">Same as your Slack search</span><span class="cn" lang="zh-Hans">和你在 Slack 里搜的一样</span></td><td class="biline"><span lang="en">From when Tada joined</span><span class="cn" lang="zh-Hans">从 Tada 加入后开始</span></td></tr>
-          <tr><th scope="row" class="biline"><span lang="en">Who sees the answer</span><span class="cn" lang="zh-Hans">谁看到回答</span></th><td class="biline"><span lang="en">Only you</span><span class="cn" lang="zh-Hans">只有你</span></td><td class="yes biline"><span lang="en">Everyone in that channel</span><span class="cn" lang="zh-Hans">这个频道里的人</span></td></tr>
-        </tbody>
-      </table>
-      <div class="perm-rule arrive" style="--d:.7s">
-        <p><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">Just for you? Ask your agent.</span><span class="cn" lang="zh-Hans">只关乎你自己的，问个人 Agent。</span></span></p>
-        <p><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">For the team? Ask Tada in the channel.</span><span class="cn" lang="zh-Hans">要团队共享的答案，在频道里问 Tada。</span></span></p>
-      </div>
-    </div>
-  </section>
-</template>
 
-<template id="google">
-  <section class="scene s-google" data-label="Connect Google · 连接 Google">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Connect Google: a spec becomes a sheet</span><span class="cn" lang="zh-Hans">连上 Google：规格变成表格</span></h1></header>
+<template id="gws-setup">
+  <section class="scene s-google" data-label="Set up gws · 安装和登录">
+    <header class="head arrive"><h1 class="bi"><span lang="en">Google Workspace CLI: get started</span><span class="cn" lang="zh-Hans">Google Workspace CLI：开始使用</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></p>
-        <p class="bi"><span lang="en">Open the spec. Copy each item into a table by hand.</span><span class="cn" lang="zh-Hans">打开规格，一条条手动抄成表。</span></p>
+        <p class="ba-k biline"><span lang="en">One-time setup</span><span class="cn" lang="zh-Hans">首次配置</span></p>
+        <p class="bi"><span lang="en">Install gws, then sign in with your work account.</span><span class="cn" lang="zh-Hans">安装 gws，然后用工作账号登录。</span></p>
       </div>
       <div class="after-col">
-        <div class="paper-in" style="--d:.3s" data-agent="google" data-animate="full"></div>
-        <div class="card out unfold" style="--d:2.9s">
-          <p class="out-head"><svg class="ico"><use href="#i-sheet"/></svg><span class="biline"><span lang="en">New Google Sheet · Friend-request alerts</span><span class="cn" lang="zh-Hans">新的 Google 表格 · 好友请求提醒</span></span><span class="tag biline"><span lang="en">Practice example</span><span class="cn" lang="zh-Hans">演练示例</span></span></p>
-          <table class="grid-table">
-            <thead><tr><th class="biline"><span lang="en">Alert</span><span class="cn" lang="zh-Hans">提醒入口</span></th><th class="biline"><span lang="en">Scope</span><span class="cn" lang="zh-Hans">范围</span></th><th class="biline"><span lang="en">Section</span><span class="cn" lang="zh-Hans">章节</span></th></tr></thead>
-            <tbody>
-              <tr><td class="biline"><span lang="en">Request list</span><span class="cn" lang="zh-Hans">申请列表</span></td><td class="biline"><span lang="en">Already live</span><span class="cn" lang="zh-Hans">已上线</span></td><td>§3.1</td></tr>
-              <tr><td class="biline"><span lang="en">In-app bell</span><span class="cn" lang="zh-Hans">App 内铃铛</span></td><td class="now biline"><span lang="en">This release</span><span class="cn" lang="zh-Hans">本期</span></td><td>§3.4</td></tr>
-              <tr><td class="biline"><span lang="en">Phone push</span><span class="cn" lang="zh-Hans">系统推送</span></td><td class="biline"><span lang="en">Later</span><span class="cn" lang="zh-Hans">后续</span></td><td>§3.4</td></tr>
-            </tbody>
-          </table>
+        <div class="card terminal paper-in" style="--d:.3s">
+          <p class="terminal-title biline"><span lang="en">Terminal</span><span class="cn" lang="zh-Hans">终端</span></p>
+          <code>npm install -g @googleworkspace/cli</code>
+          <code>gws auth setup</code>
+          <code>gws auth login -s drive,calendar --readonly</code>
+        </div>
+        <div class="card out unfold" style="--d:2.3s">
+          <p class="out-head biline"><span lang="en">Check your sign-in</span><span class="cn" lang="zh-Hans">检查登录状态</span></p>
+          <code class="terminal-command">gws auth status</code>
+          <p class="bi gws-caption"><span lang="en">Run this after signing in to check the account and permissions.</span><span class="cn" lang="zh-Hans">登录后运行，检查账号和权限。</span></p>
         </div>
       </div>
     </div>
-    <p class="also arrive" style="--d:3.4s"><span class="k biline"><span lang="en">Also</span><span class="cn" lang="zh-Hans">还能</span></span><span class="pill biline"><span lang="en">Find docs</span><span class="cn" lang="zh-Hans">查资料</span></span><span class="pill biline"><span lang="en">Create docs</span><span class="cn" lang="zh-Hans">建文档</span></span><span class="pill biline"><span lang="en">Build sheets</span><span class="cn" lang="zh-Hans">做表</span></span><span class="pill biline"><span lang="en">Draw charts</span><span class="cn" lang="zh-Hans">画图</span></span><span class="pill biline"><span lang="en">Read connected data</span><span class="cn" lang="zh-Hans">读已接通的数据</span></span></p>
+    <p class="foot biline"><span lang="en">This setup uses Node.js and gcloud. See the guide for other setup options.</span><span class="cn" lang="zh-Hans">此方式需要 Node.js 和 gcloud；其他配置方式见官方说明。</span></p>
   </section>
 </template>
 
-<template id="slack">
-  <section class="scene s-slack warm" data-label="Connect Slack · 连接 Slack">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Connect Slack: find the decision</span><span class="cn" lang="zh-Hans">连上 Slack：找回决定</span></h1></header>
+<template id="gws-agenda">
+  <section class="scene s-slack warm" data-label="Today’s meetings · 查看今日日程">
+    <header class="head arrive"><h1 class="bi"><span lang="en">What’s on my calendar today?</span><span class="cn" lang="zh-Hans">我今天有哪些会议？</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></p>
-        <p class="bi"><span lang="en">Scroll channels to find who decided what, and when.</span><span class="cn" lang="zh-Hans">翻频道，找谁在什么时候定了什么。</span></p>
+        <p class="ba-k biline"><span lang="en">Use it when</span><span class="cn" lang="zh-Hans">什么时候用</span></p>
+        <p class="bi"><span lang="en">You want today’s meetings in one view.</span><span class="cn" lang="zh-Hans">想快速看今天的会议安排。</span></p>
       </div>
       <div class="after-col">
-        <div class="paper-in" style="--d:.3s" data-agent="slack" data-animate="full"></div>
-        <div class="card out unfold" style="--d:2.9s">
-          <p class="out-head"><span class="agent-mark" aria-hidden="true"></span><span class="biline"><span lang="en">Answer</span><span class="cn" lang="zh-Hans">回答</span></span><span class="tag biline"><span lang="en">Practice example</span><span class="cn" lang="zh-Hans">演练示例</span></span></p>
-          <p class="out-text bi"><span lang="en">This release adds the in-app bell alert. Phone push comes later.</span><span class="cn" lang="zh-Hans">这期加 App 内铃铛提醒，系统推送后续再做。</span></p>
-          <p class="src"><svg class="ico"><use href="#i-chat"/></svg>Slack · #release-review · Nov 4</p>
-          <div class="draft">
-            <p class="bi"><span lang="en">Draft reply to Mia: “Bell alert ships this release; push comes later. Source attached.”</span><span class="cn" lang="zh-Hans">给 Mia 的回复草稿：「这期上铃铛提醒，推送后续做，附来源。」</span></p>
-            <p class="wait biline"><svg class="ico"><use href="#i-clock"/></svg><span lang="en">Waiting for you to send</span><span class="cn" lang="zh-Hans">等你确认再发</span></p>
-          </div>
+        <div class="card terminal paper-in" style="--d:.3s">
+          <p class="terminal-title biline"><span lang="en">In your terminal</span><span class="cn" lang="zh-Hans">在终端输入</span></p>
+          <code>gws calendar +agenda --today --calendar primary --format table</code>
+        </div>
+        <div class="card out unfold" style="--d:2.3s">
+          <p class="out-head biline"><span lang="en">Information returned · example</span><span class="cn" lang="zh-Hans">返回信息示意</span></p>
+          <div class="gws-row"><span>09:30</span><span class="biline"><span lang="en">Team sync</span><span class="cn" lang="zh-Hans">团队同步</span></span></div>
+          <div class="gws-row"><span>14:00</span><span class="biline"><span lang="en">Product review</span><span class="cn" lang="zh-Hans">产品评审</span></span></div>
         </div>
       </div>
     </div>
-    <p class="also arrive" style="--d:3.4s"><span class="k biline"><span lang="en">Also</span><span class="cn" lang="zh-Hans">还能</span></span><span class="pill biline"><span lang="en">Search chat history</span><span class="cn" lang="zh-Hans">查聊天记录</span></span><span class="pill biline"><span lang="en">Trace decisions</span><span class="cn" lang="zh-Hans">追溯决定</span></span><span class="pill biline"><span lang="en">Answer questions</span><span class="cn" lang="zh-Hans">回答问题</span></span><span class="pill biline"><span lang="en">Draft messages, you send</span><span class="cn" lang="zh-Hans">起草消息，你来发</span></span></p>
+    <p class="foot biline"><span lang="en">Read-only · Uses your signed-in account’s calendar.</span><span class="cn" lang="zh-Hans">只读 · 查看当前登录账号的日历。</span></p>
   </section>
 </template>
 
-<template id="both">
-  <section class="scene s-both" data-label="Slack + Google · 跨工具完成一件事">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Both together: one task, start to finish</span><span class="cn" lang="zh-Hans">两边一起：一件事从头做完</span></h1></header>
+<template id="gws-drive">
+  <section class="scene s-both" data-label="Find files · 查找文件">
+    <header class="head arrive"><h1 class="bi"><span lang="en">Find recently updated files</span><span class="cn" lang="zh-Hans">找到最近更新的文件</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></p>
-        <p class="bi"><span lang="en">Open both. Compare. Write the brief. Then write the channel post.</span><span class="cn" lang="zh-Hans">两边都打开，对照，写评审说明，再写群消息。</span></p>
+        <p class="ba-k biline"><span lang="en">Use it when</span><span class="cn" lang="zh-Hans">什么时候用</span></p>
+        <p class="bi"><span lang="en">You want to see what changed in Drive.</span><span class="cn" lang="zh-Hans">想看看云盘里最近更新了什么。</span></p>
       </div>
       <div class="after-col">
-        <div class="paper-in" style="--d:.3s" data-agent="both" data-animate="full"></div>
-        <div class="duo-out">
-          <div class="card out unfold" style="--d:2.9s">
-            <p class="out-head"><svg class="ico"><use href="#i-doc"/></svg><span class="biline"><span lang="en">New Google Doc · Review brief</span><span class="cn" lang="zh-Hans">新 Google 文档 · 评审说明</span></span></p>
-            <ul class="doc-lines">
-              <li><span class="k biline"><span lang="en">Today</span><span class="cn" lang="zh-Hans">现在</span></span><span class="biline"><span lang="en">Request list</span><span class="cn" lang="zh-Hans">申请列表</span></span></li>
-              <li><span class="k biline"><span lang="en">This release</span><span class="cn" lang="zh-Hans">本期</span></span><span class="biline"><span lang="en"><mark style="--md:3.6s">In-app bell alert</mark></span><span class="cn" lang="zh-Hans"><mark style="--md:3.6s">App 内铃铛提醒</mark></span></span></li>
-              <li><span class="k biline"><span lang="en">Later</span><span class="cn" lang="zh-Hans">后续</span></span><span class="biline"><span lang="en">Phone push</span><span class="cn" lang="zh-Hans">系统推送</span></span></li>
-              <li><span class="k biline"><span lang="en">Sources</span><span class="cn" lang="zh-Hans">来源</span></span><span>Slack · Spec §3.4</span></li>
-            </ul>
-          </div>
-          <div class="card out unfold" style="--d:3.3s">
-            <p class="out-head"><svg class="ico"><use href="#i-chat"/></svg><span class="biline"><span lang="en">Draft post · #release-review</span><span class="cn" lang="zh-Hans">群消息草稿 · #release-review</span></span></p>
-            <p class="bi draft-text"><span lang="en">“Review brief is ready: bell alert this release, push later. Doc attached.”</span><span class="cn" lang="zh-Hans">「评审说明已整理：这期上铃铛提醒，推送后续做，文档见附件。」</span></p>
-            <p class="wait biline"><svg class="ico"><use href="#i-clock"/></svg><span lang="en">Waiting for you to send</span><span class="cn" lang="zh-Hans">等你确认再发</span></p>
-          </div>
+        <div class="card terminal paper-in" style="--d:.3s">
+          <p class="terminal-title biline"><span lang="en">In your terminal</span><span class="cn" lang="zh-Hans">在终端输入</span></p>
+          <code>gws drive files list --format table \</code>
+          <code>  --params '{"pageSize":5,</code>
+          <code>  "orderBy":"modifiedTime desc",</code>
+          <code>  "fields":"files(name,modifiedTime)"}'</code>
+        </div>
+        <div class="card out unfold" style="--d:2.3s">
+          <p class="out-head biline"><span lang="en">Information returned · example</span><span class="cn" lang="zh-Hans">返回信息示意</span></p>
+          <div class="gws-row"><span>Review notes</span><span class="biline"><span lang="en">2026-11-09T08:15:00Z</span><span class="cn" lang="zh-Hans">示例修改时间</span></span></div>
+          <div class="gws-row"><span>Launch checklist</span><span class="biline"><span lang="en">2026-11-08T10:30:00Z</span><span class="cn" lang="zh-Hans">示例修改时间</span></span></div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Practice example · Check the draft and sources before sharing.</span><span class="cn" lang="zh-Hans">演练示例 · 分享前核对草稿和来源。</span></p>
+    <p class="foot biline"><span lang="en">Lists up to five files your account can access.</span><span class="cn" lang="zh-Hans">最多列出当前账号可访问的 5 个文件。</span></p>
   </section>
 </template>
 
@@ -592,15 +525,13 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
     <ol class="main start">
       <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en">Today</span><span class="cn" lang="zh-Hans">今天</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
       <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en">After this meeting</span><span class="cn" lang="zh-Hans">会后</span></span><span class="bi"><span lang="en">Ask Tada one real question.</span><span class="cn" lang="zh-Hans">问 Tada 一个手头的真实问题。</span></span></span><a class="guide ghost biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada guide ↗</span><span class="cn" lang="zh-Hans">中英教程</span></a></li>
-      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en">This week</span><span class="cn" lang="zh-Hans">这周</span></span><span class="bi"><span lang="en">Connect your agent to Slack and Google. Try one task.</span><span class="cn" lang="zh-Hans">让个人 Agent 接通 Slack 和 Google，做一件事。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Setup + prompts</span><span class="cn" lang="zh-Hans">安装和问法</span></button></li>
+      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en">This week</span><span class="cn" lang="zh-Hans">这周</span></span><span class="bi"><span lang="en">Set up gws and try one command.</span><span class="cn" lang="zh-Hans">安装并登录 gws，试一条命令。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Setup + commands</span><span class="cn" lang="zh-Hans">安装和命令</span></button></li>
     </ol>
   </section>
 </template>
 
 <script>
 const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
-const chatLink = { icon: "chat", url: "slack.com/archives/…", linkEn: "Slack message link", linkZh: "Slack 消息链接" };
-const docLink = { icon: "doc", url: "docs.google.com/…", linkEn: "Google Doc link", linkZh: "Google 文档链接" };
 const prompts = {
   tada: {
     name: "问 Tada：找一份公司资料",
@@ -608,26 +539,17 @@ const prompts = {
     zh: "@Tada 北京办公室的入职指南在哪？给我原文链接。",
     chips: []
   },
-  google: {
-    name: "连接 Google：规格 → 表格",
-    en: "Read this spec. Make a new Google Sheet: each friend-request alert, this release or later, with its section.",
-    zh: "读这份规格，新建一张 Google 表格：列出好友请求的每个提醒入口，标本期或后续，注明章节。",
-    chips: [{ ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }]
+  gwsAgenda: {
+    name: "查看今天的日程",
+    en: "gws calendar +agenda --today --calendar primary --format table",
+    zh: "gws calendar +agenda --today --calendar primary --format table",
+    chips: []
   },
-  slack: {
-    name: "连接 Slack：找回决定",
-    en: "Search Slack for the latest decision on friend-request alerts. What’s in this release? Link the message, then draft a reply to Mia. Don’t send it.",
-    zh: "在 Slack 里找好友请求提醒的最新决定。这期做什么？附原消息链接，再起草一条给 Mia 的回复，先别发。",
-    chips: [{ icon: "search", en: "slack searches for you", zh: "让 slack 去搜" }]
-  },
-  both: {
-    name: "跨工具：Slack + Google → 评审说明和群消息",
-    en: "Compare this Slack update with the spec. Write a review brief in a new Google Doc with both sources. Then draft a channel post. Wait for me before sending.",
-    zh: "对照这条 Slack 更新和规格，新建一份评审说明文档，附两处来源；再起草一条群消息，等我确认再发。",
-    chips: [
-      { ...chatLink, en: "Slack update", zh: "群里更新", slotEn: "Slack update", slotZh: "Slack 更新" },
-      { ...docLink, en: "Spec · Google Doc", zh: "规格文档", slotEn: "Spec", slotZh: "规格" }
-    ]
+  gwsDrive: {
+    name: "查找最近更新的文件",
+    en: `gws drive files list --params '{"pageSize":5,"fields":"files(name,modifiedTime)","orderBy":"modifiedTime desc"}' --format table`,
+    zh: `gws drive files list --params '{"pageSize":5,"fields":"files(name,modifiedTime)","orderBy":"modifiedTime desc"}' --format table`,
+    chips: []
   }
 };
 
@@ -638,34 +560,20 @@ const setupSteps = [
     zh: "在 Tada 所在的频道里 @Tada，或私聊 Tada。要读自己的 Drive 文件：Tada 主页 → 打开我的工作台 → Google Drive → 连接，选和 Slack 邮箱一致的公司账号，再在私聊里发 Drive: 加链接。没回复，找 Ken。"
   },
   {
-    title: "Personal agent · 装在哪里",
-    en: "Install the two tools where your AI Agent runs: your laptop, or the agent’s cloud workspace. Sign in with your work account. The agent can only read what that account can see.",
-    zh: "两个工具都装在 AI Agent 运行的地方：你自己的电脑，或 Agent 用的云端环境。用工作账号登录。AI Agent 只能读到这个账号看得到的内容。"
-  },
-  {
-    title: "slack · Slack CLI",
-    cmds: ["curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash", "slack login", "slack auth list"],
-    en: "This install line is for Mac and Linux; for Windows, see the official guide below. After slack login, post the /slackauthticket line it shows in any Slack chat, approve, and paste the code back. When slack auth list shows our workspace, you are set.",
-    zh: "第一行是 Mac / Linux 的安装命令，Windows 见下方官方说明。运行 slack login 后，把终端给出的 /slackauthticket 那行发到 Slack 任意对话，确认后把挑战码贴回终端。slack auth list 能看到工作区，就装好了。"
-  },
-  {
     title: "gws · Google Workspace CLI",
-    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,docs,sheets", "gws auth status"],
-    en: "brew install googleworkspace-cli also works. Run gws auth setup only the first time; it needs gcloud. Without gcloud, follow the manual OAuth steps in the official guide. Add --readonly to the login line if you only want it to read; creating or editing files needs the login without it.",
-    zh: "也可以用 brew install googleworkspace-cli 安装。gws auth setup 只在第一次运行，需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth。只想让它读，登录那行加 --readonly；要让它建表、写文档，就不要加。"
+    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,calendar --readonly", "gws auth status"],
+    en: "This example uses Node.js and gcloud. Setup configures a Google Cloud project and OAuth client. Without gcloud, follow the manual OAuth steps in the official guide. This login requests read-only access to Drive and Calendar.",
+    zh: "此示例需要 Node.js 和 gcloud。setup 会配置 Google Cloud 项目和 OAuth 客户端；没有 gcloud 就按官方说明手动配置。这里登录时只申请 Drive 和 Calendar 的只读权限。"
   }
 ];
 const setupLinks = [
   ["Tada · 中英教程（公司账号）", guideUrl],
-  ["Slack CLI · Install on Mac / Linux", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/"],
-  ["Slack CLI · Install on Windows", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/"],
-  ["Slack CLI · Sign in", "https://docs.slack.dev/tools/slack-cli/guides/authorizing-the-slack-cli/"],
   ["gws · Install and sign in", "https://github.com/googleworkspace/cli#installation"]
 ];
 
 const chapters = [
   { id: "opening", stage: -1, time: "0:00–0:20",
-    say: ["合并之后，我们先建立一套共同的工作方式，再逐步用 AI 提升协作效率。", "分三层：先找到彼此，再找到信息，最后让 AI 参与完成工作。"] },
+    say: ["合并之后，我们先建立一套共同的工作方式，再再学习用命令访问 Google Workspace。", "分三层：先找到彼此，再找到信息，最后学习如何使用 Google Workspace CLI。"] },
   { id: "hours", stage: 0, time: "0:20–1:05",
     say: ["第一层，先让大家找到彼此。约定：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历里标明工作时间。", "表里高亮的是对方白天能用的时段。设置方法：电脑打开 Google 日历 → 设置 → 通用 → 工作时间（或「工作时间和地点」）→ 启用。找不到这个设置，反馈给 Operation Team。"],
     facts: ["时间按打开页面当天的北京日期换算，会自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
@@ -679,28 +587,21 @@ const chapters = [
   { id: "searchable", stage: 1, time: "2:20–2:55",
     say: ["要让人和工具都找得到，信息得先放在找得到的地方。", "三条约定：日常业务讨论放公开频道；非必要不建私密群；新频道如果大家会在里面问问题，就把 Tada 加进来，并告诉 Ken 开启。"],
     facts: ["Tada 只能看到它所在频道里的消息；在群里回答时只用本群内容和公司资料，不会带入私聊或其他群的内容。"] },
-  { id: "permissions", stage: 1, time: "2:55–3:40",
-    say: ["两种工具的权限不一样。个人 Agent 用你本人的 Slack 登录：公开频道不用加入就能搜，私密群要你在里面，私信只有你自己的，答案只有你看到。", "Tada 是团队机器人：只读它被加进去的频道，从加入后开始积累；在频道里问，频道里的人都看得到。所以，只关乎你自己的问个人 Agent，要团队共享的答案在频道里问 Tada。"],
-    facts: [
-      "个人 Agent：讲者的 Slack CLI 账号能搜索并读取自己没有加入的公开频道；搜索结果里的私密频道都是讲者所在的群。这和 Slack 本身的搜索范围一致。",
-      "Tada：Slack 机器人只能收到它所在频道的消息。目前 Tada 已加入 11 个群和 46 个私聊。设计说明写明：从开启后收到的新消息开始积累，不批量补历史；原始聊天正文 30 天后清理，保留提炼出的决定、原因和负责人；群里回答只用本群内容。",
-      "新频道接入 Tada：频道详情 → 集成 → 添加应用。是否开始整理群里的讨论，由 Tada 管理员开启。"
-    ] },
-  { id: "google", stage: 2, time: "3:40–4:20",
-    say: ["第三层，AI 从查信息走到动手做。先连 Google：给它一份规格，让它新建表格，标出本期和后续，并注明章节。", "同样的连接还能查资料、建文档、做表、画图、读已经接通的数据。"],
-    facts: ["这一页的结果是演练示例。gws 有新建表格、写文档、读文档的命令；写入需要不带 --readonly 登录。"],
-    prompts: ["google"] },
-  { id: "slack", stage: 2, time: "4:20–5:00",
-    say: ["再连 Slack：让它在 Slack 里找到决定，附上原消息链接。", "它也能帮你起草回复，但发出前由你确认。"],
-    facts: ["这一页的结果是演练示例。讲者的 Slack CLI 账号有搜索、读取和发消息权限；演示里一律先起草，由本人确认再发。"],
-    prompts: ["slack"] },
-  { id: "both", stage: 2, time: "5:00–5:50",
-    say: ["两边一起：对照 Slack 更新和规格，生成一份评审说明文档，再起草一条群消息。一件事从头到尾串起来。", "分享前核对草稿和来源。"],
-    prompts: ["both"] },
-  { id: "close", stage: -1, time: "5:50–6:20",
-    say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周让个人 Agent 接通 Slack 和 Google，挑一件事试试。", "安装步骤和可复制的问法，点最后一个按钮。"] }
+  { id: "gws-setup", stage: 2, time: "2:55–3:45",
+    say: ["第三层，介绍 Google Workspace CLI。先在终端安装 gws，再配置并使用工作账号登录。", "这里申请 Drive 和 Calendar 的只读权限。运行 gws auth status 查看登录状态。"],
+    facts: ["gws auth setup 需要 gcloud，会配置 Google Cloud 项目和 OAuth 客户端。没有 gcloud 可按官方文档手动配置。"] },
+  { id: "gws-agenda", stage: 2, time: "3:45–4:30",
+    say: ["第一个例子：在终端运行这条命令，查看今天主日历里的会议。", "画面里的两场会议是示例，实际结果取决于自己的日历。"],
+    facts: ["命令只读取 primary 日历，默认使用当前 Google 账号的时区。"],
+    prompts: ["gwsAgenda"] },
+  { id: "gws-drive", stage: 2, time: "4:30–5:15",
+    say: ["第二个例子：查看账号可访问的最近更新文件，最多列五个。", "画面是示例结果，可以复制命令在自己的账号中试。"],
+    facts: ["Drive API 的结果取决于账号权限；命令按修改时间降序返回文件名和修改时间。"],
+    prompts: ["gwsDrive"] },
+  { id: "close", stage: -1, time: "5:15–5:40",
+    say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周安装并登录 gws，试一条命令。", "安装步骤和可复制的命令，点最后一个按钮。"] }
 ];
-const stages = [["Find each other", "找到彼此"], ["Find information", "找到信息"], ["Work with AI", "用 AI 干活"]];
+const stages = [["Find each other", "找到彼此"], ["Find information", "找到信息"], ["Use Google Workspace CLI", "使用 Google Workspace CLI"]];
 
 const presenter = document.querySelector("#presenter");
 const screen = document.querySelector("#screen");
@@ -715,30 +616,6 @@ let current = 0;
 
 function icon(name) {
   return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-}
-function words(text, lang, animate) {
-  const pattern = lang === "en" ? /\s+|[^\s]+/g : /[A-Za-z@]+|\s+|[^\sA-Za-z@]{1,2}/g;
-  const tokens = text.match(pattern);
-  const visible = tokens.filter(token => token.trim()).length;
-  let index = 0;
-  const html = tokens.map(token => !token.trim() || !animate ? token : `<span class="w" style="--i:${index++}">${token}</span>`).join("");
-  return { html, step: 1300 / visible };
-}
-function renderAgent(host) {
-  const prompt = prompts[host.dataset.agent];
-  const typing = host.dataset.animate === "full";
-  const en = words(prompt.en, "en", typing);
-  const zh = words(prompt.zh, "zh", typing);
-  const chips = prompt.chips.map((chip, index) =>
-    `<span class="chip" style="--ci:${index}">${icon(chip.icon)}<span class="biline"><span lang="en">${chip.en}</span><span class="cn" lang="zh-Hans">${chip.zh}</span></span>` +
-    (chip.url ? `<span class="url">${chip.url}</span>` : "") + "</span>").join("");
-  host.classList.add("agent");
-  host.innerHTML =
-    `<div class="agent-bar"><span class="agent-mark" aria-hidden="true"></span><span class="biline"><span lang="en">Your AI Agent</span><span class="cn" lang="zh-Hans">你的 AI Agent</span></span></div>` +
-    `<div class="agent-field"><div class="chips">${chips}</div>` +
-    `<p class="prompt bi" style="--t0:1.2s"><span lang="en" style="--step:${en.step}ms">${en.html}</span>` +
-    `<span class="cn" lang="zh-Hans" style="--step:${zh.step}ms">${zh.html}</span></p>` +
-    `<span class="send" aria-hidden="true">${icon("send")}</span></div>`;
 }
 function promptText(key, lang) {
   const prompt = prompts[key];
@@ -793,7 +670,6 @@ function show(index) {
     `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span class="n">${step + 1}</span><span lang="en">${en}</span><span class="cn" lang="zh-Hans">${zh}</span></li>`).join("");
   mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
-  scene.querySelectorAll("[data-agent]").forEach(renderAgent);
   scene.querySelectorAll("[data-guide]").forEach(link => { link.href = guideUrl; });
   renderWindows(scene);
   screen.replaceChildren(scene);
@@ -855,7 +731,7 @@ function requestBox(key, lang) {
 }
 function promptParts(keys) {
   const heading = document.createElement("h3");
-  heading.textContent = "Prompts to copy · 可复制的问法";
+  heading.textContent = "Copy · 可复制内容";
   return [heading, ...keys.flatMap(key => [requestBox(key, "zh"), requestBox(key, "en")])];
 }
 function setupParts() {
@@ -875,7 +751,7 @@ function setupParts() {
 }
 function openSetup() {
   document.querySelector("#notes-title").textContent = "Setup and prompts · 安装和问法";
-  document.querySelector("#note-content").replaceChildren(...setupParts(), ...promptParts(["tada", "google", "slack", "both"]));
+  document.querySelector("#note-content").replaceChildren(...setupParts(), ...promptParts(["tada", "gwsAgenda", "gwsDrive"]));
   notes.showModal();
 }
 function openNotes() {
