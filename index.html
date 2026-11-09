@@ -60,8 +60,12 @@ button:focus-visible, select:focus-visible, a:focus-visible, textarea:focus-visi
 }
 .scene.warm { background: radial-gradient(110% 85% at 90% 105%, #ffe5c9 0%, transparent 62%), var(--paper); }
 .mast { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: .92cqw; font-weight: 600; letter-spacing: .08em; }
-.mast .brand { display: inline-flex; align-items: center; gap: .6cqw; }
-.mast .brand::before { content: ""; width: .5cqw; aspect-ratio: 1; border-radius: 50%; background: var(--orange); }
+.track { display: flex; gap: 2.1cqw; }
+.track li { display: inline-flex; align-items: center; color: #ab9d93; }
+.track li::before { content: ""; width: .45cqw; aspect-ratio: 1; margin-right: .55cqw; border-radius: 50%; background: #e4d0bc; }
+.track li.on { color: var(--ink); }
+.track li.on::before { background: var(--orange); }
+.track .cn { margin-left: .45em; color: inherit; letter-spacing: .02em; }
 .head { margin-top: 2.4cqw; }
 .eyebrow { font-size: 1.12cqw; font-weight: 650; color: var(--label); }
 .eyebrow .cn { color: #7a4a33; }
@@ -82,6 +86,7 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 .card { background: var(--card); border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); box-shadow: var(--shadow); }
 mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 88% / 100% 64%; animation: mark-in .6s var(--ease) var(--md, 0s) backwards; }
 .tag { margin-left: auto; padding: .2cqw .6cqw; border-radius: 999px; background: #fdebd6; color: #7d4021; font-size: .9cqw; font-weight: 600; }
+.tag.inline { margin-left: .9cqw; }
 .arrive { animation: arrive .6s var(--ease) var(--d, 0s) both; }
 .paper-in { animation: paper-in .8s var(--ease) var(--d, 0s) both; }
 @keyframes scene-in { from { opacity: 0; } }
@@ -187,6 +192,10 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .tool .ico { font-size: 1.4cqw; }
 .reader.is-agent .tool { font-family: var(--sans); font-size: 1.2cqw; color: var(--ink); }
 .s-ask .prompt { font-size: 1.66cqw; }
+.link-tips { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; margin-top: 1.3cqw; }
+.link-tips li { display: flex; gap: .7cqw; align-items: flex-start; font-size: 1.12cqw; line-height: 1.28; }
+.link-tips .ico { margin-top: .15cqw; font-size: 1.35cqw; color: var(--label); }
+.link-tips b { font-weight: 650; }
 
 /* 04 Get */
 .get-grid { display: grid; grid-template-columns: 31cqw 1fr; gap: 2.3cqw; align-items: start; }
@@ -198,7 +207,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .src-card > .bi { margin-top: .65cqw; font-size: 1.36cqw; line-height: 1.28; }
 .reply { animation: unfold .8s var(--ease) var(--d) backwards; }
 @keyframes unfold { from { opacity: 0; transform: translateY(.6cqw); clip-path: inset(0 0 100% 0 round var(--r-lg)); } to { clip-path: inset(0 0 0 0 round var(--r-lg)); } }
-.you { padding: .7cqw 1.35cqw; border-bottom: var(--edge) solid var(--line); color: var(--muted); font-size: .98cqw; }
 .reply-body { padding: 1.1cqw 1.35cqw 1.25cqw; }
 .reply blockquote { margin-top: .55cqw; font-size: 1.95cqw; line-height: 1.24; }
 .reply blockquote > span:first-child { font-family: var(--serif); }
@@ -250,33 +258,21 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .recipe .bi > .cn { margin-top: 0; }
 
 /* 06 Teams */
-.team-grid { display: grid; grid-template-columns: 26.5cqw 1fr; gap: 2.4cqw; }
-.team-list { display: grid; gap: .65cqw; align-content: start; }
-.team-tab { position: relative; padding: .8cqw 1.1cqw .9cqw 1.4cqw; border: var(--edge) solid transparent; border-radius: var(--r-md); background: transparent; text-align: left; cursor: pointer; transition: background .18s ease, border-color .18s ease; }
-.team-tab::before { content: ""; position: absolute; inset: .9cqw auto .9cqw .5cqw; width: .2cqw; border-radius: 99px; background: var(--line-strong); }
-.team-tab:hover { background: #fff3e4; }
-.team-tab[aria-selected="true"] { border-color: var(--line-strong); background: var(--card); box-shadow: var(--shadow); }
-.team-tab[aria-selected="true"]::before { background: var(--orange); }
-.dept { display: block; font-size: .98cqw; font-weight: 650; color: var(--label); }
-.team-tab .bi { margin-top: .3cqw; font-size: 1.28cqw; line-height: 1.24; }
-.team-tab .bi > span:first-child { font-family: var(--serif); }
-.team-panel { display: grid; gap: 1.1cqw; }
-.team-panel .prompt { font-size: 1.36cqw; }
-.team-panel .agent-field { padding-top: 1cqw; }
-.out-box { padding: .95cqw 1.35cqw 1.05cqw; animation: arrive .55s var(--ease) .35s both; }
-.out-rows { margin-top: .35cqw; }
-.out-rows li { display: grid; grid-template-columns: 1fr 1.6cqw 1fr; gap: .7cqw; align-items: center; padding: .5cqw 0; border-top: var(--edge) dashed var(--line); font-size: 1.18cqw; line-height: 1.22; }
-.out-rows li:first-child { border-top: 0; }
-.out-rows li > .ico { font-size: 1.3cqw; color: #c0835a; }
-.out-rows li.note { grid-template-columns: 1.6cqw 1fr; }
-.out-rows li.note > .ico { color: var(--label); }
-.out-rows li.flag { color: var(--label); }
-.out-rows li.flag > .ico { color: var(--orange); }
-.team-hint { margin-top: .6cqw; padding-left: 1.4cqw; color: var(--muted); font-size: 1cqw; line-height: 1.3; }
-.team-hint > .cn { margin-top: .1em; }
-.out-rows .src { color: var(--muted); font-size: 1cqw; }
-.out-quote { margin-top: .5cqw; font-size: 1.5cqw; line-height: 1.26; }
-.out-quote > span:first-child { font-family: var(--serif); }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(5, auto); gap: 0 1.5cqw; align-content: start; }
+.team-card { grid-row: span 5; display: grid; grid-template-rows: subgrid; row-gap: .8cqw; padding: 1.1cqw 1.3cqw 1.2cqw; }
+.dept { font-size: 1cqw; font-weight: 650; color: var(--label); }
+.team-q { font-size: 1.3cqw; line-height: 1.24; }
+.team-q > span:first-child { font-family: var(--serif); }
+.team-row { padding-top: .7cqw; border-top: var(--edge) solid var(--line); }
+.row-k { margin-bottom: .4cqw; color: var(--muted); font-size: .92cqw; font-weight: 650; }
+.chips.compact { flex-direction: column; align-items: flex-start; gap: .45cqw; margin: 0; }
+.chips.compact .chip { font-size: .95cqw; }
+.chips.compact .url { display: none; }
+.team-get { font-size: 1.2cqw; line-height: 1.26; }
+.team-flag { display: flex; gap: .45cqw; margin-top: .6cqw; color: var(--label); font-size: 1.05cqw; line-height: 1.26; }
+.team-flag .ico { margin-top: .1cqw; font-size: 1.2cqw; color: var(--orange); }
+.team-copy { display: flex; gap: .4cqw; align-self: end; }
+.team-copy .copy { padding: .36cqw .6cqw; font-size: .9cqw; white-space: nowrap; }
 
 /* 07 Decide */
 .rules { display: grid; gap: 1.15cqw; align-content: start; }
@@ -297,8 +293,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 .asks { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: .7cqw; font-size: 1.1cqw; }
 .asks .k { color: var(--label); font-weight: 650; margin-right: .3cqw; }
 .asks .pill { padding: .35cqw .8cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
-.s-close .foot { text-align: center; }
-.s-close .foot::before { display: none; }
+.setup-line { margin-top: 1.2cqw; color: var(--muted); font-size: 1cqw; text-align: center; }
 .link-btn { margin-left: .6cqw; padding: .3cqw .75cqw; border: var(--edge) solid #c98f66; border-radius: 999px; background: #ffe5cc; color: #6b3417; font-size: .98cqw; font-weight: 650; cursor: pointer; }
 .link-btn:hover { background: #ffd8b4; }
 
@@ -323,6 +318,8 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 #notes a { color: #7d310e; }
 #notes code { padding: 1px 5px; border-radius: 4px; background: #fbe6cf; font-family: var(--mono); font-size: 13px; word-break: break-all; }
 #notes small { display: block; margin-top: 18px; color: var(--muted); }
+#notes code.cmd { display: block; width: fit-content; max-width: 100%; margin-top: 6px; padding: 4px 8px; }
+#notes li > p { margin-top: 6px; }
 #notes button { padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: #ffe8cf; cursor: pointer; }
 .request-box { margin-top: 10px; padding: 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: #fff2df; }
 .request-box label { display: block; font-size: 13px; font-weight: 650; color: #753610; }
@@ -360,9 +357,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
     <select id="chapters" aria-label="Scenes"></select>
     <span class="hint">← → to advance</span>
     <span class="push"></span>
-    <button id="language" type="button" aria-pressed="true" aria-keyshortcuts="C">EN + 中文</button>
-    <button id="replay" type="button" aria-keyshortcuts="R">Replay motion</button>
-    <button id="show-notes" type="button" aria-keyshortcuts="N">Notes &amp; setup</button>
     <button id="full" type="button" aria-keyshortcuts="F">Full screen</button>
   </nav>
   <dialog id="notes" aria-labelledby="notes-title">
@@ -406,7 +400,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
   <section class="scene s-usual" data-label="The usual way">
     <header class="head arrive">
       <p class="eyebrow biline">Without the agent <span class="cn" lang="zh-Hans">平时的做法</span></p>
-      <h1 class="bi"><span lang="en">Usually, you go digging.</span><span class="cn" lang="zh-Hans">平时，你得自己翻。</span></h1>
+      <h1 class="bi"><span lang="en">4 steps, all by hand.</span><span class="cn" lang="zh-Hans">4 步，全靠手动。</span></h1>
     </header>
     <div class="main">
       <ol class="steps">
@@ -472,18 +466,24 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 <template id="ask">
   <section class="scene s-ask warm" data-label="Paste two links, ask one question">
     <header class="head arrive">
-      <p class="eyebrow biline">In your AI Agent <span class="cn" lang="zh-Hans">在 AI Agent 里</span></p>
-      <h1 class="bi"><span lang="en">Paste two links. Ask one question.</span><span class="cn" lang="zh-Hans">贴两条链接，问一句话。</span></h1>
+      <p class="eyebrow biline">With your AI Agent <span class="cn" lang="zh-Hans">用 AI Agent</span></p>
+      <h1 class="bi"><span lang="en">Paste 2 links. Ask 1 question.</span><span class="cn" lang="zh-Hans">贴 2 条链接，问 1 句话。</span></h1>
     </header>
     <div class="main ask-grid">
-      <div class="paper-in" style="--d:.2s" data-agent="review" data-animate="full"></div>
+      <div>
+        <div class="paper-in" style="--d:.2s" data-agent="review" data-animate="full"></div>
+        <ul class="link-tips arrive" style="--d:3.9s">
+          <li><svg class="ico"><use href="#i-chat"/></svg><span class="bi"><span lang="en"><b>Slack link:</b> ⋮ on the message → Copy link</span><span class="cn" lang="zh-Hans"><b>Slack 链接：</b>消息右侧 ⋮ → 复制链接</span></span></li>
+          <li><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en"><b>Google Doc link:</b> copy the address bar</span><span class="cn" lang="zh-Hans"><b>Google 文档链接：</b>复制浏览器地址栏</span></span></li>
+        </ul>
+      </div>
       <ul class="readers">
-        <li class="reader arrive" style="--d:3s"><span class="tool"><svg class="ico"><use href="#i-chat"/></svg>slack</span><span class="bi"><span lang="en">reads the Slack update</span><span class="cn" lang="zh-Hans">读群里的消息</span></span></li>
-        <li class="reader arrive" style="--d:3.3s"><span class="tool"><svg class="ico"><use href="#i-doc"/></svg>gws</span><span class="bi"><span lang="en">reads the Google Doc</span><span class="cn" lang="zh-Hans">读 Google 文档</span></span></li>
-        <li class="reader is-agent arrive" style="--d:3.6s"><span class="tool"><span class="agent-mark"></span>AI Agent</span><span class="bi"><span lang="en">matches the two</span><span class="cn" lang="zh-Hans">把两处对上</span></span></li>
+        <li class="reader arrive" style="--d:3s"><span class="tool"><svg class="ico"><use href="#i-chat"/></svg>slack</span><span class="bi"><span lang="en">lets it read Slack</span><span class="cn" lang="zh-Hans">让它能读 Slack</span></span></li>
+        <li class="reader arrive" style="--d:3.3s"><span class="tool"><svg class="ico"><use href="#i-doc"/></svg>gws</span><span class="bi"><span lang="en">lets it read Google Docs</span><span class="cn" lang="zh-Hans">让它能读 Google 文档</span></span></li>
+        <li class="reader is-agent arrive" style="--d:3.6s"><span class="tool"><span class="agent-mark"></span>AI Agent</span><span class="bi"><span lang="en">puts the two together</span><span class="cn" lang="zh-Hans">把两处对上</span></span></li>
       </ul>
     </div>
-    <p class="foot biline">slack and gws need to be set up where your AI Agent runs. Steps in notes (N). <span class="cn" lang="zh-Hans">slack 和 gws 要先装在 AI Agent 运行的地方，步骤见备注（N）。</span></p>
+    <p class="foot biline">One-time setup first. Steps are on the last page. <span class="cn" lang="zh-Hans">先装一次，步骤在最后一页。</span></p>
   </section>
 </template>
 
@@ -491,7 +491,7 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
   <section class="scene s-get" data-label="The reply you get">
     <header class="head arrive">
       <p class="eyebrow biline">What comes back <span class="cn" lang="zh-Hans">拿回来的结果</span></p>
-      <h1 class="bi"><span lang="en">One line to send, with sources.</span><span class="cn" lang="zh-Hans">一句能发的回复，带着来源。</span></h1>
+      <h1 class="bi"><span lang="en">Get a reply you can send, with sources.</span><span class="cn" lang="zh-Hans">拿到一句能发的回复，带来源。</span></h1>
     </header>
     <div class="main">
       <div class="get-grid">
@@ -507,7 +507,6 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
         </div>
         <article class="agent reply" style="--d:2.1s">
           <div class="agent-bar"><span class="agent-mark"></span>AI Agent<span class="tag biline">Practice example <span class="cn" lang="zh-Hans">演练示例</span></span></div>
-          <p class="you biline">You asked: where do users see a friend request? <span class="cn" lang="zh-Hans">你问：这一版收到好友请求在哪看？</span></p>
           <div class="reply-body">
             <p class="eyebrow biline">Reply you can send <span class="cn" lang="zh-Hans">可以直接回给同事</span></p>
             <blockquote class="bi"><span lang="en">In this release, users get a friend request alert in the app’s notification bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求时，App 内的通知铃铛会提醒。系统推送后续再做。</span></blockquote>
@@ -581,72 +580,40 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
 </template>
 
 <template id="team">
-  <section class="scene s-team" data-label="Your version of this moment">
+  <section class="scene s-team" data-label="When would you use it?">
     <header class="head arrive">
-      <p class="eyebrow biline">Same release, four jobs <span class="cn" lang="zh-Hans">同一个版本，四种活</span></p>
+      <p class="eyebrow biline">Same release, four teams <span class="cn" lang="zh-Hans">同一个版本，四个部门</span><span class="tag inline biline">Practice examples <span class="cn" lang="zh-Hans">演练示例</span></span></p>
       <h1 class="bi"><span lang="en">When would you use it?</span><span class="cn" lang="zh-Hans">你哪天会用到？</span></h1>
     </header>
     <div class="main team-grid">
-      <div class="team-list" role="tablist" aria-label="Teams">
-        <button type="button" role="tab" class="team-tab arrive" style="--d:.2s" id="tab-eng" aria-controls="panel-eng" aria-selected="true" data-team="eng">
-          <span class="dept biline">Engineering <span class="cn" lang="zh-Hans">研发</span></span>
-          <span class="bi"><span lang="en">“Just got the handoff. What do I test?”</span><span class="cn" lang="zh-Hans">「刚接到交接，这次要测什么？」</span></span>
-        </button>
-        <button type="button" role="tab" class="team-tab arrive" style="--d:.3s" id="tab-product" aria-controls="panel-product" aria-selected="false" data-team="product">
-          <span class="dept biline">Product <span class="cn" lang="zh-Hans">产品</span></span>
-          <span class="bi"><span lang="en">“What will users see in this case?”</span><span class="cn" lang="zh-Hans">「这种情况下，用户会看到什么？」</span></span>
-        </button>
-        <button type="button" role="tab" class="team-tab arrive" style="--d:.4s" id="tab-content" aria-controls="panel-content" aria-selected="false" data-team="content">
-          <span class="dept biline">Content <span class="cn" lang="zh-Hans">内容</span></span>
-          <span class="bi"><span lang="en">“Feedback is in. Which lines change?”</span><span class="cn" lang="zh-Hans">「审阅意见来了，哪几句要改？」</span></span>
-        </button>
-        <button type="button" role="tab" class="team-tab arrive" style="--d:.5s" id="tab-growth" aria-controls="panel-growth" aria-selected="false" data-team="growth">
-          <span class="dept biline">Growth <span class="cn" lang="zh-Hans">增长</span></span>
-          <span class="bi"><span lang="en">“I can’t open the dashboard. Who can help?”</span><span class="cn" lang="zh-Hans">「看板打不开，该找谁？」</span></span>
-        </button>
-        <p class="team-hint bi arrive" style="--d:.6s"><span lang="en">Practice examples from one release. Click a team.</span><span class="cn" lang="zh-Hans">演练示例，都来自同一个版本。点部门切换。</span></p>
-      </div>
-      <div>
-        <div class="team-panel" role="tabpanel" id="panel-eng" aria-labelledby="tab-eng">
-          <div class="arrive" style="--d:.3s" data-agent="eng" data-animate="chips"></div>
-          <div class="card out-box">
-            <p class="eyebrow biline">You get · a test checklist <span class="cn" lang="zh-Hans">拿到 · 一份测试清单</span></p>
-            <ol class="out-rows">
-              <li><span class="bi"><span lang="en">Send a friend request</span><span class="cn" lang="zh-Hans">发送好友请求</span></span><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">The bell shows an alert</span><span class="cn" lang="zh-Hans">通知铃铛出现提醒</span></span></li>
-              <li><span class="bi"><span lang="en">Tap the alert</span><span class="cn" lang="zh-Hans">点开提醒</span></span><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">The request opens</span><span class="cn" lang="zh-Hans">打开这条请求</span></span></li>
-              <li class="note flag"><svg class="ico"><use href="#i-flag"/></svg><span class="bi"><span lang="en">Still open: alert text for 2+ requests</span><span class="cn" lang="zh-Hans">待定：同时收到多条请求时的提醒文案</span></span></li>
-            </ol>
-          </div>
-        </div>
-        <div class="team-panel" role="tabpanel" id="panel-product" aria-labelledby="tab-product" hidden>
-          <div class="arrive" style="--d:.1s" data-agent="review" data-animate="chips"></div>
-          <div class="card out-box">
-            <p class="eyebrow biline">You get · one line to send <span class="cn" lang="zh-Hans">拿到 · 一句能发的回复</span></p>
-            <p class="out-quote bi"><span lang="en">In this release, users get a friend request alert in the app’s notification bell. Phone push comes later.</span><span class="cn" lang="zh-Hans">这一版，用户收到好友请求时，App 内的通知铃铛会提醒。系统推送后续再做。</span></p>
-          </div>
-        </div>
-        <div class="team-panel" role="tabpanel" id="panel-content" aria-labelledby="tab-content" hidden>
-          <div class="arrive" style="--d:.1s" data-agent="content" data-animate="chips"></div>
-          <div class="card out-box">
-            <p class="eyebrow biline">You get · lines to change <span class="cn" lang="zh-Hans">拿到 · 要改的句子</span></p>
-            <ol class="out-rows">
-              <li><span class="bi"><span lang="en">“You have a new friend request.”</span><span class="cn" lang="zh-Hans">「你有一条新的好友请求。」</span></span><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">“Mia sent you a friend request.” <span class="src">· Comment 1</span></span><span class="cn" lang="zh-Hans">「Mia 向你发送了好友请求。」<span class="src">· 意见 1</span></span></span></li>
-              <li><span class="bi"><span lang="en">“Tap to view.”</span><span class="cn" lang="zh-Hans">「点击查看。」</span></span><svg class="ico"><use href="#i-arrow"/></svg><span class="bi"><span lang="en">“Tap to see who it is.” <span class="src">· Comment 2</span></span><span class="cn" lang="zh-Hans">「点开看看是谁。」<span class="src">· 意见 2</span></span></span></li>
-            </ol>
-          </div>
-        </div>
-        <div class="team-panel" role="tabpanel" id="panel-growth" aria-labelledby="tab-growth" hidden>
-          <div class="arrive" style="--d:.1s" data-agent="growth" data-animate="chips"></div>
-          <div class="card out-box">
-            <p class="eyebrow biline">You get · who to ask <span class="cn" lang="zh-Hans">拿到 · 该找谁</span></p>
-            <ol class="out-rows">
-              <li class="note"><svg class="ico"><use href="#i-user"/></svg><span class="bi"><span lang="en">Owner: Dana, data team · link to the earlier thread</span><span class="cn" lang="zh-Hans">负责人：数据组 Dana · 附之前的讨论链接</span></span></li>
-              <li class="note"><svg class="ico"><use href="#i-doc"/></svg><span class="bi"><span lang="en">Last time she needed your work email and the dashboard name</span><span class="cn" lang="zh-Hans">上次开通需要：工作邮箱和看板名称</span></span></li>
-              <li class="note"><svg class="ico"><use href="#i-key"/></svg><span class="bi"><span lang="en">Next, you ask Dana. The agent finds who; it can’t grant access.</span><span class="cn" lang="zh-Hans">下一步你去找 Dana。AI Agent 能找到人，开不了权限。</span></span></li>
-            </ol>
-          </div>
-        </div>
-      </div>
+      <article class="card team-card paper-in" style="--d:.2s">
+        <p class="dept biline">Engineering <span class="cn" lang="zh-Hans">研发</span></p>
+        <p class="team-q bi"><span lang="en">“Just got a handoff. What do I test?”</span><span class="cn" lang="zh-Hans">「刚接到交接，这次要测什么？」</span></p>
+        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="eng"></span></div>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Test checklist: action → expected result</span><span class="cn" lang="zh-Hans">测试清单：操作 → 预期结果</span></p></div>
+        <p class="team-copy" data-copy-pair="eng"></p>
+      </article>
+      <article class="card team-card paper-in" style="--d:.35s">
+        <p class="dept biline">Product <span class="cn" lang="zh-Hans">产品</span></p>
+        <p class="team-q bi"><span lang="en">“What will users see in this case?”</span><span class="cn" lang="zh-Hans">「这种情况下，用户会看到什么？」</span></p>
+        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="review"></span></div>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">One line to send, with sources</span><span class="cn" lang="zh-Hans">一句能发的回复，带来源</span></p></div>
+        <p class="team-copy" data-copy-pair="review"></p>
+      </article>
+      <article class="card team-card paper-in" style="--d:.5s">
+        <p class="dept biline">Content <span class="cn" lang="zh-Hans">内容</span></p>
+        <p class="team-q bi"><span lang="en">“Feedback is in. Which lines change?”</span><span class="cn" lang="zh-Hans">「审阅意见来了，哪几句要改？」</span></p>
+        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="content"></span></div>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Lines to change: old → new → comment</span><span class="cn" lang="zh-Hans">要改的句子：原句 → 改法 → 意见</span></p></div>
+        <p class="team-copy" data-copy-pair="content"></p>
+      </article>
+      <article class="card team-card paper-in" style="--d:.65s">
+        <p class="dept biline">Growth <span class="cn" lang="zh-Hans">增长</span></p>
+        <p class="team-q bi"><span lang="en">“I can’t open the dashboard. Who can help?”</span><span class="cn" lang="zh-Hans">「看板打不开，该找谁？」</span></p>
+        <div class="team-row"><p class="row-k biline">Paste <span class="cn" lang="zh-Hans">贴</span></p><span class="chips compact" data-chips="growth"></span></div>
+        <div class="team-row"><p class="row-k biline">You get <span class="cn" lang="zh-Hans">拿到</span></p><p class="team-get bi"><span lang="en">Who grants access + the earlier thread</span><span class="cn" lang="zh-Hans">谁能开权限 + 之前的讨论</span></p><p class="team-flag"><svg class="ico"><use href="#i-key"/></svg><span class="bi"><span lang="en">You ask them. It can’t grant access.</span><span class="cn" lang="zh-Hans">你去找他，AI Agent 开不了权限。</span></span></p></div>
+        <p class="team-copy" data-copy-pair="growth"></p>
+      </article>
     </div>
   </section>
 </template>
@@ -689,8 +656,8 @@ mark { color: inherit; padding: 0 .08em; border-radius: .2em; background: linear
     <div class="main close-main">
       <div class="paper-in" style="--d:.3s" data-agent="template" data-animate="chips"></div>
       <p class="asks arrive" style="--d:1s"><span class="k biline">Ask for <span class="cn" lang="zh-Hans">可以要</span></span><span class="pill biline">one line to send <span class="cn" lang="zh-Hans">一句能发的回复</span></span><span class="pill biline">a test checklist <span class="cn" lang="zh-Hans">测试清单</span></span><span class="pill biline">lines to change <span class="cn" lang="zh-Hans">要改的句子</span></span><span class="pill biline">who to ask <span class="cn" lang="zh-Hans">该找谁</span></span></p>
+      <p class="setup-line arrive biline" style="--d:1.3s">First time? Set up slack and gws where your AI Agent runs, and sign in with your work account. <span class="cn" lang="zh-Hans">第一次用：先在 AI Agent 运行的地方装好两个工具，用工作账号登录。</span><button type="button" class="link-btn biline" data-open-notes>First-time setup <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
     </div>
-    <p class="foot biline">First time? Set up slack and gws where your AI Agent runs, and sign in with your work account. <span class="cn" lang="zh-Hans">第一次用：先在 AI Agent 运行的地方装好两个工具，用工作账号登录。</span><button type="button" class="link-btn biline" data-open-notes>Setup steps <span class="cn" lang="zh-Hans">安装步骤</span></button></p>
   </section>
 </template>
 
@@ -732,7 +699,7 @@ const prompts = {
     name: "增长：看板权限 → 该找谁",
     en: "I can’t open the dashboard for the new bell alerts. Use slack to find earlier threads about access to it. Who grants access, and what did they ask for?",
     zh: "我打不开新铃铛提醒的数据看板。用 slack 找之前关于这个看板权限的讨论。谁负责开通？当时要提供什么？",
-    chips: [{ icon: "search", en: "slack searches for you", zh: "让 slack 去搜" }]
+    chips: [{ icon: "search", en: "Nothing. slack searches", zh: "不用贴，让 slack 搜" }]
   },
   template: {
     name: "通用问法（把方括号换成你的内容）",
@@ -748,21 +715,39 @@ prompts.review.en = prompts.review.segments.map(([en]) => en).join(" ");
 prompts.review.zh = prompts.review.segments.map(([, zh]) => zh).join("");
 
 const setupSteps = [
-  "装在哪里：两个工具都要装在 AI Agent 运行的地方，比如你自己的电脑，或 Agent 用的云端环境。用能打开这些群和文档的工作账号登录。AI Agent 只能读到这个账号看得到的内容。",
-  "slack（Slack CLI）：Mac / Linux 运行 <code>curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash</code>，Windows 见下方官方链接。然后运行 <code>slack login</code>，把终端给出的 <code>/slackauthticket …</code> 发到 Slack 任意对话，确认后把挑战码贴回终端。运行 <code>slack auth list</code> 能看到工作区，就装好了。",
-  "gws（Google Workspace CLI）：运行 <code>npm install -g @googleworkspace/cli</code> 或 <code>brew install googleworkspace-cli</code>。第一次用先运行 <code>gws auth setup</code>（需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth），再运行 <code>gws auth login -s drive,docs</code>；只想给读权限，可以加 <code>--readonly</code>。运行 <code>gws auth status</code> 能看到登录状态，就装好了。",
-  "讲者电脑上已验证：slack v4.11.0 能按消息链接读到群消息，gws 0.22.5 能读 Google 文档。"
+  {
+    title: "Where · 装在哪里",
+    en: "Install both where your AI Agent runs: your laptop, or the agent’s cloud workspace. Sign in with your work account. The agent can only read what that account can see.",
+    zh: "两个工具都装在 AI Agent 运行的地方：你自己的电脑，或 Agent 用的云端环境。用工作账号登录。AI Agent 只能读到这个账号看得到的内容。"
+  },
+  {
+    title: "slack · Slack CLI",
+    cmds: ["curl -fsSL https://downloads.slack-edge.com/slack-cli/install.sh | bash", "slack login", "slack auth list"],
+    en: "This install line is for Mac and Linux; for Windows, see the official guide below. After slack login, post the /slackauthticket line it shows in any Slack chat, approve, and paste the code back. When slack auth list shows our workspace, you are set.",
+    zh: "第一行是 Mac / Linux 的安装命令，Windows 见下方官方说明。运行 slack login 后，把终端给出的 /slackauthticket 那行发到 Slack 任意对话，确认后把挑战码贴回终端。slack auth list 能看到工作区，就装好了。"
+  },
+  {
+    title: "gws · Google Workspace CLI",
+    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,docs", "gws auth status"],
+    en: "brew install googleworkspace-cli also works. Run gws auth setup only the first time; it needs gcloud. Without gcloud, follow the manual OAuth steps in the official guide. Add --readonly to the login line for read-only access.",
+    zh: "也可以用 brew install googleworkspace-cli 安装。gws auth setup 只在第一次运行，需要 gcloud；没有 gcloud 就按官方说明手动配置 OAuth。只想给读权限，登录那行加 --readonly。"
+  },
+  {
+    title: "Checked · 已验证",
+    en: "On the presenter’s laptop, slack v4.11.0 read a message from its link and gws 0.22.5 read a Google Doc.",
+    zh: "讲者电脑上已验证：slack v4.11.0 能按消息链接读到群消息，gws 0.22.5 能读 Google 文档。"
+  }
 ];
 const setupLinks = [
-  ["Slack CLI · Mac / Linux 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/"],
-  ["Slack CLI · Windows 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/"],
-  ["Slack CLI · 登录", "https://docs.slack.dev/tools/slack-cli/guides/authorizing-the-slack-cli/"],
-  ["gws · 安装和登录", "https://github.com/googleworkspace/cli#installation"]
+  ["Slack CLI · Install on Mac / Linux 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-mac-and-linux/"],
+  ["Slack CLI · Install on Windows 安装", "https://docs.slack.dev/tools/slack-cli/guides/installing-the-slack-cli-for-windows/"],
+  ["Slack CLI · Sign in 登录", "https://docs.slack.dev/tools/slack-cli/guides/authorizing-the-slack-cli/"],
+  ["gws · Install and sign in 安装和登录", "https://github.com/googleworkspace/cli#installation"]
 ];
 
 const chapters = [
   {
-    id: "opening", time: "0:00–0:15",
+    id: "opening", stage: "why", time: "0:00–0:15",
     say: ["评审 10 分钟后开始。同事在群里问：这一版，用户收到好友请求会在哪看到？", "答案在两个地方：一条 Slack 更新，一份 Google 文档。这就是适合用它的时候。"],
     facts: [
       "主案例改编自 2026-11-04 的一次真实同步：连接请求原来要在「添加好友」里查看；这次加上 App 内通知铃铛提醒，系统推送后续再做。公开版改成「好友请求」的匿名演练示例，不放原群、原文和链接。",
@@ -770,33 +755,33 @@ const chapters = [
     ]
   },
   {
-    id: "usual", time: "0:15–0:30",
-    say: ["平时要开好几个窗口：翻群聊找更新，打开规格查原规则，对照后发现两处写法变了，最后自己写回复。", "请大家记住三个词：翻找、对照、起草。后面这三步交给 AI Agent。"]
+    id: "usual", stage: "why", time: "0:15–0:30",
+    say: ["平时要手动做 4 步：翻群聊找更新，打开规格查原规则，对照后发现两处写法变了，最后自己写回复。", "请大家记住三个词：翻找、对照、起草。下一幕，这三步交给 AI Agent。"]
   },
   {
-    id: "ask", time: "0:30–0:45",
-    say: ["打开你平时用的 AI Agent。贴两条链接，再输入一句话。", "slack 读群里的消息，gws 读 Google 文档，AI Agent 把两处对上。"],
+    id: "ask", stage: "how", time: "0:30–0:45",
+    say: ["现在只要两件事：贴 2 条链接，问 1 句话。下面写了两条链接从哪里复制。", "slack 让它能读 Slack，gws 让它能读 Google 文档，AI Agent 把两处对上。需要先装一次，步骤在最后一页。"],
     tips: [
-      "Slack 消息链接：鼠标移到消息上，点「更多操作」，选「复制链接」。",
+      "Slack 消息链接：鼠标移到消息上，点右侧「更多操作」（⋮），选「复制链接」。",
       "Google 文档链接：复制浏览器地址栏，或点「共享」→「复制链接」。",
       "点「Copy prompt」或「复制中文问法」，会复制这句话和两行链接占位。把占位换成你的链接，再发给 AI Agent。"
     ],
     requests: ["review"], setup: true
   },
   {
-    id: "get", time: "0:45–1:05",
+    id: "get", stage: "how", time: "0:45–1:05",
     say: ["它把规格里的旧写法和群里的新决定对上：① 在哪看：规格写的是「添加好友」，群里新加了 App 通知铃铛；② 推送：这次不做，后续再做。", "省掉的是翻找、对照和起草。点开来源核对、决定发不发，还是你自己。可以在这一页停下来讲。"],
     tips: ["点回复下方的来源，会标出对应的那张资料卡。"]
   },
   {
-    id: "ab", time: "1:05–2:00",
+    id: "ab", stage: "how", time: "1:05–2:00",
     say: ["先让大家选，再两个都点一下。", "A 只给背景，你还得追问「这一版到底在哪看」。B 说清了三件事：谁在问什么、读哪里、要什么结果，所以直接拿到能发的话。"],
     facts: ["A 和 B 下方的结果都是演练示例，用来对比问法，不是 AI 的真实输出记录。"],
     requests: ["review"]
   },
   {
-    id: "team", time: "2:00–3:20",
-    say: ["同一个版本，四种活。点到哪个部门，就看那一格：贴什么、怎么问、拿到什么。", "增长那格说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
+    id: "team", stage: "when", time: "2:00–3:20",
+    say: ["同一个版本，四个部门。每张卡从上往下读：什么时候会遇到、贴什么、拿到什么。每张卡都能复制对应的问法。", "增长那张说明工具能帮到哪一步：slack 帮你找到之前的讨论和负责人，开权限要负责人来做。"],
     facts: [
       "口径：讲者的 Slack 账号能看到的公开频道和已加入的私有频道，2026-10-01 至 2026-11-09；不含私信、群私信，以及机器人、告警和测试频道。用 66 个中英文关键词检索，再逐条人工判断。同一话题串只算一次，同一人对同一件事的追问合并。",
       "「经常有人问」指至少 3 个独立话题、至少 2 位同事提出；「有人问过」指 1–2 个话题。关键词检索会漏，也没有纳入飞书历史，所以这里不说「最高频」。",
@@ -806,14 +791,14 @@ const chapters = [
       "研发｜有人问过：关联工单要不要一起测。1 个话题。测试清单按交接加规格的常见工作设计。",
       "页面上的人名（Mia、Dana）、文案和链接都是虚构的演练内容，不是真实摘录。"
     ],
-    requests: ["eng", "content", "growth"]
+    requests: ["eng", "review", "content", "growth"]
   },
   {
-    id: "decide", time: "3:20–4:00",
+    id: "decide", stage: "when", time: "3:20–4:00",
     say: ["三个简单判断。知道要找哪条消息，直接在 Slack 搜。要开权限，找负责人；slack 可以帮你找到是谁。", "要把讨论和文档合起来，才能回答或交付一件事，再打开 AI Agent。"]
   },
   {
-    id: "close", time: "4:00–5:00",
+    id: "close", stage: "try", time: "4:00–5:00",
     say: ["挑一个你这周要回的问题。把方括号换成你的内容，贴上两条链接。发出前，点开来源核对。"],
     tips: ["第一次用，可以在问法末尾加一句：「只读取，不要替我发消息。」"],
     requests: ["template"], setup: true
@@ -824,10 +809,10 @@ const presenter = document.querySelector("#presenter");
 const screen = document.querySelector("#screen");
 const chapterSelect = document.querySelector("#chapters");
 const notes = document.querySelector("#notes");
-const language = document.querySelector("#language");
 const prev = document.querySelector("#prev");
 const next = document.querySelector("#next");
 const pad = n => String(n).padStart(2, "0");
+const stages = [["why", "Why", "为什么"], ["how", "How", "怎么用"], ["when", "When", "何时用"], ["try", "Try", "试一次"]];
 const sceneLabel = index => document.getElementById(chapters[index].id).content.firstElementChild.dataset.label;
 let current = 0;
 
@@ -854,6 +839,10 @@ function words(text, lang, animate) {
   }).join("");
   return { html, step: 1300 / visible };
 }
+function copyButtonsHTML(key, zhLabel) {
+  return `<button type="button" class="copy" data-copy="${key}" data-lang="en">${icon("copy")}<span>Copy prompt</span></button>` +
+    `<button type="button" class="copy cn" lang="zh-Hans" data-copy="${key}" data-lang="zh">${icon("copy")}<span>${zhLabel}</span></button>`;
+}
 function renderAgent(host) {
   const key = host.dataset.agent;
   const prompt = prompts[key];
@@ -863,10 +852,8 @@ function renderAgent(host) {
   host.classList.add("agent");
   host.style.setProperty("--t-foot", "2.75s");
   host.innerHTML =
-    `<div class="agent-bar"><span class="agent-mark" aria-hidden="true"></span>AI Agent<span class="agent-tools">` +
-    `<button type="button" class="copy" data-copy="${key}" data-lang="en">${icon("copy")}<span>Copy prompt</span></button>` +
-    `<button type="button" class="copy cn" lang="zh-Hans" data-copy="${key}" data-lang="zh">${icon("copy")}<span>复制中文问法</span></button>` +
-    `</span></div>` +
+    `<div class="agent-bar"><span class="agent-mark" aria-hidden="true"></span>AI Agent` +
+    `<span class="agent-tools">${copyButtonsHTML(key, "复制中文问法")}</span></div>` +
     `<div class="agent-field"><div class="chips">${chipsHTML(key)}</div>` +
     `<p class="prompt bi" style="--t0:1.3s"><span lang="en" style="--step:${en.step}ms">${en.html}</span>` +
     `<span class="cn" lang="zh-Hans" style="--step:${zh.step}ms">${zh.html}</span></p>` +
@@ -898,20 +885,18 @@ function show(index) {
   const scene = document.getElementById(chapters[index].id).content.firstElementChild.cloneNode(true);
   const mast = document.createElement("div");
   mast.className = "mast";
-  mast.innerHTML = `<span class="brand">AI Agent · slack · gws</span><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
+  const track = stages.map(([id, en, zh]) =>
+    `<li${id === chapters[index].stage ? ' class="on" aria-current="step"' : ""}>${en}<span class="cn" lang="zh-Hans">${zh}</span></li>`).join("");
+  mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
   scene.querySelectorAll("[data-agent]").forEach(renderAgent);
+  scene.querySelectorAll("[data-copy-pair]").forEach(host => { host.innerHTML = copyButtonsHTML(host.dataset.copyPair, "复制问法"); });
   scene.querySelectorAll("[data-chips]").forEach(host => { host.innerHTML = chipsHTML(host.dataset.chips); });
   scene.querySelectorAll("[data-segments]").forEach(renderSegments);
   screen.replaceChildren(scene);
   chapterSelect.value = String(index);
   prev.disabled = index === 0;
   next.disabled = index === chapters.length - 1;
-}
-function toggleLanguage() {
-  const englishOnly = screen.classList.toggle("no-chinese");
-  language.setAttribute("aria-pressed", String(!englishOnly));
-  language.textContent = englishOnly ? "English only" : "EN + 中文";
 }
 async function toggleFullscreen() {
   try {
@@ -921,10 +906,10 @@ async function toggleFullscreen() {
     document.querySelector("#full").textContent = "Use browser full screen";
   }
 }
-function noteSection(title, items, tag = "ul") {
+function noteSection(title, items) {
   const heading = document.createElement("h3");
   heading.textContent = title;
-  const list = document.createElement(tag);
+  const list = document.createElement("ul");
   for (const item of items) {
     const entry = document.createElement("li");
     entry.innerHTML = item;
@@ -959,30 +944,47 @@ function requestBox(key, lang) {
   box.append(label, field, copy, status);
   return box;
 }
-function openNotes(focus) {
+function setupParts() {
+  const heading = document.createElement("h3");
+  heading.textContent = "First-time setup, once per person · 第一次用：安装和登录（每人一次）";
+  const list = document.createElement("ol");
+  for (const step of setupSteps) {
+    const entry = document.createElement("li");
+    entry.innerHTML = `<strong>${step.title}</strong>` +
+      (step.cmds ?? []).map(cmd => `<code class="cmd">${cmd}</code>`).join("") +
+      `<p lang="en">${step.en}</p><p lang="zh-Hans">${step.zh}</p>`;
+    list.append(entry);
+  }
+  const links = noteSection("Official guides · 官方说明", setupLinks.map(([title, url]) =>
+    `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`));
+  return [heading, list, ...links];
+}
+function openNotes(focus = {}) {
   const chapter = chapters[current];
-  document.querySelector("#notes-title").textContent = `${pad(current + 1)} ${sceneLabel(current)} · ${chapter.time}`;
   const content = document.querySelector("#note-content");
+  if (focus.setupOnly) {
+    document.querySelector("#notes-title").textContent = "First-time setup · 第一次用";
+    content.replaceChildren(...setupParts());
+    notes.showModal();
+    return;
+  }
+  document.querySelector("#notes-title").textContent = `${pad(current + 1)} ${sceneLabel(current)} · ${chapter.time}`;
   const parts = [...noteSection("讲法", chapter.say)];
   if (chapter.tips) parts.push(...noteSection("操作提示", chapter.tips));
   if (chapter.facts) parts.push(...noteSection("依据和口径", chapter.facts));
-  const keys = [...new Set([...(chapter.requests ?? []), ...(focus?.key ? [focus.key] : [])])];
+  const keys = [...new Set([...(chapter.requests ?? []), ...(focus.key ? [focus.key] : [])])];
   if (keys.length) {
     const heading = document.createElement("h3");
     heading.textContent = "可复制的问法";
     parts.push(heading, ...keys.flatMap(key => [requestBox(key, "zh"), requestBox(key, "en")]));
   }
-  if (chapter.setup || focus?.setup) {
-    parts.push(...noteSection("第一次用：安装和登录（每人一次）", setupSteps, "ol"));
-    parts.push(...noteSection("官方说明", setupLinks.map(([title, url]) =>
-      `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`)));
-  }
+  if (chapter.setup) parts.push(...setupParts());
   const timing = document.createElement("small");
   timing.textContent = "讲者备注。每幕动画播完后停住，按 → 进入下一幕。";
   parts.push(timing);
   content.replaceChildren(...parts);
   notes.showModal();
-  if (focus?.key) {
+  if (focus.key) {
     const field = document.getElementById(`request-${focus.key}-${focus.lang}`);
     field.focus();
     field.select();
@@ -1008,16 +1010,13 @@ function copyPrompt(button) {
 prev.addEventListener("click", () => show(current - 1));
 next.addEventListener("click", () => show(current + 1));
 chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value)));
-language.addEventListener("click", toggleLanguage);
-document.querySelector("#replay").addEventListener("click", () => show(current));
-document.querySelector("#show-notes").addEventListener("click", () => openNotes());
 document.querySelector("#close-notes").addEventListener("click", () => notes.close());
 document.querySelector("#full").addEventListener("click", toggleFullscreen);
 screen.addEventListener("click", event => {
   const target = event.target;
   const copy = target.closest("[data-copy]");
   if (copy) return copyPrompt(copy);
-  if (target.closest("[data-open-notes]")) return openNotes({ setup: true });
+  if (target.closest("[data-open-notes]")) return openNotes({ setupOnly: true });
   const check = target.closest("[data-check]");
   if (check) {
     const card = screen.querySelector(`.src-card[data-src="${check.dataset.check}"]`);
@@ -1031,15 +1030,6 @@ screen.addEventListener("click", event => {
     for (const option of screen.querySelectorAll("[data-choice]")) option.setAttribute("aria-pressed", String(option === choice));
     for (const outcome of screen.querySelectorAll("[data-outcome]")) outcome.hidden = outcome.dataset.outcome !== choice.dataset.choice;
     choice.parentElement.dataset.picked = choice.dataset.choice;
-    return;
-  }
-  const team = target.closest("[data-team]");
-  if (team) {
-    for (const tab of screen.querySelectorAll("[data-team]")) {
-      const on = tab === team;
-      tab.setAttribute("aria-selected", String(on));
-      document.getElementById(tab.getAttribute("aria-controls")).hidden = !on;
-    }
   }
 });
 document.addEventListener("keydown", event => {
@@ -1062,7 +1052,7 @@ document.addEventListener("keydown", event => {
       show(current + 1);
       break;
     case "f": toggleFullscreen(); break;
-    case "c": toggleLanguage(); break;
+    case "c": screen.classList.toggle("no-chinese"); break;
     case "r": show(current); break;
     case "n": openNotes(); break;
   }
