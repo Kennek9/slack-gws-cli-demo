@@ -366,35 +366,34 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 <template id="tada">
   <section class="scene s-tada warm" data-label="Ask Tada · 问 Tada">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Looking for a doc? Ask Tada first.</span><span class="cn" lang="zh-Hans">找资料，先问 Tada。</span></h1></header>
+    <header class="head arrive"><h1 class="bi"><span lang="en">Have a question? Ask Tada.</span><span class="cn" lang="zh-Hans">有问题，问 Tada。</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
         <p class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></p>
-        <p class="bi"><span lang="en">Ask around for the onboarding guide. Then check which link is current.</span><span class="cn" lang="zh-Hans">问一圈同事入职指南在哪，再确认哪个链接是最新版。</span></p>
+        <p class="bi"><span lang="en">Ask teammates and search through docs to understand the feature.</span><span class="cn" lang="zh-Hans">问同事、翻文档，才能了解这个功能。</span></p>
         <div class="ask-around" aria-hidden="true">
-          <span class="bubble biline"><span lang="en">Where’s the guide?</span><span class="cn" lang="zh-Hans">指南在哪？</span></span>
-          <span class="bubble biline"><span lang="en">Try this old link…</span><span class="cn" lang="zh-Hans">试试这个旧链接…</span></span>
-          <span class="bubble biline"><span lang="en">Is it still current?</span><span class="cn" lang="zh-Hans">还是最新的吗？</span></span>
+          <span class="bubble biline"><span lang="en">What is it?</span><span class="cn" lang="zh-Hans">这是什么？</span></span>
+          <span class="bubble biline"><span lang="en">How does it work?</span><span class="cn" lang="zh-Hans">怎么用？</span></span>
+          <span class="bubble biline"><span lang="en">Where’s the doc?</span><span class="cn" lang="zh-Hans">文档在哪？</span></span>
         </div>
       </div>
       <div class="card thread paper-in" style="--d:.4s">
-        <p class="ba-k after-k biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span><span class="tag biline"><span lang="en">Real search result · links hidden</span><span class="cn" lang="zh-Hans">真实检索结果 · 已隐去链接</span></span></p>
+        <p class="ba-k after-k biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span><span class="tag biline"><span lang="en">Tada search · summarized</span><span class="cn" lang="zh-Hans">根据 Tada 检索整理</span></span></p>
         <div class="tmsg arrive" style="--d:.7s">
           <span class="tav" aria-hidden="true"><svg class="ico"><use href="#i-user"/></svg></span>
-          <div><p class="who biline"><span lang="en">You</span><span class="cn" lang="zh-Hans">你</span></p><p class="bi"><span lang="en">@Tada Where is the Beijing office onboarding guide? Give me the original link.</span><span class="cn" lang="zh-Hans">@Tada 北京办公室的入职指南在哪？给我原文链接。</span></p></div>
+          <div><p class="who biline"><span lang="en">You</span><span class="cn" lang="zh-Hans">你</span></p><p class="bi"><span lang="en">@Tada What is Feeling Together? Give me a short introduction and the source.</span><span class="cn" lang="zh-Hans">@Tada 什么是 Feeling Together？简单介绍一下，并给我资料来源。</span></p></div>
         </div>
         <div class="tmsg unfold" style="--d:1.6s">
           <span class="tav bot" aria-hidden="true">T</span>
           <div>
             <p class="who">Tada</p>
-            <p class="bi"><span lang="en">Found 1 published doc:</span><span class="cn" lang="zh-Hans">找到 1 份正式资料：</span></p>
-            <div class="hit"><svg class="ico"><use href="#i-doc"/></svg><span class="title biline"><span lang="en"><mark style="--md:2.3s">Beijing Office onboarding guide 2026</mark></span><span class="cn" lang="zh-Hans"><mark style="--md:2.3s">北京 Office 新员工入职指南 2026</mark></span></span><span class="meta biline"><span lang="en">Original link · updated Nov 5</span><span class="cn" lang="zh-Hans">原文链接 · 11 月 5 日更新</span></span></div>
-            <p class="more biline"><span lang="en">Also 2 related docs shared in team channels.</span><span class="cn" lang="zh-Hans">另有 2 份群里分享过的相关资料。</span></p>
+            <p class="bi"><span lang="en">Feeling Together lets connected friends share how they feel, so they can understand and care for each other.</span><span class="cn" lang="zh-Hans">Feeling Together 让已连接的好友分享心情，了解彼此近况、互相关心。</span></p>
+            <div class="hit"><svg class="ico"><use href="#i-doc"/></svg><span class="title biline"><span lang="en"><mark style="--md:2.3s">Bless Ring overview + meeting notes</mark></span><span class="cn" lang="zh-Hans"><mark style="--md:2.3s">Bless Ring 总览 + 会议纪要</mark></span></span><span class="meta biline"><span lang="en">Source · link hidden</span><span class="cn" lang="zh-Hans">资料来源 · 链接已隐藏</span></span></div>
           </div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Follow up in the same thread.</span><span class="cn" lang="zh-Hans">追问就在同一线程里回。</span></p>
+    <p class="foot biline"><span lang="en">Illustration based on a Tada search · Follow up in the same thread.</span><span class="cn" lang="zh-Hans">根据 Tada 检索制作的示意 · 可在同一线程追问。</span></p>
   </section>
 </template>
 
@@ -569,9 +568,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 const prompts = {
   tada: {
-    name: "问 Tada：找一份公司资料",
-    en: "@Tada Where is the Beijing office onboarding guide? Give me the original link.",
-    zh: "@Tada 北京办公室的入职指南在哪？给我原文链接。",
+    name: "问 Tada：了解 Feeling Together",
+    en: "@Tada What is Feeling Together? Give me a short introduction and the source.",
+    zh: "@Tada 什么是 Feeling Together？简单介绍一下，并给我资料来源。",
     chips: []
   },
   gwsSetup: {
@@ -618,8 +617,8 @@ const chapters = [
     say: ["第一层，先让大家找到彼此。约定：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历里标明工作时间。", "表里高亮的是对方白天能用的时段。设置方法：电脑打开 Google 日历 → 设置 → 通用 → 工作时间（或「工作时间和地点」）→ 启用。找不到这个设置，反馈给 Operation Team。"],
     facts: ["时间按打开页面当天的北京日期换算，会自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
   { id: "tada", stage: 1, time: "1:05–1:45",
-    say: ["第二层，找到信息。以前找一份资料要问一圈，还要确认是不是最新版。现在直接问 Tada。", "这张卡是今天在 Tada 知识库里真实检索的结果，只隐去了链接：找到 1 份正式资料，另有 2 份群里分享过的资料。追问就在同一线程里回。"],
-    facts: ["2026-11-09 通过 Tada 知识库检索「北京办公室入职指南」：正式资料《北京 Office 新员工入职指南 2026》，11/5 更新；另有 2 份群里分享的资料。Slack 里的回复样式以现场为准。"],
+    say: ["第二层，找到信息。比如想了解 Feeling Together 是什么，可以直接在 Slack 问 Tada。", "Tada 帮你找到相关资料；这里将检索结果整理成简短回答，并隐去了链接。追问就在同一线程里回。"],
+    facts: ["2026-11-10 使用 Tada Connect 检索「什么是 Feeling Together」，检索结果包含《Bless Ring 产品功能总览》及相关会议资料。根据资料，已接受好友可请求连接并共享心情。画面是整理后的示意，不是 Slack 原始回复；具体内容以来源和实际权限为准。"],
     prompts: ["tada"] },
   { id: "tada-use", stage: 1, time: "1:45–2:20",
     say: ["三种用法：在频道里 @Tada，频道里的人都看得到；私聊 Tada，只有你看得到；连上自己的 Google Drive 后，在私聊里发 Drive: 加链接，它就能读你有权限的文件。", "提问时用文档全名，要原文链接。没回复，可能还没开通，找 Ken。"],
