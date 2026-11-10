@@ -447,84 +447,80 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 
 <template id="gws-setup">
-  <section class="scene s-google" data-label="Ask naturally · 直接提问">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Just ask your AI Agent</span><span class="cn" lang="zh-Hans">直接问你的 AI Agent</span></h1></header>
+  <section class="scene s-google" data-label="Make a document easier to read · 整理文档排版">
+    <header class="head arrive"><h1 class="bi"><span lang="en">A document is hard to read</span><span class="cn" lang="zh-Hans">文档排版不够清楚</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">You do</span><span class="cn" lang="zh-Hans">你来做</span></p>
-        <p class="bi"><span lang="en">Paste a Google Doc link. Say what you need.</span><span class="cn" lang="zh-Hans">贴上 Google 文档链接，说清楚要什么。</span></p>
+        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
+        <p class="bi"><span lang="en">Open the doc. Fix each heading and spacing by hand.</span><span class="cn" lang="zh-Hans">打开文档，逐个调整标题和间距。</span></p>
       </div>
       <div class="after-col">
         <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Your message</span><span class="cn" lang="zh-Hans">你在 AI Agent 里输入</span></p>
+          <p class="agent-header biline"><span lang="en">Say this to your AI Agent + paste the doc link</span><span class="cn" lang="zh-Hans">对 AI Agent 说 + 贴上文档链接</span></p>
           <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to read this document. Give me three key points and the source link. [Google Doc link]</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 读这份文档，给我三个重点并附来源。[Google 文档链接]</span></p>
-            <p class="agent-flow biline"><span lang="en">AI Agent uses Google Workspace CLI to read the doc</span><span class="cn" lang="zh-Hans">AI Agent 调用 Google Workspace CLI 读取文档</span></p>
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to tidy this doc. Match the English and Chinese headings; keep the text and images.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 整理这份文档。让中英文标题层级一致，保留原文和图片。</span></p>
+            <p class="agent-flow biline"><span lang="en">AI Agent reads and updates the Google Doc</span><span class="cn" lang="zh-Hans">AI Agent 读取并调整 Google 文档</span></p>
           </div>
         </div>
         <div class="card out unfold" style="--d:2.1s">
           <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
-          <p class="out-text bi"><span lang="en">Three key points in the chat, with the source.</span><span class="cn" lang="zh-Hans">对话里直接给出三个重点和来源。</span></p>
+          <p class="out-text bi"><span lang="en">A clearer document, with text and images kept.</span><span class="cn" lang="zh-Hans">排版更清楚的文档，原文和图片都保留。</span></p>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">First-time setup and sign-in are in the notes.</span><span class="cn" lang="zh-Hans">首次配置和登录说明见备注。</span></p>
+    <p class="foot biline"><span lang="en">Based on a real task · First-time setup is in the notes.</span><span class="cn" lang="zh-Hans">来自真实工作 · 首次配置见备注。</span></p>
   </section>
 </template>
 
 <template id="gws-review">
-  <section class="scene s-slack warm" data-label="Prepare for a review · 评审前整理文档">
-    <header class="head arrive"><h1 class="bi"><span lang="en">A review is about to start</span><span class="cn" lang="zh-Hans">评审快开始了</span></h1></header>
+  <section class="scene s-slack warm" data-label="Compare translations · 核对多语言文案">
+    <header class="head arrive"><h1 class="bi"><span lang="en">Do these translations mean the same?</span><span class="cn" lang="zh-Hans">几种语言的意思一致吗？</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">You need</span><span class="cn" lang="zh-Hans">你需要</span></p>
-        <p class="bi"><span lang="en">A short update from the project doc.</span><span class="cn" lang="zh-Hans">从项目文档里整理一段简短同步。</span></p>
+        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
+        <p class="bi"><span lang="en">Compare each version line by line. Note the differences.</span><span class="cn" lang="zh-Hans">逐句对照不同语言，记下有差异的地方。</span></p>
       </div>
       <div class="after-col">
         <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Your message + Google Doc link</span><span class="cn" lang="zh-Hans">你的问题 + Google 文档链接</span></p>
+          <p class="agent-header biline"><span lang="en">Say this to your AI Agent + paste the doc link</span><span class="cn" lang="zh-Hans">对 AI Agent 说 + 贴上文档链接</span></p>
           <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to read this doc. For the review, list what’s in this release and what comes later. Include the link.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 读这份文档。评审时要同步什么？列出本期和后续内容，并附文档链接。</span></p>
-            <p class="agent-flow biline"><span lang="en">Your AI Agent reads the doc with Google Workspace CLI</span><span class="cn" lang="zh-Hans">AI Agent 用 Google Workspace CLI 读取文档</span></p>
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to compare the English, Spanish and Portuguese in this doc. Show me any differences in meaning.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 对照文档里的英文、西语和葡语，列出意思有差异的地方。</span></p>
+            <p class="agent-flow biline"><span lang="en">AI Agent reads the versions and compares them</span><span class="cn" lang="zh-Hans">AI Agent 读取并对照各语言版本</span></p>
           </div>
         </div>
         <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">Example reply</span><span class="cn" lang="zh-Hans">示例回复</span></p>
-          <div class="example-row"><span class="k biline"><span lang="en">This release</span><span class="cn" lang="zh-Hans">本期</span></span><span class="biline"><span lang="en">In-app bell alert</span><span class="cn" lang="zh-Hans">App 内铃铛提醒</span></span></div>
-          <div class="example-row"><span class="k biline"><span lang="en">Later</span><span class="cn" lang="zh-Hans">后续</span></span><span class="biline"><span lang="en">Phone push</span><span class="cn" lang="zh-Hans">系统推送</span></span></div>
-          <div class="example-row"><span class="k biline"><span lang="en">Source</span><span class="cn" lang="zh-Hans">来源</span></span><span class="biline"><span lang="en">Google Doc link</span><span class="cn" lang="zh-Hans">Google 文档链接</span></span></div>
+          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+          <p class="out-text bi"><span lang="en">A list of differences and where to review them.</span><span class="cn" lang="zh-Hans">一份差异清单，以及需要复核的位置。</span></p>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Practice example · Check the linked source before sharing.</span><span class="cn" lang="zh-Hans">演练示例 · 分享前核对来源。</span></p>
+    <p class="foot biline"><span lang="en">Based on a real task · Review the source before making changes.</span><span class="cn" lang="zh-Hans">来自真实工作 · 修改前请核对原文。</span></p>
   </section>
 </template>
 
 <template id="gws-agenda">
-  <section class="scene s-both" data-label="Prepare for the next meeting · 下一场会前">
-    <header class="head arrive"><h1 class="bi"><span lang="en">What do I need for my next meeting?</span><span class="cn" lang="zh-Hans">下一场会，我要准备什么？</span></h1></header>
+  <section class="scene s-both" data-label="Find documents and check access · 找文档并检查权限">
+    <header class="head arrive"><h1 class="bi"><span lang="en">Where are the docs? Can everyone see them?</span><span class="cn" lang="zh-Hans">文档在哪？大家都能看吗？</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">You need</span><span class="cn" lang="zh-Hans">你需要</span></p>
-        <p class="bi"><span lang="en">The next meeting and its preparation points.</span><span class="cn" lang="zh-Hans">知道下一场会是什么，以及需要准备什么。</span></p>
+        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
+        <p class="bi"><span lang="en">Search Drive, open each file, check sharing one by one.</span><span class="cn" lang="zh-Hans">搜索云盘，逐份打开检查共享权限。</span></p>
       </div>
       <div class="after-col">
         <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Your message</span><span class="cn" lang="zh-Hans">你在 AI Agent 里输入</span></p>
+          <p class="agent-header biline"><span lang="en">Say this to your AI Agent</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
           <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to check my next meeting. Read any linked Google Doc and give me two things to prepare. Tell me if there isn’t one.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 看我的下一场会。读会议附的 Google 文档，给我两条准备事项；没有文档就告诉我。</span></p>
-            <p class="agent-flow biline"><span lang="en">Your AI Agent uses the CLI to read Calendar and Docs</span><span class="cn" lang="zh-Hans">AI Agent 调用 CLI 读取日历和文档</span></p>
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to find the project guides in Drive. Give me the links and check whether the whole company can view them.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 找云盘里的项目指南，整理链接，并检查是否全公司可见。</span></p>
+            <p class="agent-flow biline"><span lang="en">AI Agent searches Drive and checks sharing</span><span class="cn" lang="zh-Hans">AI Agent 搜索云盘并检查共享设置</span></p>
           </div>
         </div>
         <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">Example reply</span><span class="cn" lang="zh-Hans">示例回复</span></p>
-          <div class="example-row"><span class="k">14:00</span><span class="biline"><span lang="en">Product review</span><span class="cn" lang="zh-Hans">产品评审</span></span></div>
-          <div class="example-row"><span class="k biline"><span lang="en">Prepare</span><span class="cn" lang="zh-Hans">会前准备</span></span><span class="bi"><span lang="en">Confirm scope and check the timeline.</span><span class="cn" lang="zh-Hans">确认范围，核对时间。</span></span></div>
-          <div class="example-row"><span class="k biline"><span lang="en">Source</span><span class="cn" lang="zh-Hans">来源</span></span><span class="biline"><span lang="en">Calendar + meeting doc</span><span class="cn" lang="zh-Hans">日历 + 会议文档</span></span></div>
+          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+          <p class="out-text bi"><span lang="en">A link list, with access status for each document.</span><span class="cn" lang="zh-Hans">文档链接清单，以及每份的可见范围。</span></p>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Practice example · Actual meetings and documents depend on your account.</span><span class="cn" lang="zh-Hans">演练示例 · 实际会议与资料以你的账号为准。</span></p>
+    <p class="foot biline"><span lang="en">Based on a real task · The Agent checks; you decide whether to change access.</span><span class="cn" lang="zh-Hans">来自真实工作 · Agent 先检查，你决定是否修改权限。</span></p>
   </section>
 </template>
 
@@ -549,21 +545,21 @@ const prompts = {
     chips: []
   },
   gwsSetup: {
-    name: "让 AI Agent 总结文档",
-    en: "Use Google Workspace CLI to read this document. Give me three key points and the source link.",
-    zh: "用 Google Workspace CLI 读这份文档，给我三个重点并附来源。",
+    name: "整理文档排版",
+    en: "Use Google Workspace CLI to tidy this doc. Match the English and Chinese headings; keep the text and images.",
+    zh: "用 Google Workspace CLI 整理这份文档。让中英文标题层级一致，保留原文和图片。",
     chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
   },
   gwsReview: {
-    name: "评审前整理文档",
-    en: "Use Google Workspace CLI to read this Google Doc. For the review, list what is in this release and what comes later. Include the link.",
-    zh: "用 Google Workspace CLI 读这份 Google 文档。评审时要同步什么？列出本期和后续内容，并附文档链接。",
+    name: "核对多语言文案",
+    en: "Use Google Workspace CLI to compare the English, Spanish and Portuguese in this doc. Show me any differences in meaning and where to find them.",
+    zh: "用 Google Workspace CLI 对照文档里的英文、西语和葡语，列出意思有差异的地方和所在位置。",
     chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
   },
   gwsAgenda: {
-    name: "为下一场会议做准备",
-    en: "Use Google Workspace CLI to check my next meeting. Read any linked Google Doc and give me two things to prepare. Tell me if there is not one.",
-    zh: "用 Google Workspace CLI 看我的下一场会。读会议附的 Google 文档，给我两条准备事项；没有文档就告诉我。",
+    name: "找文档并检查共享权限",
+    en: "Use Google Workspace CLI to find the project guides in Drive. Give me the links and check whether the whole company can view them.",
+    zh: "用 Google Workspace CLI 找云盘里的项目指南，整理链接，并检查是否全公司可见。",
     chips: []
   }
 };
@@ -602,16 +598,16 @@ const chapters = [
     say: ["要让人和工具都找得到，信息得先放在找得到的地方。", "三条约定：日常业务讨论放公开频道；非必要不建私密群；新频道如果大家会在里面问问题，就把 Tada 加进来，并告诉 Ken 开启。"],
     facts: ["Tada 只能看到它所在频道里的消息；在群里回答时只用本群内容和公司资料，不会带入私聊或其他群的内容。"] },
   { id: "gws-setup", stage: 2, time: "2:55–3:35",
-    say: ["第三层，大家直接在自己常用的 AI Agent 里说要做什么，Agent 在后台调用 Google Workspace CLI。", "贴上 Google 文档链接，用自己的话说明想要的结果。首次配置说明留在备注。"],
-    facts: ["gws 需要在 AI Agent 运行的环境里安装并授权。配置可能需要 Google Cloud 项目和 OAuth 客户端，参见官方说明。"],
+    say: ["第三层，不用在终端输入命令。直接在自己的 AI Agent 里说要做什么，它会在后台调用 Google Workspace CLI。", "这是实际做过的任务：贴上 Google 文档，让 Agent 整理中英文标题和间距，保留原文和图片。"],
+    facts: ["这个场景来自实际的 Google Docs 排版任务，已通过 gws 读取和更新文档。使用前需在 Agent 运行环境安装并授权 gws；配置可能需要 Google Cloud 项目和 OAuth 客户端。"],
     prompts: ["gwsSetup"] },
   { id: "gws-review", stage: 2, time: "3:35–4:25",
-    say: ["评审快开始时，把 Google 文档链接和问题交给 AI Agent。", "Agent 用 gws 读文档，整理本期和后续内容，附上来源。画面是演练示例。"],
-    facts: ["Agent 读取 Google Doc 需要相应的账号访问权限和授权。示例回复仅用于说明形式。"],
+    say: ["多语言文案审核时，把文档链接交给 Agent，让它对照英文、西语和葡语，列出意思不同的地方。", "它帮你找出需要关注的位置，最后仍要结合原文复核。"],
+    facts: ["这个场景来自实际的三语文案审核请求。Agent 需要读取文档的权限；语言差异应由相关负责人复核。"],
     prompts: ["gwsReview"] },
   { id: "gws-agenda", stage: 2, time: "4:25–5:15",
-    say: ["开会前，直接让 AI Agent 用 Google Workspace CLI 查看下一场会议和附带文档，列出两条准备事项。", "画面里的会议和准备事项是示例。没有会议文档时，让 Agent 如实说明。"],
-    facts: ["Agent 需要日历和文档的读取权限。gws 支持读取日程和会议关联资料；实际结果取决于会议是否附带可访问的文档。"],
+    say: ["准备分享项目资料时，让 Agent 在 Google Drive 里找文档，整理链接并逐份检查公司同事能不能看。", "先检查，再由你决定是否调整权限。"],
+    facts: ["这个场景来自实际的资料查找和 Google Drive 共享权限检查任务。查到的文件和权限取决于账号的访问范围。"],
     prompts: ["gwsAgenda"] },
   { id: "close", stage: -1, time: "5:15–5:40",
     say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周让 AI Agent 用 gws 完成一件事。", "安装说明和可复制的问法，点最后一个按钮。"] }
