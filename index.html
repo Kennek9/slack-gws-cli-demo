@@ -287,7 +287,7 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .use .how { font-size: 1.4cqw; line-height: 1.35; font-weight: 600; }
 .use .bi.note { font-size: 1.25cqw; line-height: 1.35; color: var(--muted); }
 .use-foot { display: flex; justify-content: space-between; align-items: center; gap: 1.5cqw; margin-top: 1.6cqw; }
-.tips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 1.6cqw; font-size: 1.1cqw; }
+.tips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 1.6cqw; font-size: 1.1cqw; }
 .tips li { display: flex; align-items: flex-start; gap: .4cqw; }
 .tips .ico { margin-top: .15em; color: var(--orange); stroke-width: 2.4; font-size: 1.2cqw; }
 .guide { display: inline-flex; align-items: center; gap: .5em; padding: .7cqw 1.15cqw; border-radius: .65cqw; background: #9f350b; color: #fff; font-size: 1.2cqw; font-weight: 700; text-decoration: none; white-space: nowrap; cursor: pointer; border: 0; }
@@ -300,11 +300,9 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 /* 05 Searchable */
 .s-searchable .main { display: flex; align-items: center; }
 .s-searchable .thread { width: 100%; }
-.rules { display: grid; gap: .8cqw; }
-.rules li { display: grid; grid-template-columns: 2.4cqw 1fr; gap: 1cqw; align-items: start; padding: 1cqw 1.2cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fffaf3; }
-.rules .n { width: 2.2cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; font-size: 1.05cqw; }
-.rules .bi { font-size: 1.4cqw; line-height: 1.38; font-weight: 600; }
-.rules .bi .how { display: block; margin-top: .3cqw; font-size: 1.02cqw; font-weight: 400; color: var(--muted); }
+.channel-step { padding: 1.3cqw 1.5cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fffaf3; font-size: 1.4cqw; line-height: 1.38; font-weight: 600; }
+.channel-step .how { display: block; margin-top: .3cqw; font-size: 1.02cqw; font-weight: 400; color: var(--muted); }
+.tada-help { margin-top: 1.2cqw; font-size: 1.1cqw; color: var(--muted); }
 
 /* 06 Permissions */
 
@@ -378,8 +376,8 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
   .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
   .use-foot { display: grid; gap: 10px; }
   .tips { grid-template-columns: 1fr; gap: 10px; }
-  .tav, .use-ico, .rules .n { width: 22px; }
-  .rules li, .doc-lines li, .tmsg, .ba-line { grid-template-columns: 28px 1fr; gap: 6px; }
+  .tav, .use-ico { width: 22px; }
+  .doc-lines li, .tmsg, .ba-line { grid-template-columns: 28px 1fr; gap: 6px; }
   .ba-line { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -530,7 +528,6 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
         <ul class="tips">
           <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">Use the full doc title</span><span class="cn" lang="zh-Hans">用文档全名提问</span></span></li>
           <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">Ask for the original link</span><span class="cn" lang="zh-Hans">要原文链接</span></span></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">No reply? Ask Ken (Tada admin)</span><span class="cn" lang="zh-Hans">没回复？找 Ken（Tada 管理员）</span></span></li>
         </ul>
       </div>
     </div>
@@ -544,11 +541,8 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
     <div class="main">
       <div class="card thread paper-in" style="--d:.4s">
         <p class="ba-k after-k biline"><span lang="en">Ask Tada in a channel</span><span class="cn" lang="zh-Hans">在频道里问 Tada</span></p>
-        <ol class="rules">
-          <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">In an internal public channel, add Tada once, then ask with @Tada.<span class="how">Channel header → Agents &amp; apps → Add Tada</span></span><span class="cn" lang="zh-Hans">内部公开频道加一次 Tada，之后直接 @Tada 提问。<span class="how">频道顶部 → Agents &amp; apps → 添加 Tada</span></span></span></li>
-          <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">For a private channel, send the link to the Tada admin. Add Tada after approval.</span><span class="cn" lang="zh-Hans">私密频道先把链接发给 Tada 管理员，审批通过后再添加。</span></span></li>
-          <li class="arrive" style="--d:1.2s"><span class="n">3</span><span class="bi"><span lang="en">Ask the Tada admin to turn on automatic collection of new channel messages.</span><span class="cn" lang="zh-Hans">想让 Tada 自动收录频道的新消息，请管理员单独开启。</span></span></li>
-        </ol>
+        <p class="channel-step bi arrive" style="--d:.7s"><span lang="en">Add Tada to a channel, then ask with @Tada.<span class="how">Channel header → Agents &amp; apps → Add Tada</span></span><span class="cn" lang="zh-Hans">把 Tada 加入频道，然后 @Tada 提问。<span class="how">频道顶部 → Agents &amp; apps → 添加 Tada</span></span></p>
+        <p class="tada-help bi arrive" style="--d:1s"><span lang="en">If Tada isn’t working, contact Ken Ge.</span><span class="cn" lang="zh-Hans">如果 Tada 用不了，请联系 Ken Ge。</span></p>
       </div>
     </div>
   </section>
@@ -671,7 +665,7 @@ const setupSteps = [
     title: "Tada · Slack",
     steps: [
       { en: "Sign in to Slack with your work account. Search Apps for Tada and open it.", zh: "用工作账号登录 Slack，在应用中搜索并打开 Tada。" },
-      { en: "Follow any access prompts. If you cannot find Tada or your access is not enabled, ask Ken.", zh: "如出现开通或验证提示，按提示完成。找不到 Tada 或尚未开通？找 Ken。" },
+      { en: "If Tada isn’t working, contact Ken Ge.", zh: "如果 Tada 用不了，请联系 Ken Ge。" },
       { en: "Ask Tada in a DM, or @Tada in a channel it has joined. Company docs do not require a personal Drive connection.", zh: "私聊 Tada 提问，或在它已加入的频道里 @Tada。查公司已发布资料无需连接个人 Drive。" }
     ]
   },
@@ -705,8 +699,7 @@ const chapters = [
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
     facts: ["频道问答要求 Tada 在该频道；已发布公司资料无需连接个人 Drive。可查询范围取决于接入和权限。"] },
   { id: "searchable", stage: 1, time: "2:30–2:55",
-    say: ["想让同事一起看回答，就在频道里 @Tada。内部公开频道加一次就能用，私密频道先请管理员审批。想自动收录新消息，再请管理员单独开启。"],
-    facts: ["频道接入和后台采集分别开通。频道接入允许员工在频道里 @Tada。开启采集后，Tada 才会在后台收录该频道的消息。", "公开频道的自动登记只适用于 Glorify 内部频道。Slack Connect 频道不在此范围。"] },
+    say: ["想让同事一起看回答，就把 Tada 加入频道，然后 @Tada 提问。如果 Tada 用不了，请联系 Ken Ge。"] },
   { id: "gws-intro", stage: 2, time: "2:55–3:20",
     say: ["Google Workspace CLI 让 AI Agent 处理你有权限访问的 Google 文档、云盘文件和日历。", "直接对自己常用的 Agent 说要做什么，它在后台调用 CLI；首次需要安装、登录并授权。"],
     facts: ["gws 支持 Google Docs、Drive 和 Calendar 等服务。实际可访问的内容取决于账号权限与授权范围；首次配置说明见最后一页。"] },
