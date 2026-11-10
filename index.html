@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#FFF8E9">
 <link rel="icon" href="data:,">
-<title>How we work together · 合并后的协作方式</title>
+<title>Meet Tada</title>
 <style>
 :root {
   --paper: #fff8e9;
@@ -105,140 +105,11 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .also .k { color: var(--label); font-weight: 650; margin-right: .2cqw; }
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
-/* A real task, told as three moments: request, instruction, result. */
-.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 2.3cqw; align-items: stretch; align-content: center; }
-.story-step { min-width: 0; display: flex; flex-direction: column; }
-.story-label { margin-bottom: .7cqw; color: var(--label); font-size: 1.04cqw; font-weight: 700; }
-.story-label .cn { color: inherit; }
-.story-card { flex: 1; padding: 1.8cqw 1.9cqw; }
-.story-context { background: #fff1df; border-color: #edc6a4; }
-.story-quote { font-size: 1.55cqw; line-height: 1.32; font-weight: 650; }
-.story-hint { margin-top: 1.05cqw; padding-top: .85cqw; border-top: var(--edge) solid var(--line-strong); color: var(--muted); font-size: 1.2cqw; line-height: 1.35; }
-.story-prompt { font-size: 1.4cqw; line-height: 1.4; }
-.story-tools { margin-top: 1cqw; padding-top: .8cqw; border-top: var(--edge) solid var(--line); color: var(--label); font-size: 1.1cqw; line-height: 1.35; font-weight: 650; }
-.story-result { background: #fffdf9; }
-.story-result-title { display: flex; align-items: center; gap: .55cqw; margin-bottom: .85cqw; padding-bottom: .7cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.12cqw; font-weight: 700; }
-.story-result-title .ico { color: var(--orange); font-size: 1.35cqw; }
-.story-result-row { display: flex; align-items: flex-start; justify-content: space-between; gap: .5cqw; padding: .48cqw 0; font-size: 1.08cqw; line-height: 1.25; }
-.story-result-row + .story-result-row { border-top: var(--edge) solid var(--line); }
-.story-result-row .status { color: var(--label); text-align: right; font-weight: 650; }
-.story-result-row .cn { color: inherit; }
-.story .paper-in, .story .unfold { animation-fill-mode: both; }
-@media (max-width: 600px) and (orientation: portrait) {
-  .story { grid-template-columns: 1fr; gap: 10px; align-content: start; }
-  .story-label { margin-bottom: 5px; }
-  .story-card { padding: 12px; }
-  .story-hint, .story-tools { margin-top: 9px; padding-top: 8px; }
-  .story-result-title { margin-bottom: 5px; padding-bottom: 6px; }
-  .story-result-row { padding: 5px 0; }
-}
-
-/* Introduce how the AI Agent uses Google Workspace CLI. */
-.intro-sub { margin-top: .8cqw; color: var(--muted); font-size: 1.35cqw; line-height: 1.28; }
-.intro-flow { display: grid; grid-template-columns: 1.12fr .12fr 1fr .12fr 1fr; align-items: stretch; gap: .65cqw; }
-.intro-node { display: flex; flex-direction: column; min-width: 0; padding: 1.8cqw 1.9cqw; }
-.intro-label { color: var(--label); font-size: 1.05cqw; font-weight: 700; }
-.intro-label .cn { color: inherit; }
-.intro-ask { margin-top: 1.2cqw; font-size: 1.55cqw; line-height: 1.35; font-weight: 650; }
-.intro-agent { background: #fff1e1; border-color: #e7b48a; }
-.intro-agent h2 { margin-top: .9cqw; font-size: 1.75cqw; line-height: 1.2; }
-.intro-agent h2 .cn { color: inherit; }
-.intro-cli { margin-top: 1.1cqw; padding: .75cqw .85cqw; border-radius: var(--r-md); background: #fffaf3; border: var(--edge) solid #ecc7a8; font-size: 1.35cqw; line-height: 1.35; }
-.intro-arrow { display: grid; place-items: center; color: var(--orange); font-size: 2cqw; }
-.intro-apps { display: grid; gap: .7cqw; margin-top: .85cqw; }
-.intro-app { display: flex; align-items: center; gap: .7cqw; font-size: 1.25cqw; font-weight: 650; }
-.intro-app .ico { color: var(--orange); font-size: 1.5cqw; }
-.intro-note { margin-top: 1.25cqw; font-size: 1.3cqw; line-height: 1.3; color: var(--ink); }
-@media (max-width: 600px) and (orientation: portrait) {
-  .intro-sub { margin-top: 8px; }
-  .intro-flow { grid-template-columns: 1fr; gap: 8px; }
-  .intro-node { padding: 12px; }
-  .intro-ask, .intro-agent h2, .intro-cli, .intro-apps { margin-top: 8px; }
-  .intro-cli { padding: 8px; }
-  .intro-arrow { transform: rotate(90deg); }
-  .intro-note { margin-top: 10px; }
-}
-
-/* Two familiar entry points, with different jobs. */
-.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2cqw; align-items: stretch; }
-.choice-card { display: flex; flex-direction: column; gap: 1.1cqw; padding: 2.1cqw 2.2cqw; }
-.choice-card.agent { background: #fff1e1; border-color: #e7b48a; }
-.choice-where { color: var(--label); font-size: 1.05cqw; font-weight: 700; }
-.choice-where .cn { color: inherit; }
-.choice-card h2 { font-size: 2.1cqw; line-height: 1.2; }
-.choice-card h2 .cn { color: inherit; }
-.choice-task { font-size: 1.5cqw; line-height: 1.35; }
-.choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.4cqw; line-height: 1.35; font-weight: 650; }
-.choice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw 1.4cqw; margin-top: .5cqw; }
-.choice-actions button { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
-.story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.2cqw; line-height: 1.35; }
-.story-result-example .example-label { color: var(--label); font-weight: 700; margin-bottom: .4cqw; }
-@media (max-width: 600px) and (orientation: portrait) {
-  .choice-grid { grid-template-columns: 1fr; gap: 10px; }
-  .choice-card { gap: 8px; padding: 12px; }
-  .choice-example { padding-top: 8px; }
-  .choice-actions { gap: 8px 16px; margin-top: 6px; }
-  .story-result-example { margin-top: 8px; padding: 8px; }
-}
-
-/* A discussion becomes a document, then the same document is revised. */
-.write-sub { margin-top: .85cqw; color: var(--muted); font-size: 1.35cqw; line-height: 1.35; }
-.write-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6cqw; align-items: start; align-content: center; }
-.write-card { padding: 1.8cqw 2cqw; }
-.write-label { color: var(--label); font-size: 1.08cqw; font-weight: 700; }
-.write-label .cn { color: inherit; }
-.write-context { margin-top: .85cqw; color: var(--muted); font-size: 1.25cqw; line-height: 1.35; }
-.write-message { margin-top: 1.1cqw; padding: 1cqw 1.15cqw; border-radius: var(--r-md); background: #fff1e1; font-size: 1.4cqw; line-height: 1.4; }
-.write-message + .write-message { margin-top: .8cqw; }
-.write-doc-head { display: flex; align-items: center; gap: .65cqw; padding-bottom: .85cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.2cqw; font-weight: 700; }
-.write-doc-head .ico { color: var(--orange); font-size: 1.5cqw; }
-.write-doc-title { margin-top: 1cqw; font-size: 1.55cqw; font-weight: 700; }
-.write-doc-section { margin-top: .75cqw; padding: .45cqw .75cqw; border-left: .2cqw solid transparent; font-size: 1.2cqw; line-height: 1.35; animation: doc-revise .6s var(--ease) 4.4s forwards; }
-.write-doc-status { margin-top: 1cqw; color: var(--label); font-size: 1.1cqw; font-weight: 700; }
-@keyframes doc-revise { to { border-left-color: var(--orange); background: #fff2e2; font-weight: 700; } }
-@media (max-width: 600px) and (orientation: portrait) {
-  .write-sub { margin-top: 8px; }
-  .write-flow { grid-template-columns: 1fr; gap: 12px; align-content: start; }
-  .write-card { padding: 12px; }
-  .write-context, .write-message, .write-doc-title, .write-doc-section, .write-doc-status { margin-top: 9px; }
-  .write-message { padding: 9px; }
-  .write-doc-head { gap: 7px; padding-bottom: 8px; }
-  .write-doc-section { padding: 6px 8px; border-left-width: 3px; }
-}
-
-/* 01 Opening */
+/* Opening */
 .s-open h1 { font-size: 4cqw; }
-.layers { display: flex; flex-direction: column; justify-content: center; gap: 1cqw; margin-top: 2.2cqw; }
-.layer { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.5cqw 1.8cqw; border-radius: var(--r-lg); border: var(--edge) solid var(--line-strong); background: var(--card); box-shadow: var(--shadow); transform-origin: bottom; animation: rise .7s var(--ease) var(--d) both; }
-.layer .num { font-size: 3cqw; line-height: 1; color: var(--orange); }
-.layer .bi { font-size: 1.7cqw; font-weight: 650; }
-.layer .sub { font-size: 1.15cqw; font-weight: 400; color: var(--muted); text-align: right; }
-.layer.l3 { width: 64%; background: #fff1e0; border-color: #e3a678; }
-.layer.l2 { width: 82%; }
-.layer.l1 { width: 100%; }
-
-/* 02 Hours */
-.hours-grid { display: grid; grid-template-columns: 30cqw 1fr; gap: 2cqw; align-items: center; }
-.ba-stack { display: grid; gap: .8cqw; }
-.ba-line { display: grid; grid-template-columns: 7.4cqw 1fr; gap: .8cqw; align-items: baseline; padding: .9cqw 1.1cqw; border-radius: var(--r-md); font-size: 1.22cqw; line-height: 1.3; }
-.ba-line.before-line { background: #faf3e8; border: var(--edge) dashed var(--line-strong); color: #4d4440; }
-.ba-line.after-line { background: #fff4e6; border: var(--edge) solid #e3a678; }
-.ba-line .ba-k { margin: 0; white-space: nowrap; }
-.rule-card { margin-top: 1.1cqw; padding: 1.2cqw 1.35cqw 1.35cqw; }
-.rule-card .bi { font-size: 1.3cqw; font-weight: 650; line-height: 1.3; }
-.windows { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw; margin-top: .9cqw; }
-.win { padding: .4cqw .8cqw; border-radius: var(--r-md); background: var(--orange); color: #fff; font-size: 1.4cqw; font-weight: 700; font-variant-numeric: tabular-nums; }
-.or { color: var(--muted); font-size: 1.05cqw; }
-.table-card { padding: .9cqw 1.2cqw 1.1cqw; }
-.hours-table { width: 100%; border-collapse: collapse; font-size: 1.3cqw; }
-.hours-table th, .hours-table td { padding: .85cqw .8cqw; border-bottom: var(--edge) solid var(--line); text-align: left; }
-.hours-table thead th { color: var(--label); font-size: 1cqw; }
-.hours-table thead th b { display: block; margin-top: .15cqw; color: var(--ink); font-size: 1.25cqw; font-variant-numeric: tabular-nums; }
-.hours-table tbody th { font-weight: 650; }
-.hours-table tbody th .city { display: block; color: var(--muted); font-size: .92cqw; font-weight: 400; }
-.hours-table td { font-variant-numeric: tabular-nums; color: #8f8178; }
-.hours-table td.good { color: var(--ink); font-weight: 700; background: var(--good); }
-.hours-table td .prev { display: block; font-size: .85cqw; font-weight: 500; color: var(--muted); }
+.opening-stage { display: flex; align-items: center; }
+.opening-card { width: 100%; padding: 3cqw; }
+.opening-copy { font-size: 2.2cqw; font-weight: 600; line-height: 1.35; }
 
 /* 03 Tada thread */
 .thread { padding: 1.2cqw 1.4cqw 1.3cqw; }
@@ -299,10 +170,13 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 
 /* 05 Searchable */
 .s-searchable .main { display: flex; align-items: center; }
-.s-searchable .thread { width: 100%; }
-.channel-step { padding: 1.3cqw 1.5cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fffaf3; font-size: 1.4cqw; line-height: 1.38; font-weight: 600; }
-.channel-step .how { display: block; margin-top: .3cqw; font-size: 1.02cqw; font-weight: 400; color: var(--muted); }
-.tada-help { margin-top: 1.2cqw; font-size: 1.1cqw; color: var(--muted); }
+.s-searchable .thread { width: 100%; padding: 2.3cqw 2.6cqw; }
+.s-searchable .ba-k { margin-bottom: 1.3cqw; }
+.channel-step { padding-top: 1.4cqw; border-top: var(--edge) solid var(--line); font-size: 1.75cqw; line-height: 1.35; font-weight: 600; }
+.channel-step .how { display: block; margin-top: .55cqw; font-size: 1.12cqw; font-weight: 400; color: var(--muted); }
+#screen[data-language="both"] .channel-step > .cn { margin-top: 1.2em; }
+.tada-help { margin-top: 1.8cqw; padding-top: 1.4cqw; border-top: var(--edge) solid var(--line); font-size: 1.12cqw; color: var(--muted); }
+#screen[data-language="both"] .tada-help > .cn { margin-top: .75em; }
 
 /* 06 Permissions */
 
@@ -317,11 +191,11 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 
 /* Center each page's content as a group instead of stretching empty cards. */
 @media (min-width: 601px), (orientation: landscape) {
-  .s-choice .main, .s-use .main, .s-intro .main { display: flex; flex-direction: column; justify-content: center; }
+  .s-use .main { display: flex; flex-direction: column; justify-content: center; }
 }
 /* Separate longer bilingual passages without adding extra copy. */
-.choice-task > .cn, .intro-ask > .cn, .intro-cli > .cn, .write-message > .cn, .story-prompt > .cn, .story-result-example .bi > .cn, .start .bi > .cn { margin-top: .7em; padding-top: .7em; border-top: var(--edge) solid var(--line); }
-#screen[data-language="zh"] :is(.choice-task, .intro-ask, .intro-cli, .write-message, .story-prompt, .story-result-example .bi, .start .bi) > .cn { margin: 0; padding: 0; border: 0; }
+.start .bi > .cn { margin-top: .7em; padding-top: .7em; border-top: var(--edge) solid var(--line); }
+#screen[data-language="zh"] :is(.start .bi) > .cn { margin: 0; padding: 0; border: 0; }
 
 /* Toolbar and dialogs */
 .toolbar { min-height: 49px; display: flex; gap: 6px; padding: 7px 10px; align-items: center; font-size: 12px; color: #61483a; }
@@ -365,20 +239,15 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
   .track { gap: 6px; flex-wrap: wrap; }
   .track .n { width: 16px; }
   .head, .main { margin-top: 14px; }
-  .layers { justify-content: start; }
-  .hours-grid { align-items: stretch; }
   .start { align-content: start; }
-  .hours-grid, .use-grid, .duo-out, .perm-rule { grid-template-columns: 1fr; gap: 10px; }
-  .layer, .start li { width: 100% !important; grid-template-columns: 28px 1fr; padding: 10px; gap: 8px; }
-  .layer .sub { grid-column: 2; text-align: left; }
+  .use-grid { grid-template-columns: 1fr; gap: 10px; }
+  .start li { width: 100%; grid-template-columns: 28px 1fr; padding: 10px; gap: 8px; }
   .start li > :last-child { grid-column: 2; justify-self: start; }
-  .card, .thread, .use, .rule-card, .table-card { padding: 10px; }
-  .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
+  .card, .thread, .use { padding: 10px; }
   .use-foot { display: grid; gap: 10px; }
   .tips { grid-template-columns: 1fr; gap: 10px; }
   .tav, .use-ico { width: 22px; }
-  .doc-lines li, .tmsg, .ba-line { grid-template-columns: 28px 1fr; gap: 6px; }
-  .ba-line { grid-template-columns: 1fr; }
+  .tmsg { grid-template-columns: 28px 1fr; gap: 6px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01s !important; animation-delay: 0s !important; animation-iteration-count: 1 !important; transition-duration: .01s !important; }
@@ -414,76 +283,20 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 </main>
 
 <template id="opening">
-  <section class="scene s-open warm" data-label="How we work together">
+  <section class="scene s-open warm" data-label="Meet Tada">
     <header class="head">
-      <p class="eyebrow biline arrive"><span lang="en" class="heading-en">Glorify · after the merger</span></p>
-      <h1 class="bi arrive" style="--d:.1s"><span lang="en" class="heading-en">How we work together</span></h1>
+      <p class="eyebrow biline arrive"><span lang="en" class="heading-en">GLORIFY · IN SLACK</span></p>
+      <h1 class="bi arrive" style="--d:.1s"><span lang="en" class="heading-en">Meet Tada</span></h1>
     </header>
-    <ol class="main layers">
-      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en" class="heading-en">Use Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Write and refine Google Docs</span><span class="cn" lang="zh-Hans">写入并修改 Google 文档</span></span></li>
-      <li class="layer l2" style="--d:.95s"><span class="num">2</span><span class="bi"><span lang="en" class="heading-en">Find information</span></span><span class="bi sub"><span lang="en">Ask Tada · keep work searchable</span><span class="cn" lang="zh-Hans">问 Tada · 信息能被搜到</span></span></li>
-      <li class="layer l1" style="--d:.6s"><span class="num">1</span><span class="bi"><span lang="en" class="heading-en">Find each other</span></span><span class="bi sub"><span lang="en">Working hours on the calendar</span><span class="cn" lang="zh-Hans">日历里标好工作时间</span></span></li>
-    </ol>
-  </section>
-</template>
-
-<template id="hours">
-  <section class="scene s-hours" data-label="Working hours">
-    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Put your working hours on the calendar</span></h1></header>
-    <div class="main hours-grid">
-      <div>
-        <div class="ba-stack arrive" style="--d:.2s">
-          <p class="ba-line before-line"><span class="ba-k biline"><span lang="en" class="heading-en">Before</span></span><span class="bi"><span lang="en">Guess the time zone. Ask back and forth.</span><span class="cn" lang="zh-Hans">猜时差，来回问。</span></span></p>
-          <p class="ba-line after-line"><span class="ba-k after-k biline"><span lang="en" class="heading-en">After</span></span><span class="bi"><span lang="en">Open the calendar. See when people can meet.</span><span class="cn" lang="zh-Hans">打开日历，就知道什么时候能约。</span></span></p>
-        </div>
-        <div class="card rule-card paper-in" style="--d:.45s">
-          <p class="bi"><span lang="en">China team: keep at least one Beijing window open</span><span class="cn" lang="zh-Hans">中国同事至少开放一个北京时间段</span></p>
-          <p class="windows"><span class="win">08:00–10:00</span><span class="or biline"><span lang="en">or</span><span class="cn" lang="zh-Hans">或</span></span><span class="win">22:00–24:00</span></p>
-        </div>
-      </div>
-      <div class="card table-card paper-in" style="--d:.6s">
-        <table class="hours-table" aria-label="Beijing windows in local time">
-          <thead><tr><th scope="col"><span lang="en" class="heading-en">Local time</span></th><th scope="col"><span lang="en" class="heading-en">Beijing</span><b>08:00–10:00</b></th><th scope="col"><span lang="en" class="heading-en">Beijing</span><b>22:00–24:00</b></th></tr></thead>
-          <tbody>
-            <tr data-zone="America/Los_Angeles"><th scope="row"><span class="biline"><span lang="en">US West</span><span class="cn" lang="zh-Hans">美国西海岸</span></span><span class="city biline"><span lang="en">Los Angeles</span><span class="cn" lang="zh-Hans">洛杉矶</span></span></th><td data-window></td><td data-window></td></tr>
-            <tr data-zone="Europe/London"><th scope="row"><span class="biline"><span lang="en">UK</span><span class="cn" lang="zh-Hans">英国</span></span><span class="city biline"><span lang="en">London</span><span class="cn" lang="zh-Hans">伦敦</span></span></th><td data-window></td><td data-window></td></tr>
-            <tr data-zone="America/Mexico_City"><th scope="row"><span class="biline"><span lang="en">Mexico</span><span class="cn" lang="zh-Hans">墨西哥</span></span><span class="city biline"><span lang="en">Mexico City</span><span class="cn" lang="zh-Hans">墨西哥城</span></span></th><td data-window></td><td data-window></td></tr>
-            <tr data-zone="America/Sao_Paulo"><th scope="row"><span class="biline"><span lang="en">Brazil</span><span class="cn" lang="zh-Hans">巴西</span></span><span class="city biline"><span lang="en">São Paulo</span><span class="cn" lang="zh-Hans">圣保罗</span></span></th><td data-window></td><td data-window></td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <p class="foot biline"><a class="biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">Google Calendar → Settings → Working hours</span><span class="cn" lang="zh-Hans">Google 日历 → 设置 → 工作时间</span></a><span lang="en"> · Can’t find it? Tell the Operation Team.</span><span class="cn" lang="zh-Hans">找不到这个设置？反馈给 Operation Team。</span></p>
-  </section>
-</template>
-
-<template id="choose-tool">
-  <section class="scene s-choice warm" data-label="Which one should I use?">
-    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Which one should I use?</span></h1></header>
-    <div class="main">
-      <div class="choice-grid">
-        <article class="card choice-card paper-in" style="--d:.35s">
-          <p class="choice-where biline"><span lang="en" class="heading-en">IN SLACK</span></p>
-          <h2 class="bi"><span lang="en" class="heading-en">Ask Tada</span></h2>
-          <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
-          <p class="choice-example bi"><span lang="en" class="always-en">“What is Feeling Together?”</span></p>
-          <div class="choice-actions">
-            <button type="button" data-open-tool-setup="tada"><span lang="en" class="always-en">How to connect →</span></button>
-          </div>
-        </article>
-        <article class="card choice-card agent paper-in" style="--d:1.2s">
-          <p class="choice-where biline"><span lang="en" class="heading-en">IN YOUR AI AGENT</span></p>
-          <h2 class="bi"><span lang="en" class="heading-en">Use Google Workspace CLI</span></h2>
-          <p class="choice-task bi"><span lang="en">Ask your Agent to work with your Google files.</span><span class="cn" lang="zh-Hans">让 Agent 处理你的 Google 文件。</span></p>
-          <p class="choice-example bi"><span lang="en">“Put our discussion in a Google Doc.”</span><span class="cn" lang="zh-Hans">“把讨论结果写进 Google 文档。”</span></p>
-          <div class="choice-actions">
-            <button type="button" data-open-tool-setup="gws"><span lang="en" class="always-en">How to connect →</span></button>
-          </div>
-        </article>
+    <div class="main opening-stage">
+      <div class="card opening-card paper-in" style="--d:.4s">
+        <p class="opening-copy bi"><span lang="en">Find answers together in Slack.</span><span class="cn" lang="zh-Hans">在 Slack 中一起找到答案。</span></p>
       </div>
     </div>
   </section>
 </template>
+
+
 
 <template id="tada">
   <section class="scene s-tada warm" data-label="Ask Tada">
@@ -551,168 +364,42 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 
 
 
-<template id="gws-intro">
-  <section class="scene s-intro warm" data-label="What is Google Workspace CLI?">
-    <header class="head arrive">
-      <h1 class="bi"><span lang="en" class="heading-en">What is Google Workspace CLI?</span></h1>
-      <p class="intro-sub bi"><span lang="en">A tool that lets your AI Agent work with your Google apps.</span><span class="cn" lang="zh-Hans">让你的 AI Agent 能操作 Google 应用的工具。</span></p>
-    </header>
-    <div class="main">
-      <div class="intro-flow">
-        <div class="card intro-node paper-in" style="--d:.3s">
-          <p class="intro-label biline"><span lang="en" class="heading-en">YOU ASK</span></p>
-          <p class="intro-ask bi"><span lang="en">“Put our discussion in a Google Doc.”</span><span class="cn" lang="zh-Hans">“把讨论结果写进 Google 文档。”</span></p>
-        </div>
-        <div class="intro-arrow arrive" style="--d:.9s" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></div>
-        <div class="card intro-node intro-agent paper-in" style="--d:1.15s">
-          <p class="intro-label biline"><span lang="en" class="heading-en">YOUR AI AGENT</span></p>
-          <h2 class="bi"><span lang="en" class="heading-en">Does the work</span></h2>
-          <p class="intro-cli bi"><span lang="en">Uses Google Workspace CLI</span><span class="cn" lang="zh-Hans">调用 Google Workspace CLI</span></p>
-        </div>
-        <div class="intro-arrow arrive" style="--d:1.8s" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></div>
-        <div class="card intro-node paper-in" style="--d:2.1s">
-          <p class="intro-label">GOOGLE WORKSPACE</p>
-          <div class="intro-apps">
-            <p class="intro-app"><svg class="ico"><use href="#i-doc"/></svg><span class="biline"><span lang="en">Docs</span><span class="cn" lang="zh-Hans">文档</span></span></p>
-            <p class="intro-app"><svg class="ico"><use href="#i-search"/></svg><span class="biline"><span lang="en">Drive</span><span class="cn" lang="zh-Hans">云端硬盘</span></span></p>
-            <p class="intro-app"><svg class="ico"><use href="#i-clock"/></svg><span class="biline"><span lang="en">Calendar</span><span class="cn" lang="zh-Hans">日历</span></span></p>
-          </div>
-        </div>
-      </div>
-      <p class="intro-note bi arrive" style="--d:2.8s"><span lang="en">Just ask in plain language. No terminal commands to type.</span><span class="cn" lang="zh-Hans">直接用日常语言提问，不用自己输入终端命令。</span></p>
-    </div>
-    <p class="foot biline"><span lang="en">Set up and sign in once · Access follows your Google permissions.</span><span class="cn" lang="zh-Hans">首次需配置并登录 · 只能访问你有权限的内容。</span></p>
-  </section>
-</template>
 
-<template id="gws-setup">
-  <section class="scene s-write warm" data-label="Plan a team introduction">
-    <header class="head case-head arrive">
-      <p class="eyebrow"><span lang="en" class="heading-en">USE CASE</span></p>
-      <h1 class="bi"><span lang="en" class="heading-en">Plan a 5-minute team intro</span></h1>
-      <p class="write-sub bi"><span lang="en">Discuss, write, then improve it together.</span><span class="cn" lang="zh-Hans">先讨论，再写入文档并一起修改。</span></p>
-    </header>
-    <div class="main write-flow">
-      <div class="card write-card paper-in" style="--d:.35s">
-        <p class="write-label biline"><span lang="en" class="heading-en">YOUR AI AGENT</span></p>
-        <p class="write-context bi"><span lang="en">After discussing how to introduce Google Workspace CLI:</span><span class="cn" lang="zh-Hans">讨论完怎么介绍 Google Workspace CLI 后：</span></p>
-        <p class="write-message bi arrive" style="--d:1s"><span lang="en">“Use Google Workspace CLI to put our plan in a Google Doc.”</span><span class="cn" lang="zh-Hans">“用 Google Workspace CLI 把我们的方案写进 Google 文档。”</span></p>
-        <p class="write-message bi arrive" style="--d:3.3s"><span lang="en">“Add a practical example.”</span><span class="cn" lang="zh-Hans">“加一个实际的例子。”</span></p>
-      </div>
-      <div class="card write-card paper-in" style="--d:2s">
-        <p class="write-doc-head biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Google Doc · Example</span></p>
-        <p class="write-doc-title bi"><span lang="en" class="heading-en">Google Workspace CLI · Team intro</span></p>
-        <p class="write-doc-section bi"><span lang="en">Ask your AI Agent to work with Google files.</span><span class="cn" lang="zh-Hans">让 AI Agent 操作 Google 文件。</span></p>
-        <div class="unfold" style="--d:4.4s"><p class="write-doc-section bi"><span lang="en">Example: create a Google Doc</span><span class="cn" lang="zh-Hans">举例：新建 Google 文档</span></p></div>
-        <p class="write-doc-status bi arrive" style="--d:5s"><span lang="en">Same document, updated</span><span class="cn" lang="zh-Hans">同一份文档已更新</span></p>
-      </div>
-    </div>
-  </section>
-</template>
 
-<template id="gws-review">
-  <section class="scene s-slack warm" data-label="Review translations together">
-    <header class="head case-head arrive"><p class="eyebrow"><span lang="en" class="heading-en">USE CASE</span></p><h1 class="bi"><span lang="en" class="heading-en">The translations are ready for review</span></h1></header>
-    <div class="main story">
-      <div class="story-step paper-in" style="--d:.2s">
-        <p class="story-label biline"><span lang="en" class="heading-en">01 · THE TASK</span></p>
-        <div class="card story-card story-context">
-          <p class="story-quote bi"><span lang="en">“Do all three versions say the same thing?”</span><span class="cn" lang="zh-Hans">“三种语言的意思一致吗？”</span></p>
-          <p class="story-hint bi"><span lang="en">English, Spanish and Portuguese in one Google Doc.</span><span class="cn" lang="zh-Hans">一份 Google 文档里有英、西、葡三种语言。</span></p>
-        </div>
-      </div>
-      <div class="story-step paper-in" style="--d:.9s">
-        <p class="story-label biline"><span lang="en" class="heading-en">02 · ASK YOUR AI AGENT</span></p>
-        <div class="card story-card">
-          <p class="story-prompt bi"><span lang="en">Use Google Workspace CLI to compare the three languages in this doc. Flag meaning differences and draft a Slack reply for review. [Doc link]</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 对照这份文档的三种语言，找出意思不同的地方，再写一条 Slack 回复草稿。[文档链接]</span></p>
-          <p class="story-tools bi"><span lang="en">Agent: read Doc → compare → draft reply</span><span class="cn" lang="zh-Hans">Agent：读取文档 → 对照 → 起草回复</span></p>
-        </div>
-      </div>
-      <div class="story-step unfold" style="--d:2.2s">
-        <p class="story-label biline"><span lang="en" class="heading-en">03 · YOU GET</span></p>
-        <div class="card story-card story-result">
-          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Review notes · Example</span></p>
-          <div class="story-result-example">
-            <p class="example-label bi"><span lang="en" class="heading-en">Morning &amp; evening routine</span></p>
-            <p class="bi"><span lang="en">EN / PT: choose times. ES: no time choice mentioned.</span><span class="cn" lang="zh-Hans">英 / 葡：选择时间；西语：未提选择时间。</span></p>
-          </div>
-          <div class="story-result-example">
-            <p class="example-label bi"><span lang="en" class="heading-en">Reply draft</span></p>
-            <p class="bi"><span lang="en">“Should Spanish mention choosing a time?”</span><span class="cn" lang="zh-Hans">“西语是否也要写明可选择时间？”</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
 
 <template id="close">
-  <section class="scene s-close warm" data-label="Start this week">
-    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">One step per layer, starting this week</span></h1></header>
+  <section class="scene s-close warm" data-label="Try Tada">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Try Tada</span></h1></header>
     <ol class="main start">
-      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">Today</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
-      <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span><a class="guide ghost biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada + Drive guide ↗</span><span class="cn" lang="zh-Hans">Tada 连接教程</span></a></li>
-      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en" class="heading-en">This week</span></span><span class="bi"><span lang="en">Ask your AI Agent to set up Google Workspace CLI.</span><span class="cn" lang="zh-Hans">请 AI Agent 帮你配置 Google Workspace CLI。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Get started</span><span class="cn" lang="zh-Hans">开始使用</span></button></li>
+      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span><button type="button" class="guide" data-open-tool-setup="tada"><span lang="en" class="always-en">How to connect →</span></button></li>
     </ol>
   </section>
 </template>
 
 <script>
-const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 const setupSteps = [
-  {
-    key: "tada",
-    title: "Tada · Slack",
-    steps: [
-      { en: "Sign in to Slack with your work account. Search Apps for Tada and open it.", zh: "用工作账号登录 Slack，在应用中搜索并打开 Tada。" },
-      { en: "If Tada isn’t working, contact Ken Ge.", zh: "如果 Tada 用不了，请联系 Ken Ge。" },
-      { en: "Ask Tada in a DM, or @Tada in a channel it has joined. Company docs do not require a personal Drive connection.", zh: "私聊 Tada 提问，或在它已加入的频道里 @Tada。查公司已发布资料无需连接个人 Drive。" }
-    ]
-  },
-  {
-    key: "gws",
-    title: "Google Workspace CLI",
-    steps: [
-      { en: "Open your AI Agent and say: “Help me install and connect Google Workspace CLI to my work Google account.”", zh: "打开你的 AI Agent，说：“帮我安装 Google Workspace CLI，并连接我的工作 Google 账号。”" },
-      { en: "When prompted, sign in yourself and grant the access needed. If a Google Cloud project or OAuth client is required, ask your administrator.", zh: "按提示自行登录并授予所需权限。如需 Google Cloud 项目或 OAuth 客户端，请找管理员。" },
-      { en: "Give your Agent a Google Doc link you can access and ask it to read the document.", zh: "把你有权限查看的 Google 文档链接发给 Agent，请它读取。" }
-    ]
-  }
-];
-const setupLinks = [
-  { key: "tada", title: "Tada + Drive connection guide (optional)", url: guideUrl },
-  { key: "gws", title: "Google Workspace CLI installation guide", url: "https://github.com/googleworkspace/cli#installation" }
+  { key: "tada", title: "Tada · Slack", steps: [
+    { en: "In Slack, search Apps for Tada and open it.", zh: "在 Slack 应用中搜索并打开 Tada。" },
+    { en: "Ask Tada in a DM, or @Tada in a channel it has joined.", zh: "私聊 Tada，或在它已加入的频道里 @Tada。" },
+    { en: "If Tada isn’t working, contact Ken Ge.", zh: "如果 Tada 用不了，请联系 Ken Ge。" }
+  ] }
 ];
 
 const chapters = [
   { id: "opening", stage: -1, time: "0:00–0:20",
-    say: ["合并之后，我们先建立共同的工作方式，再认识 Tada 和 Google Workspace CLI。"] },
-  { id: "hours", stage: 0, time: "0:20–1:00",
-    say: ["先让大家找到彼此。中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历标明工作时间。", "表里高亮的是对方白天能用的时段。电脑打开 Google 日历 → 设置 → 通用 → 工作时间；找不到设置，反馈给 Operation Team。"],
-    facts: ["时间按打开页面当天的北京日期换算，并自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
-  { id: "choose-tool", stage: -1, time: "1:00–1:30",
-    say: ["先区分两个入口：在 Slack 问 Tada，查它已接入的团队资料；在自己的 AI Agent 里，让 Agent 使用 Google Workspace CLI 处理 Google 文件。", "两者都受权限限制，Google Workspace CLI 首次需要配置。"] },
-  { id: "tada", stage: 1, time: "1:30–2:05",
+    say: ["今天介绍如何在 Slack 使用 Tada，快速查找团队资料。"] },
+  { id: "tada", stage: 0, time: "0:20–0:55",
     say: ["这是在 Slack 私聊 Tada 的真实提问：什么是 Feeling Together？", "接着看 Tada 的中英文回答。"],
     facts: ["2026-11-10 用户通过 Slack 私聊 Tada。完整原始提问：What is Feeling Together？Please describe this function in no more than two sentences each in Chinese and English, and include the source of the information.", "页面展示回复正文原文，中英文顺序调整为英文在前。Tada 当时注明无法核验实时来源；参考资料为《05 Confidein ／ Bless Ring 当前 App 功能记录》（2026-11-05）和《Feeling Together（心情绑定与送戒指）PRD》（2026-11-02）。"] },
-  { id: "tada-use", stage: 1, time: "2:05–2:30",
+  { id: "tada-use", stage: 1, time: "0:55–1:20",
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
-    facts: ["频道问答要求 Tada 在该频道；已发布公司资料无需连接个人 Drive。可查询范围取决于接入和权限。"] },
-  { id: "searchable", stage: 1, time: "2:30–2:55",
+    facts: ["频道问答要求 Tada 在该频道；可查询范围取决于资料接入和访问权限。"] },
+  { id: "searchable", stage: 1, time: "1:20–1:45",
     say: ["想让同事一起看回答，就把 Tada 加入频道，然后 @Tada 提问。如果 Tada 用不了，请联系 Ken Ge。"] },
-  { id: "gws-intro", stage: 2, time: "2:55–3:20",
-    say: ["Google Workspace CLI 让 AI Agent 处理你有权限访问的 Google 文档、云盘文件和日历。", "直接对自己常用的 Agent 说要做什么，它在后台调用 CLI；首次需要安装、登录并授权。"],
-    facts: ["gws 支持 Google Docs、Drive 和 Calendar 等服务。实际可访问的内容取决于账号权限与授权范围；首次配置说明见最后一页。"] },
-  { id: "gws-setup", stage: 2, time: "3:20–4:05",
-    say: ["比如，为这次五分钟的 Google Workspace CLI 宣讲，先和 AI 讨论怎么讲，再让它把方案写进 Google 文档。", "想加一个实际例子，就继续告诉 Agent 修改同一份文档。"],
-    facts: ["画面以本次宣讲为场景示意；Agent 需要安装并授权 gws，且对目标文档有编辑权限。"] },
-  { id: "gws-review", stage: 2, time: "4:05–4:50",
-    say: ["审核三种语言时，把 Google 文档交给 Agent，找出意思不同的位置并起草回复。", "例如，英葡文提到选择早晚时间，西语未提。Agent 也可以起草回复，请同事确认。"],
-    facts: ["真实的文档审核评论指出：Morning and Evening Routine Settings 的英语和葡语要求用户选择开始及结束时间，西语邀请用户为上帝留出时间但遗漏了选择时间。页面转述此差异，回复为示意，未直接引用内部链接。"] },
-  { id: "close", stage: -1, time: "4:50–5:35",
-    say: ["今天先在日历标好工作时间；会后在 Slack 向 Tada 问一个团队问题。", "要开始用 Google Workspace CLI，在你的 AI Agent 里说：帮我为工作账号配置 Google Workspace CLI。按提示登录，再给它一个文档任务。安装说明可从按钮打开。"] }
+  { id: "close", stage: -1, time: "1:45–2:05",
+    say: ["会后在 Slack 向 Tada 问一个团队问题。需要帮助时，联系 Ken Ge。"] }
 ];
-const stages = ["Find each other", "Find information", "Use Google Workspace CLI"];
+const stages = ["Ask Tada", "How to use Tada"];
 
 const presenter = document.querySelector("#presenter");
 const screen = document.querySelector("#screen");
@@ -724,39 +411,6 @@ const languages = ["both", "en", "zh"];
 const pad = n => String(n).padStart(2, "0");
 const sceneLabel = index => document.getElementById(chapters[index].id).content.firstElementChild.dataset.label;
 let current = 0;
-
-function icon(name) {
-  return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
-}
-function renderWindows(scene) {
-  const rows = scene.querySelectorAll("[data-zone]");
-  if (!rows.length) return;
-  const beijingDate = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" });
-  const date = Object.fromEntries(beijingDate.formatToParts(new Date()).map(part => [part.type, part.value]));
-  const dateLabel = [date.year, date.month, date.day].join("-");
-  const utcMidnight = Date.UTC(Number(date.year), Number(date.month) - 1, Number(date.day));
-  // Beijing is UTC+8 all year: 08:00 and 22:00 Beijing are 00:00 and 14:00 UTC.
-  const windows = [[0, 2], [14, 16]];
-  for (const row of rows) {
-    const formatter = new Intl.DateTimeFormat("en-CA", {
-      timeZone: row.dataset.zone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
-    });
-    row.querySelectorAll("[data-window]").forEach((cell, index) => {
-      const [start, end] = windows[index].map(hour => Object.fromEntries(
-        formatter.formatToParts(utcMidnight + hour * 3_600_000).map(part => [part.type, part.value])));
-      const startHour = Number(start.hour);
-      const endHour = Number(end.hour) || 24;
-      cell.textContent = `${start.hour}:${start.minute}–${end.hour}:${end.minute}`;
-      cell.classList.toggle("good", startHour >= 7 && endHour <= 21 && endHour > startHour);
-      if ([start.year, start.month, start.day].join("-") < dateLabel) {
-        const note = document.createElement("span");
-        note.className = "prev biline";
-        note.innerHTML = '<span lang="en">Previous day</span><span class="cn" lang="zh-Hans">前一天</span>';
-        cell.append(note);
-      }
-    });
-  }
-}
 
 for (let index = 0; index < chapters.length; index++) {
   chapterSelect.add(new Option(`${pad(index + 1)}  ${sceneLabel(index)}`, index));
@@ -772,8 +426,6 @@ function show(index) {
     `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span class="n">${step + 1}</span><span lang="en" class="heading-en">${en}</span></li>`).join("");
   mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
-  scene.querySelectorAll("[data-guide]").forEach(link => { link.href = guideUrl; });
-  renderWindows(scene);
   screen.replaceChildren(scene);
   chapterSelect.value = String(index);
   prev.disabled = index === 0;
@@ -824,13 +476,10 @@ function setupParts(tool) {
     }
     parts.push(heading, list);
   }
-  const links = setupLinks.filter(link => !tool || link.key === tool);
-  parts.push(...noteSection("Guides", links.map(link =>
-    `<a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.title}</a>`)));
   return parts;
 }
 function openSetup(tool) {
-  const titles = { tada: "How to connect Tada", gws: "How to connect Google Workspace CLI" };
+  const titles = { tada: "How to connect Tada" };
   document.querySelector("#notes-title").textContent = titles[tool] || "Setup";
   document.querySelector("#note-content").replaceChildren(...setupParts(tool));
   notes.showModal();
@@ -856,8 +505,6 @@ screen.addEventListener("click", event => {
   const toolSetup = event.target.closest("[data-open-tool-setup]");
   if (toolSetup) {
     openSetup(toolSetup.dataset.openToolSetup);
-  } else if (event.target.closest("[data-open-setup]")) {
-    openSetup();
   }
 });
 document.addEventListener("keydown", event => {
