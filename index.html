@@ -542,20 +542,20 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 
 
 <template id="searchable">
-  <section class="scene s-searchable warm" data-label="Keep work searchable">
-    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Keep work where people can find it</span></h1></header>
+  <section class="scene s-searchable warm" data-label="Get started with Tada">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Get started with Tada</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Start in a DM</span><span class="cn" lang="zh-Hans">先私聊</span></p>
-        <p class="bi"><span lang="en">Open Tada in Slack. In Messages, ask for a company document and its link.</span><span class="cn" lang="zh-Hans">在 Slack 打开 Tada 的 Messages，直接问公司资料并请它附上原文链接。</span></p>
-        <p class="bi"><span lang="en">If you need access, contact the Tada admin.</span><span class="cn" lang="zh-Hans">需要开通账号时，联系 Tada 管理员。</span></p>
+        <p class="ba-k biline"><span lang="en">Ask in a DM</span><span class="cn" lang="zh-Hans">私聊查资料</span></p>
+        <p class="bi"><span lang="en">Open Tada in Slack and send your question in Messages.</span><span class="cn" lang="zh-Hans">在 Slack 打开 Tada，到 Messages 发问题。</span></p>
+        <p class="bi"><span lang="en">“Where’s the Beijing onboarding guide? Please share the original link.”</span><span class="cn" lang="zh-Hans">「北京办公室的入职指南在哪？请发原文链接。」</span></p>
       </div>
       <div class="card thread paper-in" style="--d:.4s">
         <p class="ba-k after-k biline"><span lang="en">Ask Tada in a channel</span><span class="cn" lang="zh-Hans">在频道里问 Tada</span></p>
         <ol class="rules">
-          <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">Internal public channels · Add Tada once, then @Tada.<span class="how">Channel header → Agents &amp; apps → Add Tada</span></span><span class="cn" lang="zh-Hans">内部公开频道添加一次 Tada，就能直接 @Tada。<span class="how">频道顶部 → Agents &amp; apps → 添加 Tada</span></span></span></li>
-          <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">Private channels · Get approval first.<span class="how">Send the channel link to a Tada admin, then add Tada once approved.</span></span><span class="cn" lang="zh-Hans">私密频道先发链接给 Tada 管理员，审批后再添加。</span></span></li>
-          <li class="arrive" style="--d:1.2s"><span class="n">3</span><span class="bi"><span lang="en">A Tada admin enables message collection separately.</span><span class="cn" lang="zh-Hans">后台采集由管理员按频道单独开通。</span></span></li>
+          <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">In an internal public channel, add Tada once, then ask with @Tada.<span class="how">Channel header → Agents &amp; apps → Add Tada</span></span><span class="cn" lang="zh-Hans">内部公开频道加一次 Tada，之后直接 @Tada 提问。<span class="how">频道顶部 → Agents &amp; apps → 添加 Tada</span></span></span></li>
+          <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">For a private channel, send the link to the Tada admin. Add Tada after approval.</span><span class="cn" lang="zh-Hans">私密频道先把链接发给 Tada 管理员，审批通过后再添加。</span></span></li>
+          <li class="arrive" style="--d:1.2s"><span class="n">3</span><span class="bi"><span lang="en">Ask the Tada admin to turn on automatic collection of new channel messages.</span><span class="cn" lang="zh-Hans">想让 Tada 自动收录频道的新消息，请管理员单独开启。</span></span></li>
         </ol>
       </div>
     </div>
@@ -713,7 +713,7 @@ const chapters = [
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
     facts: ["频道问答要求 Tada 在该频道；已发布公司资料无需连接个人 Drive。可查询范围取决于接入和权限。"] },
   { id: "searchable", stage: 1, time: "2:30–2:55",
-    say: ["自己找资料，直接私聊 Tada。日常协作优先用公开频道。需要大家一起看回答时，内部公开频道由一位成员添加 Tada，之后直接 @Tada。", "私密频道先把链接发给管理员审批。后台采集另行开通。"],
+    say: ["自己找资料时，直接私聊 Tada。比如问北京办公室的入职指南在哪，请它发原文链接。", "想让同事一起看回答，就在频道里 @Tada。内部公开频道加一次就能用，私密频道先请管理员审批。想自动收录新消息，再请管理员单独开启。"],
     facts: ["频道接入和后台采集分别开通。频道接入允许员工在频道里 @Tada。开启采集后，Tada 才会在后台收录该频道的消息。", "公开频道的自动登记只适用于 Glorify 内部频道。Slack Connect 频道不在此范围。"] },
   { id: "gws-intro", stage: 2, time: "2:55–3:20",
     say: ["Google Workspace CLI 让 AI Agent 处理你有权限访问的 Google 文档、云盘文件和日历。", "直接对自己常用的 Agent 说要做什么，它在后台调用 CLI；首次需要安装、登录并授权。"],
