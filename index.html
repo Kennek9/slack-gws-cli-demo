@@ -190,6 +190,25 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .bubble { justify-self: start; max-width: 92%; padding: .45cqw .8cqw; border-radius: .9cqw .9cqw .9cqw .25cqw; background: #f1e5d6; font-size: 1cqw; color: #5d524c; }
 .bubble:nth-child(2) { justify-self: end; border-radius: .9cqw .9cqw .25cqw .9cqw; }
 
+/* The original Tada reply includes two languages and two source notes. */
+@media (min-width: 601px) {
+  .s-tada .head { margin-top: 1.5cqw; }
+  .s-tada .main { margin-top: 1.3cqw; grid-template-columns: 20cqw 1fr; }
+  .s-tada .thread { padding: .9cqw 1.15cqw; }
+  .s-tada .tmsg .bi { font-size: 1.1cqw; line-height: 1.24; }
+  .s-tada .tmsg + .tmsg { margin-top: .6cqw; padding-top: .6cqw; }
+}
+.tada-sources { margin-top: .65cqw; padding: .6cqw .8cqw; border: var(--edge) solid #e3c4a4; border-radius: var(--r-md); background: #fff8ef; }
+.tada-sources .source-note, .tada-sources li { font-size: 1cqw; line-height: 1.25; }
+.tada-sources .source-note { color: var(--muted); }
+.tada-sources ul { margin-top: .35cqw; }
+.tada-sources li + li { margin-top: .25cqw; }
+@media (max-width: 600px) and (orientation: portrait) {
+  .tada-sources { margin-top: 8px; padding: 8px; }
+  .tada-sources ul { margin-top: 5px; }
+  .tada-sources li + li { margin-top: 5px; }
+}
+
 /* 04 Use Tada */
 .use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5cqw; }
 .use { display: flex; flex-direction: column; gap: .8cqw; padding: 1.4cqw 1.5cqw 1.5cqw; }
@@ -378,22 +397,28 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
         </div>
       </div>
       <div class="card thread paper-in" style="--d:.4s">
-        <p class="ba-k after-k biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span><span class="tag biline"><span lang="en">Tada search · summarized</span><span class="cn" lang="zh-Hans">根据 Tada 检索整理</span></span></p>
+        <p class="ba-k after-k biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span><span class="tag biline"><span lang="en">Real Slack reply · links hidden</span><span class="cn" lang="zh-Hans">真实 Slack 回复 · 链接已隐藏</span></span></p>
         <div class="tmsg arrive" style="--d:.7s">
           <span class="tav" aria-hidden="true"><svg class="ico"><use href="#i-user"/></svg></span>
-          <div><p class="who biline"><span lang="en">You</span><span class="cn" lang="zh-Hans">你</span></p><p class="bi"><span lang="en">@Tada What is Feeling Together? Give me a short introduction and the source.</span><span class="cn" lang="zh-Hans">@Tada 什么是 Feeling Together？简单介绍一下，并给我资料来源。</span></p></div>
+          <div><p class="who biline"><span lang="en">You · DM</span><span class="cn" lang="zh-Hans">你 · 私聊</span></p><p class="bi"><span lang="en">What is Feeling Together？Please describe this function in no more than two sentences each in Chinese and English, and include the source of the information.</span><span class="cn" lang="zh-Hans">什么是 Feeling Together？请用中英文各用两句话以内介绍这个功能，并附上资料来源。</span></p></div>
         </div>
         <div class="tmsg unfold" style="--d:1.6s">
           <span class="tav bot" aria-hidden="true">T</span>
           <div>
             <p class="who">Tada</p>
-            <p class="bi"><span lang="en">Feeling Together lets connected friends share how they feel, so they can understand and care for each other.</span><span class="cn" lang="zh-Hans">Feeling Together 让已连接的好友分享心情，了解彼此近况、互相关心。</span></p>
-            <div class="hit"><svg class="ico"><use href="#i-doc"/></svg><span class="title biline"><span lang="en"><mark style="--md:2.3s">Bless Ring overview + meeting notes</mark></span><span class="cn" lang="zh-Hans"><mark style="--md:2.3s">Bless Ring 总览 + 会议纪要</mark></span></span><span class="meta biline"><span lang="en">Source · link hidden</span><span class="cn" lang="zh-Hans">资料来源 · 链接已隐藏</span></span></div>
+            <p class="bi"><span lang="en">Feeling Together is a mutual mood-sharing feature between friends: a user sends a request from a friend’s profile, and a link is established once accepted. After linking, each person can view the other’s most recent mood and independently control whether to share their own mood.</span><span class="cn" lang="zh-Hans">Feeling Together 是好友之间的双向心情共享功能：用户可在好友 Profile 发起请求，对方接受后建立绑定。绑定后，双方可查看对方最近一条心情，并可各自控制向该好友分享心情的开关。</span></p>
+            <div class="tada-sources">
+              <p class="source-note bi"><span lang="en">Sources (current indexed versions; live-source verification is unavailable)</span><span class="cn" lang="zh-Hans">来源（当前索引版本；无法核验实时来源）</span></p>
+              <ul>
+                <li>05 Confidein ／ Bless Ring 当前 App 功能记录 · Last modified: 2026-11-05</li>
+                <li>Feeling Together（心情绑定与送戒指）PRD · Last modified: 2026-11-02</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Illustration based on a Tada search · Follow up in the same thread.</span><span class="cn" lang="zh-Hans">根据 Tada 检索制作的示意 · 可在同一线程追问。</span></p>
+    <p class="foot biline"><span lang="en">Real reply · Question translated into Chinese · Source links hidden</span><span class="cn" lang="zh-Hans">真实回复 · 问题附中文翻译 · 已隐藏来源链接</span></p>
   </section>
 </template>
 
@@ -569,8 +594,8 @@ const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_
 const prompts = {
   tada: {
     name: "问 Tada：了解 Feeling Together",
-    en: "@Tada What is Feeling Together? Give me a short introduction and the source.",
-    zh: "@Tada 什么是 Feeling Together？简单介绍一下，并给我资料来源。",
+    en: "@Tada What is Feeling Together? Please describe this function in no more than two sentences each in Chinese and English, and include the source of the information.",
+    zh: "@Tada 什么是 Feeling Together？请用中英文各用两句话以内介绍这个功能，并附上资料来源。",
     chips: []
   },
   gwsSetup: {
@@ -617,8 +642,8 @@ const chapters = [
     say: ["第一层，先让大家找到彼此。约定：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历里标明工作时间。", "表里高亮的是对方白天能用的时段。设置方法：电脑打开 Google 日历 → 设置 → 通用 → 工作时间（或「工作时间和地点」）→ 启用。找不到这个设置，反馈给 Operation Team。"],
     facts: ["时间按打开页面当天的北京日期换算，会自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
   { id: "tada", stage: 1, time: "1:05–1:45",
-    say: ["第二层，找到信息。比如想了解 Feeling Together 是什么，可以直接在 Slack 问 Tada。", "Tada 帮你找到相关资料；这里将检索结果整理成简短回答，并隐去了链接。追问就在同一线程里回。"],
-    facts: ["2026-11-10 使用 Tada Connect 检索「什么是 Feeling Together」，检索结果包含《Bless Ring 产品功能总览》及相关会议资料。根据资料，已接受好友可请求连接并共享心情。画面是整理后的示意，不是 Slack 原始回复；具体内容以来源和实际权限为准。"],
+    say: ["第二层，找到信息。这是一次真实提问：什么是 Feeling Together？请 Tada 用中英文简要介绍并给出来源。", "画面保留了 Tada 的中英文回复、来源名称和核验提示，只隐藏了文档链接。英文问题附有中文翻译。"],
+    facts: ["2026-11-10 用户通过 Slack 私聊 Tada 提问。页面保留回复原文与两份来源名称、更新时间及实时来源未核验的提示；中英文回复调整为英文在前，来源 URL 因公开网页而隐藏。"],
     prompts: ["tada"] },
   { id: "tada-use", stage: 1, time: "1:45–2:20",
     say: ["三种用法：在频道里 @Tada，频道里的人都看得到；私聊 Tada，只有你看得到；连上自己的 Google Drive 后，在私聊里发 Drive: 加链接，它就能读你有权限的文件。", "提问时用文档全名，要原文链接。没回复，可能还没开通，找 Ken。"],
