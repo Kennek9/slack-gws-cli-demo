@@ -656,38 +656,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   </section>
 </template>
 
-<template id="gws-agenda">
-  <section class="scene s-both" data-label="Get the meeting materials ready · 准备会议资料">
-    <header class="head arrive"><h1 class="bi"><span lang="en">The meeting starts in five minutes</span><span class="cn" lang="zh-Hans">还有五分钟就开会了</span></h1></header>
-    <div class="main story">
-      <div class="story-step paper-in" style="--d:.2s">
-        <p class="story-label biline"><span lang="en">01 · THE TASK</span><span class="cn" lang="zh-Hans">工作场景</span></p>
-        <div class="card story-card story-context">
-          <p class="story-quote bi"><span lang="en">“Can you send everyone the project docs?”</span><span class="cn" lang="zh-Hans">“把项目资料发给大家吧。”</span></p>
-          <p class="story-hint bi"><span lang="en">Find the links. Make sure colleagues can open them.</span><span class="cn" lang="zh-Hans">先找齐链接，再确认同事能打开。</span></p>
-        </div>
-      </div>
-      <div class="story-step paper-in" style="--d:.9s">
-        <p class="story-label biline"><span lang="en">02 · ASK YOUR AI AGENT</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
-        <div class="card story-card">
-          <p class="story-prompt bi"><span lang="en">Use Google Workspace CLI to find the project overview, user research and filming guide. Check who can view them, and draft a message with the links.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 找项目概览、用户研究和拍摄指南，检查谁能查看，并整理一条带链接的消息草稿。</span></p>
-          <p class="story-tools bi"><span lang="en">Agent: search Drive → check access → draft</span><span class="cn" lang="zh-Hans">Agent：搜索云盘 → 检查权限 → 整理草稿</span></p>
-        </div>
-      </div>
-      <div class="story-step unfold" style="--d:2.2s">
-        <p class="story-label biline"><span lang="en">03 · YOU GET</span><span class="cn" lang="zh-Hans">你拿到</span></p>
-        <div class="card story-card story-result">
-          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Links + access</span><span class="cn" lang="zh-Hans">链接与权限</span></p>
-          <div class="story-result-row"><span class="bi"><span lang="en">Project overview</span><span class="cn" lang="zh-Hans">项目概览</span></span><span class="status bi"><span lang="en">Company</span><span class="cn" lang="zh-Hans">公司可看</span></span></div>
-          <div class="story-result-row"><span class="bi"><span lang="en">Filming guide</span><span class="cn" lang="zh-Hans">拍摄指南</span></span><span class="status bi"><span lang="en">Restricted</span><span class="cn" lang="zh-Hans">仅限部分人</span></span></div>
-          <div class="story-result-row"><span class="bi"><span lang="en">Message with links</span><span class="cn" lang="zh-Hans">带链接的消息</span></span><span class="status bi"><span lang="en">Draft for you</span><span class="cn" lang="zh-Hans">草稿待确认</span></span></div>
-        </div>
-      </div>
-    </div>
-    <p class="foot biline"><span lang="en">Real task, illustrated · Decide on access and send the message yourself.</span><span class="cn" lang="zh-Hans">真实任务的示意 · 权限由你决定，消息由你发送。</span></p>
-  </section>
-</template>
-
 <template id="close">
   <section class="scene s-close warm" data-label="Start this week · 这周开始">
     <header class="head arrive"><h1 class="bi"><span lang="en">One step per layer, starting this week</span><span class="cn" lang="zh-Hans">每一层先做一步，这周开始</span></h1></header>
@@ -745,10 +713,7 @@ const chapters = [
   { id: "gws-review", stage: 2, time: "3:45–4:25",
     say: ["内容团队审核三种语言时，把 Google 文档交给 Agent，找出意思不同的位置，再起草一条 Slack 回复。", "例如提醒时间的含义是否一致；画面是示意，发出前由人核对。"],
     facts: ["真实任务中曾审核英文、西语和葡语文案，检查提醒时间等含义差异，并准备 Slack 回复草稿。回复和具体差异在画面中均为示意。"] },
-  { id: "gws-agenda", stage: 2, time: "4:25–5:15",
-    say: ["会议前有人要项目资料：让 Agent 找链接、检查公司同事能否打开，再整理成一条可复制的消息。", "画面里的文档和权限是示意；Agent 先检查，由你决定是否调整权限和发送。"],
-    facts: ["真实任务中查找了项目概览、用户资料和拍摄指南，并逐份核对 Google Drive 共享权限、整理了可复制消息。开会时间及画面为示意。"] },
-  { id: "close", stage: -1, time: "5:15–5:40",
+  { id: "close", stage: -1, time: "4:25–4:50",
     say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周让 AI Agent 用 gws 完成一件事。", "安装说明可从最后一个按钮打开。"] }
 ];
 const stages = [["Find each other", "找到彼此"], ["Find information", "找到信息"], ["Use Google Workspace CLI", "使用 Google Workspace CLI"]];
