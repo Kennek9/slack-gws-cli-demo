@@ -63,7 +63,7 @@ button:focus-visible, select:focus-visible, a:focus-visible { outline: 2px solid
 .eyebrow .cn { color: #7a4a33; }
 h1 { font-family: var(--serif); font-weight: 400; font-size: 3.2cqw; line-height: 1.08; }
 h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
-.main { flex: 1; min-height: 0; margin-top: 2.2cqw; }
+.main { flex: 1; min-height: 0; margin-top: 2.8cqw; }
 .foot { margin-top: auto; padding-top: 1cqw; font-size: 1cqw; color: var(--muted); }
 .foot::before { content: ""; display: inline-block; width: .4cqw; aspect-ratio: 1; margin-right: .6cqw; border-radius: 50%; background: #d9b796; vertical-align: .15cqw; }
 .foot a { color: var(--label); font-weight: 600; }
@@ -71,10 +71,11 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 /* Bilingual: both, English only, Chinese only */
 .cn { color: var(--cn); font-family: var(--sans); }
 .bi > span { display: block; }
-.bi > .cn { margin-top: .36em; }
-.biline > .cn { margin-left: .7em; }
+.bi > .cn { margin-top: .5em; }
+.biline > .cn { margin-left: .9em; }
 .no-chinese .cn { display: none !important; }
 #screen[data-language="zh"] [lang="en"] { display: none !important; }
+#screen[data-language="zh"] [lang="en"].heading-en { display: revert !important; }
 #screen[data-language="zh"] .bi > .cn, #screen[data-language="zh"] .biline > .cn { margin: 0; }
 
 /* Shared pieces */
@@ -89,13 +90,13 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 @keyframes scene-in { from { opacity: 0; } }
 @keyframes arrive { from { opacity: 0; transform: translateY(.8cqw); } }
 @keyframes paper-in { from { opacity: 0; transform: translateY(1.5cqw); } }
-@keyframes unfold { from { opacity: 0; transform: translateY(.6cqw); clip-path: inset(0 0 100% 0 round var(--r-lg)); } to { clip-path: inset(0 0 0 0 round var(--r-lg)); } }
+@keyframes unfold { from { opacity: 0; transform: translateY(.6cqw); clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
 @keyframes mark-in { from { background-size: 0% 64%; } }
 @keyframes w-in { from { opacity: 0; } }
 @keyframes rise { from { opacity: 0; transform: translateY(2cqw) scaleY(.9); } }
 
 /* Before / After */
-.ba { display: grid; grid-template-columns: 27cqw 1fr; gap: 2cqw; align-items: start; }
+.ba { display: grid; grid-template-columns: 27cqw 1fr; gap: 2.4cqw; align-items: start; }
 .ba-k { display: flex; align-items: center; gap: .5em; margin-bottom: .7cqw; font-size: 1cqw; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .ba-k .cn { text-transform: none; letter-spacing: 0; color: inherit; }
 .ba-k .tag { text-transform: none; letter-spacing: 0; }
@@ -108,7 +109,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
 /* A real task, told as three moments: request, instruction, result. */
-.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 2cqw; align-items: stretch; }
+.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 2.3cqw; align-items: stretch; }
 .story-step { min-width: 0; display: flex; flex-direction: column; }
 .story-label { margin-bottom: .7cqw; color: var(--label); font-size: 1.04cqw; font-weight: 700; }
 .story-label .cn { color: inherit; }
@@ -163,7 +164,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 }
 
 /* Two familiar entry points, with different jobs. */
-.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6cqw; align-items: stretch; }
+.choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2cqw; align-items: stretch; }
 .choice-card { display: flex; flex-direction: column; gap: .8cqw; padding: 1.45cqw 1.6cqw; }
 .choice-card.agent { background: #fff1e1; border-color: #e7b48a; }
 .choice-where { color: var(--label); font-size: 1.05cqw; font-weight: 700; }
@@ -183,7 +184,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 /* A discussion becomes a document, then the same document is revised. */
 .write-sub { margin-top: .85cqw; color: var(--muted); font-size: 1.35cqw; line-height: 1.35; }
-.write-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2cqw; align-items: start; }
+.write-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6cqw; align-items: start; }
 .write-card { padding: 1.35cqw 1.55cqw; }
 .write-label { color: var(--label); font-size: 1.08cqw; font-weight: 700; }
 .write-label .cn { color: inherit; }
@@ -285,7 +286,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 }
 
 /* 04 Use Tada */
-.use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5cqw; }
+.use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; }
 .use { display: flex; flex-direction: column; gap: .8cqw; padding: 1.4cqw 1.5cqw 1.5cqw; }
 .use-ico { width: 3cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fdebd6; color: var(--label); font-size: 1.5cqw; }
 .use h2 { font-size: 1.65cqw; line-height: 1.2; }
@@ -304,7 +305,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .guide.ghost:hover { background: #ffe5cc; }
 
 /* A question in Slack and the document it finds. */
-.company-flow { display: grid; grid-template-columns: 1fr 1.05fr 1.05fr; gap: 1.4cqw; align-items: stretch; }
+.company-flow { display: grid; grid-template-columns: 1fr 1.05fr 1.05fr; gap: 2cqw; align-items: stretch; }
 .company-step { display: flex; flex-direction: column; min-width: 0; }
 .company-step-label { margin-bottom: .65cqw; color: var(--label); font-size: 1.05cqw; font-weight: 700; }
 .company-step-label .cn { color: inherit; }
@@ -380,6 +381,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   #screen .scene { position: relative; min-height: calc(100dvh - 92px); padding: 18px; font-size: 13px; }
   #screen .scene * { font-size: inherit; }
   #screen .scene h1 { font-size: 26px; }
+  #screen .scene h2 { font-size: 18px; }
   #screen .scene .layer .num, #screen .scene .start .num { font-size: 22px; }
   .toolbar { width: 100%; position: sticky; bottom: 0; z-index: 1; background: #f3e7d6; }
   .mast { letter-spacing: 0; }
@@ -432,27 +434,27 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </main>
 
 <template id="opening">
-  <section class="scene s-open warm" data-label="How we work together · 合并后怎么协作">
+  <section class="scene s-open warm" data-label="How we work together">
     <header class="head">
-      <p class="eyebrow biline arrive"><span lang="en">Glorify · after the merger</span><span class="cn" lang="zh-Hans">合并之后</span></p>
-      <h1 class="bi arrive" style="--d:.1s"><span lang="en">How we work together</span><span class="cn" lang="zh-Hans">合并后，我们怎么一起工作</span></h1>
+      <p class="eyebrow biline arrive"><span lang="en" class="heading-en">Glorify · after the merger</span></p>
+      <h1 class="bi arrive" style="--d:.1s"><span lang="en" class="heading-en">How we work together</span></h1>
     </header>
     <ol class="main layers">
-      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Use Google Workspace CLI</span><span class="cn" lang="zh-Hans">使用 Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Write and refine Google Docs</span><span class="cn" lang="zh-Hans">写入并修改 Google 文档</span></span></li>
-      <li class="layer l2" style="--d:.95s"><span class="num">2</span><span class="bi"><span lang="en">Find information</span><span class="cn" lang="zh-Hans">找到信息</span></span><span class="bi sub"><span lang="en">Ask Tada · keep work searchable</span><span class="cn" lang="zh-Hans">问 Tada · 信息能被搜到</span></span></li>
-      <li class="layer l1" style="--d:.6s"><span class="num">1</span><span class="bi"><span lang="en">Find each other</span><span class="cn" lang="zh-Hans">找到彼此</span></span><span class="bi sub"><span lang="en">Working hours on the calendar</span><span class="cn" lang="zh-Hans">日历里标好工作时间</span></span></li>
+      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en" class="heading-en">Use Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Write and refine Google Docs</span><span class="cn" lang="zh-Hans">写入并修改 Google 文档</span></span></li>
+      <li class="layer l2" style="--d:.95s"><span class="num">2</span><span class="bi"><span lang="en" class="heading-en">Find information</span></span><span class="bi sub"><span lang="en">Ask Tada · keep work searchable</span><span class="cn" lang="zh-Hans">问 Tada · 信息能被搜到</span></span></li>
+      <li class="layer l1" style="--d:.6s"><span class="num">1</span><span class="bi"><span lang="en" class="heading-en">Find each other</span></span><span class="bi sub"><span lang="en">Working hours on the calendar</span><span class="cn" lang="zh-Hans">日历里标好工作时间</span></span></li>
     </ol>
   </section>
 </template>
 
 <template id="hours">
-  <section class="scene s-hours" data-label="Working hours · 工作时间">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Put your working hours on the calendar</span><span class="cn" lang="zh-Hans">在日历里标明工作时间</span></h1></header>
+  <section class="scene s-hours" data-label="Working hours">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Put your working hours on the calendar</span></h1></header>
     <div class="main hours-grid">
       <div>
         <div class="ba-stack arrive" style="--d:.2s">
-          <p class="ba-line before-line"><span class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></span><span class="bi"><span lang="en">Guess the time zone. Ask back and forth.</span><span class="cn" lang="zh-Hans">猜时差，来回问。</span></span></p>
-          <p class="ba-line after-line"><span class="ba-k after-k biline"><span lang="en">After</span><span class="cn" lang="zh-Hans">现在</span></span><span class="bi"><span lang="en">Open the calendar. See when people can meet.</span><span class="cn" lang="zh-Hans">打开日历，就知道什么时候能约。</span></span></p>
+          <p class="ba-line before-line"><span class="ba-k biline"><span lang="en" class="heading-en">Before</span></span><span class="bi"><span lang="en">Guess the time zone. Ask back and forth.</span><span class="cn" lang="zh-Hans">猜时差，来回问。</span></span></p>
+          <p class="ba-line after-line"><span class="ba-k after-k biline"><span lang="en" class="heading-en">After</span></span><span class="bi"><span lang="en">Open the calendar. See when people can meet.</span><span class="cn" lang="zh-Hans">打开日历，就知道什么时候能约。</span></span></p>
         </div>
         <div class="card rule-card paper-in" style="--d:.45s">
           <p class="bi"><span lang="en">China team: keep at least one Beijing window open</span><span class="cn" lang="zh-Hans">中国同事至少开放一个北京时间段</span></p>
@@ -461,7 +463,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
       </div>
       <div class="card table-card paper-in" style="--d:.6s">
         <table class="hours-table" aria-label="Beijing windows in local time">
-          <thead><tr><th scope="col" class="biline"><span lang="en">Local time</span><span class="cn" lang="zh-Hans">当地时间</span></th><th scope="col"><span class="biline"><span lang="en">Beijing</span><span class="cn" lang="zh-Hans">北京</span></span><b>08:00–10:00</b></th><th scope="col"><span class="biline"><span lang="en">Beijing</span><span class="cn" lang="zh-Hans">北京</span></span><b>22:00–24:00</b></th></tr></thead>
+          <thead><tr><th scope="col"><span lang="en" class="heading-en">Local time</span></th><th scope="col"><span lang="en" class="heading-en">Beijing</span><b>08:00–10:00</b></th><th scope="col"><span lang="en" class="heading-en">Beijing</span><b>22:00–24:00</b></th></tr></thead>
           <tbody>
             <tr data-zone="America/Los_Angeles"><th scope="row"><span class="biline"><span lang="en">US West</span><span class="cn" lang="zh-Hans">美国西海岸</span></span><span class="city biline"><span lang="en">Los Angeles</span><span class="cn" lang="zh-Hans">洛杉矶</span></span></th><td data-window></td><td data-window></td></tr>
             <tr data-zone="Europe/London"><th scope="row"><span class="biline"><span lang="en">UK</span><span class="cn" lang="zh-Hans">英国</span></span><span class="city biline"><span lang="en">London</span><span class="cn" lang="zh-Hans">伦敦</span></span></th><td data-window></td><td data-window></td></tr>
@@ -477,19 +479,19 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="choose-tool">
-  <section class="scene s-choice warm" data-label="Which one should I use? · 我该用哪个？">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Which one should I use?</span><span class="cn" lang="zh-Hans">我该用哪个？</span></h1></header>
+  <section class="scene s-choice warm" data-label="Which one should I use?">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Which one should I use?</span></h1></header>
     <div class="main">
       <div class="choice-grid">
         <article class="card choice-card paper-in" style="--d:.35s">
-          <p class="choice-where biline"><span lang="en">IN SLACK</span><span class="cn" lang="zh-Hans">在 Slack 里</span></p>
-          <h2 class="bi"><span lang="en">Ask Tada</span><span class="cn" lang="zh-Hans">问 Tada</span></h2>
+          <p class="choice-where biline"><span lang="en" class="heading-en">IN SLACK</span></p>
+          <h2 class="bi"><span lang="en" class="heading-en">Ask Tada</span></h2>
           <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
           <p class="choice-example bi"><span lang="en">“What is Feeling Together?”</span><span class="cn" lang="zh-Hans">“什么是 Feeling Together？”</span></p>
         </article>
         <article class="card choice-card agent paper-in" style="--d:1.2s">
-          <p class="choice-where biline"><span lang="en">IN YOUR AI AGENT</span><span class="cn" lang="zh-Hans">在你的 AI Agent 里</span></p>
-          <h2 class="bi"><span lang="en">Use Google Workspace CLI</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI</span></h2>
+          <p class="choice-where biline"><span lang="en" class="heading-en">IN YOUR AI AGENT</span></p>
+          <h2 class="bi"><span lang="en" class="heading-en">Use Google Workspace CLI</span></h2>
           <p class="choice-task bi"><span lang="en">Ask your Agent to work with your Google files.</span><span class="cn" lang="zh-Hans">让 Agent 处理你的 Google 文件。</span></p>
           <p class="choice-example bi"><span lang="en">“Put our discussion in a Google Doc.”</span><span class="cn" lang="zh-Hans">“把讨论结果写进 Google 文档。”</span></p>
         </article>
@@ -499,14 +501,14 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="tada">
-  <section class="scene s-tada warm" data-label="Ask Tada · 问 Tada">
+  <section class="scene s-tada warm" data-label="Ask Tada">
     <header class="head arrive" style="--d:.2s">
-      <p class="eyebrow biline"><span lang="en">IN SLACK · DM TADA</span><span class="cn" lang="zh-Hans">在 Slack 私聊 Tada</span></p>
-      <h1 class="bi"><span lang="en">What is Feeling Together?</span><span class="cn" lang="zh-Hans">什么是 Feeling Together？</span></h1>
+      <p class="eyebrow biline"><span lang="en" class="heading-en">IN SLACK · DM TADA</span></p>
+      <h1 class="bi"><span lang="en" class="heading-en">What is Feeling Together?</span></h1>
     </header>
     <div class="main">
       <div class="card tada-reply paper-in" style="--d:1.1s">
-        <p class="tada-reply-head biline"><span class="tav bot" aria-hidden="true">T</span><span lang="en">Tada · REAL SLACK REPLY</span><span class="cn" lang="zh-Hans">真实 Slack 回复</span></p>
+        <p class="tada-reply-head biline"><span class="tav bot" aria-hidden="true">T</span><span lang="en" class="heading-en">Tada · REAL SLACK REPLY</span></p>
         <p class="tada-answer bi"><span lang="en">Feeling Together is a <mark style="--md:2.4s">mutual mood-sharing feature between friends</mark>: a user sends a request from a friend’s profile, and a link is established once accepted. After linking, each person can view the other’s most recent mood and independently control whether to share their own mood.</span><span class="cn" lang="zh-Hans">Feeling Together 是<mark style="--md:2.4s">好友之间的双向心情共享功能</mark>：用户可在好友 Profile 发起请求，对方接受后建立绑定。绑定后，双方可查看对方最近一条心情，并可各自控制向该好友分享心情的开关。</span></p>
       </div>
       <div class="tada-sources unfold" style="--d:3.5s">
@@ -521,25 +523,25 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="tada-use">
-  <section class="scene s-use" data-label="How to use Tada · 怎么用 Tada">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Where do I ask Tada?</span><span class="cn" lang="zh-Hans">在哪里问 Tada？</span></h1></header>
+  <section class="scene s-use" data-label="How to use Tada">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Where do I ask Tada?</span></h1></header>
     <div class="main">
       <div class="use-grid">
         <article class="card use paper-in" style="--d:.2s">
           <span class="use-ico"><svg class="ico"><use href="#i-hash"/></svg></span>
-          <h2 class="bi"><span lang="en">In a channel</span><span class="cn" lang="zh-Hans">在频道里</span></h2>
+          <h2 class="bi"><span lang="en" class="heading-en">In a channel</span></h2>
           <p class="how"><code>@Tada</code> <span class="biline"><span lang="en">+ your question</span><span class="cn" lang="zh-Hans">加你的问题</span></span></p>
           <p class="bi note"><span lang="en">Everyone in the channel sees the answer. Tada must be in the channel.</span><span class="cn" lang="zh-Hans">频道里的人都看得到回答。Tada 要在这个频道里。</span></p>
         </article>
         <article class="card use paper-in" style="--d:.35s">
           <span class="use-ico"><svg class="ico"><use href="#i-user"/></svg></span>
-          <h2 class="bi"><span lang="en">In a DM</span><span class="cn" lang="zh-Hans">私聊 Tada</span></h2>
+          <h2 class="bi"><span lang="en" class="heading-en">In a DM</span></h2>
           <p class="how bi"><span lang="en">Ask about connected information you can access.</span><span class="cn" lang="zh-Hans">问已接入且你有权查看的资料。</span></p>
           <p class="bi note"><span lang="en">Only you see the answer.</span><span class="cn" lang="zh-Hans">只有你看得到回答。</span></p>
         </article>
         <article class="card use paper-in" style="--d:.5s">
           <span class="use-ico"><svg class="ico"><use href="#i-doc"/></svg></span>
-          <h2 class="bi"><span lang="en">Find a company doc</span><span class="cn" lang="zh-Hans">找公司文档</span></h2>
+          <h2 class="bi"><span lang="en" class="heading-en">Find a company doc</span></h2>
           <p class="how bi"><span lang="en">Ask Tada for the document and its link.</span><span class="cn" lang="zh-Hans">请 Tada 找文档和原文链接。</span></p>
         </article>
       </div>
@@ -555,18 +557,18 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="tada-company-doc">
-  <section class="scene s-company warm" data-label="Find a company document · 查找公司文档">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Ask Tada for the company doc</span><span class="cn" lang="zh-Hans">问 Tada 找公司文档</span></h1></header>
+  <section class="scene s-company warm" data-label="Find a company document">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Ask Tada for the company doc</span></h1></header>
     <div class="main">
       <div class="company-flow">
         <div class="company-step paper-in" style="--d:.3s">
-          <p class="company-step-label biline"><span lang="en">01 · WHEN</span><span class="cn" lang="zh-Hans">什么时候</span></p>
+          <p class="company-step-label biline"><span lang="en" class="heading-en">01 · WHEN</span></p>
           <div class="card company-card company-situation">
             <p class="company-copy bi"><span lang="en">You need the requirements, but don’t know where the document is.</span><span class="cn" lang="zh-Hans">想看需求，却不知道文档在哪。</span></p>
           </div>
         </div>
         <div class="company-step paper-in" style="--d:1.1s">
-          <p class="company-step-label biline"><span lang="en">02 · ASK IN SLACK</span><span class="cn" lang="zh-Hans">在 Slack 提问</span></p>
+          <p class="company-step-label biline"><span lang="en" class="heading-en">02 · ASK IN SLACK</span></p>
           <div class="card company-card">
             <p class="company-copy bi"><span lang="en">In a channel with Tada, or in a DM:</span><span class="cn" lang="zh-Hans">在 Tada 所在频道，或私聊中提问：</span></p>
             <div class="company-action">
@@ -575,9 +577,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           </div>
         </div>
         <div class="company-step unfold" style="--d:2.2s">
-          <p class="company-step-label biline"><span lang="en">03 · EXAMPLE RESULT</span><span class="cn" lang="zh-Hans">示例结果</span></p>
+          <p class="company-step-label biline"><span lang="en" class="heading-en">03 · EXAMPLE RESULT</span></p>
           <div class="card company-card">
-            <p class="company-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Requirements doc</span><span class="cn" lang="zh-Hans">需求文档</span></p>
+            <p class="company-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Requirements doc</span></p>
             <p class="company-result-body bi"><span lang="en">Feeling Together: mood sharing &amp; ring gifting</span><span class="cn" lang="zh-Hans">Feeling Together（心情绑定与送戒指）PRD</span></p>
           </div>
         </div>
@@ -588,16 +590,16 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="searchable">
-  <section class="scene s-searchable warm" data-label="Keep work searchable · 让信息找得到">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Keep work where people can find it</span><span class="cn" lang="zh-Hans">工作信息，放在找得到的地方</span></h1></header>
+  <section class="scene s-searchable warm" data-label="Keep work searchable">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Keep work where people can find it</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Before</span><span class="cn" lang="zh-Hans">以前</span></p>
+        <p class="ba-k biline"><span lang="en" class="heading-en">Before</span></p>
         <p class="bi"><span lang="en">Tada cannot search conversations it has not joined.</span><span class="cn" lang="zh-Hans">Tada 无法搜索它未加入的会话。</span></p>
         <p class="locked" aria-hidden="true"><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">Private group</span><span class="cn" lang="zh-Hans">私密群</span></span></span><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">DM</span><span class="cn" lang="zh-Hans">私聊</span></span></span><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">DM</span><span class="cn" lang="zh-Hans">私聊</span></span></span></p>
       </div>
       <div class="card thread paper-in" style="--d:.4s">
-        <p class="ba-k after-k biline"><span lang="en">After · how we share</span><span class="cn" lang="zh-Hans">现在 · 我们的做法</span></p>
+        <p class="ba-k after-k biline"><span lang="en" class="heading-en">After · how we share</span></p>
         <ol class="rules">
           <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">Prefer public channels for day-to-day work.</span><span class="cn" lang="zh-Hans">日常工作优先在公开频道讨论。</span></span></li>
           <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">Use private channels when needed.</span><span class="cn" lang="zh-Hans">有需要时使用私密频道。</span></span></li>
@@ -612,21 +614,21 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 
 <template id="gws-intro">
-  <section class="scene s-intro warm" data-label="What is Google Workspace CLI? · 什么是 Google Workspace CLI？">
+  <section class="scene s-intro warm" data-label="What is Google Workspace CLI?">
     <header class="head arrive">
-      <h1 class="bi"><span lang="en">What is Google Workspace CLI?</span><span class="cn" lang="zh-Hans">什么是 Google Workspace CLI？</span></h1>
+      <h1 class="bi"><span lang="en" class="heading-en">What is Google Workspace CLI?</span></h1>
       <p class="intro-sub bi"><span lang="en">A tool that lets your AI Agent work with your Google apps.</span><span class="cn" lang="zh-Hans">让你的 AI Agent 能操作 Google 应用的工具。</span></p>
     </header>
     <div class="main">
       <div class="intro-flow">
         <div class="card intro-node paper-in" style="--d:.3s">
-          <p class="intro-label biline"><span lang="en">YOU ASK</span><span class="cn" lang="zh-Hans">你说</span></p>
+          <p class="intro-label biline"><span lang="en" class="heading-en">YOU ASK</span></p>
           <p class="intro-ask bi"><span lang="en">“Put our discussion in a Google Doc.”</span><span class="cn" lang="zh-Hans">“把讨论结果写进 Google 文档。”</span></p>
         </div>
         <div class="intro-arrow arrive" style="--d:.9s" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></div>
         <div class="card intro-node intro-agent paper-in" style="--d:1.15s">
-          <p class="intro-label biline"><span lang="en">YOUR AI AGENT</span><span class="cn" lang="zh-Hans">你的 AI Agent</span></p>
-          <h2 class="bi"><span lang="en">Does the work</span><span class="cn" lang="zh-Hans">帮你完成</span></h2>
+          <p class="intro-label biline"><span lang="en" class="heading-en">YOUR AI AGENT</span></p>
+          <h2 class="bi"><span lang="en" class="heading-en">Does the work</span></h2>
           <p class="intro-cli bi"><span lang="en">Uses Google Workspace CLI</span><span class="cn" lang="zh-Hans">调用 Google Workspace CLI</span></p>
         </div>
         <div class="intro-arrow arrive" style="--d:1.8s" aria-hidden="true"><svg class="ico"><use href="#i-arrow"/></svg></div>
@@ -646,23 +648,23 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="gws-setup">
-  <section class="scene s-write warm" data-label="Write and refine a Google Doc · 一起写 Google 文档">
+  <section class="scene s-write warm" data-label="Write and refine a Google Doc">
     <header class="head arrive">
-      <h1 class="bi"><span lang="en">From a conversation to a Google Doc</span><span class="cn" lang="zh-Hans">从讨论到 Google 文档</span></h1>
+      <h1 class="bi"><span lang="en" class="heading-en">From a conversation to a Google Doc</span></h1>
       <p class="write-sub bi"><span lang="en">Write it, then refine the same document together.</span><span class="cn" lang="zh-Hans">写进去，再一起修改同一份文档。</span></p>
     </header>
     <div class="main write-flow">
       <div class="card write-card paper-in" style="--d:.35s">
-        <p class="write-label biline"><span lang="en">YOUR AI AGENT</span><span class="cn" lang="zh-Hans">你的 AI Agent 对话</span></p>
+        <p class="write-label biline"><span lang="en" class="heading-en">YOUR AI AGENT</span></p>
         <p class="write-context bi"><span lang="en">After discussing onboarding copy:</span><span class="cn" lang="zh-Hans">讨论完新手引导文案后：</span></p>
         <p class="write-message bi arrive" style="--d:1s"><span lang="en">“Use Google Workspace CLI to put this into a Google Doc.”</span><span class="cn" lang="zh-Hans">“用 Google Workspace CLI 把讨论结果写进 Google 文档。”</span></p>
         <p class="write-message bi arrive" style="--d:3.3s"><span lang="en">“Make the headings clearer.”</span><span class="cn" lang="zh-Hans">“把标题层级调整得更清楚。”</span></p>
       </div>
       <div class="card write-card paper-in" style="--d:2s">
-        <p class="write-doc-head biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Google Doc · Example</span><span class="cn" lang="zh-Hans">Google 文档 · 示例</span></p>
-        <p class="write-doc-title bi"><span lang="en">Onboarding copy</span><span class="cn" lang="zh-Hans">新手引导文案</span></p>
-        <p class="write-doc-section biline"><span lang="en">Account</span><span class="cn" lang="zh-Hans">账号</span></p>
-        <p class="write-doc-section biline"><span lang="en">Today</span><span class="cn" lang="zh-Hans">今日</span></p>
+        <p class="write-doc-head biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Google Doc · Example</span></p>
+        <p class="write-doc-title bi"><span lang="en" class="heading-en">Onboarding copy</span></p>
+        <p class="write-doc-section biline"><span lang="en" class="heading-en">Account</span></p>
+        <p class="write-doc-section biline"><span lang="en" class="heading-en">Today</span></p>
         <p class="write-doc-status bi arrive" style="--d:4.4s"><span lang="en">Same document, updated</span><span class="cn" lang="zh-Hans">同一份文档已更新</span></p>
       </div>
     </div>
@@ -670,33 +672,33 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="gws-review">
-  <section class="scene s-slack warm" data-label="Review translations together · 一起审核多语言文案">
-    <header class="head arrive"><h1 class="bi"><span lang="en">The translations are ready for review</span><span class="cn" lang="zh-Hans">多语言文案等着审核</span></h1></header>
+  <section class="scene s-slack warm" data-label="Review translations together">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">The translations are ready for review</span></h1></header>
     <div class="main story">
       <div class="story-step paper-in" style="--d:.2s">
-        <p class="story-label biline"><span lang="en">01 · THE TASK</span><span class="cn" lang="zh-Hans">工作场景</span></p>
+        <p class="story-label biline"><span lang="en" class="heading-en">01 · THE TASK</span></p>
         <div class="card story-card story-context">
           <p class="story-quote bi"><span lang="en">“Do all three versions say the same thing?”</span><span class="cn" lang="zh-Hans">“三种语言的意思一致吗？”</span></p>
           <p class="story-hint bi"><span lang="en">English, Spanish and Portuguese in one Google Doc.</span><span class="cn" lang="zh-Hans">一份 Google 文档里有英、西、葡三种语言。</span></p>
         </div>
       </div>
       <div class="story-step paper-in" style="--d:.9s">
-        <p class="story-label biline"><span lang="en">02 · ASK YOUR AI AGENT</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
+        <p class="story-label biline"><span lang="en" class="heading-en">02 · ASK YOUR AI AGENT</span></p>
         <div class="card story-card">
           <p class="story-prompt bi"><span lang="en">Use Google Workspace CLI to compare the three languages in this doc. Flag meaning differences and draft a Slack reply for review. [Doc link]</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 对照这份文档的三种语言，找出意思不同的地方，再写一条 Slack 回复草稿。[文档链接]</span></p>
           <p class="story-tools bi"><span lang="en">Agent: read Doc → compare → draft reply</span><span class="cn" lang="zh-Hans">Agent：读取文档 → 对照 → 起草回复</span></p>
         </div>
       </div>
       <div class="story-step unfold" style="--d:2.2s">
-        <p class="story-label biline"><span lang="en">03 · YOU GET</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+        <p class="story-label biline"><span lang="en" class="heading-en">03 · YOU GET</span></p>
         <div class="card story-card story-result">
-          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Review notes · Example</span><span class="cn" lang="zh-Hans">审核清单 · 示例</span></p>
+          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Review notes · Example</span></p>
           <div class="story-result-example">
-            <p class="example-label bi"><span lang="en">Morning &amp; evening routine</span><span class="cn" lang="zh-Hans">早晚习惯设置</span></p>
+            <p class="example-label bi"><span lang="en" class="heading-en">Morning &amp; evening routine</span></p>
             <p class="bi"><span lang="en">EN / PT: choose times. ES: no time choice mentioned.</span><span class="cn" lang="zh-Hans">英 / 葡：选择时间；西语：未提选择时间。</span></p>
           </div>
           <div class="story-result-example">
-            <p class="example-label bi"><span lang="en">Reply draft</span><span class="cn" lang="zh-Hans">回复草稿</span></p>
+            <p class="example-label bi"><span lang="en" class="heading-en">Reply draft</span></p>
             <p class="bi"><span lang="en">“Should Spanish mention choosing a time?”</span><span class="cn" lang="zh-Hans">“西语是否也要写明可选择时间？”</span></p>
           </div>
         </div>
@@ -706,12 +708,12 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 <template id="close">
-  <section class="scene s-close warm" data-label="Start this week · 这周开始">
-    <header class="head arrive"><h1 class="bi"><span lang="en">One step per layer, starting this week</span><span class="cn" lang="zh-Hans">每一层先做一步，这周开始</span></h1></header>
+  <section class="scene s-close warm" data-label="Start this week">
+    <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">One step per layer, starting this week</span></h1></header>
     <ol class="main start">
-      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en">Today</span><span class="cn" lang="zh-Hans">今天</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
-      <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en">After this meeting</span><span class="cn" lang="zh-Hans">会后</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span></li>
-      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en">This week</span><span class="cn" lang="zh-Hans">这周</span></span><span class="bi"><span lang="en">Ask your AI Agent to set up Google Workspace CLI.</span><span class="cn" lang="zh-Hans">请 AI Agent 帮你配置 Google Workspace CLI。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Get started</span><span class="cn" lang="zh-Hans">开始使用</span></button></li>
+      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">Today</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
+      <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span></li>
+      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en" class="heading-en">This week</span></span><span class="bi"><span lang="en">Ask your AI Agent to set up Google Workspace CLI.</span><span class="cn" lang="zh-Hans">请 AI Agent 帮你配置 Google Workspace CLI。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Get started</span><span class="cn" lang="zh-Hans">开始使用</span></button></li>
     </ol>
   </section>
 </template>
@@ -720,7 +722,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 const setupSteps = [
   {
-    title: "Tada · 在 Slack 里",
+    title: "Tada · Slack",
     en: "In Slack, find Tada and send a question, or @Tada in a channel it has joined. Published company docs do not require connecting your personal Drive. For your own Drive files, see the optional Drive guide below. No reply? Ask Ken.",
     zh: "在 Slack 找到 Tada 并提问，或在它已加入的频道里 @Tada。查已发布的公司资料无需连接个人 Drive；如需查看个人 Drive 文件，可参考下方教程。没回复？找 Ken。"
   },
@@ -731,7 +733,7 @@ const setupSteps = [
   }
 ];
 const setupLinks = [
-  ["Tada · Drive 连接教程（公司账号）", guideUrl],
+  ["Tada · Drive connection guide (work account)", guideUrl],
   ["gws · Install and sign in", "https://github.com/googleworkspace/cli#installation"]
 ];
 
@@ -767,7 +769,7 @@ const chapters = [
   { id: "close", stage: -1, time: "5:15–6:00",
     say: ["今天先在日历标好工作时间；会后在 Slack 向 Tada 问一个团队问题。", "要开始用 Google Workspace CLI，在你的 AI Agent 里说：帮我为工作账号配置 Google Workspace CLI。按提示登录，再给它一个文档任务。安装说明可从按钮打开。"] }
 ];
-const stages = [["Find each other", "找到彼此"], ["Find information", "找到信息"], ["Use Google Workspace CLI", "使用 Google Workspace CLI"]];
+const stages = ["Find each other", "Find information", "Use Google Workspace CLI"];
 
 const presenter = document.querySelector("#presenter");
 const screen = document.querySelector("#screen");
@@ -825,8 +827,8 @@ function show(index) {
   const scene = document.getElementById(chapter.id).content.firstElementChild.cloneNode(true);
   const mast = document.createElement("div");
   mast.className = "mast";
-  const track = stages.map(([en, zh], step) =>
-    `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span class="n">${step + 1}</span><span lang="en">${en}</span><span class="cn" lang="zh-Hans">${zh}</span></li>`).join("");
+  const track = stages.map((en, step) =>
+    `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span class="n">${step + 1}</span><span lang="en" class="heading-en">${en}</span></li>`).join("");
   mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
   scene.querySelectorAll("[data-guide]").forEach(link => { link.href = guideUrl; });
@@ -863,7 +865,7 @@ function noteSection(title, items) {
 }
 function setupParts() {
   const heading = document.createElement("h3");
-  heading.textContent = "Setup, once per person · 安装和登录（每人一次）";
+  heading.textContent = "Setup, once per person";
   const list = document.createElement("ol");
   for (const step of setupSteps) {
     const entry = document.createElement("li");
@@ -872,20 +874,20 @@ function setupParts() {
       `<p lang="en">${step.en}</p><p lang="zh-Hans">${step.zh}</p>`;
     list.append(entry);
   }
-  const links = noteSection("Official guides · 官方说明", setupLinks.map(([title, url]) =>
+  const links = noteSection("Official guides", setupLinks.map(([title, url]) =>
     `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`));
   return [heading, list, ...links];
 }
 function openSetup() {
-  document.querySelector("#notes-title").textContent = "Setup · 安装说明";
+  document.querySelector("#notes-title").textContent = "Setup";
   document.querySelector("#note-content").replaceChildren(...setupParts());
   notes.showModal();
 }
 function openNotes() {
   const chapter = chapters[current];
   document.querySelector("#notes-title").textContent = `${pad(current + 1)} ${sceneLabel(current)} · ${chapter.time}`;
-  const parts = [...noteSection("讲法", chapter.say)];
-  if (chapter.facts) parts.push(...noteSection("依据", chapter.facts));
+  const parts = [...noteSection("Speaker notes", chapter.say)];
+  if (chapter.facts) parts.push(...noteSection("Sources", chapter.facts));
   const timing = document.createElement("small");
   timing.textContent = "讲者备注（N）。C 切换中英 / 英文 / 中文，R 重播动画，F 全屏。";
   parts.push(timing);
