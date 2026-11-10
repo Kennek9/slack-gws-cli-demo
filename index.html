@@ -176,7 +176,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .choice-task { font-size: 1.5cqw; line-height: 1.35; }
 .choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.4cqw; line-height: 1.35; font-weight: 650; }
 .choice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw 1.4cqw; margin-top: .5cqw; }
-.choice-actions button, .choice-actions a { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
+.choice-actions button { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
 .story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.2cqw; line-height: 1.35; }
 .story-result-example .example-label { color: var(--label); font-weight: 700; margin-bottom: .4cqw; }
 @media (max-width: 600px) and (orientation: portrait) {
@@ -375,7 +375,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 #notes li > p { margin-top: 4px; }
 #notes a { color: #7d310e; }
 #notes code { padding: 1px 5px; border-radius: 4px; background: #fbe6cf; font-family: var(--mono); font-size: 13px; word-break: break-all; }
-#notes code.cmd { display: block; width: fit-content; max-width: 100%; margin-top: 6px; padding: 4px 8px; }
 #notes small { display: block; margin-top: 18px; color: var(--muted); }
 #notes button { padding: 6px 10px; border: 1px solid var(--line-strong); border-radius: 6px; background: #ffe8cf; cursor: pointer; }
 @media (max-width: 720px) {
@@ -501,8 +500,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
           <p class="choice-example bi"><span lang="en" class="always-en">“What is Feeling Together?”</span></p>
           <div class="choice-actions">
-            <button type="button" class="biline" data-show-tada><span lang="en" class="always-en">How to ask →</span></button>
-            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en" class="always-en">Tada + Drive guide ↗</span></a>
+            <button type="button" data-open-tool-setup="tada"><span lang="en" class="always-en">How to connect →</span></button>
           </div>
         </article>
         <article class="card choice-card agent paper-in" style="--d:1.2s">
@@ -510,6 +508,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           <h2 class="bi"><span lang="en" class="heading-en">Use Google Workspace CLI</span></h2>
           <p class="choice-task bi"><span lang="en">Ask your Agent to work with your Google files.</span><span class="cn" lang="zh-Hans">让 Agent 处理你的 Google 文件。</span></p>
           <p class="choice-example bi"><span lang="en">“Put our discussion in a Google Doc.”</span><span class="cn" lang="zh-Hans">“把讨论结果写进 Google 文档。”</span></p>
+          <div class="choice-actions">
+            <button type="button" data-open-tool-setup="gws"><span lang="en" class="always-en">How to connect →</span></button>
+          </div>
         </article>
       </div>
     </div>
@@ -733,19 +734,27 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 const setupSteps = [
   {
+    key: "tada",
     title: "Tada · Slack",
-    en: "In Slack, find Tada and send a question, or @Tada in a channel it has joined. Published company docs do not require connecting your personal Drive. For your own Drive files, see the optional Drive guide below. No reply? Ask Ken.",
-    zh: "在 Slack 找到 Tada 并提问，或在它已加入的频道里 @Tada。查已发布的公司资料无需连接个人 Drive；如需查看个人 Drive 文件，可参考下方教程。没回复？找 Ken。"
+    steps: [
+      { en: "Sign in to Slack with your work account. Search Apps for Tada and open it.", zh: "用工作账号登录 Slack，在应用中搜索并打开 Tada。" },
+      { en: "Follow any access prompts. If you cannot find Tada or your access is not enabled, ask Ken.", zh: "如出现开通或验证提示，按提示完成。找不到 Tada 或尚未开通？找 Ken。" },
+      { en: "Ask Tada in a DM, or @Tada in a channel it has joined. Company docs do not require a personal Drive connection.", zh: "私聊 Tada 提问，或在它已加入的频道里 @Tada。查公司已发布资料无需连接个人 Drive。" }
+    ]
   },
   {
-    title: "gws · Google Workspace CLI",
-    en: "Open your AI Agent and say: “Help me set up Google Workspace CLI for my work account.” Sign in when prompted. Then share a Google Doc link and ask for a task. If setup needs a Google Cloud project or OAuth client, ask your administrator.",
-    zh: "打开你的 AI Agent，说：“帮我为工作账号配置 Google Workspace CLI。”按提示登录，再发 Google 文档链接并说明要做什么。如需 Google Cloud 项目或 OAuth 客户端，请找管理员。"
+    key: "gws",
+    title: "Google Workspace CLI",
+    steps: [
+      { en: "Open your AI Agent and say: “Help me install and connect Google Workspace CLI to my work Google account.”", zh: "打开你的 AI Agent，说：“帮我安装 Google Workspace CLI，并连接我的工作 Google 账号。”" },
+      { en: "When prompted, sign in yourself and grant the access needed. If a Google Cloud project or OAuth client is required, ask your administrator.", zh: "按提示自行登录并授予所需权限。如需 Google Cloud 项目或 OAuth 客户端，请找管理员。" },
+      { en: "Give your Agent a Google Doc link you can access and ask it to read the document.", zh: "把你有权限查看的 Google 文档链接发给 Agent，请它读取。" }
+    ]
   }
 ];
 const setupLinks = [
-  ["Tada · Drive connection guide (work account)", guideUrl],
-  ["gws · Install and sign in", "https://github.com/googleworkspace/cli#installation"]
+  { key: "tada", title: "Tada + Drive connection guide (optional)", url: guideUrl },
+  { key: "gws", title: "Google Workspace CLI installation guide", url: "https://github.com/googleworkspace/cli#installation" }
 ];
 
 const chapters = [
@@ -872,24 +881,35 @@ function noteSection(title, items) {
   }
   return [heading, list];
 }
-function setupParts() {
-  const heading = document.createElement("h3");
-  heading.textContent = "Setup, once per person";
-  const list = document.createElement("ol");
-  for (const step of setupSteps) {
-    const entry = document.createElement("li");
-    entry.innerHTML = `<strong>${step.title}</strong>` +
-      (step.cmds ?? []).map(cmd => `<code class="cmd">${cmd}</code>`).join("") +
-      `<p lang="en">${step.en}</p><p lang="zh-Hans">${step.zh}</p>`;
-    list.append(entry);
+function setupParts(tool) {
+  const parts = [];
+  for (const section of setupSteps) {
+    if (tool && section.key !== tool) continue;
+    const heading = document.createElement("h3");
+    heading.textContent = section.title;
+    const list = document.createElement("ol");
+    for (const step of section.steps) {
+      const entry = document.createElement("li");
+      const en = document.createElement("p");
+      const zh = document.createElement("p");
+      en.lang = "en";
+      en.textContent = step.en;
+      zh.lang = "zh-Hans";
+      zh.textContent = step.zh;
+      entry.append(en, zh);
+      list.append(entry);
+    }
+    parts.push(heading, list);
   }
-  const links = noteSection("Official guides", setupLinks.map(([title, url]) =>
-    `<a href="${url}" target="_blank" rel="noopener noreferrer">${title}</a>`));
-  return [heading, list, ...links];
+  const links = setupLinks.filter(link => !tool || link.key === tool);
+  parts.push(...noteSection("Guides", links.map(link =>
+    `<a href="${link.url}" target="_blank" rel="noopener noreferrer">${link.title}</a>`)));
+  return parts;
 }
-function openSetup() {
-  document.querySelector("#notes-title").textContent = "Setup";
-  document.querySelector("#note-content").replaceChildren(...setupParts());
+function openSetup(tool) {
+  const titles = { tada: "How to connect Tada", gws: "How to connect Google Workspace CLI" };
+  document.querySelector("#notes-title").textContent = titles[tool] || "Setup";
+  document.querySelector("#note-content").replaceChildren(...setupParts(tool));
   notes.showModal();
 }
 function openNotes() {
@@ -910,8 +930,9 @@ chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value))
 document.querySelector("#close-notes").addEventListener("click", () => notes.close());
 document.querySelector("#full").addEventListener("click", toggleFullscreen);
 screen.addEventListener("click", event => {
-  if (event.target.closest("[data-show-tada]")) {
-    show(chapters.findIndex(chapter => chapter.id === "tada-use"));
+  const toolSetup = event.target.closest("[data-open-tool-setup]");
+  if (toolSetup) {
+    openSetup(toolSetup.dataset.openToolSetup);
   } else if (event.target.closest("[data-open-setup]")) {
     openSetup();
   }
