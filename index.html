@@ -107,22 +107,34 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .also .k { color: var(--label); font-weight: 650; margin-right: .2cqw; }
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
-/* Ask an AI Agent to use Google Workspace CLI */
-.agent-card { overflow: hidden; }
-.agent-header { padding: .65cqw 1.3cqw; color: var(--label); font-size: 1.13cqw; font-weight: 700; background: #fff2e1; border-bottom: var(--edge) solid var(--line); }
-.agent-body { padding: 1.08cqw 1.3cqw 1.16cqw; }
-.agent-prompt { font-size: 1.49cqw; line-height: 1.31; }
-.agent-prompt > span:first-child { font-family: var(--serif); }
-.agent-flow { margin-top: .8cqw; font-size: 1.12cqw; color: var(--label); font-weight: 650; }
-.example-row { display: grid; grid-template-columns: 1.12fr 2fr; gap: .8cqw; padding: .5cqw 0; border-top: var(--edge) solid var(--line); font-size: 1.28cqw; line-height: 1.25; }
-.example-row .k { color: var(--label); font-weight: 700; }
-
-/* Output cards */
-.out { padding: 1cqw 1.3cqw 1.15cqw; }
-.out-head { display: flex; align-items: center; gap: .55cqw; margin-bottom: .75cqw; font-size: 1cqw; font-weight: 650; color: #6a4630; }
-.out-head .ico { font-size: 1.25cqw; color: var(--label); }
-.out-text { font-size: 1.45cqw; line-height: 1.28; }
-.out-text > span:first-child { font-family: var(--serif); }
+/* A real task, told as three moments: request, instruction, result. */
+.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 1.4cqw; align-items: stretch; }
+.story-step { min-width: 0; display: flex; flex-direction: column; }
+.story-label { margin-bottom: .7cqw; color: var(--label); font-size: 1.04cqw; font-weight: 700; }
+.story-label .cn { color: inherit; }
+.story-card { flex: 1; padding: 1.15cqw 1.25cqw; }
+.story-context { background: #fff1df; border-color: #edc6a4; }
+.story-quote { font-size: 1.5cqw; line-height: 1.28; font-weight: 650; }
+.story-hint { margin-top: 1.05cqw; padding-top: .85cqw; border-top: var(--edge) solid var(--line-strong); color: var(--muted); font-size: 1.08cqw; line-height: 1.3; }
+.story-prompt { font-size: 1.35cqw; line-height: 1.3; }
+.story-prompt > span:first-child { font-family: var(--serif); }
+.story-tools { margin-top: 1cqw; padding-top: .8cqw; border-top: var(--edge) solid var(--line); color: var(--label); font-size: 1.03cqw; line-height: 1.35; font-weight: 650; }
+.story-result { background: #fffdf9; }
+.story-result-title { display: flex; align-items: center; gap: .55cqw; margin-bottom: .85cqw; padding-bottom: .7cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.12cqw; font-weight: 700; }
+.story-result-title .ico { color: var(--orange); font-size: 1.35cqw; }
+.story-result-row { display: flex; align-items: flex-start; justify-content: space-between; gap: .5cqw; padding: .48cqw 0; font-size: 1.08cqw; line-height: 1.25; }
+.story-result-row + .story-result-row { border-top: var(--edge) solid var(--line); }
+.story-result-row .status { color: var(--label); text-align: right; font-weight: 650; }
+.story-result-row .cn { color: inherit; }
+.story .paper-in, .story .unfold { animation-fill-mode: both; }
+@media (max-width: 600px) and (orientation: portrait) {
+  .story { grid-template-columns: 1fr; gap: 10px; }
+  .story-label { margin-bottom: 5px; }
+  .story-card { padding: 12px; }
+  .story-hint, .story-tools { margin-top: 9px; padding-top: 8px; }
+  .story-result-title { margin-bottom: 5px; padding-bottom: 6px; }
+  .story-result-row { padding: 5px 0; }
+}
 
 /* 01 Opening */
 .s-open h1 { font-size: 4cqw; }
@@ -266,7 +278,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   .layer, .start li { width: 100% !important; grid-template-columns: 28px 1fr; padding: 10px; gap: 8px; }
   .layer .sub { grid-column: 2; text-align: left; }
   .start li > :last-child { grid-column: 2; justify-self: start; }
-  .card, .before, .out, .thread, .use, .rule-card, .table-card { padding: 10px; }
+  .card, .before, .thread, .use, .rule-card, .table-card { padding: 10px; }
   .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
   .use-foot { display: grid; gap: 10px; }
   .tav, .use-ico, .rules .n { width: 22px; }
@@ -447,80 +459,98 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 
 <template id="gws-setup">
-  <section class="scene s-google" data-label="Make a document easier to read · 整理文档排版">
-    <header class="head arrive"><h1 class="bi"><span lang="en">A document is hard to read</span><span class="cn" lang="zh-Hans">文档排版不够清楚</span></h1></header>
-    <div class="main ba">
-      <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
-        <p class="bi"><span lang="en">Open the doc. Fix each heading and spacing by hand.</span><span class="cn" lang="zh-Hans">打开文档，逐个调整标题和间距。</span></p>
-      </div>
-      <div class="after-col">
-        <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Say this to your AI Agent + paste the doc link</span><span class="cn" lang="zh-Hans">对 AI Agent 说 + 贴上文档链接</span></p>
-          <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to tidy this doc. Match the English and Chinese headings; keep the text and images.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 整理这份文档。让中英文标题层级一致，保留原文和图片。</span></p>
-            <p class="agent-flow biline"><span lang="en">AI Agent reads and updates the Google Doc</span><span class="cn" lang="zh-Hans">AI Agent 读取并调整 Google 文档</span></p>
-          </div>
+  <section class="scene s-google" data-label="Share an English version · 分享英文版">
+    <header class="head arrive"><h1 class="bi"><span lang="en">A teammate needs the English version</span><span class="cn" lang="zh-Hans">同事需要一份英文版</span></h1></header>
+    <div class="main story">
+      <div class="story-step paper-in" style="--d:.2s">
+        <p class="story-label biline"><span lang="en">01 · THE TASK</span><span class="cn" lang="zh-Hans">工作场景</span></p>
+        <div class="card story-card story-context">
+          <p class="story-quote bi"><span lang="en">“Can you share this guide in English?”</span><span class="cn" lang="zh-Hans">“能给我一份英文版指南吗？”</span></p>
+          <p class="story-hint bi"><span lang="en">The guide is in Lark, with images.</span><span class="cn" lang="zh-Hans">指南在飞书里，还带着图片。</span></p>
         </div>
-        <div class="card out unfold" style="--d:2.1s">
-          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
-          <p class="out-text bi"><span lang="en">A clearer document, with text and images kept.</span><span class="cn" lang="zh-Hans">排版更清楚的文档，原文和图片都保留。</span></p>
+      </div>
+      <div class="story-step paper-in" style="--d:.9s">
+        <p class="story-label biline"><span lang="en">02 · ASK YOUR AI AGENT</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
+        <div class="card story-card">
+          <p class="story-prompt bi"><span lang="en">Translate this Lark guide into English. Use Google Workspace CLI to create a Google Doc, keeping the structure and images. [Lark link]</span><span class="cn" lang="zh-Hans">把这份飞书指南翻译成英文，用 Google Workspace CLI 新建 Google 文档，保留结构和图片。[飞书链接]</span></p>
+          <p class="story-tools bi"><span lang="en">Agent: read Lark → translate → create Google Doc</span><span class="cn" lang="zh-Hans">Agent：读取飞书 → 翻译 → 创建 Google 文档</span></p>
+        </div>
+      </div>
+      <div class="story-step unfold" style="--d:2.2s">
+        <p class="story-label biline"><span lang="en">03 · YOU GET</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+        <div class="card story-card story-result">
+          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">English guide</span><span class="cn" lang="zh-Hans">英文版指南</span></p>
+          <div class="story-result-row"><span class="bi"><span lang="en">Translated text</span><span class="cn" lang="zh-Hans">英文正文</span></span><span class="status">✓</span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Images and structure</span><span class="cn" lang="zh-Hans">图片和结构</span></span><span class="status">✓</span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Google Doc link</span><span class="cn" lang="zh-Hans">Google 文档链接</span></span><span class="status">↗</span></div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Based on a real task · First-time setup is in the notes.</span><span class="cn" lang="zh-Hans">来自真实工作 · 首次配置见备注。</span></p>
+    <p class="foot biline"><span lang="en">Real task, illustrated · Review the result before sharing.</span><span class="cn" lang="zh-Hans">真实任务的示意 · 分享前请核对结果。</span></p>
   </section>
 </template>
 
 <template id="gws-review">
-  <section class="scene s-slack warm" data-label="Compare translations · 核对多语言文案">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Do these translations mean the same?</span><span class="cn" lang="zh-Hans">几种语言的意思一致吗？</span></h1></header>
-    <div class="main ba">
-      <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
-        <p class="bi"><span lang="en">Compare each version line by line. Note the differences.</span><span class="cn" lang="zh-Hans">逐句对照不同语言，记下有差异的地方。</span></p>
-      </div>
-      <div class="after-col">
-        <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Say this to your AI Agent + paste the doc link</span><span class="cn" lang="zh-Hans">对 AI Agent 说 + 贴上文档链接</span></p>
-          <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to compare the English, Spanish and Portuguese in this doc. Show me any differences in meaning.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 对照文档里的英文、西语和葡语，列出意思有差异的地方。</span></p>
-            <p class="agent-flow biline"><span lang="en">AI Agent reads the versions and compares them</span><span class="cn" lang="zh-Hans">AI Agent 读取并对照各语言版本</span></p>
-          </div>
+  <section class="scene s-slack warm" data-label="Review translations together · 一起审核多语言文案">
+    <header class="head arrive"><h1 class="bi"><span lang="en">The translations are ready for review</span><span class="cn" lang="zh-Hans">多语言文案等着审核</span></h1></header>
+    <div class="main story">
+      <div class="story-step paper-in" style="--d:.2s">
+        <p class="story-label biline"><span lang="en">01 · THE TASK</span><span class="cn" lang="zh-Hans">工作场景</span></p>
+        <div class="card story-card story-context">
+          <p class="story-quote bi"><span lang="en">“Do all three versions say the same thing?”</span><span class="cn" lang="zh-Hans">“三种语言的意思一致吗？”</span></p>
+          <p class="story-hint bi"><span lang="en">English, Spanish and Portuguese in one Google Doc.</span><span class="cn" lang="zh-Hans">一份 Google 文档里有英、西、葡三种语言。</span></p>
         </div>
-        <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
-          <p class="out-text bi"><span lang="en">A list of differences and where to review them.</span><span class="cn" lang="zh-Hans">一份差异清单，以及需要复核的位置。</span></p>
+      </div>
+      <div class="story-step paper-in" style="--d:.9s">
+        <p class="story-label biline"><span lang="en">02 · ASK YOUR AI AGENT</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
+        <div class="card story-card">
+          <p class="story-prompt bi"><span lang="en">Use Google Workspace CLI to compare the three languages in this doc. Flag meaning differences and draft a Slack reply for review. [Doc link]</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 对照这份文档的三种语言，找出意思不同的地方，再写一条 Slack 回复草稿。[文档链接]</span></p>
+          <p class="story-tools bi"><span lang="en">Agent: read Doc → compare → draft reply</span><span class="cn" lang="zh-Hans">Agent：读取文档 → 对照 → 起草回复</span></p>
+        </div>
+      </div>
+      <div class="story-step unfold" style="--d:2.2s">
+        <p class="story-label biline"><span lang="en">03 · YOU GET</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+        <div class="card story-card story-result">
+          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Review notes</span><span class="cn" lang="zh-Hans">审核清单</span></p>
+          <div class="story-result-row"><span class="bi"><span lang="en">Reminder time</span><span class="cn" lang="zh-Hans">提醒时间</span></span><span class="status bi"><span lang="en">Meaning differs</span><span class="cn" lang="zh-Hans">意思有差异</span></span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Where to check</span><span class="cn" lang="zh-Hans">复核位置</span></span><span class="status bi"><span lang="en">Doc section</span><span class="cn" lang="zh-Hans">文档对应段落</span></span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Slack reply</span><span class="cn" lang="zh-Hans">Slack 回复</span></span><span class="status bi"><span lang="en">Draft for you</span><span class="cn" lang="zh-Hans">草稿待确认</span></span></div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Based on a real task · Review the source before making changes.</span><span class="cn" lang="zh-Hans">来自真实工作 · 修改前请核对原文。</span></p>
+    <p class="foot biline"><span lang="en">Real task, illustrated · Check the source and draft before sharing.</span><span class="cn" lang="zh-Hans">真实任务的示意 · 分享前核对原文和草稿。</span></p>
   </section>
 </template>
 
 <template id="gws-agenda">
-  <section class="scene s-both" data-label="Find documents and check access · 找文档并检查权限">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Where are the docs? Can everyone see them?</span><span class="cn" lang="zh-Hans">文档在哪？大家都能看吗？</span></h1></header>
-    <div class="main ba">
-      <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Usually</span><span class="cn" lang="zh-Hans">平时</span></p>
-        <p class="bi"><span lang="en">Search Drive, open each file, check sharing one by one.</span><span class="cn" lang="zh-Hans">搜索云盘，逐份打开检查共享权限。</span></p>
-      </div>
-      <div class="after-col">
-        <div class="card agent-card paper-in" style="--d:.3s">
-          <p class="agent-header biline"><span lang="en">Say this to your AI Agent</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
-          <div class="agent-body">
-            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to find the project guides in Drive. Give me the links and check whether the whole company can view them.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 找云盘里的项目指南，整理链接，并检查是否全公司可见。</span></p>
-            <p class="agent-flow biline"><span lang="en">AI Agent searches Drive and checks sharing</span><span class="cn" lang="zh-Hans">AI Agent 搜索云盘并检查共享设置</span></p>
-          </div>
+  <section class="scene s-both" data-label="Get the meeting materials ready · 准备会议资料">
+    <header class="head arrive"><h1 class="bi"><span lang="en">The meeting starts in five minutes</span><span class="cn" lang="zh-Hans">还有五分钟就开会了</span></h1></header>
+    <div class="main story">
+      <div class="story-step paper-in" style="--d:.2s">
+        <p class="story-label biline"><span lang="en">01 · THE TASK</span><span class="cn" lang="zh-Hans">工作场景</span></p>
+        <div class="card story-card story-context">
+          <p class="story-quote bi"><span lang="en">“Can you send everyone the project docs?”</span><span class="cn" lang="zh-Hans">“把项目资料发给大家吧。”</span></p>
+          <p class="story-hint bi"><span lang="en">Find the links. Make sure colleagues can open them.</span><span class="cn" lang="zh-Hans">先找齐链接，再确认同事能打开。</span></p>
         </div>
-        <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
-          <p class="out-text bi"><span lang="en">A link list, with access status for each document.</span><span class="cn" lang="zh-Hans">文档链接清单，以及每份的可见范围。</span></p>
+      </div>
+      <div class="story-step paper-in" style="--d:.9s">
+        <p class="story-label biline"><span lang="en">02 · ASK YOUR AI AGENT</span><span class="cn" lang="zh-Hans">对 AI Agent 说</span></p>
+        <div class="card story-card">
+          <p class="story-prompt bi"><span lang="en">Use Google Workspace CLI to find the project overview, user research and filming guide. Check who can view them, and draft a message with the links.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 找项目概览、用户研究和拍摄指南，检查谁能查看，并整理一条带链接的消息草稿。</span></p>
+          <p class="story-tools bi"><span lang="en">Agent: search Drive → check access → draft</span><span class="cn" lang="zh-Hans">Agent：搜索云盘 → 检查权限 → 整理草稿</span></p>
+        </div>
+      </div>
+      <div class="story-step unfold" style="--d:2.2s">
+        <p class="story-label biline"><span lang="en">03 · YOU GET</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+        <div class="card story-card story-result">
+          <p class="story-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en">Links + access</span><span class="cn" lang="zh-Hans">链接与权限</span></p>
+          <div class="story-result-row"><span class="bi"><span lang="en">Project overview</span><span class="cn" lang="zh-Hans">项目概览</span></span><span class="status bi"><span lang="en">Company</span><span class="cn" lang="zh-Hans">公司可看</span></span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Filming guide</span><span class="cn" lang="zh-Hans">拍摄指南</span></span><span class="status bi"><span lang="en">Restricted</span><span class="cn" lang="zh-Hans">仅限部分人</span></span></div>
+          <div class="story-result-row"><span class="bi"><span lang="en">Message with links</span><span class="cn" lang="zh-Hans">带链接的消息</span></span><span class="status bi"><span lang="en">Draft for you</span><span class="cn" lang="zh-Hans">草稿待确认</span></span></div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Based on a real task · The Agent checks; you decide whether to change access.</span><span class="cn" lang="zh-Hans">来自真实工作 · Agent 先检查，你决定是否修改权限。</span></p>
+    <p class="foot biline"><span lang="en">Real task, illustrated · Decide on access and send the message yourself.</span><span class="cn" lang="zh-Hans">真实任务的示意 · 权限由你决定，消息由你发送。</span></p>
   </section>
 </template>
 
@@ -545,21 +575,21 @@ const prompts = {
     chips: []
   },
   gwsSetup: {
-    name: "整理文档排版",
-    en: "Use Google Workspace CLI to tidy this doc. Match the English and Chinese headings; keep the text and images.",
-    zh: "用 Google Workspace CLI 整理这份文档。让中英文标题层级一致，保留原文和图片。",
-    chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
+    name: "飞书资料翻译并创建英文 Google 文档",
+    en: "Translate this Lark guide into English. Use Google Workspace CLI to create a Google Doc, keeping the structure and images. Tell me if anything could not be preserved.",
+    zh: "把这份飞书指南翻译成英文，用 Google Workspace CLI 新建 Google 文档，保留结构和图片。如果有内容无法保留，请告诉我。",
+    chips: [{slotEn: "Lark guide", slotZh: "飞书指南", linkEn: "Lark link", linkZh: "飞书链接"}]
   },
   gwsReview: {
-    name: "核对多语言文案",
-    en: "Use Google Workspace CLI to compare the English, Spanish and Portuguese in this doc. Show me any differences in meaning and where to find them.",
-    zh: "用 Google Workspace CLI 对照文档里的英文、西语和葡语，列出意思有差异的地方和所在位置。",
+    name: "核对多语言文案并起草回复",
+    en: "Use Google Workspace CLI to compare the English, Spanish and Portuguese in this doc. Flag meaning differences, show where they occur, and draft a Slack reply for me to review.",
+    zh: "用 Google Workspace CLI 对照这份文档的英文、西语和葡语，找出意思不同的地方并指出位置，再写一条 Slack 回复草稿让我确认。",
     chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
   },
   gwsAgenda: {
-    name: "找文档并检查共享权限",
-    en: "Use Google Workspace CLI to find the project guides in Drive. Give me the links and check whether the whole company can view them.",
-    zh: "用 Google Workspace CLI 找云盘里的项目指南，整理链接，并检查是否全公司可见。",
+    name: "找会议资料并检查共享权限",
+    en: "Use Google Workspace CLI to find the project overview, user research and filming guide in Drive. Give me the links, check who can view each, and draft a message for me to review. Do not change access or send it.",
+    zh: "用 Google Workspace CLI 在云盘找项目概览、用户研究和拍摄指南，整理链接，检查每份的可见范围，再写一条消息草稿让我确认。不要修改权限或发送。",
     chips: []
   }
 };
@@ -572,8 +602,8 @@ const setupSteps = [
   },
   {
     title: "gws · Google Workspace CLI",
-    en: "Ask your AI Agent to install and configure gws where it runs. Sign in to your work account when prompted and grant the access needed for your task. The setup may require a Google Cloud project and OAuth client; see the official guide.",
-    zh: "请 AI Agent 在它运行的环境里安装并配置 gws，按提示登录工作账号，并授予任务所需的权限。配置可能需要 Google Cloud 项目和 OAuth 客户端，详见官方说明。"
+    en: "Ask your AI Agent to install and configure gws where it runs. Sign in to your work account when prompted and grant the access needed for your task. The setup may require a Google Cloud project and OAuth client; see the official guide. For a Lark source, also connect Lark in your Agent environment.",
+    zh: "请 AI Agent 在它运行的环境里安装并配置 gws，按提示登录工作账号，并授予任务所需的权限。配置可能需要 Google Cloud 项目和 OAuth 客户端，详见官方说明。如果来源是飞书，还需要在 Agent 环境里连接飞书。"
   }
 ];
 const setupLinks = [
@@ -598,16 +628,16 @@ const chapters = [
     say: ["要让人和工具都找得到，信息得先放在找得到的地方。", "三条约定：日常业务讨论放公开频道；非必要不建私密群；新频道如果大家会在里面问问题，就把 Tada 加进来，并告诉 Ken 开启。"],
     facts: ["Tada 只能看到它所在频道里的消息；在群里回答时只用本群内容和公司资料，不会带入私聊或其他群的内容。"] },
   { id: "gws-setup", stage: 2, time: "2:55–3:35",
-    say: ["第三层，不用在终端输入命令。直接在自己的 AI Agent 里说要做什么，它会在后台调用 Google Workspace CLI。", "这是实际做过的任务：贴上 Google 文档，让 Agent 整理中英文标题和间距，保留原文和图片。"],
-    facts: ["这个场景来自实际的 Google Docs 排版任务，已通过 gws 读取和更新文档。使用前需在 Agent 运行环境安装并授权 gws；配置可能需要 Google Cloud 项目和 OAuth 客户端。"],
+    say: ["有同事需要英文版时，直接把飞书链接发给 AI Agent，说清楚要翻译并创建 Google 文档。", "Agent 读取飞书资料，用 Google Workspace CLI 创建英文版。这里的文档画面是根据真实任务制作的示意。"],
+    facts: ["真实任务是将飞书文档翻译成英文并新建 Google Doc，要求保留格式和图片。Agent 需先具备飞书和 Google 的访问权限，并在运行环境安装和授权对应工具；具体图片或格式需要核对。"],
     prompts: ["gwsSetup"] },
   { id: "gws-review", stage: 2, time: "3:35–4:25",
-    say: ["多语言文案审核时，把文档链接交给 Agent，让它对照英文、西语和葡语，列出意思不同的地方。", "它帮你找出需要关注的位置，最后仍要结合原文复核。"],
-    facts: ["这个场景来自实际的三语文案审核请求。Agent 需要读取文档的权限；语言差异应由相关负责人复核。"],
+    say: ["内容团队审核三种语言时，把 Google 文档交给 Agent，找出意思不同的位置，再起草一条 Slack 回复。", "例如提醒时间的含义是否一致；画面是示意，发出前由人核对。"],
+    facts: ["真实任务中曾审核英文、西语和葡语文案，检查提醒时间等含义差异，并准备 Slack 回复草稿。回复和具体差异在画面中均为示意。"],
     prompts: ["gwsReview"] },
   { id: "gws-agenda", stage: 2, time: "4:25–5:15",
-    say: ["准备分享项目资料时，让 Agent 在 Google Drive 里找文档，整理链接并逐份检查公司同事能不能看。", "先检查，再由你决定是否调整权限。"],
-    facts: ["这个场景来自实际的资料查找和 Google Drive 共享权限检查任务。查到的文件和权限取决于账号的访问范围。"],
+    say: ["会议前有人要项目资料：让 Agent 找链接、检查公司同事能否打开，再整理成一条可复制的消息。", "画面里的文档和权限是示意；Agent 先检查，由你决定是否调整权限和发送。"],
+    facts: ["真实任务中查找了项目概览、用户资料和拍摄指南，并逐份核对 Google Drive 共享权限、整理了可复制消息。开会时间及画面为示意。"],
     prompts: ["gwsAgenda"] },
   { id: "close", stage: -1, time: "5:15–5:40",
     say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周让 AI Agent 用 gws 完成一件事。", "安装说明和可复制的问法，点最后一个按钮。"] }
