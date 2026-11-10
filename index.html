@@ -111,6 +111,24 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .opening-card { width: 100%; padding: 3cqw; }
 .opening-copy { font-size: 2.2cqw; font-weight: 600; line-height: 1.35; }
 
+/* Connect Tada to Google Drive. */
+.connect-sub { margin-top: 1cqw; color: var(--muted); font-size: 1.3cqw; line-height: 1.35; }
+.connect-main { display: flex; flex-direction: column; justify-content: center; gap: 1.8cqw; }
+.connect-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.7cqw; }
+.connect-card { padding: 1.8cqw; }
+.connect-num { display: grid; place-items: center; width: 2.2cqw; aspect-ratio: 1; border-radius: 50%; background: var(--orange); color: #fff; font-size: 1.05cqw; font-weight: 700; }
+.connect-title { margin-top: 1.1cqw; font-size: 1.4cqw; line-height: 1.3; font-weight: 700; }
+.connect-detail { margin-top: 1.2cqw; padding-top: 1cqw; border-top: var(--edge) solid var(--line); color: var(--muted); font-size: 1.1cqw; line-height: 1.35; }
+.connect-link { align-self: flex-start; }
+@media (max-width: 600px) and (orientation: portrait) {
+  .connect-steps { grid-template-columns: 1fr; gap: 10px; }
+  .connect-main { justify-content: flex-start; gap: 12px; }
+  .connect-card { padding: 16px; }
+  .connect-num { width: 24px; }
+  .connect-title, .connect-detail { margin-top: 10px; }
+  .connect-detail { padding-top: 10px; }
+}
+
 /* 03 Tada thread */
 .thread { padding: 1.2cqw 1.4cqw 1.3cqw; }
 .tmsg { display: grid; grid-template-columns: 2.5cqw 1fr; gap: .9cqw; }
@@ -283,20 +301,37 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 </main>
 
 <template id="opening">
-  <section class="scene s-open warm" data-label="Meet Tada">
+  <section class="scene s-open warm" data-label="What is Tada?">
     <header class="head">
       <p class="eyebrow biline arrive"><span lang="en" class="heading-en">GLORIFY · IN SLACK</span></p>
-      <h1 class="bi arrive" style="--d:.1s"><span lang="en" class="heading-en">Meet Tada</span></h1>
+      <h1 class="bi arrive" style="--d:.1s"><span lang="en" class="heading-en">What is Tada?</span></h1>
     </header>
     <div class="main opening-stage">
       <div class="card opening-card paper-in" style="--d:.4s">
-        <p class="opening-copy bi"><span lang="en">Find answers together in Slack.</span><span class="cn" lang="zh-Hans">在 Slack 中一起找到答案。</span></p>
+        <p class="opening-copy bi"><span lang="en">Tada is a team AI assistant in Slack. Ask it questions to find documents and understand team information.</span><span class="cn" lang="zh-Hans">Tada 是 Slack 里的团队 AI 助手。向它提问，就能查找文档、了解团队资料。</span></p>
       </div>
     </div>
   </section>
 </template>
 
 
+
+<template id="connect-drive">
+  <section class="scene s-connect warm" data-label="Connect Google Drive">
+    <header class="head arrive">
+      <h1 class="bi"><span lang="en" class="heading-en">Connect Google Drive</span></h1>
+      <p class="connect-sub bi"><span lang="en">Ask Tada about files you can access.</span><span class="cn" lang="zh-Hans">让 Tada 帮你查看有权限访问的文件。</span></p>
+    </header>
+    <div class="main connect-main">
+      <div class="connect-steps">
+        <div class="card connect-card paper-in" style="--d:.25s"><span class="connect-num">1</span><p class="connect-title bi"><span lang="en">Open your workspace</span><span class="cn" lang="zh-Hans">打开工作台</span></p><p class="connect-detail bi"><span lang="en">Tada Home → Open my workspace<br>Open the link in Tada DM.</span><span class="cn" lang="zh-Hans">Tada 主页 → 打开我的工作台<br>在 Tada 私聊打开链接。</span></p></div>
+        <div class="card connect-card paper-in" style="--d:.6s"><span class="connect-num">2</span><p class="connect-title bi"><span lang="en">Connect your account</span><span class="cn" lang="zh-Hans">连接账号</span></p><p class="connect-detail bi"><span lang="en">My Google Drive → Connect<br>Sign in with your work account.</span><span class="cn" lang="zh-Hans">My Google Drive → 连接<br>登录你的工作账号。</span></p></div>
+        <div class="card connect-card paper-in" style="--d:.95s"><span class="connect-num">3</span><p class="connect-title bi"><span lang="en">Ask in a DM</span><span class="cn" lang="zh-Hans">在私聊中提问</span></p><p class="connect-detail bi"><span lang="en">Send a file link and ask.</span><span class="cn" lang="zh-Hans">发送文件链接并提问。</span></p></div>
+      </div>
+      <a class="guide connect-link arrive" style="--d:1.3s" data-guide target="_blank" rel="noopener noreferrer"><span lang="en" class="always-en">Connection guide ↗</span></a>
+    </div>
+  </section>
+</template>
 
 <template id="tada">
   <section class="scene s-tada warm" data-label="Ask Tada">
@@ -371,35 +406,32 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
   <section class="scene s-close warm" data-label="Try Tada">
     <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Try Tada</span></h1></header>
     <ol class="main start">
-      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span><button type="button" class="guide" data-open-tool-setup="tada"><span lang="en" class="always-en">How to connect →</span></button></li>
+      <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span><a class="guide" data-guide target="_blank" rel="noopener noreferrer"><span lang="en" class="always-en">Connection guide ↗</span></a></li>
     </ol>
   </section>
 </template>
 
 <script>
-const setupSteps = [
-  { key: "tada", title: "Tada · Slack", steps: [
-    { en: "In Slack, search Apps for Tada and open it.", zh: "在 Slack 应用中搜索并打开 Tada。" },
-    { en: "Ask Tada in a DM, or @Tada in a channel it has joined.", zh: "私聊 Tada，或在它已加入的频道里 @Tada。" },
-    { en: "If Tada isn’t working, contact Ken Ge.", zh: "如果 Tada 用不了，请联系 Ken Ge。" }
-  ] }
-];
+const guideUrl = "https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit";
 
 const chapters = [
-  { id: "opening", stage: -1, time: "0:00–0:20",
-    say: ["今天介绍如何在 Slack 使用 Tada，快速查找团队资料。"] },
-  { id: "tada", stage: 0, time: "0:20–0:55",
-    say: ["这是在 Slack 私聊 Tada 的真实提问：什么是 Feeling Together？", "接着看 Tada 的中英文回答。"],
-    facts: ["2026-11-10 用户通过 Slack 私聊 Tada。完整原始提问：What is Feeling Together？Please describe this function in no more than two sentences each in Chinese and English, and include the source of the information.", "页面展示回复正文原文，中英文顺序调整为英文在前。Tada 当时注明无法核验实时来源；参考资料为《05 Confidein ／ Bless Ring 当前 App 功能记录》（2026-11-05）和《Feeling Together（心情绑定与送戒指）PRD》（2026-11-02）。"] },
-  { id: "tada-use", stage: 1, time: "0:55–1:20",
+  { id: "opening", stage: 0, time: "0:00–0:25",
+    say: ["Tada 是 Slack 里的团队 AI 助手。你可以向它提问，让它帮你查找文档、了解团队资料。"] },
+  { id: "connect-drive", stage: 1, time: "0:25–1:05",
+    say: ["如果想让 Tada 查看你有权限访问的个人 Google 文件，先从 Tada 主页打开工作台，连接 My Google Drive。", "连接后，在 Slack 私聊 Tada，发送文件链接并提问。详细图文步骤可点连接教程。"],
+    facts: ["查询已发布的公司资料无需连接个人 Google Drive。连接时选择与 Slack 邮箱一致的工作账号，并按提示授权。"] },
+  { id: "tada-use", stage: 2, time: "1:05–1:40",
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
     facts: ["频道问答要求 Tada 在该频道；可查询范围取决于资料接入和访问权限。"] },
-  { id: "searchable", stage: 1, time: "1:20–1:45",
+  { id: "searchable", stage: 2, time: "1:40–2:05",
     say: ["想让同事一起看回答，就把 Tada 加入频道，然后 @Tada 提问。如果 Tada 用不了，请联系 Ken Ge。"] },
-  { id: "close", stage: -1, time: "1:45–2:05",
+  { id: "tada", stage: 3, time: "2:05–2:40",
+    say: ["这是在 Slack 私聊 Tada 的真实提问：什么是 Feeling Together？", "接着看 Tada 的中英文回答。"],
+    facts: ["2026-11-10 用户通过 Slack 私聊 Tada。完整原始提问：What is Feeling Together？Please describe this function in no more than two sentences each in Chinese and English, and include the source of the information.", "页面展示回复正文原文，中英文顺序调整为英文在前。Tada 当时注明无法核验实时来源；参考资料为《05 Confidein ／ Bless Ring 当前 App 功能记录》（2026-11-05）和《Feeling Together（心情绑定与送戒指）PRD》（2026-11-02）。"] },
+  { id: "close", stage: -1, time: "2:40–3:00",
     say: ["会后在 Slack 向 Tada 问一个团队问题。需要帮助时，联系 Ken Ge。"] }
 ];
-const stages = ["Ask Tada", "How to use Tada"];
+const stages = ["What is Tada", "Connect Drive", "Daily use", "Use case"];
 
 const presenter = document.querySelector("#presenter");
 const screen = document.querySelector("#screen");
@@ -426,6 +458,7 @@ function show(index) {
     `<li${step === chapter.stage ? ' class="on" aria-current="step"' : ""}><span class="n">${step + 1}</span><span lang="en" class="heading-en">${en}</span></li>`).join("");
   mast.innerHTML = `<ol class="track">${track}</ol><span>${pad(index + 1)} / ${pad(chapters.length)}</span>`;
   scene.prepend(mast);
+  scene.querySelectorAll("[data-guide]").forEach(link => { link.href = guideUrl; });
   screen.replaceChildren(scene);
   chapterSelect.value = String(index);
   prev.disabled = index === 0;
@@ -456,34 +489,6 @@ function noteSection(title, items) {
   }
   return [heading, list];
 }
-function setupParts(tool) {
-  const parts = [];
-  for (const section of setupSteps) {
-    if (tool && section.key !== tool) continue;
-    const heading = document.createElement("h3");
-    heading.textContent = section.title;
-    const list = document.createElement("ol");
-    for (const step of section.steps) {
-      const entry = document.createElement("li");
-      const en = document.createElement("p");
-      const zh = document.createElement("p");
-      en.lang = "en";
-      en.textContent = step.en;
-      zh.lang = "zh-Hans";
-      zh.textContent = step.zh;
-      entry.append(en, zh);
-      list.append(entry);
-    }
-    parts.push(heading, list);
-  }
-  return parts;
-}
-function openSetup(tool) {
-  const titles = { tada: "How to connect Tada" };
-  document.querySelector("#notes-title").textContent = titles[tool] || "Setup";
-  document.querySelector("#note-content").replaceChildren(...setupParts(tool));
-  notes.showModal();
-}
 function openNotes() {
   const chapter = chapters[current];
   document.querySelector("#notes-title").textContent = `${pad(current + 1)} ${sceneLabel(current)} · ${chapter.time}`;
@@ -501,12 +506,6 @@ next.addEventListener("click", () => show(current + 1));
 chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value)));
 document.querySelector("#close-notes").addEventListener("click", () => notes.close());
 document.querySelector("#full").addEventListener("click", toggleFullscreen);
-screen.addEventListener("click", event => {
-  const toolSetup = event.target.closest("[data-open-tool-setup]");
-  if (toolSetup) {
-    openSetup(toolSetup.dataset.openToolSetup);
-  }
-});
 document.addEventListener("keydown", event => {
   if (event.repeat || notes.open || event.target.closest("select, a") ||
       event.ctrlKey || event.altKey || event.metaKey) return;
