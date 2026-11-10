@@ -76,7 +76,8 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 .biline > .cn { margin-left: .9em; }
 .no-chinese .cn { display: none !important; }
 #screen[data-language="zh"] [lang="en"] { display: none !important; }
-#screen[data-language="zh"] [lang="en"].heading-en { display: revert !important; }
+#screen[data-language="zh"] [lang="en"].heading-en,
+#screen[data-language="zh"] [lang="en"].always-en { display: revert !important; }
 #screen[data-language="zh"] .bi > .cn, #screen[data-language="zh"] .biline > .cn { margin: 0; }
 
 /* Shared pieces */
@@ -176,7 +177,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.4cqw; line-height: 1.35; font-weight: 650; }
 .choice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw 1.4cqw; margin-top: .5cqw; }
 .choice-actions button, .choice-actions a { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
-.choice-actions .cn { color: inherit; }
 .story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.2cqw; line-height: 1.35; }
 .story-result-example .example-label { color: var(--label); font-weight: 700; margin-bottom: .4cqw; }
 @media (max-width: 600px) and (orientation: portrait) {
@@ -245,8 +245,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .hours-table td { font-variant-numeric: tabular-nums; color: #8f8178; }
 .hours-table td.good { color: var(--ink); font-weight: 700; background: var(--good); }
 .hours-table td .prev { display: block; font-size: .85cqw; font-weight: 500; color: var(--muted); }
-.legend { display: flex; align-items: center; gap: .5cqw; margin-top: .8cqw; font-size: .95cqw; color: var(--muted); }
-.swatch { display: inline-block; width: 1.1cqw; height: .8cqw; border-radius: .2cqw; background: var(--good); border: var(--edge) solid #e3a678; }
 
 /* 03 Tada thread */
 .thread { padding: 1.2cqw 1.4cqw 1.3cqw; }
@@ -295,9 +293,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .use .how { font-size: 1.4cqw; line-height: 1.35; font-weight: 600; }
 .use .bi.note { font-size: 1.25cqw; line-height: 1.35; color: var(--muted); }
 .use-foot { display: flex; justify-content: space-between; align-items: center; gap: 1.5cqw; margin-top: 1.6cqw; }
-.tips { display: flex; flex-wrap: wrap; gap: .6cqw 1.6cqw; font-size: 1.1cqw; }
-.tips li { display: inline-flex; align-items: center; gap: .4cqw; }
-.tips .ico { color: var(--orange); stroke-width: 2.4; font-size: 1.2cqw; }
+.tips { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); width: 100%; gap: 1.6cqw; font-size: 1.1cqw; }
+.tips li { display: flex; align-items: flex-start; gap: .4cqw; }
+.tips .ico { margin-top: .15em; color: var(--orange); stroke-width: 2.4; font-size: 1.2cqw; }
 .guide { display: inline-flex; align-items: center; gap: .5em; padding: .7cqw 1.15cqw; border-radius: .65cqw; background: #9f350b; color: #fff; font-size: 1.2cqw; font-weight: 700; text-decoration: none; white-space: nowrap; cursor: pointer; border: 0; }
 .guide:hover { background: #792604; }
 .guide .cn { color: #fff; }
@@ -409,6 +407,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   .card, .before, .thread, .use, .rule-card, .table-card { padding: 10px; }
   .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
   .use-foot { display: grid; gap: 10px; }
+  .tips { grid-template-columns: 1fr; gap: 10px; }
   .tav, .use-ico, .rules .n { width: 22px; }
   .rules li, .doc-lines li, .tmsg, .ba-line { grid-template-columns: 28px 1fr; gap: 6px; }
   .ba-line { grid-template-columns: 1fr; }
@@ -485,7 +484,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
             <tr data-zone="America/Sao_Paulo"><th scope="row"><span class="biline"><span lang="en">Brazil</span><span class="cn" lang="zh-Hans">巴西</span></span><span class="city biline"><span lang="en">São Paulo</span><span class="cn" lang="zh-Hans">圣保罗</span></span></th><td data-window></td><td data-window></td></tr>
           </tbody>
         </table>
-        <p class="legend"><span class="swatch" aria-hidden="true"></span><span class="biline"><span lang="en">Highlighted: their daytime</span><span class="cn" lang="zh-Hans">高亮：对方的白天</span></span><span class="biline"><span lang="en">· Converted for Beijing date</span><span class="cn" lang="zh-Hans">· 按北京日期换算</span></span> <time data-reference-day></time></p>
       </div>
     </div>
     <p class="foot biline"><a class="biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">Google Calendar → Settings → Working hours</span><span class="cn" lang="zh-Hans">Google 日历 → 设置 → 工作时间</span></a><span lang="en"> · Can’t find it? Tell the Operation Team.</span><span class="cn" lang="zh-Hans">找不到这个设置？反馈给 Operation Team。</span></p>
@@ -501,10 +499,10 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           <p class="choice-where biline"><span lang="en" class="heading-en">IN SLACK</span></p>
           <h2 class="bi"><span lang="en" class="heading-en">Ask Tada</span></h2>
           <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
-          <p class="choice-example bi"><span lang="en">“What is Feeling Together?”</span><span class="cn" lang="zh-Hans">“什么是 Feeling Together？”</span></p>
+          <p class="choice-example bi"><span lang="en" class="always-en">“What is Feeling Together?”</span></p>
           <div class="choice-actions">
-            <button type="button" class="biline" data-show-tada><span lang="en">How to ask →</span><span class="cn" lang="zh-Hans">提问方法</span></button>
-            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada + Drive guide ↗</span><span class="cn" lang="zh-Hans">连接教程</span></a>
+            <button type="button" class="biline" data-show-tada><span lang="en" class="always-en">How to ask →</span></button>
+            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en" class="always-en">Tada + Drive guide ↗</span></a>
           </div>
         </article>
         <article class="card choice-card agent paper-in" style="--d:1.2s">
@@ -559,9 +557,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
       </div>
       <div class="use-foot arrive" style="--d:.8s">
         <ul class="tips">
-          <li><svg class="ico"><use href="#i-check"/></svg><span class="biline"><span lang="en">Use the full doc title</span><span class="cn" lang="zh-Hans">用文档全名提问</span></span></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><span class="biline"><span lang="en">Ask for the original link</span><span class="cn" lang="zh-Hans">要原文链接</span></span></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><span class="biline"><span lang="en">No reply? Ask Ken (Tada admin)</span><span class="cn" lang="zh-Hans">没回复？找 Ken（Tada 管理员）</span></span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">Use the full doc title</span><span class="cn" lang="zh-Hans">用文档全名提问</span></span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">Ask for the original link</span><span class="cn" lang="zh-Hans">要原文链接</span></span></li>
+          <li><svg class="ico"><use href="#i-check"/></svg><span class="bi"><span lang="en">No reply? Ask Ken (Tada admin)</span><span class="cn" lang="zh-Hans">没回复？找 Ken（Tada 管理员）</span></span></li>
         </ul>
       </div>
     </div>
@@ -799,17 +797,15 @@ function icon(name) {
   return `<svg class="ico" aria-hidden="true"><use href="#i-${name}"/></svg>`;
 }
 function renderWindows(scene) {
-  const reference = scene.querySelector("[data-reference-day]");
-  if (!reference) return;
+  const rows = scene.querySelectorAll("[data-zone]");
+  if (!rows.length) return;
   const beijingDate = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Shanghai", year: "numeric", month: "2-digit", day: "2-digit" });
   const date = Object.fromEntries(beijingDate.formatToParts(new Date()).map(part => [part.type, part.value]));
   const dateLabel = [date.year, date.month, date.day].join("-");
   const utcMidnight = Date.UTC(Number(date.year), Number(date.month) - 1, Number(date.day));
   // Beijing is UTC+8 all year: 08:00 and 22:00 Beijing are 00:00 and 14:00 UTC.
   const windows = [[0, 2], [14, 16]];
-  reference.textContent = dateLabel;
-  reference.dateTime = dateLabel;
-  for (const row of scene.querySelectorAll("[data-zone]")) {
+  for (const row of rows) {
     const formatter = new Intl.DateTimeFormat("en-CA", {
       timeZone: row.dataset.zone, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23"
     });
