@@ -107,13 +107,15 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .also .k { color: var(--label); font-weight: 650; margin-right: .2cqw; }
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
-/* Google Workspace CLI */
-.terminal { padding: 1cqw 1.3cqw 1.2cqw; }
-.terminal-title { color: var(--label); font-size: 1.05cqw; font-weight: 700; margin-bottom: .7cqw; }
-.terminal code { display: block; margin-top: .45cqw; color: #4d3323; font-size: 1.03cqw; line-height: 1.42; white-space: pre-wrap; overflow-wrap: anywhere; }
-.terminal-command { display: block; font-size: 1.2cqw; }
-.gws-caption { margin-top: .75cqw; font-size: 1.18cqw; }
-.gws-row { display: grid; grid-template-columns: 1fr 1.4fr; gap: 1cqw; padding: .55cqw 0; border-top: var(--edge) solid var(--line); font-size: 1.22cqw; }
+/* Ask an AI Agent to use Google Workspace CLI */
+.agent-card { overflow: hidden; }
+.agent-header { padding: .65cqw 1.3cqw; color: var(--label); font-size: 1.13cqw; font-weight: 700; background: #fff2e1; border-bottom: var(--edge) solid var(--line); }
+.agent-body { padding: 1.08cqw 1.3cqw 1.16cqw; }
+.agent-prompt { font-size: 1.49cqw; line-height: 1.31; }
+.agent-prompt > span:first-child { font-family: var(--serif); }
+.agent-flow { margin-top: .8cqw; font-size: 1.12cqw; color: var(--label); font-weight: 650; }
+.example-row { display: grid; grid-template-columns: 1.12fr 2fr; gap: .8cqw; padding: .5cqw 0; border-top: var(--edge) solid var(--line); font-size: 1.28cqw; line-height: 1.25; }
+.example-row .k { color: var(--label); font-weight: 700; }
 
 /* Output cards */
 .out { padding: 1cqw 1.3cqw 1.15cqw; }
@@ -312,7 +314,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
       <h1 class="bi arrive" style="--d:.1s"><span lang="en">How we work together</span><span class="cn" lang="zh-Hans">合并后，我们怎么一起工作</span></h1>
     </header>
     <ol class="main layers">
-      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Use Google Workspace CLI</span><span class="cn" lang="zh-Hans">使用 Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Use Google Workspace from the terminal</span><span class="cn" lang="zh-Hans">在终端里使用 Google Workspace</span></span></li>
+      <li class="layer l3" style="--d:1.3s"><span class="num">3</span><span class="bi"><span lang="en">Use Google Workspace CLI</span><span class="cn" lang="zh-Hans">使用 Google Workspace CLI</span></span><span class="bi sub"><span lang="en">Ask your AI Agent to use Google Workspace CLI</span><span class="cn" lang="zh-Hans">直接对 AI Agent 说你要做什么</span></span></li>
       <li class="layer l2" style="--d:.95s"><span class="num">2</span><span class="bi"><span lang="en">Find information</span><span class="cn" lang="zh-Hans">找到信息</span></span><span class="bi sub"><span lang="en">Ask Tada · keep work searchable</span><span class="cn" lang="zh-Hans">问 Tada · 信息能被搜到</span></span></li>
       <li class="layer l1" style="--d:.6s"><span class="num">1</span><span class="bi"><span lang="en">Find each other</span><span class="cn" lang="zh-Hans">找到彼此</span></span><span class="bi sub"><span lang="en">Working hours on the calendar</span><span class="cn" lang="zh-Hans">日历里标好工作时间</span></span></li>
     </ol>
@@ -442,80 +444,87 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 </template>
 
 
+
+
 <template id="gws-setup">
-  <section class="scene s-google" data-label="Set up gws · 安装和登录">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Google Workspace CLI: get started</span><span class="cn" lang="zh-Hans">Google Workspace CLI：开始使用</span></h1></header>
+  <section class="scene s-google" data-label="Ask naturally · 直接提问">
+    <header class="head arrive"><h1 class="bi"><span lang="en">Just ask your AI Agent</span><span class="cn" lang="zh-Hans">直接问你的 AI Agent</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">One-time setup</span><span class="cn" lang="zh-Hans">首次配置</span></p>
-        <p class="bi"><span lang="en">Install gws, then sign in with your work account.</span><span class="cn" lang="zh-Hans">安装 gws，然后用工作账号登录。</span></p>
+        <p class="ba-k biline"><span lang="en">You do</span><span class="cn" lang="zh-Hans">你来做</span></p>
+        <p class="bi"><span lang="en">Paste a Google Doc link. Say what you need.</span><span class="cn" lang="zh-Hans">贴上 Google 文档链接，说清楚要什么。</span></p>
       </div>
       <div class="after-col">
-        <div class="card terminal paper-in" style="--d:.3s">
-          <p class="terminal-title biline"><span lang="en">Terminal</span><span class="cn" lang="zh-Hans">终端</span></p>
-          <code>npm install -g @googleworkspace/cli</code>
-          <code>gws auth setup</code>
-          <code>gws auth login -s drive,calendar --readonly</code>
+        <div class="card agent-card paper-in" style="--d:.3s">
+          <p class="agent-header biline"><span lang="en">Your message</span><span class="cn" lang="zh-Hans">你在 AI Agent 里输入</span></p>
+          <div class="agent-body">
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to read this document. Give me three key points and the source link. [Google Doc link]</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 读这份文档，给我三个重点并附来源。[Google 文档链接]</span></p>
+            <p class="agent-flow biline"><span lang="en">AI Agent uses Google Workspace CLI to read the doc</span><span class="cn" lang="zh-Hans">AI Agent 调用 Google Workspace CLI 读取文档</span></p>
+          </div>
         </div>
-        <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">Check your sign-in</span><span class="cn" lang="zh-Hans">检查登录状态</span></p>
-          <code class="terminal-command">gws auth status</code>
-          <p class="bi gws-caption"><span lang="en">Run this after signing in to check the account and permissions.</span><span class="cn" lang="zh-Hans">登录后运行，检查账号和权限。</span></p>
+        <div class="card out unfold" style="--d:2.1s">
+          <p class="out-head biline"><span lang="en">You get</span><span class="cn" lang="zh-Hans">你拿到</span></p>
+          <p class="out-text bi"><span lang="en">Three key points in the chat, with the source.</span><span class="cn" lang="zh-Hans">对话里直接给出三个重点和来源。</span></p>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">This setup uses Node.js and gcloud. See the guide for other setup options.</span><span class="cn" lang="zh-Hans">此方式需要 Node.js 和 gcloud；其他配置方式见官方说明。</span></p>
+    <p class="foot biline"><span lang="en">First-time setup and sign-in are in the notes.</span><span class="cn" lang="zh-Hans">首次配置和登录说明见备注。</span></p>
+  </section>
+</template>
+
+<template id="gws-review">
+  <section class="scene s-slack warm" data-label="Prepare for a review · 评审前整理文档">
+    <header class="head arrive"><h1 class="bi"><span lang="en">A review is about to start</span><span class="cn" lang="zh-Hans">评审快开始了</span></h1></header>
+    <div class="main ba">
+      <div class="card before paper-in" style="--d:.2s">
+        <p class="ba-k biline"><span lang="en">You need</span><span class="cn" lang="zh-Hans">你需要</span></p>
+        <p class="bi"><span lang="en">A short update from the project doc.</span><span class="cn" lang="zh-Hans">从项目文档里整理一段简短同步。</span></p>
+      </div>
+      <div class="after-col">
+        <div class="card agent-card paper-in" style="--d:.3s">
+          <p class="agent-header biline"><span lang="en">Your message + Google Doc link</span><span class="cn" lang="zh-Hans">你的问题 + Google 文档链接</span></p>
+          <div class="agent-body">
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to read this doc. For the review, list what’s in this release and what comes later. Include the link.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 读这份文档。评审时要同步什么？列出本期和后续内容，并附文档链接。</span></p>
+            <p class="agent-flow biline"><span lang="en">Your AI Agent reads the doc with Google Workspace CLI</span><span class="cn" lang="zh-Hans">AI Agent 用 Google Workspace CLI 读取文档</span></p>
+          </div>
+        </div>
+        <div class="card out unfold" style="--d:2.3s">
+          <p class="out-head biline"><span lang="en">Example reply</span><span class="cn" lang="zh-Hans">示例回复</span></p>
+          <div class="example-row"><span class="k biline"><span lang="en">This release</span><span class="cn" lang="zh-Hans">本期</span></span><span class="biline"><span lang="en">In-app bell alert</span><span class="cn" lang="zh-Hans">App 内铃铛提醒</span></span></div>
+          <div class="example-row"><span class="k biline"><span lang="en">Later</span><span class="cn" lang="zh-Hans">后续</span></span><span class="biline"><span lang="en">Phone push</span><span class="cn" lang="zh-Hans">系统推送</span></span></div>
+          <div class="example-row"><span class="k biline"><span lang="en">Source</span><span class="cn" lang="zh-Hans">来源</span></span><span class="biline"><span lang="en">Google Doc link</span><span class="cn" lang="zh-Hans">Google 文档链接</span></span></div>
+        </div>
+      </div>
+    </div>
+    <p class="foot biline"><span lang="en">Practice example · Check the linked source before sharing.</span><span class="cn" lang="zh-Hans">演练示例 · 分享前核对来源。</span></p>
   </section>
 </template>
 
 <template id="gws-agenda">
-  <section class="scene s-slack warm" data-label="Today’s meetings · 查看今日日程">
-    <header class="head arrive"><h1 class="bi"><span lang="en">What’s on my calendar today?</span><span class="cn" lang="zh-Hans">我今天有哪些会议？</span></h1></header>
+  <section class="scene s-both" data-label="Prepare for the next meeting · 下一场会前">
+    <header class="head arrive"><h1 class="bi"><span lang="en">What do I need for my next meeting?</span><span class="cn" lang="zh-Hans">下一场会，我要准备什么？</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Use it when</span><span class="cn" lang="zh-Hans">什么时候用</span></p>
-        <p class="bi"><span lang="en">You want today’s meetings in one view.</span><span class="cn" lang="zh-Hans">想快速看今天的会议安排。</span></p>
+        <p class="ba-k biline"><span lang="en">You need</span><span class="cn" lang="zh-Hans">你需要</span></p>
+        <p class="bi"><span lang="en">The next meeting and its preparation points.</span><span class="cn" lang="zh-Hans">知道下一场会是什么，以及需要准备什么。</span></p>
       </div>
       <div class="after-col">
-        <div class="card terminal paper-in" style="--d:.3s">
-          <p class="terminal-title biline"><span lang="en">In your terminal</span><span class="cn" lang="zh-Hans">在终端输入</span></p>
-          <code>gws calendar +agenda --today --calendar primary --format table</code>
+        <div class="card agent-card paper-in" style="--d:.3s">
+          <p class="agent-header biline"><span lang="en">Your message</span><span class="cn" lang="zh-Hans">你在 AI Agent 里输入</span></p>
+          <div class="agent-body">
+            <p class="agent-prompt bi"><span lang="en">Use Google Workspace CLI to check my next meeting. Read any linked Google Doc and give me two things to prepare. Tell me if there isn’t one.</span><span class="cn" lang="zh-Hans">用 Google Workspace CLI 看我的下一场会。读会议附的 Google 文档，给我两条准备事项；没有文档就告诉我。</span></p>
+            <p class="agent-flow biline"><span lang="en">Your AI Agent uses the CLI to read Calendar and Docs</span><span class="cn" lang="zh-Hans">AI Agent 调用 CLI 读取日历和文档</span></p>
+          </div>
         </div>
         <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">Information returned · example</span><span class="cn" lang="zh-Hans">返回信息示意</span></p>
-          <div class="gws-row"><span>09:30</span><span class="biline"><span lang="en">Team sync</span><span class="cn" lang="zh-Hans">团队同步</span></span></div>
-          <div class="gws-row"><span>14:00</span><span class="biline"><span lang="en">Product review</span><span class="cn" lang="zh-Hans">产品评审</span></span></div>
+          <p class="out-head biline"><span lang="en">Example reply</span><span class="cn" lang="zh-Hans">示例回复</span></p>
+          <div class="example-row"><span class="k">14:00</span><span class="biline"><span lang="en">Product review</span><span class="cn" lang="zh-Hans">产品评审</span></span></div>
+          <div class="example-row"><span class="k biline"><span lang="en">Prepare</span><span class="cn" lang="zh-Hans">会前准备</span></span><span class="bi"><span lang="en">Confirm scope and check the timeline.</span><span class="cn" lang="zh-Hans">确认范围，核对时间。</span></span></div>
+          <div class="example-row"><span class="k biline"><span lang="en">Source</span><span class="cn" lang="zh-Hans">来源</span></span><span class="biline"><span lang="en">Calendar + meeting doc</span><span class="cn" lang="zh-Hans">日历 + 会议文档</span></span></div>
         </div>
       </div>
     </div>
-    <p class="foot biline"><span lang="en">Read-only · Uses your signed-in account’s calendar.</span><span class="cn" lang="zh-Hans">只读 · 查看当前登录账号的日历。</span></p>
-  </section>
-</template>
-
-<template id="gws-drive">
-  <section class="scene s-both" data-label="Find files · 查找文件">
-    <header class="head arrive"><h1 class="bi"><span lang="en">Find recently updated files</span><span class="cn" lang="zh-Hans">找到最近更新的文件</span></h1></header>
-    <div class="main ba">
-      <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Use it when</span><span class="cn" lang="zh-Hans">什么时候用</span></p>
-        <p class="bi"><span lang="en">You want to see what changed in Drive.</span><span class="cn" lang="zh-Hans">想看看云盘里最近更新了什么。</span></p>
-      </div>
-      <div class="after-col">
-        <div class="card terminal paper-in" style="--d:.3s">
-          <p class="terminal-title biline"><span lang="en">In your terminal</span><span class="cn" lang="zh-Hans">在终端输入</span></p>
-          <code>gws drive files list --format table \</code>
-          <code>  --params '{"pageSize":5,</code>
-          <code>  "orderBy":"modifiedTime desc",</code>
-          <code>  "fields":"files(name,modifiedTime)"}'</code>
-        </div>
-        <div class="card out unfold" style="--d:2.3s">
-          <p class="out-head biline"><span lang="en">Information returned · example</span><span class="cn" lang="zh-Hans">返回信息示意</span></p>
-          <div class="gws-row"><span>Review notes</span><span class="biline"><span lang="en">2026-11-09T08:15:00Z</span><span class="cn" lang="zh-Hans">示例修改时间</span></span></div>
-          <div class="gws-row"><span>Launch checklist</span><span class="biline"><span lang="en">2026-11-08T10:30:00Z</span><span class="cn" lang="zh-Hans">示例修改时间</span></span></div>
-        </div>
-      </div>
-    </div>
-    <p class="foot biline"><span lang="en">Lists up to five files your account can access.</span><span class="cn" lang="zh-Hans">最多列出当前账号可访问的 5 个文件。</span></p>
+    <p class="foot biline"><span lang="en">Practice example · Actual meetings and documents depend on your account.</span><span class="cn" lang="zh-Hans">演练示例 · 实际会议与资料以你的账号为准。</span></p>
   </section>
 </template>
 
@@ -525,7 +534,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
     <ol class="main start">
       <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en">Today</span><span class="cn" lang="zh-Hans">今天</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
       <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en">After this meeting</span><span class="cn" lang="zh-Hans">会后</span></span><span class="bi"><span lang="en">Ask Tada one real question.</span><span class="cn" lang="zh-Hans">问 Tada 一个手头的真实问题。</span></span></span><a class="guide ghost biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada guide ↗</span><span class="cn" lang="zh-Hans">中英教程</span></a></li>
-      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en">This week</span><span class="cn" lang="zh-Hans">这周</span></span><span class="bi"><span lang="en">Set up gws and try one command.</span><span class="cn" lang="zh-Hans">安装并登录 gws，试一条命令。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Setup + commands</span><span class="cn" lang="zh-Hans">安装和命令</span></button></li>
+      <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en">This week</span><span class="cn" lang="zh-Hans">这周</span></span><span class="bi"><span lang="en">Ask your AI Agent to use Google Workspace CLI for one task.</span><span class="cn" lang="zh-Hans">让 AI Agent 用 Google Workspace CLI 完成一件事。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Setup + examples</span><span class="cn" lang="zh-Hans">安装和示例</span></button></li>
     </ol>
   </section>
 </template>
@@ -539,16 +548,22 @@ const prompts = {
     zh: "@Tada 北京办公室的入职指南在哪？给我原文链接。",
     chips: []
   },
-  gwsAgenda: {
-    name: "查看今天的日程",
-    en: "gws calendar +agenda --today --calendar primary --format table",
-    zh: "gws calendar +agenda --today --calendar primary --format table",
-    chips: []
+  gwsSetup: {
+    name: "让 AI Agent 总结文档",
+    en: "Use Google Workspace CLI to read this document. Give me three key points and the source link.",
+    zh: "用 Google Workspace CLI 读这份文档，给我三个重点并附来源。",
+    chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
   },
-  gwsDrive: {
-    name: "查找最近更新的文件",
-    en: `gws drive files list --params '{"pageSize":5,"fields":"files(name,modifiedTime)","orderBy":"modifiedTime desc"}' --format table`,
-    zh: `gws drive files list --params '{"pageSize":5,"fields":"files(name,modifiedTime)","orderBy":"modifiedTime desc"}' --format table`,
+  gwsReview: {
+    name: "评审前整理文档",
+    en: "Use Google Workspace CLI to read this Google Doc. For the review, list what is in this release and what comes later. Include the link.",
+    zh: "用 Google Workspace CLI 读这份 Google 文档。评审时要同步什么？列出本期和后续内容，并附文档链接。",
+    chips: [{slotEn: "Google Doc", slotZh: "Google 文档", linkEn: "Google Doc link", linkZh: "Google 文档链接"}]
+  },
+  gwsAgenda: {
+    name: "为下一场会议做准备",
+    en: "Use Google Workspace CLI to check my next meeting. Read any linked Google Doc and give me two things to prepare. Tell me if there is not one.",
+    zh: "用 Google Workspace CLI 看我的下一场会。读会议附的 Google 文档，给我两条准备事项；没有文档就告诉我。",
     chips: []
   }
 };
@@ -561,9 +576,8 @@ const setupSteps = [
   },
   {
     title: "gws · Google Workspace CLI",
-    cmds: ["npm install -g @googleworkspace/cli", "gws auth setup", "gws auth login -s drive,calendar --readonly", "gws auth status"],
-    en: "This example uses Node.js and gcloud. Setup configures a Google Cloud project and OAuth client. Without gcloud, follow the manual OAuth steps in the official guide. This login requests read-only access to Drive and Calendar.",
-    zh: "此示例需要 Node.js 和 gcloud。setup 会配置 Google Cloud 项目和 OAuth 客户端；没有 gcloud 就按官方说明手动配置。这里登录时只申请 Drive 和 Calendar 的只读权限。"
+    en: "Ask your AI Agent to install and configure gws where it runs. Sign in to your work account when prompted and grant the access needed for your task. The setup may require a Google Cloud project and OAuth client; see the official guide.",
+    zh: "请 AI Agent 在它运行的环境里安装并配置 gws，按提示登录工作账号，并授予任务所需的权限。配置可能需要 Google Cloud 项目和 OAuth 客户端，详见官方说明。"
   }
 ];
 const setupLinks = [
@@ -573,7 +587,7 @@ const setupLinks = [
 
 const chapters = [
   { id: "opening", stage: -1, time: "0:00–0:20",
-    say: ["合并之后，我们先建立一套共同的工作方式，再再学习用命令访问 Google Workspace。", "分三层：先找到彼此，再找到信息，最后学习如何使用 Google Workspace CLI。"] },
+    say: ["合并之后，我们先建立一套共同的工作方式，再学习让 AI Agent 使用 Google Workspace CLI。", "分三层：先找到彼此，再找到信息，最后学习如何使用 Google Workspace CLI。"] },
   { id: "hours", stage: 0, time: "0:20–1:05",
     say: ["第一层，先让大家找到彼此。约定：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历里标明工作时间。", "表里高亮的是对方白天能用的时段。设置方法：电脑打开 Google 日历 → 设置 → 通用 → 工作时间（或「工作时间和地点」）→ 启用。找不到这个设置，反馈给 Operation Team。"],
     facts: ["时间按打开页面当天的北京日期换算，会自动跟随夏令时。高亮规则：对方当地 07:00–21:00 之间的时段。", "Google 官方说明：看不到工作时间选项，通常是管理员没有为组织开启。"] },
@@ -587,19 +601,20 @@ const chapters = [
   { id: "searchable", stage: 1, time: "2:20–2:55",
     say: ["要让人和工具都找得到，信息得先放在找得到的地方。", "三条约定：日常业务讨论放公开频道；非必要不建私密群；新频道如果大家会在里面问问题，就把 Tada 加进来，并告诉 Ken 开启。"],
     facts: ["Tada 只能看到它所在频道里的消息；在群里回答时只用本群内容和公司资料，不会带入私聊或其他群的内容。"] },
-  { id: "gws-setup", stage: 2, time: "2:55–3:45",
-    say: ["第三层，介绍 Google Workspace CLI。先在终端安装 gws，再配置并使用工作账号登录。", "这里申请 Drive 和 Calendar 的只读权限。运行 gws auth status 查看登录状态。"],
-    facts: ["gws auth setup 需要 gcloud，会配置 Google Cloud 项目和 OAuth 客户端。没有 gcloud 可按官方文档手动配置。"] },
-  { id: "gws-agenda", stage: 2, time: "3:45–4:30",
-    say: ["第一个例子：在终端运行这条命令，查看今天主日历里的会议。", "画面里的两场会议是示例，实际结果取决于自己的日历。"],
-    facts: ["命令只读取 primary 日历，默认使用当前 Google 账号的时区。"],
+  { id: "gws-setup", stage: 2, time: "2:55–3:35",
+    say: ["第三层，大家直接在自己常用的 AI Agent 里说要做什么，Agent 在后台调用 Google Workspace CLI。", "贴上 Google 文档链接，用自己的话说明想要的结果。首次配置说明留在备注。"],
+    facts: ["gws 需要在 AI Agent 运行的环境里安装并授权。配置可能需要 Google Cloud 项目和 OAuth 客户端，参见官方说明。"],
+    prompts: ["gwsSetup"] },
+  { id: "gws-review", stage: 2, time: "3:35–4:25",
+    say: ["评审快开始时，把 Google 文档链接和问题交给 AI Agent。", "Agent 用 gws 读文档，整理本期和后续内容，附上来源。画面是演练示例。"],
+    facts: ["Agent 读取 Google Doc 需要相应的账号访问权限和授权。示例回复仅用于说明形式。"],
+    prompts: ["gwsReview"] },
+  { id: "gws-agenda", stage: 2, time: "4:25–5:15",
+    say: ["开会前，直接让 AI Agent 用 Google Workspace CLI 查看下一场会议和附带文档，列出两条准备事项。", "画面里的会议和准备事项是示例。没有会议文档时，让 Agent 如实说明。"],
+    facts: ["Agent 需要日历和文档的读取权限。gws 支持读取日程和会议关联资料；实际结果取决于会议是否附带可访问的文档。"],
     prompts: ["gwsAgenda"] },
-  { id: "gws-drive", stage: 2, time: "4:30–5:15",
-    say: ["第二个例子：查看账号可访问的最近更新文件，最多列五个。", "画面是示例结果，可以复制命令在自己的账号中试。"],
-    facts: ["Drive API 的结果取决于账号权限；命令按修改时间降序返回文件名和修改时间。"],
-    prompts: ["gwsDrive"] },
   { id: "close", stage: -1, time: "5:15–5:40",
-    say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周安装并登录 gws，试一条命令。", "安装步骤和可复制的命令，点最后一个按钮。"] }
+    say: ["每一层先做一步：今天在日历标好工作时间；会后问 Tada 一个手头的真实问题；这周让 AI Agent 用 gws 完成一件事。", "安装说明和可复制的问法，点最后一个按钮。"] }
 ];
 const stages = [["Find each other", "找到彼此"], ["Find information", "找到信息"], ["Use Google Workspace CLI", "使用 Google Workspace CLI"]];
 
@@ -751,7 +766,7 @@ function setupParts() {
 }
 function openSetup() {
   document.querySelector("#notes-title").textContent = "Setup and prompts · 安装和问法";
-  document.querySelector("#note-content").replaceChildren(...setupParts(), ...promptParts(["tada", "gwsAgenda", "gwsDrive"]));
+  document.querySelector("#note-content").replaceChildren(...setupParts(), ...promptParts(["tada", "gwsSetup", "gwsReview", "gwsAgenda"]));
   notes.showModal();
 }
 function openNotes() {
