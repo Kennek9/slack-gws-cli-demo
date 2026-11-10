@@ -2,11 +2,11 @@
 
 [网页演示](https://kennek9.github.io/slack-gws-cli-demo/) · [中英 Tada 指南](https://docs.google.com/document/d/1BOI80LqwMVBZFWf1ZwdUfLRzD_eu_ZL5rbjGNcDmmO4/edit)
 
-约 5 分 40 秒，9 页，分三层，前一层是后一层的基础：
+约 5 分 40 秒，10 页，分三层，前一层是后一层的基础：
 
 1. 找到彼此：中国同事至少开放北京时间 08:00–10:00 或 22:00–24:00 中的一段，并在 Google 日历标明工作时间；页面列出美西、英国、墨西哥和巴西对应的时间。
 2. 找到信息：怎么用 Tada，以及如何让业务讨论里的信息更容易找到。
-3. 使用 Google Workspace CLI：直接用自然语言让 AI Agent 使用 Google Workspace CLI：翻译飞书资料并生成英文 Google 文档、核对多语言文案并起草回复，以及准备会议资料并检查共享权限。三个场景均参考实际工作，并去掉了敏感细节。
+3. 使用 Google Workspace CLI：先介绍 CLI 如何让 AI Agent 操作 Google 应用，再用自然语言完成工作：翻译飞书资料并生成英文 Google 文档、核对多语言文案并起草回复，以及准备会议资料并检查共享权限。三个场景均参考实际工作，并去掉了敏感细节。
 
 直接在浏览器打开 `index.html`。左右键切页，F 全屏。讲者快捷键（页面上不显示按钮）：C 在中英对照、英文、中文之间切换，R 重播动画，N 打开讲者备注和可复制内容。最后一页的按钮打开安装说明和可复制的问法。工作时间按打开页面时的北京日期换算。
 
