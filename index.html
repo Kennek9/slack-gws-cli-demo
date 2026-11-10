@@ -301,7 +301,7 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .guide.ghost:hover { background: #ffe5cc; }
 
 /* A question in Slack and the document it finds. */
-.company-flow { display: grid; grid-template-columns: 1fr 1.05fr 1.05fr; gap: 2cqw; align-items: stretch; }
+.company-flow { display: grid; grid-template-columns: 1fr 1.05fr; gap: 2cqw; align-items: stretch; }
 .company-step { display: flex; flex-direction: column; min-width: 0; }
 .company-step-label { margin-bottom: .65cqw; color: var(--label); font-size: 1.05cqw; font-weight: 700; }
 .company-step-label .cn { color: inherit; }
@@ -309,17 +309,12 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .company-situation { background: #fff1df; border-color: #edc6a4; }
 .company-copy { font-size: 1.5cqw; line-height: 1.35; }
 .company-action { margin-top: 1cqw; padding: .8cqw .9cqw; border-radius: var(--r-md); background: #fff2e2; font-size: 1.35cqw; line-height: 1.35; }
-.company-result-title { display: flex; align-items: center; gap: .6cqw; padding-bottom: .75cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.25cqw; font-weight: 700; }
-.company-result-title .ico { color: var(--orange); font-size: 1.5cqw; }
-.company-result-body { margin-top: 1cqw; font-size: 1.4cqw; line-height: 1.35; }
 @media (max-width: 600px) and (orientation: portrait) {
   .company-flow { grid-template-columns: 1fr; gap: 10px; }
   .company-step-label { margin-bottom: 5px; }
   .company-card { padding: 12px; }
   .company-action { margin-top: 8px; }
   .company-action { padding: 8px; }
-  .company-result-title { gap: 7px; padding-bottom: 7px; }
-  .company-result-body { margin-top: 8px; }
 }
 
 /* 05 Searchable */
@@ -582,13 +577,6 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
             <div class="company-action">
               <p class="bi"><span lang="en">@Tada Where is the Feeling Together requirements doc?</span><span class="cn" lang="zh-Hans">@Tada Feeling Together 需求文档在哪？</span></p>
             </div>
-          </div>
-        </div>
-        <div class="company-step unfold" style="--d:2.2s">
-          <p class="company-step-label biline"><span lang="en" class="heading-en">03 · EXAMPLE RESULT</span></p>
-          <div class="card company-card">
-            <p class="company-result-title biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Requirements doc</span></p>
-            <p class="company-result-body bi"><span lang="en">Feeling Together: mood sharing &amp; ring gifting</span><span class="cn" lang="zh-Hans">Feeling Together（心情绑定与送戒指）PRD</span></p>
           </div>
         </div>
       </div>
