@@ -110,17 +110,17 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .also .pill { padding: .3cqw .75cqw; border: var(--edge) solid var(--line-strong); border-radius: 999px; background: var(--card); }
 
 /* A real task, told as three moments: request, instruction, result. */
-.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 2.3cqw; align-items: stretch; }
+.story { display: grid; grid-template-columns: 24fr 36fr 34fr; gap: 2.3cqw; align-items: stretch; align-content: center; }
 .story-step { min-width: 0; display: flex; flex-direction: column; }
 .story-label { margin-bottom: .7cqw; color: var(--label); font-size: 1.04cqw; font-weight: 700; }
 .story-label .cn { color: inherit; }
-.story-card { flex: 1; padding: 1.3cqw 1.45cqw; }
+.story-card { flex: 1; padding: 1.8cqw 1.9cqw; }
 .story-context { background: #fff1df; border-color: #edc6a4; }
-.story-quote { font-size: 1.5cqw; line-height: 1.28; font-weight: 650; }
-.story-hint { margin-top: 1.05cqw; padding-top: .85cqw; border-top: var(--edge) solid var(--line-strong); color: var(--muted); font-size: 1.08cqw; line-height: 1.3; }
-.story-prompt { font-size: 1.35cqw; line-height: 1.4; }
+.story-quote { font-size: 1.55cqw; line-height: 1.32; font-weight: 650; }
+.story-hint { margin-top: 1.05cqw; padding-top: .85cqw; border-top: var(--edge) solid var(--line-strong); color: var(--muted); font-size: 1.2cqw; line-height: 1.35; }
+.story-prompt { font-size: 1.4cqw; line-height: 1.4; }
 .story-prompt > span:first-child { font-family: var(--serif); }
-.story-tools { margin-top: 1cqw; padding-top: .8cqw; border-top: var(--edge) solid var(--line); color: var(--label); font-size: 1.03cqw; line-height: 1.35; font-weight: 650; }
+.story-tools { margin-top: 1cqw; padding-top: .8cqw; border-top: var(--edge) solid var(--line); color: var(--label); font-size: 1.1cqw; line-height: 1.35; font-weight: 650; }
 .story-result { background: #fffdf9; }
 .story-result-title { display: flex; align-items: center; gap: .55cqw; margin-bottom: .85cqw; padding-bottom: .7cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.12cqw; font-weight: 700; }
 .story-result-title .ico { color: var(--orange); font-size: 1.35cqw; }
@@ -130,7 +130,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .story-result-row .cn { color: inherit; }
 .story .paper-in, .story .unfold { animation-fill-mode: both; }
 @media (max-width: 600px) and (orientation: portrait) {
-  .story { grid-template-columns: 1fr; gap: 10px; }
+  .story { grid-template-columns: 1fr; gap: 10px; align-content: start; }
   .story-label { margin-bottom: 5px; }
   .story-card { padding: 12px; }
   .story-hint, .story-tools { margin-top: 9px; padding-top: 8px; }
@@ -141,14 +141,14 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 /* Introduce how the AI Agent uses Google Workspace CLI. */
 .intro-sub { margin-top: .8cqw; color: var(--muted); font-size: 1.35cqw; line-height: 1.28; }
 .intro-flow { display: grid; grid-template-columns: 1.12fr .12fr 1fr .12fr 1fr; align-items: stretch; gap: .65cqw; }
-.intro-node { display: flex; flex-direction: column; min-width: 0; padding: 1.25cqw 1.35cqw; }
+.intro-node { display: flex; flex-direction: column; min-width: 0; padding: 1.8cqw 1.9cqw; }
 .intro-label { color: var(--label); font-size: 1.05cqw; font-weight: 700; }
 .intro-label .cn { color: inherit; }
-.intro-ask { margin-top: 1cqw; font-size: 1.45cqw; line-height: 1.28; font-weight: 650; }
+.intro-ask { margin-top: 1.2cqw; font-size: 1.55cqw; line-height: 1.35; font-weight: 650; }
 .intro-agent { background: #fff1e1; border-color: #e7b48a; }
 .intro-agent h2 { margin-top: .9cqw; font-size: 1.75cqw; line-height: 1.2; }
 .intro-agent h2 .cn { color: inherit; }
-.intro-cli { margin-top: 1.1cqw; padding: .75cqw .85cqw; border-radius: var(--r-md); background: #fffaf3; border: var(--edge) solid #ecc7a8; font-size: 1.25cqw; line-height: 1.3; }
+.intro-cli { margin-top: 1.1cqw; padding: .75cqw .85cqw; border-radius: var(--r-md); background: #fffaf3; border: var(--edge) solid #ecc7a8; font-size: 1.35cqw; line-height: 1.35; }
 .intro-arrow { display: grid; place-items: center; color: var(--orange); font-size: 2cqw; }
 .intro-apps { display: grid; gap: .7cqw; margin-top: .85cqw; }
 .intro-app { display: flex; align-items: center; gap: .7cqw; font-size: 1.25cqw; font-weight: 650; }
@@ -166,31 +166,35 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 /* Two familiar entry points, with different jobs. */
 .choice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.2cqw; align-items: stretch; }
-.choice-card { display: flex; flex-direction: column; gap: .8cqw; padding: 1.45cqw 1.6cqw; }
+.choice-card { display: flex; flex-direction: column; gap: 1.1cqw; padding: 2.1cqw 2.2cqw; }
 .choice-card.agent { background: #fff1e1; border-color: #e7b48a; }
 .choice-where { color: var(--label); font-size: 1.05cqw; font-weight: 700; }
 .choice-where .cn { color: inherit; }
-.choice-card h2 { font-size: 2cqw; line-height: 1.2; }
+.choice-card h2 { font-size: 2.1cqw; line-height: 1.2; }
 .choice-card h2 .cn { color: inherit; }
-.choice-task { font-size: 1.35cqw; line-height: 1.3; }
-.choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.25cqw; line-height: 1.3; font-weight: 650; }
-.story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.12cqw; line-height: 1.3; }
+.choice-task { font-size: 1.5cqw; line-height: 1.35; }
+.choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.4cqw; line-height: 1.35; font-weight: 650; }
+.choice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw 1.4cqw; margin-top: .5cqw; }
+.choice-actions button, .choice-actions a { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
+.choice-actions .cn { color: inherit; }
+.story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.2cqw; line-height: 1.35; }
 .story-result-example .example-label { color: var(--label); font-weight: 700; margin-bottom: .4cqw; }
 @media (max-width: 600px) and (orientation: portrait) {
   .choice-grid { grid-template-columns: 1fr; gap: 10px; }
   .choice-card { gap: 8px; padding: 12px; }
   .choice-example { padding-top: 8px; }
+  .choice-actions { gap: 8px 16px; margin-top: 6px; }
   .story-result-example { margin-top: 8px; padding: 8px; }
 }
 
 /* A discussion becomes a document, then the same document is revised. */
 .write-sub { margin-top: .85cqw; color: var(--muted); font-size: 1.35cqw; line-height: 1.35; }
-.write-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6cqw; align-items: start; }
-.write-card { padding: 1.35cqw 1.55cqw; }
+.write-flow { display: grid; grid-template-columns: 1fr 1fr; gap: 2.6cqw; align-items: start; align-content: center; }
+.write-card { padding: 1.8cqw 2cqw; }
 .write-label { color: var(--label); font-size: 1.08cqw; font-weight: 700; }
 .write-label .cn { color: inherit; }
-.write-context { margin-top: .85cqw; color: var(--muted); font-size: 1.15cqw; line-height: 1.35; }
-.write-message { margin-top: 1.05cqw; padding: .8cqw 1cqw; border-radius: var(--r-md); background: #fff1e1; font-size: 1.3cqw; line-height: 1.4; }
+.write-context { margin-top: .85cqw; color: var(--muted); font-size: 1.25cqw; line-height: 1.35; }
+.write-message { margin-top: 1.1cqw; padding: 1cqw 1.15cqw; border-radius: var(--r-md); background: #fff1e1; font-size: 1.4cqw; line-height: 1.4; }
 .write-message + .write-message { margin-top: .8cqw; }
 .write-doc-head { display: flex; align-items: center; gap: .65cqw; padding-bottom: .85cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.2cqw; font-weight: 700; }
 .write-doc-head .ico { color: var(--orange); font-size: 1.5cqw; }
@@ -200,7 +204,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 @keyframes doc-revise { to { border-left-color: var(--orange); background: #fff2e2; font-weight: 700; } }
 @media (max-width: 600px) and (orientation: portrait) {
   .write-sub { margin-top: 8px; }
-  .write-flow { grid-template-columns: 1fr; gap: 12px; }
+  .write-flow { grid-template-columns: 1fr; gap: 12px; align-content: start; }
   .write-card { padding: 12px; }
   .write-context, .write-message, .write-doc-title, .write-doc-section, .write-doc-status { margin-top: 9px; }
   .write-message { padding: 9px; }
@@ -210,8 +214,8 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 /* 01 Opening */
 .s-open h1 { font-size: 4cqw; }
-.layers { display: flex; flex-direction: column; justify-content: flex-end; gap: .9cqw; margin-top: 2.2cqw; }
-.layer { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.2cqw 1.8cqw; border-radius: var(--r-lg); border: var(--edge) solid var(--line-strong); background: var(--card); box-shadow: var(--shadow); transform-origin: bottom; animation: rise .7s var(--ease) var(--d) both; }
+.layers { display: flex; flex-direction: column; justify-content: center; gap: 1cqw; margin-top: 2.2cqw; }
+.layer { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.5cqw 1.8cqw; border-radius: var(--r-lg); border: var(--edge) solid var(--line-strong); background: var(--card); box-shadow: var(--shadow); transform-origin: bottom; animation: rise .7s var(--ease) var(--d) both; }
 .layer .num { font-family: var(--serif); font-size: 3cqw; line-height: 1; color: var(--orange); }
 .layer .bi { font-size: 1.7cqw; font-weight: 650; }
 .layer .sub { font-size: 1.15cqw; font-weight: 400; color: var(--muted); text-align: right; }
@@ -220,7 +224,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .layer.l1 { width: 100%; }
 
 /* 02 Hours */
-.hours-grid { display: grid; grid-template-columns: 30cqw 1fr; gap: 2cqw; align-items: start; }
+.hours-grid { display: grid; grid-template-columns: 30cqw 1fr; gap: 2cqw; align-items: center; }
 .ba-stack { display: grid; gap: .8cqw; }
 .ba-line { display: grid; grid-template-columns: 7.4cqw 1fr; gap: .8cqw; align-items: baseline; padding: .9cqw 1.1cqw; border-radius: var(--r-md); font-size: 1.22cqw; line-height: 1.3; }
 .ba-line.before-line { background: #faf3e8; border: var(--edge) dashed var(--line-strong); color: #4d4440; }
@@ -232,8 +236,8 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .win { padding: .4cqw .8cqw; border-radius: var(--r-md); background: var(--orange); color: #fff; font-size: 1.4cqw; font-weight: 700; font-variant-numeric: tabular-nums; }
 .or { color: var(--muted); font-size: 1.05cqw; }
 .table-card { padding: .9cqw 1.2cqw 1.1cqw; }
-.hours-table { width: 100%; border-collapse: collapse; font-size: 1.25cqw; }
-.hours-table th, .hours-table td { padding: .7cqw .8cqw; border-bottom: var(--edge) solid var(--line); text-align: left; }
+.hours-table { width: 100%; border-collapse: collapse; font-size: 1.3cqw; }
+.hours-table th, .hours-table td { padding: .85cqw .8cqw; border-bottom: var(--edge) solid var(--line); text-align: left; }
 .hours-table thead th { color: var(--label); font-size: 1cqw; }
 .hours-table thead th b { display: block; margin-top: .15cqw; color: var(--ink); font-size: 1.25cqw; font-variant-numeric: tabular-nums; }
 .hours-table tbody th { font-weight: 650; }
@@ -284,12 +288,12 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 
 /* 04 Use Tada */
 .use-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; }
-.use { display: flex; flex-direction: column; gap: .8cqw; padding: 1.4cqw 1.5cqw 1.5cqw; }
+.use { display: flex; flex-direction: column; gap: 1cqw; padding: 1.9cqw 2cqw; }
 .use-ico { width: 3cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: #fdebd6; color: var(--label); font-size: 1.5cqw; }
 .use h2 { font-size: 1.65cqw; line-height: 1.2; }
 .use h2 .cn { color: var(--ink); }
-.use .how { font-size: 1.3cqw; line-height: 1.3; font-weight: 600; }
-.use .bi.note { font-size: 1.15cqw; line-height: 1.3; color: var(--muted); }
+.use .how { font-size: 1.4cqw; line-height: 1.35; font-weight: 600; }
+.use .bi.note { font-size: 1.25cqw; line-height: 1.35; color: var(--muted); }
 .use-foot { display: flex; justify-content: space-between; align-items: center; gap: 1.5cqw; margin-top: 1.6cqw; }
 .tips { display: flex; flex-wrap: wrap; gap: .6cqw 1.6cqw; font-size: 1.1cqw; }
 .tips li { display: inline-flex; align-items: center; gap: .4cqw; }
@@ -306,13 +310,13 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .company-step { display: flex; flex-direction: column; min-width: 0; }
 .company-step-label { margin-bottom: .65cqw; color: var(--label); font-size: 1.05cqw; font-weight: 700; }
 .company-step-label .cn { color: inherit; }
-.company-card { flex: 1; padding: 1.3cqw 1.4cqw; }
+.company-card { flex: 1; padding: 1.8cqw 1.9cqw; }
 .company-situation { background: #fff1df; border-color: #edc6a4; }
-.company-copy { font-size: 1.42cqw; line-height: 1.3; }
-.company-action { margin-top: 1cqw; padding: .8cqw .9cqw; border-radius: var(--r-md); background: #fff2e2; font-size: 1.25cqw; line-height: 1.3; }
+.company-copy { font-size: 1.5cqw; line-height: 1.35; }
+.company-action { margin-top: 1cqw; padding: .8cqw .9cqw; border-radius: var(--r-md); background: #fff2e2; font-size: 1.35cqw; line-height: 1.35; }
 .company-result-title { display: flex; align-items: center; gap: .6cqw; padding-bottom: .75cqw; border-bottom: var(--edge) solid var(--line); font-size: 1.25cqw; font-weight: 700; }
 .company-result-title .ico { color: var(--orange); font-size: 1.5cqw; }
-.company-result-body { margin-top: .8cqw; font-size: 1.25cqw; line-height: 1.3; }
+.company-result-body { margin-top: 1cqw; font-size: 1.4cqw; line-height: 1.35; }
 @media (max-width: 600px) and (orientation: portrait) {
   .company-flow { grid-template-columns: 1fr; gap: 10px; }
   .company-step-label { margin-bottom: 5px; }
@@ -335,13 +339,22 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 /* 06 Permissions */
 
 /* 10 Close */
-.start { display: grid; gap: 1cqw; align-content: start; }
-.start li { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.25cqw 1.6cqw; border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); background: var(--card); box-shadow: var(--shadow); }
+.start { display: grid; gap: 1.2cqw; align-content: center; }
+.start li { display: grid; grid-template-columns: 4cqw 1fr auto; align-items: center; gap: 1.4cqw; padding: 1.6cqw 1.8cqw; border: var(--edge) solid var(--line-strong); border-radius: var(--r-lg); background: var(--card); box-shadow: var(--shadow); }
 .start .num { font-family: var(--serif); font-size: 2.8cqw; line-height: 1; color: var(--orange); }
 .start .bi { font-size: 1.55cqw; font-weight: 650; line-height: 1.25; }
 .start .when { display: block; margin-bottom: .35cqw; color: var(--label); font-size: 1cqw; font-weight: 650; }
 .start .when .cn { color: inherit; }
 .start li:last-child { background: #fff1e0; border-color: #e3a678; }
+
+/* Center each page's content as a group instead of stretching empty cards. */
+@media (min-width: 601px), (orientation: landscape) {
+  .s-choice .main, .s-use .main, .s-company .main, .s-intro .main { display: flex; flex-direction: column; justify-content: center; }
+  .s-searchable .main { align-items: center; }
+}
+/* Separate longer bilingual passages without adding extra copy. */
+.choice-task > .cn, .company-copy > .cn, .company-action .bi > .cn, .company-result-body > .cn, .intro-ask > .cn, .intro-cli > .cn, .write-message > .cn, .story-prompt > .cn, .story-result-example .bi > .cn, .start .bi > .cn { margin-top: .7em; padding-top: .7em; border-top: var(--edge) solid var(--line); }
+#screen[data-language="zh"] :is(.choice-task, .company-copy, .company-action .bi, .company-result-body, .intro-ask, .intro-cli, .write-message, .story-prompt, .story-result-example .bi, .start .bi) > .cn { margin: 0; padding: 0; border: 0; }
 
 /* Toolbar and dialogs */
 .toolbar { min-height: 49px; display: flex; gap: 6px; padding: 7px 10px; align-items: center; font-size: 12px; color: #61483a; }
@@ -386,6 +399,9 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
   .track { gap: 6px; flex-wrap: wrap; }
   .track .n { width: 16px; }
   .head, .main { margin-top: 14px; }
+  .layers { justify-content: start; }
+  .hours-grid { align-items: stretch; }
+  .start { align-content: start; }
   .ba, .hours-grid, .use-grid, .duo-out, .perm-rule { grid-template-columns: 1fr; gap: 10px; }
   .layer, .start li { width: 100% !important; grid-template-columns: 28px 1fr; padding: 10px; gap: 8px; }
   .layer .sub { grid-column: 2; text-align: left; }
@@ -486,6 +502,10 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           <h2 class="bi"><span lang="en" class="heading-en">Ask Tada</span></h2>
           <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
           <p class="choice-example bi"><span lang="en">“What is Feeling Together?”</span><span class="cn" lang="zh-Hans">“什么是 Feeling Together？”</span></p>
+          <div class="choice-actions">
+            <button type="button" class="biline" data-show-tada><span lang="en">How to ask →</span><span class="cn" lang="zh-Hans">提问方法</span></button>
+            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada + Drive guide ↗</span><span class="cn" lang="zh-Hans">连接教程</span></a>
+          </div>
         </article>
         <article class="card choice-card agent paper-in" style="--d:1.2s">
           <p class="choice-where biline"><span lang="en" class="heading-en">IN YOUR AI AGENT</span></p>
@@ -705,7 +725,7 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
     <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">One step per layer, starting this week</span></h1></header>
     <ol class="main start">
       <li class="arrive" style="--d:.3s"><span class="num">1</span><span><span class="when biline"><span lang="en" class="heading-en">Today</span></span><span class="bi"><span lang="en">Set your working hours in Google Calendar.</span><span class="cn" lang="zh-Hans">在 Google 日历里标好工作时间。</span></span></span><a class="guide ghost biline" target="_blank" rel="noopener noreferrer" href="https://support.google.com/calendar/answer/7638168?co=GENIE.Platform%3DDesktop"><span lang="en">How to set it ↗</span><span class="cn" lang="zh-Hans">设置方法</span></a></li>
-      <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span></li>
+      <li class="arrive" style="--d:.55s"><span class="num">2</span><span><span class="when biline"><span lang="en" class="heading-en">After this meeting</span></span><span class="bi"><span lang="en">In Slack, ask Tada about a team question.</span><span class="cn" lang="zh-Hans">在 Slack 问 Tada 一个团队问题。</span></span></span><a class="guide ghost biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada + Drive guide ↗</span><span class="cn" lang="zh-Hans">Tada 连接教程</span></a></li>
       <li class="arrive" style="--d:.8s"><span class="num">3</span><span><span class="when biline"><span lang="en" class="heading-en">This week</span></span><span class="bi"><span lang="en">Ask your AI Agent to set up Google Workspace CLI.</span><span class="cn" lang="zh-Hans">请 AI Agent 帮你配置 Google Workspace CLI。</span></span></span><button type="button" class="guide biline" data-open-setup><span lang="en">Get started</span><span class="cn" lang="zh-Hans">开始使用</span></button></li>
     </ol>
   </section>
@@ -894,7 +914,11 @@ chapterSelect.addEventListener("change", () => show(Number(chapterSelect.value))
 document.querySelector("#close-notes").addEventListener("click", () => notes.close());
 document.querySelector("#full").addEventListener("click", toggleFullscreen);
 screen.addEventListener("click", event => {
-  if (event.target.closest("[data-open-setup]")) openSetup();
+  if (event.target.closest("[data-show-tada]")) {
+    show(chapters.findIndex(chapter => chapter.id === "tada-use"));
+  } else if (event.target.closest("[data-open-setup]")) {
+    openSetup();
+  }
 });
 document.addEventListener("keydown", event => {
   if (event.repeat || notes.open || event.target.closest("select, a") ||
