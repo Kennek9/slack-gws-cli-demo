@@ -96,12 +96,9 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 @keyframes rise { from { opacity: 0; transform: translateY(2cqw) scaleY(.9); } }
 
 /* Before / After */
-.ba { display: grid; grid-template-columns: 27cqw 1fr; gap: 2.4cqw; align-items: start; }
 .ba-k { display: flex; align-items: center; gap: .5em; margin-bottom: .7cqw; font-size: 1cqw; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .ba-k .cn { text-transform: none; letter-spacing: 0; color: inherit; }
 .ba-k .tag { text-transform: none; letter-spacing: 0; }
-.before { padding: 1.3cqw 1.4cqw 1.4cqw; background: #faf3e8; border-style: dashed; box-shadow: none; color: #4d4440; }
-.before .bi { font-size: 1.36cqw; line-height: 1.32; }
 .after-k { color: var(--label); }
 .after-col { display: grid; gap: 1.1cqw; }
 .also { margin-top: 1.2cqw; display: flex; flex-wrap: wrap; align-items: center; gap: .6cqw; font-size: 1cqw; }
@@ -301,7 +298,8 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .guide.ghost:hover { background: #ffe5cc; }
 
 /* 05 Searchable */
-.s-searchable .before .bi + .bi { margin-top: .8em; }
+.s-searchable .main { display: flex; align-items: center; }
+.s-searchable .thread { width: 100%; }
 .rules { display: grid; gap: .8cqw; }
 .rules li { display: grid; grid-template-columns: 2.4cqw 1fr; gap: 1cqw; align-items: start; padding: 1cqw 1.2cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fffaf3; }
 .rules .n { width: 2.2cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; font-size: 1.05cqw; }
@@ -322,7 +320,6 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 /* Center each page's content as a group instead of stretching empty cards. */
 @media (min-width: 601px), (orientation: landscape) {
   .s-choice .main, .s-use .main, .s-intro .main { display: flex; flex-direction: column; justify-content: center; }
-  .s-searchable .main { align-items: center; }
 }
 /* Separate longer bilingual passages without adding extra copy. */
 .choice-task > .cn, .intro-ask > .cn, .intro-cli > .cn, .write-message > .cn, .story-prompt > .cn, .story-result-example .bi > .cn, .start .bi > .cn { margin-top: .7em; padding-top: .7em; border-top: var(--edge) solid var(--line); }
@@ -373,11 +370,11 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
   .layers { justify-content: start; }
   .hours-grid { align-items: stretch; }
   .start { align-content: start; }
-  .ba, .hours-grid, .use-grid, .duo-out, .perm-rule { grid-template-columns: 1fr; gap: 10px; }
+  .hours-grid, .use-grid, .duo-out, .perm-rule { grid-template-columns: 1fr; gap: 10px; }
   .layer, .start li { width: 100% !important; grid-template-columns: 28px 1fr; padding: 10px; gap: 8px; }
   .layer .sub { grid-column: 2; text-align: left; }
   .start li > :last-child { grid-column: 2; justify-self: start; }
-  .card, .before, .thread, .use, .rule-card, .table-card { padding: 10px; }
+  .card, .thread, .use, .rule-card, .table-card { padding: 10px; }
   .perm th, .perm td, .hours-table th, .hours-table td { padding: 6px 5px; }
   .use-foot { display: grid; gap: 10px; }
   .tips { grid-template-columns: 1fr; gap: 10px; }
@@ -544,12 +541,7 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 <template id="searchable">
   <section class="scene s-searchable warm" data-label="Get started with Tada">
     <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Get started with Tada</span></h1></header>
-    <div class="main ba">
-      <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en">Ask in a DM</span><span class="cn" lang="zh-Hans">私聊查资料</span></p>
-        <p class="bi"><span lang="en">Open Tada in Slack and send your question in Messages.</span><span class="cn" lang="zh-Hans">在 Slack 打开 Tada，到 Messages 发问题。</span></p>
-        <p class="bi"><span lang="en">“Where’s the Beijing onboarding guide? Please share the original link.”</span><span class="cn" lang="zh-Hans">「北京办公室的入职指南在哪？请发原文链接。」</span></p>
-      </div>
+    <div class="main">
       <div class="card thread paper-in" style="--d:.4s">
         <p class="ba-k after-k biline"><span lang="en">Ask Tada in a channel</span><span class="cn" lang="zh-Hans">在频道里问 Tada</span></p>
         <ol class="rules">
@@ -600,25 +592,25 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 </template>
 
 <template id="gws-setup">
-  <section class="scene s-write warm" data-label="Write and refine a Google Doc">
+  <section class="scene s-write warm" data-label="Plan a team introduction">
     <header class="head case-head arrive">
       <p class="eyebrow"><span lang="en" class="heading-en">USE CASE</span></p>
-      <h1 class="bi"><span lang="en" class="heading-en">From a conversation to a Google Doc</span></h1>
-      <p class="write-sub bi"><span lang="en">Write it, then refine the same document together.</span><span class="cn" lang="zh-Hans">写进去，再一起修改同一份文档。</span></p>
+      <h1 class="bi"><span lang="en" class="heading-en">Plan a 5-minute team intro</span></h1>
+      <p class="write-sub bi"><span lang="en">Discuss, write, then improve it together.</span><span class="cn" lang="zh-Hans">先讨论，再写入文档并一起修改。</span></p>
     </header>
     <div class="main write-flow">
       <div class="card write-card paper-in" style="--d:.35s">
         <p class="write-label biline"><span lang="en" class="heading-en">YOUR AI AGENT</span></p>
-        <p class="write-context bi"><span lang="en">After discussing onboarding copy:</span><span class="cn" lang="zh-Hans">讨论完新手引导文案后：</span></p>
-        <p class="write-message bi arrive" style="--d:1s"><span lang="en">“Use Google Workspace CLI to put this into a Google Doc.”</span><span class="cn" lang="zh-Hans">“用 Google Workspace CLI 把讨论结果写进 Google 文档。”</span></p>
-        <p class="write-message bi arrive" style="--d:3.3s"><span lang="en">“Make the headings clearer.”</span><span class="cn" lang="zh-Hans">“把标题层级调整得更清楚。”</span></p>
+        <p class="write-context bi"><span lang="en">After discussing how to introduce Google Workspace CLI:</span><span class="cn" lang="zh-Hans">讨论完怎么介绍 Google Workspace CLI 后：</span></p>
+        <p class="write-message bi arrive" style="--d:1s"><span lang="en">“Use Google Workspace CLI to put our plan in a Google Doc.”</span><span class="cn" lang="zh-Hans">“用 Google Workspace CLI 把我们的方案写进 Google 文档。”</span></p>
+        <p class="write-message bi arrive" style="--d:3.3s"><span lang="en">“Add a practical example.”</span><span class="cn" lang="zh-Hans">“加一个实际的例子。”</span></p>
       </div>
       <div class="card write-card paper-in" style="--d:2s">
         <p class="write-doc-head biline"><svg class="ico"><use href="#i-doc"/></svg><span lang="en" class="heading-en">Google Doc · Example</span></p>
-        <p class="write-doc-title bi"><span lang="en" class="heading-en">Onboarding copy</span></p>
-        <p class="write-doc-section biline"><span lang="en" class="heading-en">Account</span></p>
-        <p class="write-doc-section biline"><span lang="en" class="heading-en">Today</span></p>
-        <p class="write-doc-status bi arrive" style="--d:4.4s"><span lang="en">Same document, updated</span><span class="cn" lang="zh-Hans">同一份文档已更新</span></p>
+        <p class="write-doc-title bi"><span lang="en" class="heading-en">Google Workspace CLI · Team intro</span></p>
+        <p class="write-doc-section bi"><span lang="en">Ask your AI Agent to work with Google files.</span><span class="cn" lang="zh-Hans">让 AI Agent 操作 Google 文件。</span></p>
+        <div class="unfold" style="--d:4.4s"><p class="write-doc-section bi"><span lang="en">Example: create a Google Doc</span><span class="cn" lang="zh-Hans">举例：新建 Google 文档</span></p></div>
+        <p class="write-doc-status bi arrive" style="--d:5s"><span lang="en">Same document, updated</span><span class="cn" lang="zh-Hans">同一份文档已更新</span></p>
       </div>
     </div>
   </section>
@@ -713,14 +705,14 @@ const chapters = [
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
     facts: ["频道问答要求 Tada 在该频道；已发布公司资料无需连接个人 Drive。可查询范围取决于接入和权限。"] },
   { id: "searchable", stage: 1, time: "2:30–2:55",
-    say: ["自己找资料时，直接私聊 Tada。比如问北京办公室的入职指南在哪，请它发原文链接。", "想让同事一起看回答，就在频道里 @Tada。内部公开频道加一次就能用，私密频道先请管理员审批。想自动收录新消息，再请管理员单独开启。"],
+    say: ["想让同事一起看回答，就在频道里 @Tada。内部公开频道加一次就能用，私密频道先请管理员审批。想自动收录新消息，再请管理员单独开启。"],
     facts: ["频道接入和后台采集分别开通。频道接入允许员工在频道里 @Tada。开启采集后，Tada 才会在后台收录该频道的消息。", "公开频道的自动登记只适用于 Glorify 内部频道。Slack Connect 频道不在此范围。"] },
   { id: "gws-intro", stage: 2, time: "2:55–3:20",
     say: ["Google Workspace CLI 让 AI Agent 处理你有权限访问的 Google 文档、云盘文件和日历。", "直接对自己常用的 Agent 说要做什么，它在后台调用 CLI；首次需要安装、登录并授权。"],
     facts: ["gws 支持 Google Docs、Drive 和 Calendar 等服务。实际可访问的内容取决于账号权限与授权范围；首次配置说明见最后一页。"] },
   { id: "gws-setup", stage: 2, time: "3:20–4:05",
-    say: ["和 AI Agent 讨论完新手引导文案后，直接说：用 Google Workspace CLI 把讨论结果写进 Google 文档。", "觉得标题不够清楚，就继续告诉 Agent 调整同一份文档。"],
-    facts: ["实际工作中曾要求整理新手引导文案并交付 Google Doc，之后继续核对内容、调整文档结构和排版。Agent 需要在运行环境安装并授权 gws，且对目标文档有编辑权限；画面为示意。"] },
+    say: ["比如，为这次五分钟的 Google Workspace CLI 宣讲，先和 AI 讨论怎么讲，再让它把方案写进 Google 文档。", "想加一个实际例子，就继续告诉 Agent 修改同一份文档。"],
+    facts: ["画面以本次宣讲为场景示意；Agent 需要安装并授权 gws，且对目标文档有编辑权限。"] },
   { id: "gws-review", stage: 2, time: "4:05–4:50",
     say: ["审核三种语言时，把 Google 文档交给 Agent，找出意思不同的位置并起草回复。", "例如，英葡文提到选择早晚时间，西语未提。Agent 也可以起草回复，请同事确认。"],
     facts: ["真实的文档审核评论指出：Morning and Evening Routine Settings 的英语和葡语要求用户选择开始及结束时间，西语邀请用户为上帝留出时间但遗漏了选择时间。页面转述此差异，回复为示意，未直接引用内部链接。"] },
