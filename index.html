@@ -301,8 +301,7 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
 .guide.ghost:hover { background: #ffe5cc; }
 
 /* 05 Searchable */
-.locked { display: flex; flex-wrap: wrap; gap: .5cqw; margin-top: 1cqw; }
-.locked > span { display: inline-flex; align-items: center; gap: .35cqw; padding: .35cqw .7cqw; border-radius: 999px; background: #efe5d9; color: #6f645d; font-size: .95cqw; }
+.s-searchable .before .bi + .bi { margin-top: .8em; }
 .rules { display: grid; gap: .8cqw; }
 .rules li { display: grid; grid-template-columns: 2.4cqw 1fr; gap: 1cqw; align-items: start; padding: 1cqw 1.2cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fffaf3; }
 .rules .n { width: 2.2cqw; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; background: var(--orange); color: #fff; font-weight: 700; font-size: 1.05cqw; }
@@ -398,7 +397,6 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
   <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 9.5h16M4 14.5h16M10 9.5V20"/></symbol>
   <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="m15 15 5 5"/></symbol>
   <symbol id="i-hash" viewBox="0 0 24 24"><path d="M9 4 7.5 20M16.5 4 15 20M4.5 9h16M3.5 15h16"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c1.2-3.6 4-5.5 7-5.5s5.8 1.9 7 5.5"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path d="M12 19V5M6 11l6-6 6 6"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7.5"/></symbol>
@@ -548,16 +546,16 @@ code { font-family: inherit; font-size: .92em; padding: .05em .35em; border-radi
     <header class="head arrive"><h1 class="bi"><span lang="en" class="heading-en">Keep work where people can find it</span></h1></header>
     <div class="main ba">
       <div class="card before paper-in" style="--d:.2s">
-        <p class="ba-k biline"><span lang="en" class="heading-en">Before</span></p>
-        <p class="bi"><span lang="en">Tada cannot search conversations it has not joined.</span><span class="cn" lang="zh-Hans">Tada 无法搜索它未加入的会话。</span></p>
-        <p class="locked" aria-hidden="true"><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">Private group</span><span class="cn" lang="zh-Hans">私密群</span></span></span><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">DM</span><span class="cn" lang="zh-Hans">私聊</span></span></span><span><svg class="ico"><use href="#i-lock"/></svg><span class="biline"><span lang="en">DM</span><span class="cn" lang="zh-Hans">私聊</span></span></span></p>
+        <p class="ba-k biline"><span lang="en">Start in a DM</span><span class="cn" lang="zh-Hans">先私聊</span></p>
+        <p class="bi"><span lang="en">Open Tada in Slack. In Messages, ask for a company document and its link.</span><span class="cn" lang="zh-Hans">在 Slack 打开 Tada 的 Messages，直接问公司资料并请它附上原文链接。</span></p>
+        <p class="bi"><span lang="en">If you need access, contact the Tada admin.</span><span class="cn" lang="zh-Hans">需要开通账号时，联系 Tada 管理员。</span></p>
       </div>
       <div class="card thread paper-in" style="--d:.4s">
-        <p class="ba-k after-k biline"><span lang="en" class="heading-en">After · how we share</span></p>
+        <p class="ba-k after-k biline"><span lang="en">Ask Tada in a channel</span><span class="cn" lang="zh-Hans">在频道里问 Tada</span></p>
         <ol class="rules">
-          <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">Prefer public channels for day-to-day work.</span><span class="cn" lang="zh-Hans">日常工作优先在公开频道讨论。</span></span></li>
-          <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">Use private channels when needed.</span><span class="cn" lang="zh-Hans">有需要时使用私密频道。</span></span></li>
-          <li class="arrive" style="--d:1.2s"><span class="n">3</span><span class="bi"><span lang="en">For a new channel, consider adding Tada.<span class="how">Channel details → Integrations → Add apps → Tada</span></span><span class="cn" lang="zh-Hans">新频道可以考虑加入 Tada。<span class="how">频道详情 → 集成 → 添加应用 → Tada</span></span></span></li>
+          <li class="arrive" style="--d:.7s"><span class="n">1</span><span class="bi"><span lang="en">Internal public channels · Add Tada once, then @Tada.<span class="how">Channel header → Agents &amp; apps → Add Tada</span></span><span class="cn" lang="zh-Hans">内部公开频道添加一次 Tada，就能直接 @Tada。<span class="how">频道顶部 → Agents &amp; apps → 添加 Tada</span></span></span></li>
+          <li class="arrive" style="--d:.95s"><span class="n">2</span><span class="bi"><span lang="en">Private channels · Get approval first.<span class="how">Send the channel link to a Tada admin, then add Tada once approved.</span></span><span class="cn" lang="zh-Hans">私密频道先发链接给 Tada 管理员，审批后再添加。</span></span></li>
+          <li class="arrive" style="--d:1.2s"><span class="n">3</span><span class="bi"><span lang="en">A Tada admin enables message collection separately.</span><span class="cn" lang="zh-Hans">后台采集由管理员按频道单独开通。</span></span></li>
         </ol>
       </div>
     </div>
@@ -715,8 +713,8 @@ const chapters = [
     say: ["在已加入 Tada 的频道 @Tada，频道里的人能看到回答；也可以在 Slack 找到 Tada 并私聊。", "例如，直接问 Tada 找已接入的公司需求文档。"],
     facts: ["频道问答要求 Tada 在该频道；已发布公司资料无需连接个人 Drive。可查询范围取决于接入和权限。"] },
   { id: "searchable", stage: 1, time: "2:30–2:55",
-    say: ["Tada 无法搜索它未加入的会话。日常工作优先在公开频道讨论；有需要时使用私密频道。", "新频道可以考虑加入 Tada，并告诉 Ken 开启。"],
-    facts: ["Tada 在频道中只使用该频道可访问的信息及公司资料；不要把未加入的私密会话当作可搜索范围。"] },
+    say: ["自己找资料，直接私聊 Tada。日常协作优先用公开频道。需要大家一起看回答时，内部公开频道由一位成员添加 Tada，之后直接 @Tada。", "私密频道先把链接发给管理员审批。后台采集另行开通。"],
+    facts: ["频道接入和后台采集分别开通。频道接入允许员工在频道里 @Tada。开启采集后，Tada 才会在后台收录该频道的消息。", "公开频道的自动登记只适用于 Glorify 内部频道。Slack Connect 频道不在此范围。"] },
   { id: "gws-intro", stage: 2, time: "2:55–3:20",
     say: ["Google Workspace CLI 让 AI Agent 处理你有权限访问的 Google 文档、云盘文件和日历。", "直接对自己常用的 Agent 说要做什么，它在后台调用 CLI；首次需要安装、登录并授权。"],
     facts: ["gws 支持 Google Docs、Drive 和 Calendar 等服务。实际可访问的内容取决于账号权限与授权范围；首次配置说明见最后一页。"] },
