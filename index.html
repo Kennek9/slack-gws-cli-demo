@@ -76,7 +76,8 @@ h1 .cn { color: var(--muted); font-family: var(--sans); margin-top: .28em; }
 .biline > .cn { margin-left: .9em; }
 .no-chinese .cn { display: none !important; }
 #screen[data-language="zh"] [lang="en"] { display: none !important; }
-#screen[data-language="zh"] [lang="en"].heading-en { display: revert !important; }
+#screen[data-language="zh"] [lang="en"].heading-en,
+#screen[data-language="zh"] [lang="en"].always-en { display: revert !important; }
 #screen[data-language="zh"] .bi > .cn, #screen[data-language="zh"] .biline > .cn { margin: 0; }
 
 /* Shared pieces */
@@ -176,7 +177,6 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
 .choice-example { margin-top: auto; padding-top: .9cqw; border-top: var(--edge) solid var(--line); font-size: 1.4cqw; line-height: 1.35; font-weight: 650; }
 .choice-actions { display: flex; flex-wrap: wrap; align-items: center; gap: .7cqw 1.4cqw; margin-top: .5cqw; }
 .choice-actions button, .choice-actions a { padding: 0; border: 0; background: transparent; color: var(--label); font-size: 1.05cqw; font-weight: 700; text-decoration: underline; text-underline-offset: .15em; cursor: pointer; }
-.choice-actions .cn { color: inherit; }
 .story-result-example { margin-top: .8cqw; padding: .75cqw .85cqw; border: var(--edge) solid var(--line); border-radius: var(--r-md); background: #fff8ef; font-size: 1.2cqw; line-height: 1.35; }
 .story-result-example .example-label { color: var(--label); font-weight: 700; margin-bottom: .4cqw; }
 @media (max-width: 600px) and (orientation: portrait) {
@@ -501,10 +501,10 @@ code { font-family: var(--mono); font-size: .92em; padding: .05em .35em; border-
           <p class="choice-where biline"><span lang="en" class="heading-en">IN SLACK</span></p>
           <h2 class="bi"><span lang="en" class="heading-en">Ask Tada</span></h2>
           <p class="choice-task bi"><span lang="en">Ask about team information available to Tada.</span><span class="cn" lang="zh-Hans">询问 Tada 已接入的团队资料。</span></p>
-          <p class="choice-example bi"><span lang="en">“What is Feeling Together?”</span><span class="cn" lang="zh-Hans">“什么是 Feeling Together？”</span></p>
+          <p class="choice-example bi"><span lang="en" class="always-en">“What is Feeling Together?”</span></p>
           <div class="choice-actions">
-            <button type="button" class="biline" data-show-tada><span lang="en">How to ask →</span><span class="cn" lang="zh-Hans">提问方法</span></button>
-            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en">Tada + Drive guide ↗</span><span class="cn" lang="zh-Hans">连接教程</span></a>
+            <button type="button" class="biline" data-show-tada><span lang="en" class="always-en">How to ask →</span></button>
+            <a class="biline" data-guide target="_blank" rel="noopener noreferrer"><span lang="en" class="always-en">Tada + Drive guide ↗</span></a>
           </div>
         </article>
         <article class="card choice-card agent paper-in" style="--d:1.2s">
